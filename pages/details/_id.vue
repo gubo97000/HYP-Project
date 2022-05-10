@@ -13,6 +13,10 @@
         <p class="lead">
           {{ description }}
         </p>
+        <b>Location:</b>
+        <p class="lead">
+          {{ location.name }} - {{location.city}}
+        </p>
         <div
           class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3"
         >
@@ -33,8 +37,10 @@
 </template>
 
 <script>
+import CommonMixin from '~/mixins/common'
 export default {
   name: 'DetailsPage',
+  mixins: [CommonMixin],
   async asyncData({ route, $axios }) {
     const { id } = route.params
     const { data } = await $axios.get('/api/cats/' + id)
@@ -43,7 +49,18 @@ export default {
       breed: data.breed,
       img: data.img,
       description: data.description,
+      location: data.location
     }
+  },
+  head(){
+    return {
+      title: this.name
+    }
+  },
+  mounted(){
+    const date = new Date()
+    // Example on hwo to use mixinx
+    console.log(this.formatMyDate(date.toLocaleDateString()))
   },
   methods: {
     backToList() {

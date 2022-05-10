@@ -9,9 +9,9 @@
       <p class="card-text">
         {{ breed }}
       </p>
-      <div @click="goToDetails()" class="btn btn-primary btn-orange">
-        See Details
-      </div>
+      <nuxt-link :to="`/details/${id}`">
+        <div class="btn btn-primary btn-orange">See Details</div>
+      </nuxt-link>
     </div>
   </div>
 </template>

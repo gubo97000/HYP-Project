@@ -4,7 +4,17 @@ const { Sequelize, DataTypes } = require("sequelize")
 const initialize = require('./initialize').default
 app.use(express.json())
 
+// Development
 const database = new Sequelize("postgres://postgres:postgres@localhost:5432/hyp")
+
+// Production (use this code when deploying to production in Heroku)
+// const pg = require('pg')
+// pg.defaults.ssl = true
+// const database = new Sequelize(process.env.DATABASE_URL, {
+//   ssl: true,
+//   dialectOptions: { ssl: { require: true, rejectUnauthorized: false } },
+// })
+
 
 
 // Function that will initialize the connection to the database
@@ -16,6 +26,11 @@ async function initializeDatabaseConnection() {
         breed: DataTypes.STRING,
         img: DataTypes.STRING,
     })
+    const Location  = database.define("location", {
+        name: DataTypes.STRING,
+        city: DataTypes.STRING,
+    })
+
     /*
     const Event = database.define("event", {
         title: DataTypes.STRING,
@@ -51,7 +66,12 @@ async function initializeDatabaseConnection() {
     const Poi_Itinerary = database.define("poi_itinerary", {
         order: DataTypes.INTEGER,
     })
+    */
 
+    Location.hasMany(Cat)
+    Cat.belongsTo(Location)
+    
+    /*
     Event.belongsTo(PoI);
     PoI.hasMany(Event);
 
@@ -70,6 +90,7 @@ async function initializeDatabaseConnection() {
     await database.sync({ force: true })
     return {
         Cat,
+        Location,
         /*
         Event,
         Picture,
@@ -113,11 +134,11 @@ async function runMainApi() {
 
     app.get('/cats/:id', async (req, res) => {
         const id = +req.params.id
-        const result = await models.Cat.findOne({ where: { id } })
+        const result = await models.Cat.findOne({ where: { id }, include: [{model: models.Location}] })
         return res.json(result)
     })
 
-    // HTTP GET api that returns all the cats in our fake database
+    // HTTP GET api that returns all the cats in our actual database
     app.get("/cats", async (req, res) => {
         const result = await models.Cat.findAll()
         const filtered = []
@@ -132,11 +153,11 @@ async function runMainApi() {
         return res.json(filtered)
     })
 
-    // HTTP POST apio that will push (and therefore create) a new element in 
-    // our fake database 
-    app.post("/cats", (req, res) => {
+    // HTTP POST api, that will push (and therefore create) a new element in
+    // our actual database
+    app.post("/cats", async (req, res) => {
         const { body } = req
-        catList.push(body)
+        await models.Cat.create(body);
         return res.sendStatus(200)
     })
 }
