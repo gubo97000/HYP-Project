@@ -1,6 +1,6 @@
 <template>
   <div class="page container mt-5">
-    <h1 class="display-4">List page</h1>
+    <h1 class="display-4">Contact us</h1>
     <div class="row mt-3">
       <card
         v-for="(cat, catIndex) of catList"

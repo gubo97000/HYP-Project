@@ -1,6 +1,5 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light px-3 header">
-    <a class="navbar-brand" href="/">Towny</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -16,7 +15,7 @@
     <div class="collapse navbar-collapse" id="navbarToggler">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li
-          v-for="(navItem, navItemIndex) of headerList"
+          v-for="(navItem, navItemIndex) of footerList"
           :key="`navItem${navItemIndex}`"
           class="nav-item"
         >
@@ -31,6 +30,9 @@
 
 <style scoped>
 .header {
+  position:absolute;
+  bottom:0;
+  width: 100%;
   background: orange;
 }
 .logo {
@@ -41,25 +43,17 @@
 
 <script>
 export default {
-  name: 'TheHeader',
+  name: 'TheFooter',
   data() {
     return {
-      headerList: [
+      footerList: [
         {
-          name: 'Events',
-          path: '/events',
+          name: 'About us',
+          path: '/about',
         },
         {
-          name: 'Points of Interest',
-          path: '/pois',
-        },
-        {
-          name: 'Itineraries',
-          path: '/itineraries',
-        },
-        {
-          name: 'Services',
-          path: '/services',
+          name: 'Contact us',
+          path: '/contact',
         },
       ],
     }
