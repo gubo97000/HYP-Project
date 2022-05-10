@@ -12,16 +12,16 @@ export default {
   data() {
     return {}
   },
-  async asyncData({ $axios }) {
-    const { data } = await $axios.get('/api/page-info/about')
-    const title = data.title
-    const image = data.image
-    const description = data.description
-    return {
-      title,
-      description,
-      image,
-    }
-  },
+  // async asyncData({ $axios }) {
+  //   const { data } = await $axios.get('/api/page-info/about')
+  //   const title = data.title
+  //   const image = data.image
+  //   const description = data.description
+  //   return {
+  //     title,
+  //     description,
+  //     image,
+  //   }
+  // },
 }
 </script>
