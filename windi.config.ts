@@ -1,4 +1,5 @@
 import { defineConfig } from '@windicss/plugin-utils'
+import { transform } from 'windicss/helpers'
 
 export default defineConfig({
   /**
@@ -6,4 +7,7 @@ export default defineConfig({
    * @see https://windicss.org/features/attributify.html
    */
   attributify: true,
+  // plugins: [
+  //   transform('daisyui'),
+  // ]
 })

@@ -1,11 +1,11 @@
 const express = require('express')
 const app = express()
-const { Sequelize, DataTypes } = require("sequelize")
-const initialize = require('./initialize').default
+// const { Sequelize, DataTypes } = require("sequelize")
+// const initialize = require('./initialize').default
 app.use(express.json())
 
 // Development
-const database = new Sequelize("postgres://postgres:postgres@localhost:5432/hyp")
+// const database = new Sequelize("postgres://postgres:postgres@localhost:5432/hyp")
 
 // Production (use this code when deploying to production in Heroku)
 // const pg = require('pg')
@@ -18,90 +18,90 @@ const database = new Sequelize("postgres://postgres:postgres@localhost:5432/hyp"
 
 
 // Function that will initialize the connection to the database
-async function initializeDatabaseConnection() {
-    await database.authenticate()
-    const Cat = database.define("cat", {
-        name: DataTypes.STRING,
-        description: DataTypes.STRING,
-        breed: DataTypes.STRING,
-        img: DataTypes.STRING,
-    })
-    const Location  = database.define("location", {
-        name: DataTypes.STRING,
-        city: DataTypes.STRING,
-    })
+// async function initializeDatabaseConnection() {
+//     await database.authenticate()
+//     const Cat = database.define("cat", {
+//         name: DataTypes.STRING,
+//         description: DataTypes.STRING,
+//         breed: DataTypes.STRING,
+//         img: DataTypes.STRING,
+//     })
+//     const Location  = database.define("location", {
+//         name: DataTypes.STRING,
+//         city: DataTypes.STRING,
+//     })
 
-    /*
-    const Event = database.define("event", {
-        title: DataTypes.STRING,
-        info: DataTypes.STRING,
-        description: DataTypes.STRING,
-        //poi: DataTypes.INTEGER,
-    })
-    const PoI = database.define("poi", {
-        title: DataTypes.STRING,
-        info: DataTypes.STRING,
-        description: DataTypes.STRING,
-        coordinates: DataTypes.STRING,
-    })
-    const Itinerary = database.define("itinerary", {
-        title: DataTypes.STRING,
-        duration: DataTypes.STRING,
-        description: DataTypes.STRING,
-    })
-    const Service = database.define("service", {
-        name: DataTypes.STRING,
-        //type: DataTypes.STRING,
-        address: DataTypes.STRING,
-        openhours: DataTypes.STRING,
-    })
-    const ServiceType = database.define("servicetype", {
-        name: DataTypes.STRING,
-        description: DataTypes.STRING,
-        image: DataTypes.STRING,
-    })
-    const Picture = database.define("picture", {
-        url: DataTypes.STRING,
-    })
-    const Poi_Itinerary = database.define("poi_itinerary", {
-        order: DataTypes.INTEGER,
-    })
-    */
+//     /*
+//     const Event = database.define("event", {
+//         title: DataTypes.STRING,
+//         info: DataTypes.STRING,
+//         description: DataTypes.STRING,
+//         //poi: DataTypes.INTEGER,
+//     })
+//     const PoI = database.define("poi", {
+//         title: DataTypes.STRING,
+//         info: DataTypes.STRING,
+//         description: DataTypes.STRING,
+//         coordinates: DataTypes.STRING,
+//     })
+//     const Itinerary = database.define("itinerary", {
+//         title: DataTypes.STRING,
+//         duration: DataTypes.STRING,
+//         description: DataTypes.STRING,
+//     })
+//     const Service = database.define("service", {
+//         name: DataTypes.STRING,
+//         //type: DataTypes.STRING,
+//         address: DataTypes.STRING,
+//         openhours: DataTypes.STRING,
+//     })
+//     const ServiceType = database.define("servicetype", {
+//         name: DataTypes.STRING,
+//         description: DataTypes.STRING,
+//         image: DataTypes.STRING,
+//     })
+//     const Picture = database.define("picture", {
+//         url: DataTypes.STRING,
+//     })
+//     const Poi_Itinerary = database.define("poi_itinerary", {
+//         order: DataTypes.INTEGER,
+//     })
+//     */
 
-    Location.hasMany(Cat)
-    Cat.belongsTo(Location)
+//     Location.hasMany(Cat)
+//     Cat.belongsTo(Location)
     
-    /*
-    Event.belongsTo(PoI);
-    PoI.hasMany(Event);
+//     /*
+//     Event.belongsTo(PoI);
+//     PoI.hasMany(Event);
 
-    Itinerary.belongsToMany(PoI, {through: Poi_Itinerary});
-    PoI.belongsToMany(Itinerary, {through: Poi_Itinerary});
+//     Itinerary.belongsToMany(PoI, {through: Poi_Itinerary});
+//     PoI.belongsToMany(Itinerary, {through: Poi_Itinerary});
 
-    Service.belongsTo(ServiceType);
-    ServiceType.hasMany(Service);
+//     Service.belongsTo(ServiceType);
+//     ServiceType.hasMany(Service);
 
-    Picture.belongsTo(Event);
-    Event.hasMany(Picture);
-    Picture.belongsTo(PoI);
-    PoI.hasMany(Picture);
-    */
+//     Picture.belongsTo(Event);
+//     Event.hasMany(Picture);
+//     Picture.belongsTo(PoI);
+//     PoI.hasMany(Picture);
+//     */
 
-    await database.sync({ force: true })
-    return {
-        Cat,
-        Location,
-        /*
-        Event,
-        Picture,
-        Itinerary,
-        PoI,
-        Poi_Itinerary,
-        Service,
-        ServiceType
-        */
-    }
-}
+//     await database.sync({ force: true })
+//     return {
+//         Cat,
+//         Location,
+//         /*
+//         Event,
+//         Picture,
+//         Itinerary,
+//         PoI,
+//         Poi_Itinerary,
+//         Service,
+//         ServiceType
+//         */
+//     }
+// }
 
 // With this line, our server will know how to parse any incoming request
 // that contains some JSON in the body
@@ -142,19 +142,19 @@ async function runMainApi() {
     })
 
     // HTTP GET api that returns all the cats in our actual database
-    app.get("/cats", async (req, res) => {
-        const result = await models.Cat.findAll()
-        const filtered = []
-        for (const element of result) {
-            filtered.push({
-                name: element.name,
-                img: element.img,
-                breed: element.breed,
-                id: element.id,
-            })
-        }
-        return res.json(filtered)
-    })
+    // app.get("/cats", async (req, res) => {
+    //     const result = await models.Cat.findAll()
+    //     const filtered = []
+    //     for (const element of result) {
+    //         filtered.push({
+    //             name: element.name,
+    //             img: element.img,
+    //             breed: element.breed,
+    //             id: element.id,
+    //         })
+    //     }
+    //     return res.json(filtered)
+    // })
 
     // HTTP POST api, that will push (and therefore create) a new element in
     // our actual database

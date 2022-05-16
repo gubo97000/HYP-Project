@@ -2,7 +2,7 @@
 import { postgraphile, PostGraphileOptions } from 'postgraphile'
 const postgraphileOptions :PostGraphileOptions= {
   subscriptions: true,
-  watchPg: true, // automatic reload when database changes
+  // watchPg: true, // automatic reload when database changes
   dynamicJson: true,
   setofFunctionsContainNulls: false,
   ignoreRBAC: false,
