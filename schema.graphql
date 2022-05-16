@@ -1413,8 +1413,8 @@ input EventInput {
   title: String
   info: String
   description: String
-  createdAt: Datetime!
-  updatedAt: Datetime!
+  createdAt: Datetime
+  updatedAt: Datetime
   poiId: Int
 }
 
@@ -1459,8 +1459,8 @@ input ItineraryInput {
   title: String
   duration: String
   description: String
-  createdAt: Datetime!
-  updatedAt: Datetime!
+  createdAt: Datetime
+  updatedAt: Datetime
 }
 
 """The output of our create `Picture` mutation."""
@@ -1508,8 +1508,8 @@ input CreatePictureInput {
 input PictureInput {
   id: Int
   url: String
-  createdAt: Datetime!
-  updatedAt: Datetime!
+  createdAt: Datetime
+  updatedAt: Datetime
   eventId: Int
   poiId: Int
 }
@@ -1558,8 +1558,8 @@ input CreatePoiItineraryInput {
 """An input for mutations affecting `PoiItinerary`"""
 input PoiItineraryInput {
   order: Int
-  createdAt: Datetime!
-  updatedAt: Datetime!
+  createdAt: Datetime
+  updatedAt: Datetime
   itineraryId: Int!
   poiId: Int!
 }
@@ -1606,8 +1606,8 @@ input PoisInput {
   info: String
   description: String
   coordinates: String
-  createdAt: Datetime!
-  updatedAt: Datetime!
+  createdAt: Datetime
+  updatedAt: Datetime
 }
 
 """The output of our create `Service` mutation."""
@@ -1654,8 +1654,8 @@ input ServiceInput {
   name: String
   address: String
   openhours: String
-  createdAt: Datetime!
-  updatedAt: Datetime!
+  createdAt: Datetime
+  updatedAt: Datetime
   servicetypeId: Int
 }
 
@@ -1700,8 +1700,8 @@ input ServicetypeInput {
   name: String
   description: String
   image: String
-  createdAt: Datetime!
-  updatedAt: Datetime!
+  createdAt: Datetime
+  updatedAt: Datetime
 }
 
 """The output of our update `Event` mutation."""
