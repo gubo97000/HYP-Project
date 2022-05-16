@@ -8,7 +8,7 @@
         <h3 class="section-title">ABOUT US</h3>
         <p class="lead">{{ aboutus }}</p>
         <br>
-        <h3 class="section-title">CONTACT US</h3>
+        <h3 id="contact" class="section-title">CONTACT US</h3>
         <p class="lead">{{ contactus }}</p>
         <br>
       </div>
