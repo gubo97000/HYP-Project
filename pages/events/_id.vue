@@ -1,5 +1,6 @@
 <template>
   <div class="container my-5">
+    <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected"/>
     <div
       class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg"
     >
@@ -37,10 +38,15 @@
 </template>
 
 <script>
+import Breadcrumb from '~/components/Breadcrumb.vue'
 import CommonMixin from '~/mixins/common'
 export default {
   name: 'DetailsPage',
   mixins: [CommonMixin],
+  components: {
+    Breadcrumb
+  },
+
   async asyncData({ route, $axios }) {
     const { id } = route.params
     const { data } = await $axios.get('/api/cats/' + id)
@@ -49,7 +55,20 @@ export default {
       breed: data.breed,
       img: data.img,
       description: data.description,
-      location: data.location
+      location: data.location,
+
+      crumbs: [{
+        name: 'Home',
+        path: '/',
+      },
+      {
+        name: 'Events',
+        path: '/events',
+      },
+      {
+        name: data.name,
+        path: '/events/' + id,
+      }]
     }
   },
   head(){
@@ -64,7 +83,7 @@ export default {
   },
   methods: {
     backToList() {
-      this.$router.push('/list')
+      this.$router.push('/events')
     },
   },
 }
