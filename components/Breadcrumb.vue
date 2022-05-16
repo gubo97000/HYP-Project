@@ -1,43 +1,18 @@
-    <!-- <nav>
-          <ol class="breadcrumb">
-          <li
-            v-for="(crumb, ci) in crumbs" :key="ci"
-            class="breadcrumb-item align">
-            <button class="btn btn-link" :class="{ disabled: isLast(ci) }" @click="selected(crumb)">
-                {{ crumb }}
-            </button>
-          </li>
-      </ol>
-    </nav> -->
-
-
-  <!-- <nav class="bg-grey-light rounded-md w-full">
-      <ol class="flex breadcrumb">
-          <li
-            v-for="(crumb, ci) in crumbs" :key="ci"
-            class=" align">
-            <button :class="isLast(ci) ? { disabled: true } : 'text-blue-600 hover:text-blue-700'" @click="selected(crumb)">
-                {{ crumb }}
-                <span v-if="!isLast(ci)" class="text-gray-500 mx-2">></span>
-            </button>
-          </li>
-      </ol>
-  </nav> -->
-
-
 <template>
     <nav>
         <ol class="breadcrumb">
             <div v-for="(crumb, ci) in crumbs" :key="ci" class="crumb-item">
                 <li>
-                    <button class="btn btn-link hover:text-blue-300" :class="{ disabled: isLast(ci) }" @click="selected(crumb)">
-                        {{ crumb }}
-                    </button>
+                    <nuxt-link :class="{'disabled-link': isLast(ci)}" :to="crumb.path">
+                        <div class="btn btn-link hover:text-blue-300" :class="{ disabled: isLast(ci) }">
+                            {{ crumb.name }}
+                        </div>
+                    </nuxt-link>
                 </li>
                 <li>
-                    <button v-if="!isLast(ci)" disabled="isLast(ci)" class="separator" >
+                    <div v-if="!isLast(ci)" disabled="isLast(ci)" class="separator" >
                         {{ "&#187;" }}
-                    </button>
+                    </div>
                 </li>
             </div>
         </ol>
@@ -58,7 +33,10 @@
 .crumb-item {
     display: flex;
 }
-</style>
+.disabled-link {
+   pointer-events: none
+ }
+ </style>
 
 <script>
 export default {
@@ -73,9 +51,9 @@ export default {
       isLast(index) {
           return index === this.crumbs.length - 1;
       },
-      selected(crumb) {
-          this.$emit('selected', crumb);
-      }
+    //   selected(crumb) {
+    //       this.$emit('selected', crumb);
+    //   }
   }
 }
 </script>

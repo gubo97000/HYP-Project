@@ -15,14 +15,21 @@ export default {
   },
   data() {
     return {
-      crumbs: ['Home', 'About']
+      crumbs: [{
+        name: 'Home',
+        path: '/',
+      },
+      {
+        name: 'About',
+        path: '/about',
+      }]
     }
   },
-  methods: {
-    selected(crumb) {
-      console.log(crumb);
-    }
-  },
+  // methods: {
+  //   selected(crumb) {
+  //     console.log(crumb);
+  //   }
+  // },
 
   // Note: This happens on backend (server) side
   // async asyncData({ $axios }) {
