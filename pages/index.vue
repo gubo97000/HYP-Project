@@ -1,24 +1,27 @@
 <template>
-  <custom-page :title="title" :image="image" :description="description" />
+    <home-page :image="image" :overview="overview" :howtoreach="howtoreach" :logo="logo"/>
 </template>
 
 <script>
-import CustomPage from '~/components/CustomPage.vue'
+import HomePage from '~/components/HomePage.vue'
 export default {
   name: 'IndexPage',
   components: {
-    CustomPage,
+    HomePage,
   },
-  // async asyncData({ $axios }) {
-  //   const { data } = await $axios.get('/api/page-info/index')
-  //   const title = data.title
-  //   const image = data.image
-  //   const description = data.description
-  //   return {
-  //     title,
-  //     description,
-  //     image,
-  //   }
-  // },
+  async asyncData({ $axios }) {
+    const { data } = await $axios.get('/api/page-info/index')
+    // const title = data.title
+    const image = data.image
+    const overview = data.overview
+    const howtoreach = data.howtoreach
+    const logo = data.logo
+    return {
+      image,
+      overview,
+      howtoreach,
+      logo,
+    }
+  },
 }
 </script>

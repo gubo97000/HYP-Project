@@ -13,7 +13,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarToggler">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 footer-links">
         <li
           v-for="(navItem, navItemIndex) of footerList"
           :key="`navItem${navItemIndex}`"
@@ -30,14 +30,23 @@
 
 <style scoped>
 .header {
-  position:absolute;
+  position:relative;
   bottom:0;
   width: 100%;
-  background: orange;
+  background: #26466f;
 }
 .logo {
   color: white;
   font-size: 32px;
+}
+.nav-link {
+    color: white !important;
+    font-size: 20px;
+    font-weight: 500;
+}
+.footer-links {
+  margin-left: auto; 
+  margin-right: 0;
 }
 </style>
 
@@ -48,11 +57,11 @@ export default {
     return {
       footerList: [
         {
-          name: 'About us',
+          name: 'ABOUT US',
           path: '/about',
         },
         {
-          name: 'Contact us',
+          name: 'CONTACT US',
           path: '/contact',
         },
       ],

@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light px-3 header">
-    <a class="navbar-brand" href="/">Towny</a>
+    <a class="navbar-brand" href="/"><img :src="require('@/assets/logo.png')" width="50"></a>
     <button
       class="navbar-toggler"
       type="button"
@@ -31,11 +31,16 @@
 
 <style scoped>
 .header {
-  background: orange;
+  background: #8bdeff;
 }
 .logo {
   color: white;
   font-size: 32px;
+}
+.nav-link {
+    color: white !important;
+    font-size: 22px;
+    font-weight: 600;
 }
 </style>
 
@@ -46,19 +51,19 @@ export default {
     return {
       headerList: [
         {
-          name: 'Events',
+          name: 'EVENTS',
           path: '/events',
         },
         {
-          name: 'Points of Interest',
+          name: 'POINTS OF INTEREST',
           path: '/pois',
         },
         {
-          name: 'Itineraries',
+          name: 'ITINERARIES',
           path: '/itineraries',
         },
         {
-          name: 'Services',
+          name: 'SERVICES',
           path: '/services',
         },
       ],
