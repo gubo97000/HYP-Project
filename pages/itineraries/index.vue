@@ -13,6 +13,11 @@ export default {
   components: {
     Breadcrumb
   },
+  head(){
+    return {
+      title: "Itineraries"
+    }
+  },
   data() {
     return {
       crumbs: [{

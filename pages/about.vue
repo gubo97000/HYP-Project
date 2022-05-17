@@ -16,6 +16,11 @@ export default {
     AboutPage,
     Breadcrumb
   },
+  head(){
+    return {
+      title: "About us"
+    }
+  },
   data() {
     return {
       crumbs: [{

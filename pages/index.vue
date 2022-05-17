@@ -9,6 +9,11 @@ export default {
   components: {
     HomePage,
   },
+  head(){
+    return {
+      title: "Towny"
+    }
+  },
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/page-info/index')
     // const title = data.title

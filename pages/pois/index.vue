@@ -13,6 +13,11 @@ export default {
   components: {
     Breadcrumb
   },
+  head(){
+    return {
+      title: "Points of Interest"
+    }
+  },
   data() {
     return {
       crumbs: [{

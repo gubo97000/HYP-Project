@@ -13,6 +13,11 @@ export default {
   components: {
     Breadcrumb
   },
+  head(){
+    return {
+      title: "Services"
+    }
+  },
   data() {
     return {
       crumbs: [{
