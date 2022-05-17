@@ -127,7 +127,50 @@ const pageContentObject = {
     },
 }
 
-const eventDetails =[
+const serviceTypes = [
+    {
+        id: "1",
+        name: "Restaurants",
+        image: "restaurant.png"
+    },
+    {
+        id: "2",
+        name: "Museums",
+        image: "museum.png"
+    },
+    {
+        id: "3",
+        name: "Supermarkets",
+        image: "supermarket.png"
+    },
+    {
+        id: "4",
+        name: "Pharmacies",
+        image: "pharmacy.png"
+    },
+    {
+        id: "5",
+        name: "Stationary stores",
+        image: "statstore.png"
+    },
+    {
+        id: "6",
+        name: "Hardware stores",
+        image: "hwstore.png"
+    },
+    {
+        id: "7",
+        name: "Churches",
+        image: "church.png"
+    },
+    {
+        id: "8",
+        name: "Parks",
+        image: "park.png"
+    },
+]
+
+const events = [
     {
         title: "2022 Winter Festival",
         period: "October 10 - March 21",
@@ -198,11 +241,14 @@ async function runMainApi() {
     app.get('/events/:id', async (req, res) => {
         const id = +req.params.id
         // const result = await models.Event.findOne({ where: { id }, include: [{model: models.Picture},{model: models.PoI}] })
-        const result = eventDetails[id-1]
+        const result = events[id-1]
         console.log(result)
         return res.json(result)
     })
 
+    app.get("/services", async (req, res) => {
+        return res.json(serviceTypes)
+    })
 
     // HTTP GET api that returns all the cats in our actual database
     // app.get("/cats", async (req, res) => {
