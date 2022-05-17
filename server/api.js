@@ -131,17 +131,87 @@ const serviceTypes = [
     {
         id: "1",
         name: "Restaurants",
-        image: "restaurant.png"
+        image: "restaurant.png",
+        overview: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
+        Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.`,
+        map: "servicemap.png",
+        services: [
+            {
+                name: "Service Instance 1",
+                address: "This is the address",
+                openhours: "8.00 - 19.00",
+                image: "servicedetails.png"
+            },
+            {
+                name: "Service Instance 2",
+                address: "This is the address",
+                openhours: "7.30 - 17.00",
+                image: "servicedetails.png"
+            },
+            {
+                name: "Service Instance 3",
+                address: "This is the address",
+                openhours: "9.00 - 22.30",
+                image: "servicedetails.png"
+            }
+        ]
     },
     {
         id: "2",
         name: "Museums",
-        image: "museum.png"
+        image: "museum.png",
+        overview: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
+        Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.`,
+        map: "servicemap.png",
+        services: [
+            {
+                name: "Service Instance 1",
+                address: "This is the address",
+                openhours: "8.00 - 19.00",
+                image: "servicedetails.png"
+            },
+            {
+                name: "Service Instance 2",
+                address: "This is the address",
+                openhours: "7.30 - 17.00",
+                image: "servicedetails.png"
+            },
+            {
+                name: "Service Instance 3",
+                address: "This is the address",
+                openhours: "9.00 - 22.30",
+                image: "servicedetails.png"
+            }
+        ]
     },
     {
         id: "3",
         name: "Supermarkets",
-        image: "supermarket.png"
+        image: "supermarket.png",
+        overview: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
+        Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.`,
+        map: "servicemap.png",
+        services: [
+            {
+                name: "Service Instance 1",
+                address: "This is the address",
+                openhours: "8.00 - 19.00",
+                image: "servicedetails.png"
+            },
+            {
+                name: "Service Instance 2",
+                address: "This is the address",
+                openhours: "7.30 - 17.00",
+                image: "servicedetails.png"
+            },
+            {
+                name: "Service Instance 3",
+                address: "This is the address",
+                openhours: "9.00 - 22.30",
+                image: "servicedetails.png"
+            }
+        ]
+
     },
     {
         id: "4",
@@ -242,12 +312,18 @@ async function runMainApi() {
         const id = +req.params.id
         // const result = await models.Event.findOne({ where: { id }, include: [{model: models.Picture},{model: models.PoI}] })
         const result = events[id-1]
-        console.log(result)
         return res.json(result)
     })
 
     app.get("/services", async (req, res) => {
         return res.json(serviceTypes)
+    })
+
+    app.get('/services/:id', async (req, res) => {
+        const id = +req.params.id
+        // const result = await models.Event.findOne({ where: { id }, include: [{model: models.Picture},{model: models.PoI}] })
+        const result = serviceTypes[id-1]
+        return res.json(result)
     })
 
     // HTTP GET api that returns all the cats in our actual database
