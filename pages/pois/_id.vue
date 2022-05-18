@@ -39,7 +39,7 @@ export default {
   },
   data() {
     return {
-      id: this.$route.params.id,
+      id: this.$route.params.id, // we get the route here so we are sure apollo gets it
     }
   },
   head() {

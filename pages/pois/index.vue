@@ -50,7 +50,7 @@ export default {
   name: 'PointsOfInterest',
   apollo: {
     poises: { // IMPORTANT: the name of the variable MUST be the same of the entity in the GraphQL query
-      prefetch: true,
+      // prefetch: true,
       query: gql`query MyQuery{
                 poises {
                   edges {
@@ -62,19 +62,16 @@ export default {
                   }
                 }
               }
-              `
+              `,
+    // fetchPolicy: 'network-only',
     }
   },
   components: {
     Breadcrumb,
   },
-  head(){
-    return {
-      title: "Points of Interest"
-    }
-  },
   data() {
     return {
+      poises:{},
       crumbs: [
         {
           name: 'Home',
@@ -85,6 +82,11 @@ export default {
           path: '/pois',
         },
       ],
+    }
+  },
+  head(){
+    return {
+      title: "Points of Interest"
     }
   },
   // async asyncData({ $axios }) {
