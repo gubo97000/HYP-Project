@@ -5,6 +5,7 @@
             <img :src="require('@/assets/' + logo)" alt="" class="logo"/>
         </div>
         <div class="container mt-5">
+        <Carousel :slides="['church.png', 'museum.png', 'poi.png', 'supermarket.png']"/>
         <hr class="my-4" />
         <h3 class="section-title">OVERVIEW</h3>
         <p class="lead">{{ overview }}</p>
@@ -84,6 +85,7 @@ p {
 </style>
 
 <script>
+import Carousel from './Carousel.vue';
 export default {
     name: "HomePage",
     props: {
@@ -112,5 +114,6 @@ export default {
             required: true,
         },
     },
+    components: { Carousel }
 }
 </script>
