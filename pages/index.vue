@@ -1,5 +1,5 @@
 <template>
-    <home-page :image="image" :overview="overview" :howtoreach="howtoreach" :logo="logo"/>
+    <home-page :image="image" :overview="overview" :bycar="bycar" :bybus="bybus" :byplane="byplane" :logo="logo"/>
 </template>
 
 <script>
@@ -19,12 +19,16 @@ export default {
     // const title = data.title
     const image = data.image
     const overview = data.overview
-    const howtoreach = data.howtoreach
+    const bycar = data.bycar
+    const bybus = data.bybus
+    const byplane = data.byplane
     const logo = data.logo
     return {
       image,
       overview,
-      howtoreach,
+      bycar,
+      bybus,
+      byplane,
       logo,
     }
   },
