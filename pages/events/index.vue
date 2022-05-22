@@ -66,7 +66,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 h2 {
     font-weight: bolder;
     font-size: 26px;
