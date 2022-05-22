@@ -1,22 +1,27 @@
 <template>
-  <div class="container my-5">
+  <div class="container mt-5">
     <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected"/>
-    <div
-      class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg"
-    >
-      <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+    
+      <div class="container mt-5">
         <h1 class="display-4 fw-bold lh-1">{{ title }}</h1>
         <p class="lead">
           {{ period }}
         </p>
-        <b>Description:</b>
+        <br>
+        <h2>Description:</h2>
         <p class="lead">
           {{ description }}
         </p>
-        <b>Location:</b>
+
+    <br>
+    <Carousel :slides="[pictures[0].url, pictures[1].url]"/>
+    <br>
+
+        <h2>Location:</h2>
         <p class="lead">
           {{ poi.location }}
         </p>
+        <br>
         <div
           class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3"
         >
@@ -29,12 +34,17 @@
           </button>
         </div>
       </div>
-      <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-        <img class="rounded-lg-3" :src="require('@/assets/' + pictures[1].url)" alt="" width="" />
-      </div>
     </div>
-  </div>
 </template>
+
+
+<style>
+h2 {
+    font-weight: bolder;
+    font-size: 26px;
+    font-family: Arial;
+}
+</style>
 
 <script>
 import Breadcrumb from '~/components/Breadcrumb.vue'
