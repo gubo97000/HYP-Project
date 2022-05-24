@@ -30,7 +30,7 @@
             class="btn btn-outline-secondary btn-lg px-4"
             @click="backToList"
           >
-            Back to all events
+            ALL EVENTS
           </button>
         </div>
       </div>

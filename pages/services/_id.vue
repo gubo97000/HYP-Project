@@ -47,7 +47,7 @@
               class="btn btn-outline-secondary btn-lg px-4"
               @click="backToList"
             >
-              ←  BACK TO ALL SERVICES
+              ←  ALL SERVICES
             </button>
           </div>
         </div>

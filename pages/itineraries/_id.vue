@@ -26,7 +26,7 @@
             class="btn btn-outline-secondary btn-lg px-4"
             @click="backToList"
           >
-            Back to list
+             ALL ITINERARIES
           </button>
         </div>
       </div>
