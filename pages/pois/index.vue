@@ -22,56 +22,56 @@
       <div
         v-for="n in poises.edges"
         :key="n.node.id"
-        class="card card-compact w-96 bg-base-100 shadow-xl basis-1/4 "
+        class="card card-compact w-96 bg-base-100 shadow-xl basis-1/4"
       >
-        <figure>
-          <img
-            src="https://api.lorem.space/image/shoes?w=400&h=225"
-            alt="Shoes"
-          />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">{{n.node.title}}</h2>
-          <p>{{n.node.info}}</p>
-          <div class="card-actions justify-end">
-            <button class="btn btn-primary">Buy Now</button>
+        <nuxt-link :to="`/pois/${n.node.id}`" class="nuxt-clickable">
+          <div class="image-container">
+            <figure>
+              <!-- <img
+                :src="require('@/assets/' + item.image)"
+                alt=""
+                width="100%"
+              /> -->
+              <figcaption>{{ n.node.title }}</figcaption>
+            </figure>
           </div>
-        </div>
+        </nuxt-link>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-
 import gql from 'graphql-tag'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 export default {
   name: 'PointsOfInterest',
   apollo: {
-    poises: { // IMPORTANT: the name of the variable MUST be the same of the entity in the GraphQL query
+    poises: {
+      // IMPORTANT: the name of the variable MUST be the same of the entity in the GraphQL query
       // prefetch: true,
-      query: gql`query MyQuery{
-                poises {
-                  edges {
-                    node {
-                      id
-                      title
-                      info
-                    }
-                  }
-                }
+      query: gql`
+        query MyQuery {
+          poises {
+            edges {
+              node {
+                id
+                title
+                info
               }
-              `,
-    // fetchPolicy: 'network-only',
-    }
+            }
+          }
+        }
+      `,
+      // fetchPolicy: 'network-only',
+    },
   },
   components: {
     Breadcrumb,
   },
   data() {
     return {
-      poises:{},
+      poises: {},
       crumbs: [
         {
           name: 'Home',
@@ -84,9 +84,9 @@ export default {
       ],
     }
   },
-  head(){
+  head() {
     return {
-      title: "Points of Interest"
+      title: 'Points of Interest',
     }
   },
   // async asyncData({ $axios }) {
