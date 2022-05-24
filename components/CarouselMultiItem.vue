@@ -2,118 +2,18 @@
 <div class="carousel-container"  ref="carouselContainer">
   <div class="carousel-inner">
     <div class="track" ref="track">
-      <div class="card-container" ref="cardContainer">
-        <div class="card">
-          <div class="img">1</div>
-          <div class="info">
-            Title 1
-          </div>
-        </div>
+      
+      <div class="card-container" v-for="(item, si) in slides" :key="si" ref="cardContainer">
+        <nuxt-link :to="`/pois/${item.id}`" class="nuxt-clickable">
+            <div class="image-container card">
+              <figure>
+                <img :src="require('@/assets/' + item.image)" alt="" class="img"/>
+                <figcaption class="info">{{ item.name }}</figcaption>
+              </figure>
+            </div>
+          </nuxt-link>
       </div>
-      <div class="card-container">
-        <div class="card">
-          <div class="img">2</div>
-          <div class="info">
-            Title 2
-          </div>
-        </div>
-      </div>
-      <div class="card-container">
-        <div class="card">
-          <div class="img">3</div>
-          <div class="info">
-            Title 3
-          </div>
-        </div>
-      </div>
-      <div class="card-container">
-        <div class="card">
-          <div class="img">4</div>
-          <div class="info">
-            Title 1
-          </div>
-        </div>
-      </div>
-      <div class="card-container">
-        <div class="card">
-          <div class="img">5</div>
-          <div class="info">
-            Title 1
-          </div>
-        </div>
-      </div>
-      <div class="card-container">
-        <div class="card">
-          <div class="img">6</div>
-          <div class="info">
-            Title 1
-          </div>
-        </div>
-      </div>
-      <div class="card-container">
-        <div class="card">
-          <div class="img">7</div>
-          <div class="info">
-            Title 1
-          </div>
-        </div>
-      </div>
-      <div class="card-container">
-        <div class="card">
-          <div class="img">8</div>
-          <div class="info">
-            Title 1
-          </div>
-        </div>
-      </div>
-      <div class="card-container">
-        <div class="card">
-          <div class="img">9</div>
-          <div class="info">
-            Title 1
-          </div>
-        </div>
-      </div>
-      <div class="card-container">
-        <div class="card">
-          <div class="img">9</div>
-          <div class="info">
-            Title 1
-          </div>
-        </div>
-      </div>
-      <div class="card-container">
-        <div class="card">
-          <div class="img">9</div>
-          <div class="info">
-            Title 1
-          </div>
-        </div>
-      </div>
-      <div class="card-container">
-        <div class="card">
-          <div class="img">8.5</div>
-          <div class="info">
-            Title 1
-          </div>
-        </div>
-      </div>
-      <div class="card-container">
-        <div class="card">
-          <div class="img">9.5</div>
-          <div class="info">
-            Title 1
-          </div>
-        </div>
-      </div>
-      <div class="card-container">
-        <div class="card">
-          <div class="img">10</div>
-          <div class="info">
-            Title 1
-          </div>
-        </div>
-      </div>
+      
     </div>
   </div>
   <div class="nav">
@@ -139,16 +39,9 @@
   min-height: 200px;
   position: relative;
 }
-@media screen and (max-width: 768px) {
-  .carousel-container {
-    width: 80%;
+.carousel-container {
+    width: 93%;
   }
-}
-@media screen and (max-width: 1024px) {
-  .carousel-container {
-    width: 85%;
-  }
-}
 .carousel-container .carousel-inner {
   overflow: hidden;
 }
@@ -157,9 +50,9 @@
   transition: transform 0.5s;
 }
 .carousel-container .card-container {
-  width: 259px;
+  width: 320px;
   flex-shrink: 0;
-  height: 250px;
+  height: 350px;
   padding-right: 15px;
   box-sizing: border-box;
 }
@@ -177,6 +70,7 @@
   height: 60px;
   border-radius: 50%;
   border: 1px solid #aaa;
+  background-color: white;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -204,14 +98,45 @@
   justify-content: center;
   align-items: center;
   font-size: 30px;
+  height: 80%;
+  object-fit: cover;
 }
-.card .info {
-  flex-basis: 40px;
-  background: #333;
-  color: #fff;
-  flex-grow: 0;
-  padding: 10px;
-  box-sizing: border-box;
+figcaption {
+    padding-top: 2.5%;
+}
+
+/*TODO create component for this, don't copy-paste*/
+.image-container {
+  text-align: center;
+}
+figcaption {
+    font-variant: small-caps;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 2;
+    color: #26466F;
+}
+figure {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+.image-container:hover {
+    transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+.image-container {
+    padding: 5%;
+    margin-bottom: -5%;
+
+    transition: transform 0.2s;
+    -webkit-transition: -webkit-transform 0.2s;
+    -moz-transition: -moz-transform 0.2s;
+    -o-transition: -o-transform 0.2s;
 }
 
 </style>
@@ -267,17 +192,16 @@ export default {
     }
   },
   mounted(){
-    cardWidth = this.$refs.cardContainer.offsetWidth
-    visibleCount = this.$refs.carouselContainer.offsetWidth / this.$refs.cardContainer.offsetWidth
+    cardWidth = this.$refs.cardContainer[0].offsetWidth
+    visibleCount = this.$refs.carouselContainer.offsetWidth / this.$refs.cardContainer[0].offsetWidth
     maxWidth = this.$refs.track.offsetWidth - this.$refs.carouselContainer.offsetWidth
     
     window.addEventListener('resize', () => {
-      cardWidth = this.$refs.cardContainer.offsetWidth;
-      visibleCount = this.$refs.carouselContainer.offsetWidth / this.$refs.cardContainer.offsetWidth
+      cardWidth = this.$refs.cardContainer[0].offsetWidth;
+      visibleCount = this.$refs.carouselContainer.offsetWidth / this.$refs.cardContainer[0].offsetWidth
       maxWidth = this.$refs.track.offsetWidth - this.$refs.carouselContainer.offsetWidth
       
       if (slideIndex >= this.$refs.track.children.length - this.$refs.carouselContainer.offsetWidth){
-        console.log("asdidbe")
         slideIndex = Math.floor(this.$refs.track.children.length - visibleCount);
         this.$refs.track.style.transform = `translateX(-${slideIndex * cardWidth}px)`;
         if((slideIndex) * cardWidth >= maxWidth - 15) {

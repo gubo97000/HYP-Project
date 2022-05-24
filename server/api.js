@@ -241,6 +241,99 @@ const serviceTypes = [
     },
 ]
 
+const itineraries = [
+    {
+        id: "1",
+        name: "Itinerary 1",
+        duration: "8 hours",
+        map: "servicemap.png",
+        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
+        Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.`,
+        pois: [
+            {
+                id: "10",
+                name: "POI 1",
+                image: "church.png"
+            },
+            {
+                id: "10",
+                name: "POI 2",
+                image: "cover.png"
+            },
+            {
+                id: "10",
+                name: "POI 3",
+                image: "event.png"
+            },
+            {
+                id: "10",
+                name: "POI 4",
+                image: "about.png"
+            },
+            {
+                id: "10",
+                name: "POI 5",
+                image: "museum.png"
+            },
+            {
+                id: "10",
+                name: "POI 6",
+                image: "poi.png"
+            },
+        ]
+    },
+    {
+        id: "2",
+        name: "Itinerary 2",
+        duration: "5 hours",
+        map: "servicemap.png",
+        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
+        Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.`,
+        pois: [
+            {
+                id: "10",
+                name: "POI 1",
+                image: "church.png"
+            },
+            {
+                id: "10",
+                name: "POI 2",
+                image: "cover.png"
+            },
+            {
+                id: "10",
+                name: "POI 3",
+                image: "event.png"
+            }
+        ]
+    },
+    {
+        id: "3",
+        name: "Itinerary 3",
+        duration: "10 hours",
+        map: "servicemap.png",
+        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
+        Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.`,
+        pois: [
+            {
+                id: "10",
+                name: "POI 1",
+                image: "church.png"
+            },
+            {
+                id: "10",
+                name: "POI 2",
+                image: "cover.png"
+            },
+            {
+                id: "10",
+                name: "POI 3",
+                image: "event.png"
+            }
+        ]
+    },
+]
+
 const events = [
     {
         id: 1,
@@ -382,6 +475,14 @@ async function runMainApi() {
         const result = serviceTypes[id-1]
         return res.json(result)
     })
+
+    app.get('/itineraries/:id', async (req, res) => {
+        const id = +req.params.id
+        // const result = await models.Event.findOne({ where: { id }, include: [{model: models.Picture},{model: models.PoI}] })
+        const result = itineraries[id-1]
+        return res.json(result)
+    })
+
 
     // HTTP GET api that returns all the cats in our actual database
     // app.get("/cats", async (req, res) => {

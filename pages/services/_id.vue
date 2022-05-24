@@ -104,10 +104,8 @@
 
 <script>
 import Breadcrumb from '~/components/Breadcrumb.vue'
-import CommonMixin from '~/mixins/common'
 export default {
   name: 'DetailsPage',
-  mixins: [CommonMixin],
   components: {
     Breadcrumb
   },
@@ -141,11 +139,11 @@ export default {
       title: this.name
     }
   },
-  mounted(){
-    const date = new Date()
-    // Example on hwo to use mixinx
-    console.log(this.formatMyDate(date.toLocaleDateString()))
-  },
+  // mounted(){
+  //   const date = new Date()
+  //   // Example on hwo to use mixinx
+  //   console.log(this.formatMyDate(date.toLocaleDateString()))
+  // },
   methods: {
     backToList() {
       this.$router.push('/services')
