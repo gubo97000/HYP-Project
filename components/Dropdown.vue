@@ -5,8 +5,8 @@
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
-      data-bs-target="#dropdownToggler"
-      aria-controls="dropdownToggler"
+      :data-bs-target="'#dropdownToggler' + index"
+      :aria-controls="'dropdownToggler' + index"
       aria-expanded="false"
       aria-label="Toggle navigation"
       @click="toggleDropdown()"
@@ -21,7 +21,7 @@
     </button>
   </nav>
 
-    <div class="collapse navbar-collapse" id="dropdownToggler">
+    <div class="collapse navbar-collapse" :id="'dropdownToggler' + index">
         <slot></slot>
     </div>
 </div>
@@ -96,6 +96,10 @@ export default {
         title: {
             type: String,
             required: true,
+        },
+        index: {
+            type: String,
+            default: '',
         },
     },
     methods: {
