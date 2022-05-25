@@ -2,6 +2,7 @@
 <div class="dropdown-wrapper">
   <nav class="navbar navbar-light px-3 header">
     <button
+      ref="toggler"
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
@@ -104,12 +105,23 @@ export default {
     },
     methods: {
         toggleDropdown() {
-            console.log("SADSD")
             if(this.$refs.panelHeading.classList.contains('active'))
                 this.$refs.panelHeading.classList.remove('active');
-            else
+            else {
+                // Step 1: emit to parent the opening of this dropdown
+                this.$parent.$emit('closeAllDropdowns', this.index);
                 this.$refs.panelHeading.classList.add('active');
-        }
+            }
+        },
+    },
+    mounted() {
+        // Step 3/3: Close this dropdown if opened
+        this.$parent.$on('closeDropdown', () => {
+            if(this.$refs.panelHeading.classList.contains('active')) {
+                this.$refs.toggler.click();
+                this.$refs.panelHeading.classList.remove('active');
+            }
+        })
     }
 }
 </script>

@@ -10,59 +10,61 @@
         </p>
         <br>
 
-        <Dropdown :title="'ALL YEAR EVENTS'" :index="1">
-          <div class="column_wrapper">
-            <nuxt-link v-for="item in eventsList" :to="`/events/${item.id}`" class="nuxt-clickable">
-              <div class="image-container">
-                <figure>
-                  <img :src="require('@/assets/' + item.picture[0].url)" alt="" width="100%"/>
-                  <figcaption>{{ item.title }}</figcaption>
-                </figure>
-              </div>
-            </nuxt-link>
-          </div>
-        </Dropdown>
-
-        <Dropdown :title="'WINTER EVENTS'" :index="2">
-          <div class="column_wrapper">
-            <nuxt-link v-for="item in eventsList" :to="`/events/${item.id}`" class="nuxt-clickable">
-              <div v-if="(item.period.includes('October') || item.period.includes('November') ||
-              item.period.includes('December') || item.period.includes('January') ||
-              item.period.includes('February') || item.period.includes('March')) && 
-              !(item.period.includes('April') || item.period.includes('May') ||
-              item.period.includes('June') || item.period.includes('July') ||
-              item.period.includes('August') || item.period.includes('September'))">
+        <div ref="dropdowns">
+          <Dropdown :title="'ALL YEAR EVENTS'" :index="1" :ref="'dropdownToggler' + i">
+            <div class="column_wrapper">
+              <nuxt-link v-for="item in eventsList" :to="`/events/${item.id}`" class="nuxt-clickable">
                 <div class="image-container">
-                <figure>
-                  <img :src="require('@/assets/cover.png')" alt="" width="100%"/>
-                  <figcaption>{{ item.title }}</figcaption>
-                </figure>
-              </div>
-              </div>
-            </nuxt-link>
-          </div>
-        </Dropdown>
+                  <figure>
+                    <img :src="require('@/assets/' + item.picture[0].url)" alt="" width="100%"/>
+                    <figcaption>{{ item.title }}</figcaption>
+                  </figure>
+                </div>
+              </nuxt-link>
+            </div>
+          </Dropdown>
 
-        <Dropdown :title="'SUMMER EVENTS'" :index="3">
-          <div class="column_wrapper">
-            <nuxt-link v-for="item in eventsList" :to="`/events/${item.id}`" class="nuxt-clickable">
-              <div v-if="(item.period.includes('April') || item.period.includes('May') ||
-              item.period.includes('June') || item.period.includes('July') ||
-              item.period.includes('August') || item.period.includes('September')) &&
-              !(item.period.includes('October') || item.period.includes('November') ||
-              item.period.includes('December') || item.period.includes('January') ||
-              item.period.includes('February') || item.period.includes('March'))">
-                <div class="image-container">
-                <figure>
-                  <img :src="require('@/assets/cover.png')" alt="" width="100%"/>
-                  <figcaption>{{ item.title }}</figcaption>
-                </figure>
-              </div>
-              </div>
-            </nuxt-link>
-          </div>
-        </Dropdown>
+          <Dropdown :title="'WINTER EVENTS'" :index="2">
+            <div class="column_wrapper">
+              <nuxt-link v-for="item in eventsList" :to="`/events/${item.id}`" class="nuxt-clickable">
+                <div v-if="(item.period.includes('October') || item.period.includes('November') ||
+                item.period.includes('December') || item.period.includes('January') ||
+                item.period.includes('February') || item.period.includes('March')) && 
+                !(item.period.includes('April') || item.period.includes('May') ||
+                item.period.includes('June') || item.period.includes('July') ||
+                item.period.includes('August') || item.period.includes('September'))">
+                  <div class="image-container">
+                  <figure>
+                    <img :src="require('@/assets/cover.png')" alt="" width="100%"/>
+                    <figcaption>{{ item.title }}</figcaption>
+                  </figure>
+                </div>
+                </div>
+              </nuxt-link>
+            </div>
+          </Dropdown>
 
+          <Dropdown :title="'SUMMER EVENTS'" :index="3">
+            <div class="column_wrapper">
+              <nuxt-link v-for="item in eventsList" :to="`/events/${item.id}`" class="nuxt-clickable">
+                <div v-if="(item.period.includes('April') || item.period.includes('May') ||
+                item.period.includes('June') || item.period.includes('July') ||
+                item.period.includes('August') || item.period.includes('September')) &&
+                !(item.period.includes('October') || item.period.includes('November') ||
+                item.period.includes('December') || item.period.includes('January') ||
+                item.period.includes('February') || item.period.includes('March'))">
+                  <div class="image-container">
+                  <figure>
+                    <img :src="require('@/assets/cover.png')" alt="" width="100%"/>
+                    <figcaption>{{ item.title }}</figcaption>
+                  </figure>
+                </div>
+                </div>
+              </nuxt-link>
+            </div>
+          </Dropdown>
+        </div>
+        
         <br>
       </div>
     </div>
@@ -121,6 +123,9 @@ figure {
 <script>
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import Dropdown from '~/components/Dropdown.vue'
+
+let dropdowns;
+
 export default {
   name: 'Events',
   components: {
@@ -143,6 +148,16 @@ export default {
         path: '/events',
       }]
     }
+  },
+  mounted() {
+    dropdowns = this.$refs.dropdowns;
+
+    // Step 2: When clicking a dropdown, close all the others (if opened)
+    this.$on('closeAllDropdowns', (index) => {
+      for(var i = 1; i <= dropdowns.children.length; i++)
+        if( index != i )
+          this.$emit('closeDropdown');
+    })
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/events')
