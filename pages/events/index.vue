@@ -9,7 +9,21 @@
         Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.
         </p>
         <br>
-        <h2>All Year Events</h2>
+
+        <Dropdown :title="'ALL YEAR EVENTS'">
+          <div class="column_wrapper">
+            <nuxt-link v-for="item in eventsList" :to="`/events/${item.id}`" class="nuxt-clickable">
+              <div class="image-container">
+                <figure>
+                  <img :src="require('@/assets/' + item.picture[0].url)" alt="" width="100%"/>
+                  <figcaption>{{ item.title }}</figcaption>
+                </figure>
+              </div>
+            </nuxt-link>
+          </div>
+        </Dropdown>
+
+        <!-- <h2>All Year Events</h2>
         <div class="column_wrapper">
           <nuxt-link v-for="item in eventsList" :to="`/events/${item.id}`" class="nuxt-clickable">
             <div class="image-container">
@@ -20,7 +34,7 @@
             </div>
           </nuxt-link>
         </div>
-        <br><br>
+        <br><br> -->
         <h2>Winter Events</h2>
         <div class="column_wrapper">
           <nuxt-link v-for="item in eventsList" :to="`/events/${item.id}`" class="nuxt-clickable">
@@ -116,11 +130,13 @@ figure {
 
 <script>
 import Breadcrumb from '~/components/Breadcrumb.vue'
+import Dropdown from '~/components/Dropdown.vue'
 export default {
   name: 'Events',
   components: {
-    Breadcrumb
-  },
+    Breadcrumb,
+    Dropdown
+},
   head(){
     return {
       title: "Events"
