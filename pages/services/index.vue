@@ -65,7 +65,7 @@ export default {
 }
 .nuxt-clickable {
   display: inline-block;
-  max-width: 500px;
+  width: 50%;
 }
 .image-container {
   text-align: center;
