@@ -10,7 +10,7 @@
         </p>
         <br>
         <div class="column_wrapper">
-          <nuxt-link v-for="item in itineraryList" :to="`/itinerary/${item.id}`" class="nuxt-clickable">
+          <nuxt-link v-for="item in itineraryList" :to="`/itineraries/${item.id}`" class="nuxt-clickable">
             <div
               class="p-4 pe-lg-5 align-items-center rounded-3 border shadow-lg service-item"
             >
