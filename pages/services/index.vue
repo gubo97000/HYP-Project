@@ -9,7 +9,7 @@
         Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.
         </p>
         <br>
-        <div class="column_wrapper">
+        <div class="d-flex justify-content-center flex-wrap">
           <nuxt-link v-for="item in serviceList" :to="`/services/${item.id}`" class="nuxt-clickable">
             <div class="image-container">
               <figure>
@@ -26,13 +26,46 @@
   </div>
 </template>
 
+<script>
+import Breadcrumb from '~/components/Breadcrumb.vue'
+export default {
+  name: 'Events',
+  components: {
+    Breadcrumb
+  },
+  async asyncData({ $axios }) {
+    const { data } = await $axios.get('/api/services')
+    return {
+      serviceList: data,
+    }
+  },
+  data() {
+    return {
+      crumbs: [{
+        name: 'Home',
+        path: '/',
+      },
+      {
+        name: 'Services',
+        path: '/services',
+      }]
+    }
+  },
+  head(){
+    return {
+      title: "Services"
+    }
+  },
+}
+</script>
+
 <style scoped>
 .column_wrapper {
   column-count: 2;
 }
 .nuxt-clickable {
   display: inline-block;
-  width: 100%;
+  max-width: 500px;
 }
 .image-container {
   text-align: center;
@@ -67,36 +100,3 @@ figure {
     -o-transition: -o-transform 0.2s;
 }
 </style>
-
-<script>
-import Breadcrumb from '~/components/Breadcrumb.vue'
-export default {
-  name: 'Events',
-  components: {
-    Breadcrumb
-  },
-  head(){
-    return {
-      title: "Services"
-    }
-  },
-  data() {
-    return {
-      crumbs: [{
-        name: 'Home',
-        path: '/',
-      },
-      {
-        name: 'Services',
-        path: '/services',
-      }]
-    }
-  },
-  async asyncData({ $axios }) {
-    const { data } = await $axios.get('/api/services')
-    return {
-      serviceList: data,
-    }
-  },
-}
-</script>
