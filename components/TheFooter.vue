@@ -62,7 +62,7 @@ export default {
         },
         {
           name: 'CONTACT US',
-          path: '/about#contact',
+          path: '/contact',
         },
       ],
     }
