@@ -27,7 +27,7 @@
                 </p>
                 <br>
                 <p>
-                  Points of interes:
+                  Points of interest:
                 </p>
                 <p class="item-title">
                   <nuxt-link v-for="poi in item.pois" :to="`/pois/${poi.id}`" class="nuxt-clickable">

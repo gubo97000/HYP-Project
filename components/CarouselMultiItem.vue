@@ -174,13 +174,10 @@ export default {
       this.$refs.prev.classList.add('show');
 
       this.$refs.track.style.transform = `translateX(-${Math.min(maxWidth - 15, slideIndex * cardWidth)}px)`;
-      // if ((slideIndex + 1) >= this.$refs.track.children.length - visibleCount){
-        if((slideIndex) * cardWidth >= maxWidth - 15) {
-            this.$refs.next.classList.add('hide');
-        }
       
-      // if (this.$refs.track.offsetWidth - (slideIndex * cardWidth) < cardWidth) {
-      
+      if((slideIndex) * cardWidth >= maxWidth - 15) {
+          this.$refs.next.classList.add('hide');
+      }
     },
     handlePrev(){
       slideIndex--;
@@ -197,18 +194,21 @@ export default {
     maxWidth = this.$refs.track.offsetWidth - this.$refs.carouselContainer.offsetWidth
     
     window.addEventListener('resize', () => {
-      cardWidth = this.$refs.cardContainer[0].offsetWidth;
+      // Recomputes width and visible count after resize, needed for next part
       visibleCount = this.$refs.carouselContainer.offsetWidth / this.$refs.cardContainer[0].offsetWidth
       maxWidth = this.$refs.track.offsetWidth - this.$refs.carouselContainer.offsetWidth
       
-      if (slideIndex >= this.$refs.track.children.length - this.$refs.carouselContainer.offsetWidth){
+      // When enlarging window: this branch prevents to go too far to the right (i.e. blank space on the right, after the last item), by fixing slideIndex
+      if ((slideIndex + 1) >= this.$refs.track.children.length - visibleCount){
         slideIndex = Math.floor(this.$refs.track.children.length - visibleCount);
         this.$refs.track.style.transform = `translateX(-${slideIndex * cardWidth}px)`;
-        if((slideIndex) * cardWidth >= maxWidth - 15) {
-            this.$refs.next.classList.add('hide');
-        } else {
-          this.$refs.next.classList.remove('hide');
-        }
+      }
+
+      // Dynamically toggles the Next arrow based on new position in the carousel after resizing
+      if((slideIndex) * cardWidth >= maxWidth - 15) {
+          this.$refs.next.classList.add('hide');
+      } else {
+        this.$refs.next.classList.remove('hide');
       }
     })
   }
