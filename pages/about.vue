@@ -99,14 +99,29 @@ p {
   font-size: 22px;
   margin-top: 15px;
 }
+@media screen and (min-width: 600px) {
+  .howtoreach-container {
+    display: flex;
+  }
+  .howtoreach-text {
+    width: 60%;
+    margin-left: 5%;
+  }
+  iframe {
+    width: 35%
+  }
+}
+
+@media screen and (max-width: 600px) {
+  iframe {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+}
+
 .howtoreach-container {
-  display: flex;
   margin-top: 20px;
   margin-bottom: 50px;
-}
-.howtoreach-text {
-  width: 60%;
-  margin-left: 5%;
 }
 .howtoreach-text > .lead {
   margin-bottom: 15px;

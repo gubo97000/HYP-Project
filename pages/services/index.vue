@@ -61,10 +61,13 @@ export default {
 </script>
 
 <style scoped>
-.column_wrapper {
-  column-count: 2;
-}
-.card-component {
-  width: 50%;
+
+@media screen and (min-width: 600px) {
+  .column_wrapper {
+    column-count: 2;
+  }
+  .card-component {
+    width: 50%;
+  }
 }
 </style>

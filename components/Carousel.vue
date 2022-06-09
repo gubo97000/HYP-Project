@@ -52,6 +52,7 @@
 }
 .carousel-img {
     height: 100%;
+    object-fit: cover;
 }
 </style>
 

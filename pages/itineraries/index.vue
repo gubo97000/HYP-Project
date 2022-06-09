@@ -52,10 +52,13 @@
   top: 0;
   left: 0;
 }
-.service-item {
-  display: inline-flex;
-  width: 100%;
-  margin-bottom: 1.5%;
+
+@media screen and (min-width: 600px) {
+  .service-item {
+    display: inline-flex;
+    width: 100%;
+    margin-bottom: 1.5%;
+  }
 }
 .service-info {
   margin-left: 5%;

@@ -183,8 +183,9 @@ h2 {
   font-family: Arial;
 }
 
-.column_wrapper {
-  column-count: 3;
+@media screen and (min-width: 600px) {
+  .column_wrapper {
+    column-count: 3;
+  }
 }
-
 </style>
