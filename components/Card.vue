@@ -34,8 +34,8 @@ figure {
   -o-transform: scale(1.1);
 }
 .image-container {
-  /* padding: 5%;
-  margin-bottom: -5%; */
+  padding: 5%;
+  margin-bottom: -5%;
 
   transition: transform 0.2s;
   -webkit-transition: -webkit-transform 0.2s;

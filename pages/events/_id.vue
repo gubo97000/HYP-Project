@@ -60,7 +60,10 @@ h2 {
   font-size: 22px;
   margin-top: 15px;
 }
-
+.about-the-place >>> .image-container {
+  padding: 0;
+  margin-bottom: 0;
+}
 </style>
 
 <script>
