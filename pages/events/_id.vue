@@ -18,14 +18,11 @@
         <br><br>
 
         <h2>About the place:</h2>
-        <nuxt-link :to="`/pois/${poi.id}`" class="nuxt-clickable">
-          <div class="image-container">
-            <figure>
-               <img :src="require('@/assets/' + poi.picture.url)" alt="" />
-              <figcaption>{{ poi.title }}</figcaption>
-            </figure>
-          </div>
-        </nuxt-link>
+        <CardComponent
+          :to="`/pois/${poi.id}`"
+          :image="poi.picture.url"
+          :caption="poi.title"
+        />
 
         <br><br>
         <div
@@ -50,52 +47,17 @@ h2 {
     font-size: 26px;
     font-family: Arial;
 }
-.nuxt-clickable {
-  display: inline-block;
-  width: 100%;
-}
-.image-container {
-  text-align: center;
-}
-figcaption {
-    font-variant: small-caps;
-    font-family: Arial;
-    font-weight: bold;
-    font-size: 22px;
-    line-height: 2;
-    color: #26466F;
-}
-figure {
-    background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-}
-.image-container:hover {
-    transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
-}
-.image-container {
-    padding: 5%;
-    margin-bottom: -5%;
-
-    transition: transform 0.2s;
-    -webkit-transition: -webkit-transform 0.2s;
-    -moz-transition: -moz-transform 0.2s;
-    -o-transition: -o-transform 0.2s;
-}
 </style>
 
 <script>
 import Breadcrumb from '~/components/Breadcrumb.vue'
-import CommonMixin from '~/mixins/common'
+import CardComponent from '~/components/Card.vue'
+
 export default {
   name: 'DetailsPage',
-  mixins: [CommonMixin],
   components: {
-    Breadcrumb
+    Breadcrumb,
+    CardComponent
   },
 
   async asyncData({ route, $axios }) {
@@ -126,11 +88,6 @@ export default {
     return {
       title: this.title
     }
-  },
-  mounted(){
-    const date = new Date()
-    // Example on hwo to use mixinx
-    console.log(this.formatMyDate(date.toLocaleDateString()))
   },
   methods: {
     backToList() {

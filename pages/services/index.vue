@@ -10,14 +10,12 @@
         </p>
         <br>
         <div class="d-flex justify-content-center flex-wrap">
-          <nuxt-link v-for="item in serviceList" :to="`/services/${item.id}`" class="nuxt-clickable">
-            <div class="image-container">
-              <figure>
-                <img :src="require('@/assets/' + item.image)" alt="" width="100%"/>
-                <figcaption>{{ item.name }}</figcaption>
-              </figure>
-            </div>
-          </nuxt-link>
+          <CardComponent 
+            v-for="item in serviceList" 
+            :to="`/services/${item.id}`" 
+            class="card-component"
+            :image="item.image"
+            :caption="item.name" />
         </div>
         <br>
       </div>
@@ -28,10 +26,13 @@
 
 <script>
 import Breadcrumb from '~/components/Breadcrumb.vue'
+import CardComponent from '~/components/Card.vue'
+
 export default {
   name: 'Events',
   components: {
-    Breadcrumb
+    Breadcrumb,
+    CardComponent
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/services')
@@ -63,40 +64,7 @@ export default {
 .column_wrapper {
   column-count: 2;
 }
-.nuxt-clickable {
-  display: inline-block;
+.card-component {
   width: 50%;
-}
-.image-container {
-  text-align: center;
-}
-figcaption {
-    font-variant: small-caps;
-    font-family: Arial;
-    font-weight: bold;
-    font-size: 22px;
-    line-height: 2;
-    color: #26466F;
-}
-figure {
-    background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-}
-.image-container:hover {
-    transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
-}
-.image-container {
-    padding: 5%;
-    margin-bottom: -5%;
-
-    transition: transform 0.2s;
-    -webkit-transition: -webkit-transform 0.2s;
-    -moz-transition: -moz-transform 0.2s;
-    -o-transition: -o-transform 0.2s;
 }
 </style>

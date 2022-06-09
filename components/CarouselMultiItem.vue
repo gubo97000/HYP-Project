@@ -4,14 +4,20 @@
     <div class="track" ref="track">
       
       <div class="card-container" v-for="(item, si) in slides" :key="si" ref="cardContainer">
-        <nuxt-link :to="`/pois/${item.id}`" class="nuxt-clickable">
+      <CardComponent
+          :to="`/pois/${item.id}`"
+          :image="item.image"
+          :caption="item.name"
+          class="card-component"/>
+
+        <!-- <nuxt-link :to="`/pois/${item.id}`" class="nuxt-clickable">
             <div class="image-container card">
               <figure>
                 <img :src="require('@/assets/' + item.image)" alt="" class="img"/>
                 <figcaption class="info">{{ item.name }}</figcaption>
               </figure>
             </div>
-          </nuxt-link>
+          </nuxt-link> -->
       </div>
       
     </div>
@@ -56,7 +62,7 @@
   padding-right: 15px;
   box-sizing: border-box;
 }
-.carousel-container .card-container .card {
+.card-component >>> .card {
   width: 100%;
   height: 100%;
   border: 1px solid #ccc;
@@ -90,10 +96,10 @@
   display: none;
 }
 
-.card > * {
+.card-component >>> .card > * {
   flex: 1;
 }
-.card .img {
+.card-component >>> img {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,47 +107,17 @@
   height: 80%;
   object-fit: cover;
 }
-figcaption {
+.card-component >>> figcaption {
     padding-top: 2.5%;
 }
-
-/*TODO create component for this, don't copy-paste*/
-.image-container {
-  text-align: center;
-}
-figcaption {
-    font-variant: small-caps;
-    font-family: Arial;
-    font-weight: bold;
-    font-size: 22px;
-    line-height: 2;
-    color: #26466F;
-}
-figure {
-    background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-}
-.image-container:hover {
-    transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
-}
-.image-container {
-    padding: 5%;
-    margin-bottom: -5%;
-
-    transition: transform 0.2s;
-    -webkit-transition: -webkit-transform 0.2s;
-    -moz-transition: -moz-transform 0.2s;
-    -o-transition: -o-transform 0.2s;
+.card-component {
+  height: 100%;
 }
 
 </style>
 
 <script>
+import CardComponent from '~/components/Card.vue'
 
 let slideIndex = 0;
 
@@ -156,6 +132,9 @@ export default {
           type: Array,
           required: true
       }
+  },
+  components: {
+    CardComponent
   },
   methods: {
     isActive(index) {

@@ -200,7 +200,7 @@ const serviceTypes = [
     },
     {
         id: "5",
-        name: "Stationary stores",
+        name: "Stationery stores",
         image: "statstore.png"
     },
     {

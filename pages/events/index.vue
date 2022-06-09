@@ -35,74 +35,39 @@
             :index="1"
           >
             <div class="column_wrapper">
-              <nuxt-link
+              <CardComponent
                 v-for="item in events.nodes"
-                :key="item.id"
+                :key="`${item.id}`"
                 :to="`/events/${item.id}`"
-                class="nuxt-clickable"
-              >
-                <div class="image-container">
-                  <figure>
-                    <!-- <img
-                      :src="require('@/assets/' + item.picture[0].url)"
-                      alt=""
-                      width="100%"
-                    /> -->
-                    <figcaption>{{ item.title }}</figcaption>
-                  </figure>
-                </div>
-              </nuxt-link>
+                :image="'cover.png'"
+                :caption="item.title"
+              />
             </div>
           </Dropdown>
 
           <Dropdown :title="'WINTER EVENTS'" :index="2">
             <div class="column_wrapper">
-              <nuxt-link
+              <CardComponent
                 v-for="item in events.nodes"
                 v-if="!isSummer(item.info) && isWinter(item.info)"
                 :key="`S${item.id}`"
                 :to="`/events/${item.id}`"
-                class="nuxt-clickable"
-              >
-                <div
-                >
-                  <div class="image-container">
-                    <figure>
-                      <img
-                        :src="require('@/assets/cover.png')"
-                        alt=""
-                        width="100%"
-                      />
-                      <figcaption>{{ item.title }}</figcaption>
-                    </figure>
-                  </div>
-                </div>
-              </nuxt-link>
+                :image="'cover.png'"
+                :caption="item.title"
+              />
             </div>
           </Dropdown>
 
           <Dropdown :title="'SUMMER EVENTS'" :index="3">
             <div class="column_wrapper">
-              <nuxt-link
+              <CardComponent
                 v-for="item in events.nodes"
                 v-if="isSummer(item.info) && !isWinter(item.info)"
                 :key="`W${item.id}`"
                 :to="`/events/${item.id}`"
-                class="nuxt-clickable"
-              >
-                <div>
-                  <div class="image-container">
-                    <figure>
-                      <img
-                        :src="require('@/assets/cover.png')"
-                        alt=""
-                        width="100%"
-                      />
-                      <figcaption>{{ item.title }}</figcaption>
-                    </figure>
-                  </div>
-                </div>
-              </nuxt-link>
+                :image="'cover.png'"
+                :caption="item.title"
+              />
             </div>
           </Dropdown>
         </div>
@@ -118,6 +83,7 @@
 import { gql } from 'graphql-tag'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import Dropdown from '~/components/Dropdown.vue'
+import CardComponent from '~/components/Card.vue'
 
 let dropdowns
 
@@ -126,6 +92,7 @@ export default {
   components: {
     Breadcrumb,
     Dropdown,
+    CardComponent
   },
   data() {
     return {
@@ -219,40 +186,5 @@ h2 {
 .column_wrapper {
   column-count: 3;
 }
-.nuxt-clickable {
-  display: inline-block;
-  width: 100%;
-}
-.image-container {
-  text-align: center;
-}
-figcaption {
-  font-variant: small-caps;
-  font-family: Arial;
-  font-weight: bold;
-  font-size: 22px;
-  line-height: 2;
-  color: #26466f;
-}
-figure {
-  background: #ffffff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-}
-.image-container:hover {
-  transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  -moz-transform: scale(1.1);
-  -o-transform: scale(1.1);
-}
-.image-container {
-  padding: 5%;
-  margin-bottom: -5%;
 
-  transition: transform 0.2s;
-  -webkit-transition: -webkit-transform 0.2s;
-  -moz-transition: -moz-transform 0.2s;
-  -o-transition: -o-transform 0.2s;
-}
 </style>

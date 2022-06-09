@@ -25,14 +25,6 @@
 
           <CarouselMultiItem :slides="pois"/>
 
-          <!-- <nuxt-link v-for="item in pois" :to="`/pois/${item.id}`" class="nuxt-clickable">
-            <div class="image-container">
-              <figure>
-                <img :src="require('@/assets/' + item.image)" alt="" width="100%"/>
-                <figcaption>{{ item.name }}</figcaption>
-              </figure>
-            </div>
-          </nuxt-link> -->
           <div
             class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
           >
@@ -57,14 +49,6 @@
   top: 0;
   left: 0;
 }
-.service-item {
-  display: inline-flex;
-  width: 100%;
-  margin-bottom: 1.5%;
-}
-.service-info {
-  margin-left: 5%;
-}
 .cover {
   position: relative;
   min-width: 100%;
@@ -78,12 +62,6 @@
   font-weight: 750;
   font-size: 4rem;
 }
-.item-title {
-  color: #26466F;
-  font-weight: 500;
-  font-size: 20px;
-  margin-bottom: 10px;
-}
 .section-title {
   color: #26466F;
   font-weight: 800;
@@ -91,38 +69,6 @@
 }
 .go-back {
   margin-top: 5%;
-}
-.image-container {
-  text-align: center;
-}
-figcaption {
-    font-variant: small-caps;
-    font-family: Arial;
-    font-weight: bold;
-    font-size: 22px;
-    line-height: 2;
-    color: #26466F;
-}
-figure {
-    background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-}
-.image-container:hover {
-    transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
-}
-.image-container {
-    padding: 5%;
-    margin-bottom: -5%;
-
-    transition: transform 0.2s;
-    -webkit-transition: -webkit-transform 0.2s;
-    -moz-transition: -moz-transform 0.2s;
-    -o-transition: -o-transform 0.2s;
 }
 </style>
 
