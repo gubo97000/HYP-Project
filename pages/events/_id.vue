@@ -17,23 +17,25 @@
           <Carousel :slides="[pictures[0].url, pictures[1].url]"/>
         <br><br>
 
-        <h2>About the place:</h2>
-        <CardComponent
-          :to="`/pois/${poi.id}`"
-          :image="poi.picture.url"
-          :caption="poi.title"
-        />
+        <h4 class="subsection-title">ABOUT THE PLACE:</h4>
+        <div class="about-the-place">
+          <CardComponent
+            :to="`/pois/${poi.id}`"
+            :image="poi.picture.url"
+            :caption="poi.title"
+          />
+        </div>
 
         <br><br>
         <div
-          class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3"
+          class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
         >
           <button
             type="button"
             class="btn btn-outline-secondary btn-lg px-4"
             @click="backToList"
           >
-            ALL EVENTS
+            ←  ALL EVENTS
           </button>
         </div>
       </div>
@@ -47,6 +49,18 @@ h2 {
     font-size: 26px;
     font-family: Arial;
 }
+.about-the-place {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.subsection-title {
+  color: #26466F;
+  font-weight: 700;
+  font-size: 22px;
+  margin-top: 15px;
+}
+
 </style>
 
 <script>

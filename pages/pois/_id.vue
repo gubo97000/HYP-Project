@@ -5,33 +5,55 @@
       :crumbs="crumbs"
       @selected="selected"
     />
-    <div class="container mt-5">
       <h1 class="display-4 fw-bold lh-1">PUNTO DI INTERESSE</h1>
       <br />
       <p class="lead">
         Fu lui verso che speranza giudicio che fallo quale. Che giudicio da
         ignoranza cosa piú che. Né e e di sé il forza ma. D'angoscia.
       </p>
-    </div>
-    <h2 class="mt-5">Visiting Info</h2>
-    <div class="flex container">
-      <br />
-      <p class="lead">
-        Come alla forse dea cosí cosa dico udita. Che e le noi occulta pericoli
-        cospetto quale cosa dio, né sí impetrata se fosse per priegano che
-        grazia potendo. Non per spezial pregato priegano maesta. 'l segreto di
-        potremmo priegano mente.
-      </p>
-      <div class="">Image</div>
+    <div class="howtoreach-container">
+      <div class="howtoreach-text">
+        <h4 class="subsection-title">VISIT INFO</h4>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.</p>
+      </div>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22385.345367822818!2d9.183978311645502!3d45.46641612838561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sit!4v1652736022694!5m2!1sen!2sit"
+        width="35%"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
     </div>
     <br />
-    <!-- <Carousel :slides="[pictures[0].url, pictures[1].url]" /> -->
+    <Carousel :slides="['cover.png', 'cover.png']"/>
     <br />
     <h2>This place has the following itineraries</h2>
-    <div v-for="i in 2">Itinerary</div>
-    <p class="lead">
-      <!-- {{ poi.location }} -->
-    </p>
+
+    <!--Itinerary 1: name
+      duration: 45’
+      difficulty: easy
+
+      Itinerary 2: name
+      duration: 45’
+      difficulty: easy-->
+
+
+    <ul style="display: list-item">
+      <li v-for="i in 2" style="display: list-item">
+        <div>
+          <p class="lead">
+            Itinerary 1: name
+          </p>
+          <p class="lead">
+            duration: 45’
+          </p>
+          <p class="lead">
+            difficulty: easy
+          </p>
+        </div>
+      </li>
+    </ul>
     <br />
     <h2>Events happening here</h2>
     <div class="flex flex-wrap space-x-4 space-y-4 justify-around">
@@ -54,13 +76,15 @@
         </nuxt-link>
       </div>
     </div>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+    <div
+      class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
+    >
       <button
         type="button"
         class="btn btn-outline-secondary btn-lg px-4"
         @click="backToList"
       >
-        ALL POINTS OF INTEREST
+        ←  ALL POINTS OF INTEREST
       </button>
     </div>
   </div>
@@ -135,3 +159,48 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+@media screen and (min-width: 600px) {
+  .howtoreach-container {
+    display: flex;
+    margin-top: 20px;
+  }
+  .howtoreach-text {
+    width: 70%;
+    margin-right: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  iframe {
+    width: 25%;
+    aspect-ratio: 1.5 / 1;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  iframe {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-top: 20px;
+  }
+}
+
+.subsection-title {
+  color: #26466F;
+  font-weight: 700;
+  font-size: 22px;
+  margin-top: 15px;
+}
+ul {
+  width: 100%;
+}
+ul, li {
+    display:inline
+}
+li {
+    margin-left: 10px;
+    list-style-type: circle;
+ }
+</style>
