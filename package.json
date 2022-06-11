@@ -5,14 +5,15 @@
   "scripts": {
     "dev": "nuxt -p 3005",
     "build": "nuxt build",
-    "start": "nuxt start -p 3009",
+    "start": "nuxt start",
+    // "start": "nuxt start -p 3009",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
     "lint": "yarn lint:js && yarn lint:prettier",
     "lintfix": "prettier --write --list-different . && yarn lint:js --fix",
     "test": "jest",
-    "deploy":"git push origin deploy"
+    "deploy":"git checkout -b origin/deploy origin/master"
   },
   "dependencies": {
     "@graphile-contrib/pg-simplify-inflector": "^6.1.0",
