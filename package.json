@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nuxt -p 3005",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "start": "nuxt start ",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
