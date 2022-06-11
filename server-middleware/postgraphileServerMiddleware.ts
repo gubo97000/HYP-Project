@@ -22,7 +22,7 @@ const postgraphileOptions :PostGraphileOptions= {
   //   /* TODO */
   // },
 };
-module.exports = postgraphile(process.env.DATABASE_URL, 'public', {
+module.exports = postgraphile(`${process.env.DATABASE_URL}?sslmode=no-verify`, 'public', {
   ...postgraphileOptions,
   graphqlRoute: '/api/graphql', // optional to avoid conflicts with nuxt.js default routing
   graphiqlRoute: '/api/graphiql',
