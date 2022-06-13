@@ -49,6 +49,7 @@ figure {
 
 .card {
   border: none;
+  background-color: transparent;
 }
 
 </style>

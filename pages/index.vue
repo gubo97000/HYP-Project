@@ -1,41 +1,46 @@
 <template>
   <div class="jumbotron">
     <div class="image-container">
-        <img :src="require('@/assets/cover.png')" alt="" class="cover"/>
+        <img :src="require('@/assets/newcover.png')" alt="" class="cover"/>
         <img :src="require('@/assets/logo.png')" alt="" class="logo"/>
+        <p class="cover-text">EXPLORE ONE OF THE MOST BEAUTIFUL CITIES IN THE WORLD: <br>
+          YOUR TOUR STARTS FROM HERE!</p>
     </div>
     <div class="container mt-5">
-      <Carousel :slides="['church.png', 'museum.png', 'poi.png', 'supermarket.png']"/>
-      <hr class="my-4" />
-      <h3 class="section-title">OVERVIEW</h3>
-      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
-        Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.</p>
-      <br>
-      <h3 class="section-title">HOW TO REACH US</h3>
-      <div class="howtoreach-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22385.345367822818!2d9.183978311645502!3d45.46641612838561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sit!4v1652736022694!5m2!1sen!2sit"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-        <div class="howtoreach-text">
-          <h4 class="subsection-title">BY CAR</h4>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.</p>
-          <h4 class="subsection-title">BY BUS</h4>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.</p>
-          <h4 class="subsection-title">BY PLANE</h4>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.</p>
+      <div class="d-flex justify-content-center flex-wrap card-container">
+          <CardComponent 
+            :to="`/events`" 
+            class="card-component"
+            :image="'restaurant-card.png'"
+            :caption="'EVENTS'" />
+          <CardComponent 
+            :to="`/pois`" 
+            class="card-component"
+            :image="'poi-card.png'"
+            :caption="'POINTS OF INTEREST'" />
+          <CardComponent 
+            :to="`/itineraries`" 
+            class="card-component"
+            :image="'itineraries.png'"
+            :caption="'ITINERARIES'" />
+          <CardComponent 
+            :to="`/services`" 
+            class="card-component"
+            :image="'supermarket-card.png'"
+            :caption="'SERVICES'" />
         </div>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
+import CardComponent from '~/components/Card.vue'
+
 export default {
   name: 'IndexPage',
+  components: {
+    CardComponent
+  },
   head(){
     return {
       title: "Towny"
@@ -50,6 +55,15 @@ export default {
   top: 0;
   left: 0;
 }
+.image-container::after {
+  background-image:  linear-gradient(to bottom, transparent, #352d2d);
+    content:'';
+    display:block;
+    height:60%;
+    bottom:0px;
+    position:absolute;
+    width:100%;
+}
 .cover {
   position: relative;
   min-width: 100%;
@@ -58,52 +72,78 @@ export default {
 }
 .logo {
   position: absolute;
+  height: 25%;
+  left: 50%;
+  top: 7.5%;
+  transform: translate(-50%, 0%)
+}
+.cover-text {
+  position: absolute;
   height: 55%;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%)
+  top: 40%;
+  transform: translate(-50%, 0%);
+
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 58px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: white;
+
+  text-shadow: 2px 2px #000000;
 }
 p {
   text-align: left;
 }
-.section-title {
-  color: #26466F;
-  font-weight: 800;
-  font-size: 24px;
-}
-.subsection-title {
-  color: #26466F;
-  font-weight: 700;
-  font-size: 22px;
-  margin-top: 15px;
-}
 
 @media screen and (min-width: 600px) {
-  .howtoreach-container {
-    display: flex;
+  .column_wrapper {
+    column-count: 4;
   }
-  .howtoreach-text {
-    width: 60%;
-    margin-left: 5%;
+  .card-component {
+    width: 25%;
   }
-  iframe {
-    width: 35%
-  }
-}
-
-@media screen and (max-width: 600px) {
-  iframe {
-    width: 100%;
-    aspect-ratio: 1 / 1;
+  .card-container {
+    flex-shrink: 0;
+    height: 450px;
+    padding-right: 15px;
+    box-sizing: border-box;
+    margin-top: -600px;
+    margin-bottom: 100px;
   }
 }
 
-.howtoreach-container {
-  margin-top: 20px;
-  margin-bottom: 50px;
+.card-component >>> .card {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
-.howtoreach-text > .lead {
-  margin-bottom: 15px;
+
+.card-component >>> .card > * {
+  flex: 1;
+}
+.card-component >>> img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  height: 85%;
+  object-fit: cover;
+}
+.card-component >>> figure {
+  box-shadow: 0 0 20px black, 10px 15px 100px rgba(200, 200, 200, 0.2),
+                                -10px 15px 100px rgba(200, 200, 200, 0.2),
+                                -10px -5px 100px rgba(200, 200, 200, 0.2),
+                                10px -5px 100px rgba(200, 200, 200, 0.2)
+}
+.card-component >>> figcaption {
+  padding-top: 2.5%;
+}
+.card-component {
+  height: 100%;
 }
 </style>
 
