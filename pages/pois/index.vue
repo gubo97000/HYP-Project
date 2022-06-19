@@ -1,11 +1,11 @@
 <template>
   <div class="page container mt-5">
     <h1 class="display-4">Points of Interest</h1>
-    <Breadcrumb
+    <!-- <Breadcrumb
       class="row justify-items-center mt-4"
       :crumbs="crumbs"
       @selected="selected"
-    />
+    /> -->
     <br />
     <!-- description of point of interest -->
     <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
@@ -25,11 +25,12 @@
 
     <div >
       <div
-        v-for="n in poises.edges"
+         v-for="n in poises.edges"
         :key="n.node.id"
         class="column_wrapper"
       >
-        <CardComponent
+        <Card
+            :key="n.node.id"
             :to="`/pois/${n.node.id}`"
             :image="'cover.png'"
             :caption="n.node.title"
@@ -42,6 +43,7 @@
 <script lang="ts">
 import gql from 'graphql-tag'
 import Breadcrumb from '~/components/Breadcrumb.vue'
+import Card from '~/components/Card.vue'
 export default {
   name: 'PointsOfInterest',
   apollo: {
@@ -66,7 +68,8 @@ export default {
   },
   components: {
     Breadcrumb,
-  },
+    Card
+},
   data() {
     return {
       poises: {},

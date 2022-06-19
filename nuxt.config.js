@@ -64,7 +64,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: `https://${process.env.HEROKU_APP_NAME}.herokuapp.com/api/graphql`,
+        httpEndpoint: process.env.HEROKU_APP_NAME?`https://${process.env.HEROKU_APP_NAME}.herokuapp.com/api/graphql`:`http://localhost:3005/api/graphql`,
       }
     }
   },
