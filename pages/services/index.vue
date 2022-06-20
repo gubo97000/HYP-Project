@@ -15,7 +15,7 @@
             :to="`/services/${item.id}`" 
             class="card-component"
             :image="item.image"
-            :caption="item.name" />
+            :caption="item.name.toUpperCase()" />
         </div>
         <br>
       </div>
@@ -68,6 +68,13 @@ export default {
   }
   .card-component {
     width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card-component >>> img {
+    height: 150px;
+    object-fit: cover;
   }
 }
 </style>

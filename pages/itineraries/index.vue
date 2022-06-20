@@ -60,23 +60,10 @@
     margin-bottom: 1.5%;
   }
 }
-.service-info {
-  margin-left: 5%;
-}
-.cover {
-  position: relative;
-  min-width: 100%;
-}
-.title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #ffffff;
-  font-weight: 750;
-  font-size: 4rem;
-  -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: black;
+@media screen and (max-width: 600px) {
+  .service-item {
+    margin-bottom: 30px;
+  }
 }
 .item-title {
   color: #26466F;
