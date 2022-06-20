@@ -96,21 +96,28 @@ export default {
 p {
   text-align: left;
 }
+.container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -5%;
+}
 
 @media screen and (min-width: 600px) {
   .column_wrapper {
     column-count: 4;
   }
   .card-component {
-    width: 25%;
+    width: 22.5%;
+    margin-left: 15px;
+    margin-right: 15px;
   }
   .card-container {
     flex-shrink: 0;
+    width: 110%;
     height: 450px;
     padding-right: 15px;
     box-sizing: border-box;
     margin-top: -600px;
-    margin-bottom: 100px;
   }
 }
 
