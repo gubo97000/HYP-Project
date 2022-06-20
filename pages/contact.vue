@@ -1,11 +1,14 @@
 <template>
-  <div class="page container mt-5">
-    <h1 class="display-4">Contact us</h1>
-    <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected"/>
+  <div class="jumbotron">
+    <div class="image-container">
+        <img :src="require('@/assets/cover.png')" alt="" class="cover"/>
+        <img :src="require('@/assets/logo.png')" alt="" class="logo"/>
+    </div>
+    
     <div class="jumbotron">
-        <div class="image-container">
-            <img :src="require('@/assets/about.png')" alt="" class="image"/>
-        </div>
+      <div class="container mt-5">
+        <h1 class="display-4">Contact us</h1>
+        <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected"/>
         <div class="container mt-5">
           <hr class="my-4" />
           <h3 class="section-title">CONTACT 1</h3>
@@ -23,6 +26,7 @@
       </div>
     </div>
     <br>
+  </div>
   </div>
 </template>
 
@@ -58,6 +62,19 @@ export default {
   position: relative;
   top: 0;
   left: 0;
+}
+.cover {
+  position: relative;
+  min-width: 100%;
+  min-height: 400px;
+  object-fit: cover;
+}
+.logo {
+  position: absolute;
+  height: 55%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%)
 }
 p {
   text-align: left;
