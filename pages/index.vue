@@ -96,20 +96,37 @@ export default {
 p {
   text-align: left;
 }
-.container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: -5%;
+
+@media screen and (max-width: 600px) {
+  .cover-text {
+    top: 50%;
+    font-size: 23px;
+    font-weight: 800;
+    line-height: 36px;
+    width: 100%;
+    z-index: 1;
+  }
+  .card-component >>> img {
+    height: 150px;
+    object-fit: cover;
+  }
+  .card-container {
+    margin-top: -30px;
+    margin-bottom: 30px;
+  }
 }
 
 @media screen and (min-width: 600px) {
-  .column_wrapper {
-    column-count: 4;
-  }
+.container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -50px;
+}
+
   .card-component {
     width: 22.5%;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
   }
   .card-container {
     flex-shrink: 0;
@@ -119,38 +136,40 @@ p {
     box-sizing: border-box;
     margin-top: -600px;
   }
+
+  .card-component >>> .card {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-component >>> .card > * {
+    flex: 1;
+  }
+  .card-component >>> img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    height: 85%;
+    object-fit: cover;
+  }
+  .card-component >>> figure {
+    box-shadow: 0 0 20px black, 10px 15px 100px rgba(200, 200, 200, 0.2),
+                                  -10px 15px 100px rgba(200, 200, 200, 0.2),
+                                  -10px -5px 100px rgba(200, 200, 200, 0.2),
+                                  10px -5px 100px rgba(200, 200, 200, 0.2)
+  }
+  .card-component >>> figcaption {
+    padding-top: 2.5%;
+  }
+  .card-component {
+    height: 100%;
+  }
 }
 
-.card-component >>> .card {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-}
 
-.card-component >>> .card > * {
-  flex: 1;
-}
-.card-component >>> img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
-  height: 85%;
-  object-fit: cover;
-}
-.card-component >>> figure {
-  box-shadow: 0 0 20px black, 10px 15px 100px rgba(200, 200, 200, 0.2),
-                                -10px 15px 100px rgba(200, 200, 200, 0.2),
-                                -10px -5px 100px rgba(200, 200, 200, 0.2),
-                                10px -5px 100px rgba(200, 200, 200, 0.2)
-}
-.card-component >>> figcaption {
-  padding-top: 2.5%;
-}
-.card-component {
-  height: 100%;
-}
 </style>
 

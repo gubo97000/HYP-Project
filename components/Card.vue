@@ -52,6 +52,17 @@ figure {
   background-color: transparent;
 }
 
+@media screen and (min-width: 600px) {
+  figcaption {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  figcaption {
+    font-size: 18px;
+  }
+}
 </style>
 
 <script>
