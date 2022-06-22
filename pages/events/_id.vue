@@ -44,6 +44,10 @@
 
 
 <style scoped>
+.lead {
+  text-align: justify;
+}
+
 h2 {
     font-weight: bolder;
     font-size: 26px;

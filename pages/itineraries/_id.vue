@@ -43,6 +43,9 @@
 </template>
 
 <style scoped>
+.lead {
+  text-align: justify;
+}
 .title-container {
   text-align: center;
   position: relative;

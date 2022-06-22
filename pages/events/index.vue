@@ -183,6 +183,10 @@ h2 {
   font-family: Arial;
 }
 
+.lead {
+  text-align: justify;
+}
+
 @media screen and (min-width: 600px) {
   .column_wrapper {
     column-count: 3;

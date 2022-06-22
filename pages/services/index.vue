@@ -61,6 +61,9 @@ export default {
 </script>
 
 <style scoped>
+.lead {
+  text-align: justify;
+}
 
 @media screen and (min-width: 600px) {
   .column_wrapper {

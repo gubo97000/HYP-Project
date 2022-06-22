@@ -109,6 +109,10 @@ iframe {
   width: 100%;
   height: 400px;
 }
+.lead {
+  text-align: justify;
+}
+
 @media screen and (min-width: 600px) {
   .column_wrapper {
     column-count: 4;

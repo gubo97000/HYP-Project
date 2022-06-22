@@ -104,6 +104,9 @@
 .go-back {
   margin-top: 5%;
 }
+.lead {
+  text-align: justify;
+}
 </style>
 
 <script>

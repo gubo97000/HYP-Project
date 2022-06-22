@@ -202,5 +202,8 @@ ul, li {
 li {
     margin-left: 10px;
     list-style-type: circle;
- }
+}
+.lead {
+  text-align: justify;
+}
 </style>
