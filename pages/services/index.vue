@@ -1,6 +1,6 @@
 <template>
   <div class="page container mt-5">
-    <h1 class="display-4">Services</h1>
+    <h1 class="title">SERVICES</h1>
     <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected"/>
     <div class="jumbotron">
       <div class="container mt-5">
@@ -73,11 +73,13 @@ export default {
     width: 50%;
   }
 }
-
-@media screen and (max-width: 600px) {
-  .card-component >>> img {
-    height: 150px;
-    object-fit: cover;
-  }
+.title {
+  text-align: center;
+  color: #26466F;
+  font-weight: 750;
+  font-size: 4rem;
+}
+.row {
+  margin-bottom: -30px;
 }
 </style>

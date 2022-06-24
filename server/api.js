@@ -201,7 +201,30 @@ const serviceTypes = [
     {
         id: "5",
         name: "Stationery stores",
-        image: "statstore.png"
+        image: "statstore.png",
+        overview: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
+        Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.`,
+        map: "statstore.png",
+        services: [
+            {
+                name: "Service Instance 1",
+                address: "This is the address",
+                openhours: "8.00 - 19.00",
+                image: "servicedetails.png"
+            },
+            {
+                name: "Service Instance 2",
+                address: "This is the address",
+                openhours: "7.30 - 17.00",
+                image: "servicedetails.png"
+            },
+            {
+                name: "Service Instance 3",
+                address: "This is the address",
+                openhours: "9.00 - 22.30",
+                image: "servicedetails.png"
+            }
+        ]
     },
     {
         id: "6",

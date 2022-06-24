@@ -46,7 +46,9 @@ figure {
   display: inline-block;
   width: 100%;
 }
-
+img {
+  border-radius: 5px 5px 0 0;
+}
 .card {
   border: none;
   background-color: transparent;
@@ -57,10 +59,13 @@ figure {
     font-size: 22px;
   }
 }
-
 @media screen and (max-width: 600px) {
   figcaption {
     font-size: 18px;
+  }
+  img {
+    height: 150px;
+    object-fit: cover;
   }
 }
 </style>

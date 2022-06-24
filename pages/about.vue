@@ -2,12 +2,12 @@
   <div class="jumbotron">
     <div class="image-container">
         <img :src="require('@/assets/cover.png')" alt="" class="cover"/>
-        <img :src="require('@/assets/logo.png')" alt="" class="logo"/>
+        <!-- <img :src="require('@/assets/logo.png')" alt="" class="logo"/> -->
+        <h1 class="title">ABOUT US</h1>
     </div>
     
     <div class="jumbotron">
       <div class="container mt-5">
-        <h1 class="display-4">About us</h1>
         <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected"/>
         <p class="lead">
           Towny is a city full of history, art, and culture. Founded as a Roman city, it developed its own peculiar style under the Islamic and Gothic influences, as can be seen in the Royal Alcázar, the Catedral and the Giralda.
@@ -100,6 +100,7 @@ export default {
 
 <style scoped>
 .image-container {
+  text-align: center;
   position: relative;
   top: 0;
   left: 0;
@@ -107,14 +108,14 @@ export default {
 .cover {
   position: relative;
   min-width: 100%;
-  min-height: 400px;
+  height: 300px;
   object-fit: cover;
 }
 .logo {
   position: absolute;
   height: 55%;
   left: 50%;
-  top: 50%;
+  top: 35%;
   transform: translate(-50%, -50%)
 }
 p {
@@ -160,5 +161,19 @@ p {
 .lead {
   margin-bottom: 15px;
   text-align: justify;
+}
+
+.title {
+  position: absolute;
+  /* top: 80%; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-weight: 750;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
+  font-size: 4rem;
+  width: 100%;
 }
 </style>

@@ -2,15 +2,25 @@
   <div class="jumbotron">
     <div class="image-container">
         <img :src="require('@/assets/cover.png')" alt="" class="cover"/>
-        <img :src="require('@/assets/logo.png')" alt="" class="logo"/>
+        <!-- <img :src="require('@/assets/logo.png')" alt="" class="logo"/> -->
+        <h1 class="title">CONTACT US</h1>
     </div>
     
     <div class="jumbotron">
       <div class="container mt-5">
-        <h1 class="display-4">Contact us</h1>
         <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected"/>
-        <div class="container mt-5">
-          <hr class="my-4" />
+        <p class="lead">
+          Do you need any further information or have specific requests? Write to one of our contacts below and we'll get back to you as soon as possible. 
+        </p>
+        <p class="lead">
+          Tourist Information for individuals and families 
+        </p>
+        <p class="lead">
+          The operators of the two official Towny Info Points are happy to assist you by giving you competent advice for your stay in the city: infotourist@comune.towny.it 
+        </p>
+      
+        <hr class="my-4" />
+        <div class="container mt-5">  
           <h3 class="section-title">CONTACT 1</h3>
           <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit.</p>
           <br>
@@ -59,6 +69,7 @@ export default {
 
 <style scoped>
 .image-container {
+  text-align: center;
   position: relative;
   top: 0;
   left: 0;
@@ -66,7 +77,7 @@ export default {
 .cover {
   position: relative;
   min-width: 100%;
-  min-height: 400px;
+  height: 300px;
   object-fit: cover;
 }
 .logo {
@@ -84,22 +95,23 @@ p {
   font-weight: 800;
   font-size: 24px;
 }
-.subsection-title {
-  color: #26466F;
-  font-weight: 700;
-  font-size: 22px;
-  margin-top: 15px;
-}
-.howtoreach-container {
-  display: flex;
-  margin-top: 20px;
-  margin-bottom: 50px;
-}
-.howtoreach-text {
-  width: 60%;
-  margin-left: 5%;
-}
-.howtoreach-text > .lead {
+
+.lead {
   margin-bottom: 15px;
+  text-align: justify;
+}
+
+.title {
+  position: absolute;
+  /* top: 80%; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-weight: 750;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
+  font-size: 3.5rem;
+  width: 100%;
 }
 </style>

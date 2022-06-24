@@ -1,11 +1,11 @@
 <template>
   <div class="page container mt-5">
-    <h1 class="display-4">Points of Interest</h1>
-    <!-- <Breadcrumb
+    <h1 class="title">POINTS OF INTEREST</h1>
+    <Breadcrumb
       class="row justify-items-center mt-4"
       :crumbs="crumbs"
       @selected="selected"
-    /> -->
+    />
     <br />
     <!-- description of point of interest -->
     <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
@@ -118,5 +118,10 @@ iframe {
     column-count: 4;
   }
 }
-
+.title {
+  text-align: center;
+  color: #26466F;
+  font-weight: 750;
+  font-size: 4rem;
+}
 </style>

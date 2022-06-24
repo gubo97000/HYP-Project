@@ -84,9 +84,8 @@ export default {
   top: 40%;
   transform: translate(-50%, 0%);
 
-  font-size: 48px;
   font-weight: 900;
-  line-height: 58px;
+  font-size: 5vmin;
   letter-spacing: 0em;
   text-align: center;
   color: white;
@@ -124,22 +123,22 @@ p {
 }
 
   .card-component {
-    width: 22.5%;
+    /* width: 22.5%;
     margin-left: 1.25%;
-    margin-right: 1.25%;
+    margin-right: 1.25%; */
+    width: 25%;
   }
   .card-container {
     flex-shrink: 0;
-    width: 110%;
-    height: 450px;
+    width: 100%;
     padding-right: 15px;
     box-sizing: border-box;
-    margin-top: -600px;
+    margin-top: -70vmin;
   }
 
   .card-component >>> .card {
     width: 100%;
-    height: 100%;
+    height: 55vmin;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -152,7 +151,6 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
     height: 85%;
     object-fit: cover;
   }
@@ -164,6 +162,7 @@ p {
   }
   .card-component >>> figcaption {
     padding-top: 2.5%;
+    font-size: 2.8vmin;
   }
   .card-component {
     height: 100%;

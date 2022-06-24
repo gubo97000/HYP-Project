@@ -20,11 +20,18 @@
 </template>
 
 <style scoped>
-.breadcrumb {
-    background-color: white;
-    border: 1px solid rgba(0,0,0,0.125);
-    border-radius: 0.37rem;
-    width: auto;
+@media screen and (min-width: 600px) {
+    .breadcrumb {
+        background-color: white;
+        border: 1px solid rgba(0,0,0,0.125);
+        border-radius: 0.37rem;
+        width: auto;
+    }
+}
+@media screen and (max-width: 600px) {
+    .breadcrumb {
+        justify-content: center;
+    }
 }
 .separator {
     font-size: 22px;

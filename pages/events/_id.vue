@@ -1,45 +1,45 @@
 <template>
   <div class="container mt-5">
-    <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected"/>
-    
-      <div class="container mt-5">
-        <h1 class="display-4 fw-bold lh-1">{{ title }}</h1>
-        <p class="lead">
-          {{ period }}
-        </p>
-        <br>
-        <h2>Description:</h2>
-        <p class="lead">
-          {{ description }}
-        </p>
+    <div class="container mt-5">
+      <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected"/>
 
-        <br>
-          <Carousel :slides="[pictures[0].url, pictures[1].url]"/>
-        <br><br>
+      <h1 class="display-4 fw-bold lh-1">{{ title }}</h1>
+      <p class="lead">
+        {{ period }}
+      </p>
+      <br>
+      <h4 class="subsection-title">OVERVIEW</h4>
+      <p class="lead">
+        {{ description }}
+      </p>
 
-        <h4 class="subsection-title">ABOUT THE PLACE:</h4>
-        <div class="about-the-place">
-          <CardComponent
-            :to="`/pois/${poi.id}`"
-            :image="poi.picture.url"
-            :caption="poi.title"
-          />
-        </div>
+      <br>
+        <Carousel :slides="[pictures[0].url, pictures[1].url]"/>
+      <br><br>
 
-        <br><br>
-        <div
-          class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
+      <h4 class="subsection-title">ABOUT THE PLACE</h4>
+      <div class="about-the-place">
+        <CardComponent
+          :to="`/pois/${poi.id}`"
+          :image="poi.picture.url"
+          :caption="poi.title.toUpperCase()"
+        />
+      </div>
+
+      <br><br>
+      <div
+        class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
+      >
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-lg px-4"
+          @click="backToList"
         >
-          <button
-            type="button"
-            class="btn btn-outline-secondary btn-lg px-4"
-            @click="backToList"
-          >
-            ←  ALL EVENTS
-          </button>
-        </div>
+          ←  ALL EVENTS
+        </button>
       </div>
     </div>
+  </div>
 </template>
 
 
@@ -68,6 +68,12 @@ h2 {
   padding: 0;
   margin-bottom: 0;
 }
+
+/* @media screen and (max-width: 600px) {
+  .lead {
+    font-size: 18px;
+  }
+} */
 </style>
 
 <script>

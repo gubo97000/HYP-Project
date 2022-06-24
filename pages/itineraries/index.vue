@@ -1,8 +1,8 @@
 <template>
   <div class="page container mt-5">
-    <h1 class="display-4">Itineraries in Towny</h1>
+    <h1 class="title">ITINERARIES</h1>
     <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected"/>
-  <div class="jumbotron">
+    <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
@@ -44,48 +44,6 @@
   </div>
 </template>
 
-
-<style scoped>
-.image-container {
-  text-align: center;
-  position: relative;
-  top: 0;
-  left: 0;
-}
-
-@media screen and (min-width: 600px) {
-  .service-item {
-    display: inline-flex;
-    width: 100%;
-    margin-bottom: 1.5%;
-  }
-}
-@media screen and (max-width: 600px) {
-  .service-item {
-    margin-bottom: 30px;
-  }
-}
-.item-title {
-  color: #26466F;
-  font-weight: 500;
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-.section-title {
-  color: #26466F;
-  font-weight: 800;
-  font-size: 24px;
-}
-.go-back {
-  margin-top: 5%;
-}
-.lead {
-  text-align: justify;
-}
-</style>
-
-
-
 <script>
 import Breadcrumb from '~/components/Breadcrumb.vue'
 export default {
@@ -118,3 +76,55 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.image-container {
+  text-align: center;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (min-width: 600px) {
+  .service-item {
+    display: inline-flex;
+    width: 100%;
+    margin-bottom: 1.5%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .service-item {
+    margin-bottom: 30px;
+  }
+  .service-item > img {
+    height: 150px;
+    object-fit: cover;
+  }
+}
+.item-title {
+  color: #26466F;
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.section-title {
+  color: #26466F;
+  font-weight: 800;
+  font-size: 24px;
+}
+.go-back {
+  margin-top: 5%;
+}
+.lead {
+  text-align: justify;
+}
+.title {
+  text-align: center;
+  color: #26466F;
+  font-weight: 750;
+  font-size: 3.6rem;
+}
+.row {
+  margin-bottom: -30px;
+}
+</style>

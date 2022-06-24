@@ -1,6 +1,6 @@
 <template>
   <div class="page container mt-5">
-    <h1 class="display-4">Events</h1>
+    <h1 class="title">EVENTS</h1>
     <Breadcrumb
       class="row justify-items-center mt-4"
       :crumbs="crumbs"
@@ -185,6 +185,15 @@ h2 {
 
 .lead {
   text-align: justify;
+}
+.title {
+  text-align: center;
+  color: #26466F;
+  font-weight: 750;
+  font-size: 4rem;
+}
+.row {
+  margin-bottom: -30px;
 }
 
 @media screen and (min-width: 600px) {

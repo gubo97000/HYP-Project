@@ -63,6 +63,14 @@
     width: 100%;
     margin-bottom: 1.5%;
   }
+  .title {
+    font-size: 4rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: 3rem;
+  }
 }
 .image-container {
   text-align: center;
@@ -86,7 +94,6 @@
   transform: translate(-50%, -50%);
   color: #ffffff;
   font-weight: 750;
-  font-size: 4rem;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
 }

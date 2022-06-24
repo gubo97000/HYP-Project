@@ -1,11 +1,11 @@
 <template>
   <div class="jumbotron">
-    <div class="title-container">
-      <h1 class="title">
-        {{ name.toUpperCase() }}
-      </h1>
-    </div>
     <div class="container my-5">
+      <div class="title-container">
+        <h1 class="title">
+          {{ name.toUpperCase() }}
+        </h1>
+      </div>
       <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected"/>
       <div
         class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg"
@@ -56,15 +56,25 @@
   position: relative;
   min-width: 100%;
 }
-.title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #26466F;
-  font-weight: 750;
-  font-size: 4rem;
+@media screen and (min-width: 600px) {
+  .title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #26466F;
+    font-weight: 750;
+    font-size: 4rem;
+  }
 }
+@media screen and (max-width: 600px) {
+  .title {
+    color: #26466F;
+    font-weight: 750;
+    font-size: 3.6rem;
+  }
+}
+
 .section-title {
   color: #26466F;
   font-weight: 800;
