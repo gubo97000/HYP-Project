@@ -32,6 +32,10 @@
 <style scoped>
 .header {
   background: #8bdeff;
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  top: 0%;
 }
 .logo {
   color: white;
