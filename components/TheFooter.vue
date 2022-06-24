@@ -4,7 +4,7 @@
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
-      data-bs-target="#navbarToggler"
+      data-bs-target="#footerNavbarToggler"
       aria-controls="navbarToggler"
       aria-expanded="false"
       aria-label="Toggle navigation"
@@ -12,7 +12,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarToggler">
+    <div class="collapse navbar-collapse" id="footerNavbarToggler">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0 footer-links">
         <li
           v-for="(navItem, navItemIndex) of footerList"

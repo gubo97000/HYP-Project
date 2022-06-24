@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light px-3 header">
-    <a class="navbar-brand" href="/"><img :src="require('@/assets/logo.png')" width="50"></a>
+    <a class="navbar-brand" href="/"><img :src="require('@/assets/logo.png')" alt="Towny" width="50"></a>
     <button
       class="navbar-toggler"
       type="button"

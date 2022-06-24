@@ -12,7 +12,7 @@
       aria-label="Toggle navigation"
       @click="toggleDropdown()"
     >
-    <div class="panel-heading collapsed" role="tab" id="headingOne" ref="panelHeading">
+    <div class="panel-heading collapsed" id="headingOne" ref="panelHeading">
         <i class="material-icons">
             keyboard_arrow_right
         </i>
