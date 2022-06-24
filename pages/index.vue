@@ -68,6 +68,7 @@ export default {
   position: relative;
   min-width: 100%;
   min-height: 400px;
+  height: 160vh;
   object-fit: cover;
 }
 .logo {
@@ -91,6 +92,9 @@ export default {
   color: white;
 
   text-shadow: 2px 2px #000000;
+
+  width: 80vw;
+  max-width: 1000px;
 }
 p {
   text-align: left;
@@ -98,12 +102,18 @@ p {
 
 @media screen and (max-width: 600px) {
   .cover-text {
-    top: 50%;
+    top: 60%;
     font-size: 23px;
     font-weight: 800;
     line-height: 36px;
     width: 100%;
     z-index: 1;
+  }
+  .cover {
+    height: 95vh;
+  }
+  .image-container {
+    height: 95vh;
   }
   .card-component >>> img {
     height: 150px;
@@ -116,43 +126,88 @@ p {
 }
 
 @media screen and (min-width: 600px) {
-.container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: -50px;
-}
-
-  .card-component {
-    /* width: 22.5%;
-    margin-left: 1.25%;
-    margin-right: 1.25%; */
-    width: 25%;
+  /* Maximum aspect ratio */
+  @media (max-aspect-ratio: 3/2) and (max-width: 900px){
+    .card-component {
+      width: 50%;
+    }
+    .card-component >>> img {
+      height: 200px;
+      object-fit: cover;
+    }
+    .card-container {
+      margin-top: -90vmin;
+    }
+    .logo {
+      height: 30vh;
+      top: 5%;
+    }
+    .cover-text {
+      top: 32.5%;
+    }
   }
+
+  @media (max-aspect-ratio: 3/2) and (min-width: 900px) {
+    .card-component >>> img {
+      height: 75%;
+    }
+    .card-component >>> figcaption {
+      height: 25%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @media (min-aspect-ratio: 3/2) {
+    .card-component >>> img {
+      height: 85%;
+    }
+  }
+
+  @media (min-aspect-ratio: 3/2) or (min-width: 900px){
+    .card-component {
+      /* width: 22.5%;
+      margin-left: 1.25%;
+      margin-right: 1.25%; */
+      width: 25%;
+    }
+    .card-component >>> .card {
+      width: 100%;
+      height: 55vmin;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-component >>> img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      object-fit: cover;
+    }
+    .card-component {
+      height: 100%;
+    }
+    .card-container {
+      margin-top: -70vmin;
+    }
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: -50px;
+  }
+
   .card-container {
     flex-shrink: 0;
     width: 100%;
-    padding-right: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
     box-sizing: border-box;
-    margin-top: -70vmin;
-  }
-
-  .card-component >>> .card {
-    width: 100%;
-    height: 55vmin;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
   }
 
   .card-component >>> .card > * {
     flex: 1;
-  }
-  .card-component >>> img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 85%;
-    object-fit: cover;
   }
   .card-component >>> figure {
     box-shadow: 0 0 20px black, 10px 15px 100px rgba(200, 200, 200, 0.2),
@@ -163,9 +218,6 @@ p {
   .card-component >>> figcaption {
     padding-top: 2.5%;
     font-size: 2.8vmin;
-  }
-  .card-component {
-    height: 100%;
   }
 }
 

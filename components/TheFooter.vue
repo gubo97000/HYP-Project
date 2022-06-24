@@ -1,17 +1,5 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light px-3 header">
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#footerNavbarToggler"
-      aria-controls="navbarToggler"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
     <div class="collapse navbar-collapse" id="footerNavbarToggler">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0 footer-links">
         <li
@@ -25,6 +13,18 @@
         </li>
       </ul>
     </div>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#footerNavbarToggler"
+      aria-controls="navbarToggler"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
   </nav>
 </template>
 
@@ -47,6 +47,11 @@
 .footer-links {
   margin-left: auto; 
   margin-right: 0;
+}
+@media screen and (max-width: 600px) {
+  #footerNavbarToggler {
+    margin-bottom: 20px;
+  }
 }
 </style>
 
