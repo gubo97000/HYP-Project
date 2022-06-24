@@ -1,3 +1,5 @@
+<!-- Component for clickable rectangular cards.
+A card contains an image and a caption, and is animated when hovered on. -->
 <template>
   <nuxt-link :to="`${to}`" class="nuxt-clickable">
     <div class="image-container card">
@@ -54,11 +56,13 @@ img {
   background-color: transparent;
 }
 
+/* Desktop / Landscape */
 @media screen and (min-width: 600px) {
   figcaption {
     font-size: 22px;
   }
 }
+/* Portrait */
 @media screen and (max-width: 600px) {
   figcaption {
     font-size: 18px;
@@ -74,14 +78,17 @@ img {
 export default {
   name: 'CardComponent',
   props: {
+    // Destination href on click.
     to: {
       type: String,
       required: true,
     },
+    // Card representative image.
     image: {
       type: String,
       required: true,
     },
+    // A caption that is representative of where the hyperlink brings to (e.g. "Events").
     caption: {
       type: String,
       required: true,

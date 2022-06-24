@@ -135,6 +135,7 @@ export default {
   mounted() {
     dropdowns = this.$refs.dropdowns
 
+    // Steps 1 and 3 in Dropdown component
     // Step 2: When clicking a dropdown, close all the others (if opened)
     this.$on('closeAllDropdowns', (index) => {
       for (let i = 1; i <= dropdowns.children.length; i++)

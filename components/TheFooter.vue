@@ -1,6 +1,9 @@
+<!-- Component for footer, used by default layout, and always inserted at the bottom of a page. -->
 <template>
   <nav class="navbar navbar-expand-lg navbar-light px-3 header">
     <div class="collapse navbar-collapse" id="footerNavbarToggler">
+
+      <!-- List of links (landmarks) accessible by the footer -->
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0 footer-links">
         <li
           v-for="(navItem, navItemIndex) of footerList"
@@ -14,6 +17,7 @@
       </ul>
     </div>
 
+    <!-- Button used only in mobile version, to open the landmarks as an accordion. -->
     <button
       class="navbar-toggler"
       type="button"
@@ -34,10 +38,6 @@
   bottom:0;
   width: 100%;
   background: #26466f;
-}
-.logo {
-  color: white;
-  font-size: 32px;
 }
 .nav-link {
     color: white !important;
