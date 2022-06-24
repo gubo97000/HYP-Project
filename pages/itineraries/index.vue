@@ -91,6 +91,9 @@ export default {
     width: 100%;
     margin-bottom: 1.5%;
   }
+  .title {
+    font-size: 4rem;
+  }
 }
 @media screen and (max-width: 600px) {
   .service-item {
@@ -99,6 +102,9 @@ export default {
   .service-item > img {
     height: 150px;
     object-fit: cover;
+  }
+  .title {
+    font-size: 3.6rem;
   }
 }
 .item-title {
@@ -122,7 +128,6 @@ export default {
   text-align: center;
   color: #26466F;
   font-weight: 750;
-  font-size: 3.6rem;
 }
 .row {
   margin-bottom: -30px;

@@ -134,7 +134,9 @@ p {
   margin-top: 15px;
   margin-bottom: 10px;
 }
-@media screen and (min-width: 600px) {
+
+/*Desktop*/
+@media screen and (min-width: 600px) and (min-height: 600px) and (min-aspect-ratio: 3/2) {
   .howtoreach-container {
     display: flex;
   }
@@ -147,10 +149,25 @@ p {
   }
 }
 
-@media screen and (max-width: 600px) {
+/*Phone portrait*/
+@media screen and (max-width: 800px) {
   iframe {
     width: 100%;
     aspect-ratio: 1 / 1;
+  }
+}
+/*Tablet*/ 
+@media screen and ((max-aspect-ratio: 3/2) and (min-width: 800px)) {
+  iframe {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+  }
+}
+/*Phone landscape*/
+@media screen and (max-height: 600px) {
+  iframe {
+    width: 100%;
+    aspect-ratio: 2 / 1;
   }
 }
 
