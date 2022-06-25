@@ -1,5 +1,7 @@
+<!-- Detail page of Services -->
 <template>
   <div class="jumbotron">
+    <!-- Cover with representative image + title -->
     <div class="image-container">
       <img :src="require(`@/assets/services/${serviceType.id}-c.webp`)" alt="" class="cover" />
       <h1 class="title">
@@ -8,6 +10,7 @@
     </div>
     <div class="container my-5">
       <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
+
       <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg">
         <div class="p-3 p-lg-5 pt-lg-3">
           <b class="section-title">OVERVIEW</b>
@@ -15,10 +18,13 @@
             {{ serviceType.descrition }}
           </p>
           <br />
+
           <div class="image-container">
             <!-- <img :src="require('@/assets/' + map)" alt="" class="cover" /> -->
           </div>
           <br />
+
+          <!-- List of instances of this service type: image, name of shop/instance, address, opening hours -->
           <div v-for="(item, i) in serviceType.services.nodes">
             <div class="p-4 pe-lg-5 align-items-center rounded-3 border shadow-lg service-item">
               <img :src="
@@ -33,6 +39,8 @@
               </div>
             </div>
           </div>
+
+          <!-- Group link to All services (Index pattern) -->
           <div class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back">
             <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="backToList">
               ← ALL SERVICES
@@ -104,11 +112,6 @@ export default {
       title: this.serviceType.name,
     }
   },
-  // mounted(){
-  //   const date = new Date()
-  //   // Example on hwo to use mixinx
-  //   console.log(this.formatMyDate(date.toLocaleDateString()))
-  // },
   methods: {
     backToList() {
       this.$router.push('/services')

@@ -1,3 +1,4 @@
+<!-- Detail page of Itineraries -->
 <template>
   <div class="jumbotron">
     <div class="container my-5">
@@ -6,39 +7,27 @@
           {{ name.toUpperCase() }}
         </h1>
       </div>
-      <Breadcrumb
-        class="row justify-items-center mt-4"
-        :crumbs="crumbs"
-        @selected="selected"
-      />
-      <div
-        class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg"
-      >
+      <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
+      <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg">
         <div class="p-3 p-lg-5 pt-lg-3">
           <b class="section-title">DURATION: {{ duration }}</b>
           <p class="lead">
             {{ description }}
           </p>
           <br />
+
           <div>
             <img :src="require('@/assets/' + map)" alt="" class="cover" />
           </div>
           <br />
 
-          <b class="section-title"
-            >Points of interest touched by this itinerary:</b
-          >
-
+          <!-- Transition links to the related points of interest  -->
+          <b class="section-title">Points of interest touched by this itinerary:</b>
           <CarouselMultiItem :slides="pois" />
 
-          <div
-            class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
-          >
-            <button
-              type="button"
-              class="btn btn-outline-secondary btn-lg px-4"
-              @click="backToList"
-            >
+          <!-- Group link to All itineraries (Index pattern) -->
+          <div class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back">
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="backToList">
               ← ALL ITINERARIES
             </button>
           </div>
@@ -101,16 +90,19 @@ export default {
 .lead {
   text-align: justify;
 }
+
 .title-container {
   text-align: center;
   position: relative;
   top: 0;
   left: 0;
 }
+
 .cover {
   position: relative;
   min-width: 100%;
 }
+
 @media screen and (min-width: 600px) {
   .title {
     position: absolute;
@@ -122,6 +114,7 @@ export default {
     font-size: 4rem;
   }
 }
+
 @media screen and (max-width: 600px) {
   .title {
     color: #26466f;
@@ -135,6 +128,7 @@ export default {
   font-weight: 800;
   font-size: 24px;
 }
+
 .go-back {
   margin-top: 5%;
 }

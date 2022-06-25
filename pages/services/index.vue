@@ -1,3 +1,4 @@
+<!-- Group page "All Service Types" -->
 <template>
   <div class="page container mt-5">
     <h1 class="title">SERVICES</h1>
@@ -23,6 +24,8 @@
           tempus eros.
         </p>
         <br />
+
+        <!-- Group links to services details -->
         <div class="d-flex justify-content-center flex-wrap">
           <CardComponent v-for="item in serviceList" :key="`${item.id}`" :to="`/services/${item.id}`"
             :image="`services/${item.id}-c.webp`" class="card-component" :caption="item.name.toUpperCase()" />

@@ -1,3 +1,4 @@
+<!-- Page "Contact us" -->
 <template>
   <div class="jumbotron">
     <div class="image-container">
@@ -8,11 +9,7 @@
 
     <div class="jumbotron">
       <div class="container mt-5">
-        <Breadcrumb
-          class="row justify-items-center mt-4"
-          :crumbs="crumbs"
-          @selected="selected"
-        />
+        <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
         <p class="lead">
           Do you need any further information or have specific requests? Write
           to one of our contacts below and we'll get back to you as soon as
@@ -94,12 +91,14 @@ export default {
   top: 0;
   left: 0;
 }
+
 .cover {
   position: relative;
   min-width: 100%;
   height: 300px;
   object-fit: cover;
 }
+
 .logo {
   position: absolute;
   height: 55%;
@@ -107,9 +106,11 @@ export default {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
 p {
   text-align: left;
 }
+
 .section-title {
   color: #26466f;
   font-weight: 800;

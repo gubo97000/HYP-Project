@@ -1,11 +1,8 @@
+<!-- Group page "All Itineraries" -->
 <template>
   <div class="page container mt-5">
     <h1 class="title">ITINERARIES</h1>
-    <Breadcrumb
-      class="row justify-items-center mt-4"
-      :crumbs="crumbs"
-      @selected="selected"
-    />
+    <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
@@ -27,34 +24,30 @@
           tempus eros.
         </p>
         <br />
+
+        <!-- Group links to itineraries details -->
         <div class="column_wrapper">
-          <nuxt-link
-            v-for="item in itineraryList"
-            :to="`/itineraries/${item.id}`"
-            class="nuxt-clickable"
-          >
-            <div
-              class="p-4 pe-lg-5 align-items-center rounded-3 border shadow-lg service-item"
-            >
+          <nuxt-link v-for="item in itineraryList" :to="`/itineraries/${item.id}`" class="nuxt-clickable">
+            <div class="p-4 pe-lg-5 align-items-center rounded-3 border shadow-lg service-item">
+              <!-- Small map with overview of the route -->
               <!-- <img
                 :src="require('@/assets/' + item.map)"
                 alt=""
                 width="500"
               />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+
+              <!-- Info: title, duration, touched points of interest -->
               <div class="itinerary-info">
                 <p class="item-title">
                   {{ item.title.toUpperCase() }}
                 </p>
-                <p>Difficulty: {{ item.difficulty }}</p>
+                <!-- <p>Difficulty: {{ item.difficulty }}</p> -->
                 <p>Duration: {{ item.duration }}</p>
                 <br />
                 <p>Points of interest:</p>
                 <p class="item-title">
-                  <nuxt-link
-                    v-for="poi in item.poiItineraries.nodes"
-                    :to="`/pois/${poi.poi.id}`"
-                    class="nuxt-clickable"
-                  >
+                  <nuxt-link v-for="poi in item.poiItineraries.nodes" :to="`/pois/${poi.poi.id}`"
+                    class="nuxt-clickable">
                     {{ poi.poi.title.toUpperCase() }} &nbsp; &nbsp;
                   </nuxt-link>
                 </p>
@@ -145,44 +138,54 @@ export default {
     width: 100%;
     margin-bottom: 1.5%;
   }
+
   .title {
     font-size: 4rem;
   }
 }
+
 @media screen and (max-width: 600px) {
   .service-item {
     margin-bottom: 30px;
   }
-  .service-item > img {
+
+  .service-item>img {
     height: 150px;
     object-fit: cover;
   }
+
   .title {
     font-size: 3.6rem;
   }
 }
+
 .item-title {
   color: #26466f;
   font-weight: 500;
   font-size: 20px;
   margin-bottom: 10px;
 }
+
 .section-title {
   color: #26466f;
   font-weight: 800;
   font-size: 24px;
 }
+
 .go-back {
   margin-top: 5%;
 }
+
 .lead {
   text-align: justify;
 }
+
 .title {
   text-align: center;
   color: #26466f;
   font-weight: 750;
 }
+
 .row {
   margin-bottom: -30px;
 }

@@ -1,3 +1,4 @@
+<!-- Group page "All Events" -->
 <template>
   <div class="page container mt-5">
     <h1 class="title">EVENTS</h1>
@@ -24,6 +25,9 @@
         </p>
         <br />
 
+        <!-- Three accordions: All-year events, Winter events, Summer events.
+          Only one accordion at a time can be open, and each shows the Events related to its corresponding period of the year. -->
+        <!-- Each card is a group link to the event details -->
         <div ref="dropdowns">
           <Dropdown :ref="'dropdownToggler' + i" :title="'ALL YEAR EVENTS'" :index="1">
             <div class="d-flex justify-content-center flex-wrap">

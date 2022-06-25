@@ -1,3 +1,4 @@
+<!-- Page corresponding to "About the town" -->
 <template>
   <div class="jumbotron">
     <div class="image-container">
@@ -8,11 +9,7 @@
 
     <div class="jumbotron">
       <div class="container mt-5">
-        <Breadcrumb
-          class="row justify-items-center mt-4"
-          :crumbs="crumbs"
-          @selected="selected"
-        />
+        <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
         <p class="lead">
           Towny is a city full of history, art, and culture. Founded as a Roman
           city, it developed its own peculiar style under the Islamic and Gothic
@@ -37,12 +34,8 @@
         <div class="howtoreach-container">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22385.345367822818!2d9.183978311645502!3d45.46641612838561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sit!4v1652736022694!5m2!1sen!2sit"
-            width="35%"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+            width="35%" style="border: 0" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
           <div class="howtoreach-text">
             <h4 class="subsection-title">BY PLANE</h4>
             <p class="lead">
@@ -143,12 +136,14 @@ export default {
   top: 0;
   left: 0;
 }
+
 .cover {
   position: relative;
   min-width: 100%;
   height: 300px;
   object-fit: cover;
 }
+
 .logo {
   position: absolute;
   height: 55%;
@@ -156,15 +151,18 @@ export default {
   top: 35%;
   transform: translate(-50%, -50%);
 }
+
 p {
   text-align: left;
 }
+
 .section-title {
   color: #26466f;
   font-weight: 800;
   font-size: 24px;
   margin-bottom: 10px;
 }
+
 .subsection-title {
   color: #26466f;
   font-weight: 700;
@@ -178,10 +176,12 @@ p {
   .howtoreach-container {
     display: flex;
   }
+
   .howtoreach-text {
     width: 60%;
     margin-left: 5%;
   }
+
   iframe {
     width: 35%;
   }
@@ -194,6 +194,7 @@ p {
     aspect-ratio: 1 / 1;
   }
 }
+
 /*Tablet*/
 @media screen and ((max-aspect-ratio: 3/2) and (min-width: 800px)) {
   iframe {
@@ -201,6 +202,7 @@ p {
     aspect-ratio: 3 / 2;
   }
 }
+
 /*Phone landscape*/
 @media screen and (max-height: 600px) {
   iframe {
@@ -213,6 +215,7 @@ p {
   margin-top: 20px;
   margin-bottom: 50px;
 }
+
 .lead {
   margin-bottom: 15px;
   text-align: justify;

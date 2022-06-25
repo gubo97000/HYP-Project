@@ -1,3 +1,4 @@
+<!-- Home (Splash) page -->
 <template>
   <div class="jumbotron">
     <div class="image-container">
@@ -10,30 +11,11 @@
     </div>
     <div class="container mt-5">
       <div class="d-flex justify-content-center flex-wrap card-container">
-        <CardComponent
-          :to="`/events`"
-          class="card-component"
-          :image="'restaurant-card.png'"
-          :caption="'EVENTS'"
-        />
-        <CardComponent
-          :to="`/pois`"
-          class="card-component"
-          :image="'poi-card.png'"
-          :caption="'POINTS OF INTEREST'"
-        />
-        <CardComponent
-          :to="`/itineraries`"
-          class="card-component"
-          :image="'itineraries.png'"
-          :caption="'ITINERARIES'"
-        />
-        <CardComponent
-          :to="`/services`"
-          class="card-component"
-          :image="'supermarket-card.png'"
-          :caption="'SERVICES'"
-        />
+        <CardComponent :to="`/events`" class="card-component" :image="'restaurant-card.png'" :caption="'EVENTS'" />
+        <CardComponent :to="`/pois`" class="card-component" :image="'poi-card.png'" :caption="'POINTS OF INTEREST'" />
+        <CardComponent :to="`/itineraries`" class="card-component" :image="'itineraries.png'"
+          :caption="'ITINERARIES'" />
+        <CardComponent :to="`/services`" class="card-component" :image="'supermarket-card.png'" :caption="'SERVICES'" />
       </div>
     </div>
   </div>
@@ -61,6 +43,7 @@ export default {
   top: 0;
   left: 0;
 }
+
 .image-container::after {
   background-image: linear-gradient(to bottom, transparent, #352d2d);
   content: '';
@@ -70,6 +53,7 @@ export default {
   position: absolute;
   width: 100%;
 }
+
 .cover {
   position: relative;
   min-width: 100%;
@@ -77,6 +61,7 @@ export default {
   height: 160vh;
   object-fit: cover;
 }
+
 .logo {
   position: absolute;
   height: 25%;
@@ -84,6 +69,7 @@ export default {
   top: 7.5%;
   transform: translate(-50%, 0%);
 }
+
 .cover-text {
   position: absolute;
   height: 55%;
@@ -102,6 +88,7 @@ export default {
   width: 80vw;
   max-width: 1000px;
 }
+
 p {
   text-align: left;
 }
@@ -115,16 +102,20 @@ p {
     width: 100%;
     z-index: 1;
   }
+
   .cover {
     height: 95vh;
   }
+
   .image-container {
     height: 95vh;
   }
-  .card-component >>> img {
+
+  .card-component>>>img {
     height: 150px;
     object-fit: cover;
   }
+
   .card-container {
     margin-top: -30px;
     margin-bottom: 30px;
@@ -132,32 +123,38 @@ p {
 }
 
 @media screen and (min-width: 600px) {
+
   /* Maximum aspect ratio */
   @media (max-aspect-ratio: 3/2) and (max-width: 900px) {
     .card-component {
       width: 50%;
     }
-    .card-component >>> img {
+
+    .card-component>>>img {
       height: 200px;
       object-fit: cover;
     }
+
     .card-container {
       margin-top: -90vmin;
     }
+
     .logo {
       height: 30vh;
       top: 5%;
     }
+
     .cover-text {
       top: 32.5%;
     }
   }
 
   @media (max-aspect-ratio: 3/2) and (min-width: 900px) {
-    .card-component >>> img {
+    .card-component>>>img {
       height: 75%;
     }
-    .card-component >>> figcaption {
+
+    .card-component>>>figcaption {
       height: 25%;
       display: flex;
       align-items: center;
@@ -166,7 +163,7 @@ p {
   }
 
   @media (min-aspect-ratio: 3/2) {
-    .card-component >>> img {
+    .card-component>>>img {
       height: 85%;
     }
   }
@@ -178,26 +175,31 @@ p {
       margin-right: 1.25%; */
       width: 25%;
     }
-    .card-component >>> .card {
+
+    .card-component>>>.card {
       width: 100%;
       height: 55vmin;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
     }
-    .card-component >>> img {
+
+    .card-component>>>img {
       display: flex;
       justify-content: center;
       align-items: center;
       object-fit: cover;
     }
+
     .card-component {
       height: 100%;
     }
+
     .card-container {
       margin-top: -70vmin;
     }
   }
+
   .container {
     display: flex;
     justify-content: center;
@@ -212,16 +214,18 @@ p {
     box-sizing: border-box;
   }
 
-  .card-component >>> .card > * {
+  .card-component>>>.card>* {
     flex: 1;
   }
-  .card-component >>> figure {
+
+  .card-component>>>figure {
     box-shadow: 0 0 20px black, 10px 15px 100px rgba(200, 200, 200, 0.2),
       -10px 15px 100px rgba(200, 200, 200, 0.2),
       -10px -5px 100px rgba(200, 200, 200, 0.2),
       10px -5px 100px rgba(200, 200, 200, 0.2);
   }
-  .card-component >>> figcaption {
+
+  .card-component>>>figcaption {
     padding-top: 2.5%;
     font-size: 2.8vmin;
   }

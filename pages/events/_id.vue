@@ -1,13 +1,11 @@
+<!-- Detail page of Events -->
 <template>
   <div class="container mt-5">
     <div class="container mt-5">
-      <Breadcrumb
-        class="row justify-items-center mt-4"
-        :crumbs="crumbs"
-        @selected="selected"
-      />
+      <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
 
       <h1 class="display-4 fw-bold lh-1">{{ event.title }}</h1>
+      <!-- Info concerns the time in which the event occurs -->
       <p class="lead">
         {{ event.info }}
       </p>
@@ -16,32 +14,23 @@
       <p class="lead">
         {{ event.description }}
       </p>
-
       <br />
-      <Carousel
-        :slides="[`events/${event.id}-1.webp`, `events/${event.id}-2.webp`]"
-      />
+
+      <!-- Representative images -->
+      <Carousel :slides="[`events/${event.id}-1.webp`, `events/${event.id}-2.webp`]" />
       <br /><br />
 
+      <!-- Transition link to the related point of interest  -->
       <h4 class="subsection-title">ABOUT THE PLACE</h4>
       <div class="about-the-place">
-        <CardComponent
-          v-if="event.poi"
-          :to="`/pois/${event.poi.id}`"
-          :image="`pois/${event.poi.id}-1.webp`"
-          :caption="event.poi.title.toUpperCase()"
-        />
+        <CardComponent v-if="event.poi" :to="`/pois/${event.poi.id}`" :image="`pois/${event.poi.id}-1.webp`"
+          :caption="event.poi.title.toUpperCase()" />
       </div>
-
       <br /><br />
-      <div
-        class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
-      >
-        <button
-          type="button"
-          class="btn btn-outline-secondary btn-lg px-4"
-          @click="backToList"
-        >
+
+      <!-- Group link to All events (Index pattern) -->
+      <div class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back">
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="backToList">
           ← ALL EVENTS
         </button>
       </div>
@@ -152,18 +141,21 @@ h2 {
   font-size: 26px;
   font-family: Arial;
 }
+
 .about-the-place {
   display: flex;
   justify-content: center;
   margin-top: 30px;
 }
+
 .subsection-title {
   color: #26466f;
   font-weight: 700;
   font-size: 22px;
   margin-top: 15px;
 }
-.about-the-place >>> .image-container {
+
+.about-the-place>>>.image-container {
   padding: 0;
   margin-bottom: 0;
 }
