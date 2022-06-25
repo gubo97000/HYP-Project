@@ -153,7 +153,7 @@ iframe {
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 800px) and (min-width: 600px) {
   .nuxt-clickable {
     width: 50%;
   }

@@ -25,37 +25,40 @@
     <br />
 
     <!-- Representative images -->
-    <Carousel :slides="[`pois/${pois.id}-1.webp`, `pois/${pois.id}-2.webp`]" />
+    <Carousel :slides="[`pois/${pois.id}-1.webp`, `pois/${pois.id}-2.webp`]" class="carousel" />
     <br />
 
-    <!-- Transition links to the related Itineraries -->
-    <div v-if="pois.eventsByPoiId">
-      <h2>This place is in the following itineraries</h2>
-      <ul style="display: list-item">
-        <li v-for="i in pois.poiItinerariesByPoiId.nodes" :key="i.id" style="display: list-item">
-          <div>
-            <p class="lead">Itinerary: {{ i.itinerary.title }}</p>
-            <p class="lead">duration: {{ i.itinerary.duration }}</p>
+    <div class="transition-links-container">
+      <!-- Transition links to the related Itineraries -->
+      <div v-if="pois.eventsByPoiId">
+        <div>
+          <h4 class="subsection-title">RELATED ITINERARIES</h4>
+          <div class="transition-links itinerary-list">
+            <ul style="display: list-item">
+              <li v-for="i in pois.poiItinerariesByPoiId.nodes" :key="i.id" style="display: list-item">
+                <div>
+                  <nuxt-link :to="'/itineraries/' + i.itinerary.id">
+                    <p class="lead itinerary-name">Itinerary: {{ i.itinerary.title }}</p>
+                  </nuxt-link>
+                  <p class="lead">Duration: {{ i.itinerary.duration }}</p>
+                </div>
+              </li>
+            </ul>
           </div>
-        </li>
-      </ul>
-    </div>
-    <br />
+        </div>
+      </div>
+      <br />
 
-    <!-- Transition links to the related Events -->
-    <div v-if="pois.eventsByPoiId">
-      <h2>Events happening here</h2>
-      <div class="flex flex-wrap space-x-4 space-y-4 justify-around">
-        <div v-for="event in pois.eventsByPoiId.nodes" :key="event"
-          class="card card-compact w-96 bg-base-100 shadow-xl basis-1/4">
-          <nuxt-link :to="`/events/${event.id}`" class="nuxt-clickable">
-            <div class="image-container">
-              <figure>
-                <img :src="require(`@/assets/events/${event.id}-1.webp`)" alt="" width="100%" />
-                <figcaption>{{ event.title }}</figcaption>
-              </figure>
+      <!-- Transition links to the related Events -->
+      <div v-if="pois.eventsByPoiId">
+        <div>
+          <h4 class="subsection-title">EVENTS HAPPENING HERE</h4>
+          <div class="flex flex-wrap space-x-4 space-y-4 justify-around transition-links">
+            <div class="d-flex justify-content-center flex-wrap event-cards">
+              <CardComponent v-for="event in pois.eventsByPoiId.nodes" :key="`${event.id}`" :to="`/events/${event.id}`"
+                :image="`events/${event.id}-1.webp`" class="card-component" :caption="event.title.toUpperCase()" />
             </div>
-          </nuxt-link>
+          </div>
         </div>
       </div>
     </div>
@@ -72,11 +75,14 @@
 <script>
 import { gql } from 'graphql-tag'
 import Breadcrumb from '~/components/Breadcrumb.vue'
+import CardComponent from '~/components/Card.vue'
+
 export default {
   name: 'DetailsPage',
 
   components: {
     Breadcrumb,
+    CardComponent,
   },
   async asyncData({ route, app }) {
     const { id } = route.params
@@ -234,10 +240,101 @@ li {
 
 li {
   margin-left: 10px;
+  margin-bottom: 5%;
   list-style-type: circle;
 }
 
 .lead {
   text-align: justify;
+}
+
+.itinerary-name {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.transition-links-container {
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 600px) {
+  li {
+    margin-left: 20px;
+  }
+
+  .subsection-title {
+    text-align: center;
+  }
+
+  .itinerary-list {
+    margin-top: 30px;
+  }
+
+  .event-cards {
+    width: 100%;
+  }
+
+  .carousel>>>img {
+    height: 300px;
+  }
+
+  .carousel {
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .transition-links-container {
+    margin-top: 30px;
+    display: flex;
+  }
+
+  .event-cards {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .event-cards>* {
+    width: 100%;
+    flex: 1;
+    flex-grow: 1;
+  }
+
+  .transition-links-container>*:nth-child(1) {
+    width: 45%;
+    border-right: 1px dashed #333;
+  }
+
+  .transition-links-container>*:nth-child(3) {
+    width: 45%;
+  }
+
+  .transition-links-container>* {
+    margin-left: 5%;
+  }
+
+  .transition-links {
+    height: 300px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.card-component>>>img {
+  height: 165px;
+  object-fit: cover;
+}
+
+.card-component>>>figure {
+  height: 230px;
+}
+
+.card-component>>>figcaption {
+  line-height: 30px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
