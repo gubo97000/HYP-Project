@@ -28,8 +28,7 @@
           <Dropdown :ref="'dropdownToggler' + i" :title="'ALL YEAR EVENTS'" :index="1">
             <div class="d-flex justify-content-center flex-wrap">
               <CardComponent v-for="item in events.nodes" :key="`${item.id}`" :to="`/events/${item.id}`"
-                :image="`events/${item.id}-1.webp`" :caption="item.title"
-                :class="{ 'long-title': item.title.length > 27 }" />
+                :image="`events/${item.id}-1.webp`" :caption="item.title" />
             </div>
           </Dropdown>
 
@@ -37,7 +36,7 @@
             <div class="d-flex justify-content-center flex-wrap">
               <CardComponent v-for="item in events.nodes" v-if="!isSummer(item.info) && isWinter(item.info)"
                 :key="`S${item.id}`" :to="`/events/${item.id}`" :image="`events/${item.id}-1.webp`"
-                :caption="item.title" :class="{ 'long-title': item.title.length > 27 }" />
+                :caption="item.title" />
             </div>
           </Dropdown>
 
@@ -45,7 +44,7 @@
             <div class="d-flex justify-content-center flex-wrap">
               <CardComponent v-for="item in events.nodes" v-if="isSummer(item.info) && !isWinter(item.info)"
                 :key="`W${item.id}`" :to="`/events/${item.id}`" :image="`events/${item.id}-1.webp`"
-                :caption="item.title" :class="{ 'long-title': item.title.length > 27 }" />
+                :caption="item.title" />
             </div>
           </Dropdown>
         </div>

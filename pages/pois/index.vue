@@ -1,11 +1,7 @@
 <template>
   <div class="page container mt-5">
     <h1 class="title">POINTS OF INTEREST</h1>
-    <Breadcrumb
-      class="row justify-items-center mt-4"
-      :crumbs="crumbs"
-      @selected="selected"
-    />
+    <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
     <br />
     <!-- description of point of interest -->
     <p class="lead">
@@ -29,23 +25,13 @@
 
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22385.345367822818!2d9.183978311645502!3d45.46641612838561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sit!4v1652736022694!5m2!1sen!2sit"
-      style="border: 0"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
+      style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
     <div class="column_wrapper"></div>
 
-    <div>
-      <div v-for="n in poises.edges" :key="n.node.id" class="column_wrapper">
-        <Card
-          :key="n.node.id"
-          :to="`/pois/${n.node.id}`"
-          :image="`pois/${n.node.id}-1.webp`"
-          :caption="n.node.title"
-        />
-      </div>
+    <div class="d-flex justify-content-center flex-wrap card-container">
+      <CardComponent v-for="n in poises.edges" :key="n.node.id" :to="`/pois/${n.node.id}`"
+        :image="`pois/${n.node.id}-1.webp`" :caption="n.node.title" />
     </div>
   </div>
 </template>
@@ -53,7 +39,7 @@
 <script>
 import gql from 'graphql-tag'
 import Breadcrumb from '~/components/Breadcrumb.vue'
-import Card from '~/components/Card.vue'
+import CardComponent from '~/components/Card.vue'
 export default {
   name: 'PointsOfInterest',
   apollo: {
@@ -78,7 +64,7 @@ export default {
   },
   components: {
     Breadcrumb,
-    Card,
+    CardComponent,
   },
   data() {
     return {
@@ -119,6 +105,7 @@ iframe {
   width: 100%;
   height: 400px;
 }
+
 .lead {
   text-align: justify;
 }
@@ -128,10 +115,51 @@ iframe {
     column-count: 4;
   }
 }
+
 .title {
   text-align: center;
   color: #26466f;
   font-weight: 750;
   font-size: 4rem;
+}
+
+.nuxt-clickable>>>img {
+  height: 185px;
+  object-fit: cover;
+}
+
+.nuxt-clickable>>>figure {
+  height: 250px;
+}
+
+.nuxt-clickable>>>figcaption {
+  line-height: 30px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 1550px) {
+  .nuxt-clickable {
+    width: 25%;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1550px) {
+  .nuxt-clickable {
+    width: 33%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .nuxt-clickable {
+    width: 50%;
+  }
+}
+
+.card-container {
+  margin-top: 30px;
+  margin-bottom: 60px;
 }
 </style>
