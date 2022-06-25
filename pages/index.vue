@@ -133,7 +133,7 @@ p {
 
 @media screen and (min-width: 600px) {
   /* Maximum aspect ratio */
-  @media (max-aspect-ratio: 3/2) and (max-width: 900px){
+  @media (max-aspect-ratio: 3/2) and (max-width: 900px) {
     .card-component {
       width: 50%;
     }
@@ -171,7 +171,7 @@ p {
     }
   }
 
-  @media (min-aspect-ratio: 3/2) or (min-width: 900px){
+  @media (min-aspect-ratio: 3/2) or (min-width: 900px) {
     .card-component {
       /* width: 22.5%;
       margin-left: 1.25%;

@@ -94,8 +94,9 @@ export default {
   async asyncData({ route, app }) {
     const { id } = route.params
     const client = app.apolloProvider.defaultClient
-    const pois = await client.query({
-      query: gql`
+    const pois = await client
+      .query({
+        query: gql`
         query MyQuery {
           pois(id: ${id}) {
             coordinates
@@ -121,7 +122,8 @@ export default {
           }
         }
       `,
-    }).then(({ data }) => data.pois)
+      })
+      .then(({ data }) => data.pois)
     return {
       pois,
       crumbs: [

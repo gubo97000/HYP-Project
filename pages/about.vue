@@ -194,7 +194,7 @@ p {
     aspect-ratio: 1 / 1;
   }
 }
-/*Tablet*/ 
+/*Tablet*/
 @media screen and ((max-aspect-ratio: 3/2) and (min-width: 800px)) {
   iframe {
     width: 100%;

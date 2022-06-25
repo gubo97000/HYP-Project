@@ -25,7 +25,7 @@
       <h4 class="subsection-title">ABOUT THE PLACE</h4>
       <div class="about-the-place">
         <CardComponent
-v-if="event.poi"
+          v-if="event.poi"
           :to="`/event/${event.poi.id}`"
           :caption="event.poi.title.toUpperCase()"
         />
@@ -47,10 +47,10 @@ v-if="event.poi"
   </div>
 </template>
 
-<script >
+<script>
 import { gql } from 'graphql-tag'
 import Breadcrumb from '~/components/Breadcrumb.vue'
-import {CardComponent} from '~/components/Card.vue'
+import { CardComponent } from '~/components/Card.vue'
 
 export default {
   name: 'DetailsPage',
@@ -62,8 +62,9 @@ export default {
   async asyncData({ route, app }) {
     const { id } = route.params
     const client = app.apolloProvider.defaultClient
-    const event  = await client.query({
-      query: gql`
+    const event = await client
+      .query({
+        query: gql`
         query MyQuery {
           event(id: ${id}) {
             id
@@ -77,8 +78,8 @@ export default {
           }
         }
       `,
-
-    }).then(({ data }) => data.event)
+      })
+      .then(({ data }) => data.event)
     return {
       event,
       crumbs: [

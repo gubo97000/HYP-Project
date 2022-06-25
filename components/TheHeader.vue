@@ -1,10 +1,11 @@
 <!-- Component for header, used by default layout, and always inserted at the top of a page. -->
 <template>
   <nav class="navbar navbar-expand-lg navbar-light px-3 header">
-
     <!-- Landmark that brings to Home page, represented by the website logo. -->
-    <a class="navbar-brand" href="/"><img :src="require('@/assets/logo.png')" alt="Towny" width="50"></a>
-    
+    <a class="navbar-brand" href="/"
+      ><img :src="require('@/assets/logo.png')" alt="Towny" width="50"
+    /></a>
+
     <!-- Button used only in mobile version, to open the landmarks as an accordion. -->
     <button
       class="navbar-toggler"
@@ -74,9 +75,9 @@ export default {
   top: 0%;
 }
 .nav-link {
-    color: white !important;
-    font-size: 22px;
-    font-weight: 600;
+  color: white !important;
+  font-size: 22px;
+  font-weight: 600;
 }
 </style>
 
