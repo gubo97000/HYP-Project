@@ -1,42 +1,60 @@
 <template>
   <div class="jumbotron">
     <div class="image-container">
-        <img :src="require('@/assets/cover.png')" alt="" class="cover"/>
-        <!-- <img :src="require('@/assets/logo.png')" alt="" class="logo"/> -->
-        <h1 class="title">CONTACT US</h1>
+      <img :src="require('@/assets/cover.png')" alt="" class="cover" />
+      <!-- <img :src="require('@/assets/logo.png')" alt="" class="logo"/> -->
+      <h1 class="title">CONTACT US</h1>
     </div>
-    
+
     <div class="jumbotron">
       <div class="container mt-5">
-        <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected"/>
+        <Breadcrumb
+          class="row justify-items-center mt-4"
+          :crumbs="crumbs"
+          @selected="selected"
+        />
         <p class="lead">
-          Do you need any further information or have specific requests? Write to one of our contacts below and we'll get back to you as soon as possible. 
+          Do you need any further information or have specific requests? Write
+          to one of our contacts below and we'll get back to you as soon as
+          possible.
         </p>
+        <p class="lead">Tourist Information for individuals and families</p>
         <p class="lead">
-          Tourist Information for individuals and families 
+          The operators of the two official Towny Info Points are happy to
+          assist you by giving you competent advice for your stay in the city:
+          infotourist@comune.towny.it
         </p>
-        <p class="lead">
-          The operators of the two official Towny Info Points are happy to assist you by giving you competent advice for your stay in the city: infotourist@comune.towny.it 
-        </p>
-      
+
         <hr class="my-4" />
-        <div class="container mt-5">  
+        <div class="container mt-5">
           <h3 class="section-title">CONTACT 1</h3>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit.</p>
-          <br>
+          <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et
+            tincidunt elit, in finibus elit.
+          </p>
+          <br />
           <h3 class="section-title">CONTACT 2</h3>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit.</p>
-          <br>
+          <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et
+            tincidunt elit, in finibus elit.
+          </p>
+          <br />
           <h3 class="section-title">CONTACT 3</h3>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit.</p>
-          <br>
+          <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et
+            tincidunt elit, in finibus elit.
+          </p>
+          <br />
           <h3 class="section-title">CONTACT 4</h3>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit.</p>
-          <br>
+          <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et
+            tincidunt elit, in finibus elit.
+          </p>
+          <br />
+        </div>
       </div>
+      <br />
     </div>
-    <br>
-  </div>
   </div>
 </template>
 
@@ -45,23 +63,25 @@ import Breadcrumb from '~/components/Breadcrumb.vue'
 export default {
   name: 'Contact',
   components: {
-    Breadcrumb
-  },
-  head(){
-    return {
-      title: "Contact us"
-    }
+    Breadcrumb,
   },
   data() {
     return {
-      crumbs: [{
-        name: 'Home',
-        path: '/',
-      },
-      {
-        name: 'Contact',
-        path: '/contact',
-      }]
+      crumbs: [
+        {
+          name: 'Home',
+          path: '/',
+        },
+        {
+          name: 'Contact',
+          path: '/contact',
+        },
+      ],
+    }
+  },
+  head() {
+    return {
+      title: 'Contact us',
     }
   },
 }
@@ -85,13 +105,13 @@ export default {
   height: 55%;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
 }
 p {
   text-align: left;
 }
 .section-title {
-  color: #26466F;
+  color: #26466f;
   font-weight: 800;
   font-size: 24px;
 }

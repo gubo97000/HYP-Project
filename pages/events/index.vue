@@ -92,7 +92,7 @@ export default {
   components: {
     Breadcrumb,
     Dropdown,
-    CardComponent
+    CardComponent,
   },
   data() {
     return {
@@ -189,7 +189,7 @@ h2 {
 }
 .title {
   text-align: center;
-  color: #26466F;
+  color: #26466f;
   font-weight: 750;
   font-size: 4rem;
 }

@@ -1,8 +1,7 @@
-
 export default {
-    methods: {
-        formatMyDate(val){
-            return "Date: " + val
-        }
-    }
+  methods: {
+    formatMyDate(val) {
+      return 'Date: ' + val
+    },
+  },
 }

@@ -1,26 +1,45 @@
 <template>
   <div class="page container mt-5">
     <h1 class="title">SERVICES</h1>
-    <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected"/>
+    <Breadcrumb
+      class="row justify-items-center mt-4"
+      :crumbs="crumbs"
+      @selected="selected"
+    />
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
-        Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et
+          tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus
+          erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse
+          potenti. Sed quis efficitur erat. Pellentesque non velit ipsum.
+          Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh
+          sit amet ante consectetur, non cursus elit feugiat. Integer vitae elit
+          at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus
+          consectetur mauris eget neque posuere, vitae sagittis massa congue.
+          Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat,
+          id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula
+          blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus
+          lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et
+          vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a
+          leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac
+          interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper
+          tempus eros.
         </p>
-        <br>
+        <br />
         <div class="d-flex justify-content-center flex-wrap">
-          <CardComponent 
-            v-for="item in serviceList" 
-            :to="`/services/${item.id}`" 
+          <CardComponent
+            v-for="item in serviceList"
+            :to="`/services/${item.id}`"
             class="card-component"
             :image="item.image"
-            :caption="item.name.toUpperCase()" />
+            :caption="item.name.toUpperCase()"
+          />
         </div>
-        <br>
+        <br />
       </div>
     </div>
-    <br><br>
+    <br /><br />
   </div>
 </template>
 
@@ -32,7 +51,7 @@ export default {
   name: 'Events',
   components: {
     Breadcrumb,
-    CardComponent
+    CardComponent,
   },
   async asyncData({ $axios }) {
     const { data } = await $axios.get('/api/services')
@@ -42,19 +61,21 @@ export default {
   },
   data() {
     return {
-      crumbs: [{
-        name: 'Home',
-        path: '/',
-      },
-      {
-        name: 'Services',
-        path: '/services',
-      }]
+      crumbs: [
+        {
+          name: 'Home',
+          path: '/',
+        },
+        {
+          name: 'Services',
+          path: '/services',
+        },
+      ],
     }
   },
-  head(){
+  head() {
     return {
-      title: "Services"
+      title: 'Services',
     }
   },
 }
@@ -75,7 +96,7 @@ export default {
 }
 .title {
   text-align: center;
-  color: #26466F;
+  color: #26466f;
   font-weight: 750;
   font-size: 4rem;
 }

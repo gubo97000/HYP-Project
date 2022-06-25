@@ -5,16 +5,16 @@
       :crumbs="crumbs"
       @selected="selected"
     />
-      <h1 class="display-4 fw-bold lh-1">PUNTO DI INTERESSE</h1>
-      <br />
-      <p class="lead">
-        Fu lui verso che speranza giudicio che fallo quale. Che giudicio da
-        ignoranza cosa piú che. Né e e di sé il forza ma. D'angoscia.
-      </p>
+    <h1 class="display-4 fw-bold lh-1">{{ pois.title }}</h1>
+    <br />
+    <p class="lead">
+      {{ pois.description }}
+      {{ pois }}
+    </p>
     <div class="howtoreach-container">
       <div class="howtoreach-text">
         <h4 class="subsection-title">VISIT INFO</h4>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.</p>
+        <p class="lead">{{ pois.info }}</p>
       </div>
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22385.345367822818!2d9.183978311645502!3d45.46641612838561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sit!4v1652736022694!5m2!1sen!2sit"
@@ -26,54 +26,46 @@
       ></iframe>
     </div>
     <br />
-    <Carousel :slides="['cover.png', 'cover.png']"/>
+    <Carousel :slides="['cover.png', 'cover.png']" />
     <br />
-    <h2>This place has the following itineraries</h2>
-
-    <!--Itinerary 1: name
-      duration: 45’
-      difficulty: easy
-
-      Itinerary 2: name
-      duration: 45’
-      difficulty: easy-->
-
-
-    <ul style="display: list-item">
-      <li v-for="i in 2" style="display: list-item">
-        <div>
-          <p class="lead">
-            Itinerary 1: name
-          </p>
-          <p class="lead">
-            duration: 45’
-          </p>
-          <p class="lead">
-            difficulty: easy
-          </p>
-        </div>
-      </li>
-    </ul>
+    <div v-if="pois.eventsByPoiId">
+      <h2>This place is in the following itineraries</h2>
+      <ul style="display: list-item">
+        <li
+          v-for="i in pois.poiItinerariesByPoiId.nodes"
+          :key="i.id"
+          style="display: list-item"
+        >
+          <div>
+            <p class="lead">Itinerary: {{ i.itinerary.title }}</p>
+            <p class="lead">duration: {{ i.itinerary.duration }}</p>
+            <!-- <p class="lead">difficulty: easy</p> -->
+          </div>
+        </li>
+      </ul>
+    </div>
     <br />
-    <h2>Events happening here</h2>
-    <div class="flex flex-wrap space-x-4 space-y-4 justify-around">
-      <div
-        v-for="n in 3"
-        :key="n"
-        class="card card-compact w-96 bg-base-100 shadow-xl basis-1/4"
-      >
-        <nuxt-link :to="`/pois/${n}`" class="nuxt-clickable">
-          <div class="image-container">
-            <figure>
-              <!-- <img
+    <div v-if="pois.eventsByPoiId">
+      <h2>Events happening here</h2>
+      <div class="flex flex-wrap space-x-4 space-y-4 justify-around">
+        <div
+          v-for="event in pois.eventsByPoiId.nodes"
+          :key="event"
+          class="card card-compact w-96 bg-base-100 shadow-xl basis-1/4"
+        >
+          <nuxt-link :to="`/event/${event.id}`" class="nuxt-clickable">
+            <div class="image-container">
+              <figure>
+                <!-- <img
                 :src="require('@/assets/' + item.image)"
                 alt=""
                 width="100%"
               /> -->
-              <figcaption>{{ n }}</figcaption>
-            </figure>
-          </div>
-        </nuxt-link>
+                <figcaption>{{ event.title }}</figcaption>
+              </figure>
+            </div>
+          </nuxt-link>
+        </div>
       </div>
     </div>
     <div
@@ -84,14 +76,14 @@
         class="btn btn-outline-secondary btn-lg px-4"
         @click="backToList"
       >
-        ←  ALL POINTS OF INTEREST
+        ← ALL POINTS OF INTEREST
       </button>
     </div>
   </div>
 </template>
 
 <script>
-import gql from 'graphql-tag'
+import { gql } from 'graphql-tag'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 export default {
   name: 'DetailsPage',
@@ -99,10 +91,39 @@ export default {
   components: {
     Breadcrumb,
   },
-  async asyncData({ route }) {
+  async asyncData({ route, app }) {
     const { id } = route.params
+    const client = app.apolloProvider.defaultClient
+    const pois = await client.query({
+      query: gql`
+        query MyQuery {
+          pois(id: ${id}) {
+            coordinates
+             description
+             id
+             info
+             title
+             poiItinerariesByPoiId {
+               nodes {
+                 itinerary {
+                   id
+                   title
+                   duration
+                 }
+               }
+             }
+             eventsByPoiId {
+               nodes {
+                 id
+                 title
+               }
+             }
+          }
+        }
+      `,
+    }).then(({ data }) => data.pois)
     return {
-      pois: {},
+      pois,
       crumbs: [
         {
           name: 'Home',
@@ -113,7 +134,7 @@ export default {
           path: '/pois',
         },
         {
-          // name: data.name,
+          name: pois.title,
           path: '/pois/' + id,
         },
       ],
@@ -126,31 +147,48 @@ export default {
   },
   head() {
     return {
-      title: this.name,
+      title: `Towny - ${this.pois.title}`,
     }
   },
-  apollo: {
-    pois: {
-      // prefetch: true,
-      query: gql`
-        query MyQuery($id: Int!) {
-          pois(id: $id) {
-            id
-            info
-            title
-            description
-            createdAt
-            coordinates
-          }
-        }
-      `,
-      variables() {
-        return {
-          id: parseInt(this.id),
-        }
-      },
-    },
-  },
+  // apollo: {
+  //   pois: {
+  //     // prefetch: true,
+  //     query: gql`
+  //       query MyQuery($id: Int!) {
+  //         pois(id: $id) {
+  //           coordinates
+  //           description
+  //           id
+  //           info
+  //           title
+  //           poiItinerariesByPoiId {
+  //             nodes {
+  //               itinerary {
+  //                 id
+  //                 title
+  //                 duration
+  //               }
+  //             }
+  //           }
+  //           eventsByPoiId {
+  //             nodes {
+  //               id
+  //               title
+  //             }
+  //           }
+  //         }
+  //       }
+  //     `,
+  //     variables() {
+  //       return {
+  //         id: parseInt(this.id),
+  //       }
+  //     },
+  //     result: (data) => {
+  //       console.log(data.pois)
+  //     },
+  //   },
+  // },
 
   methods: {
     backToList() {
@@ -188,7 +226,7 @@ export default {
 }
 
 .subsection-title {
-  color: #26466F;
+  color: #26466f;
   font-weight: 700;
   font-size: 22px;
   margin-top: 15px;
@@ -196,12 +234,13 @@ export default {
 ul {
   width: 100%;
 }
-ul, li {
-    display:inline
+ul,
+li {
+  display: inline;
 }
 li {
-    margin-left: 10px;
-    list-style-type: circle;
+  margin-left: 10px;
+  list-style-type: circle;
 }
 .lead {
   text-align: justify;

@@ -8,9 +8,24 @@
     />
     <br />
     <!-- description of point of interest -->
-    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti. Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante consectetur, non cursus elit feugiat.
-      Integer vitae elit at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper tempus eros.</p>
-    <br>
+    <p class="lead">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et tincidunt
+      elit, in finibus elit. Aliquam nec posuere sem, at faucibus erat.
+      Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse potenti.
+      Sed quis efficitur erat. Pellentesque non velit ipsum. Maecenas finibus
+      felis a magna auctor finibus. Mauris tincidunt nibh sit amet ante
+      consectetur, non cursus elit feugiat. Integer vitae elit at nunc lacinia
+      egestas. Etiam nec sagittis lorem. Phasellus consectetur mauris eget neque
+      posuere, vitae sagittis massa congue. Etiam vitae eleifend odio, sit amet
+      tempus ex. Ut semper feugiat erat, id consequat elit volutpat sed.
+      Curabitur vel arcu at risus vehicula blandit in ut nunc. In nec
+      pellentesque tellus. Maecenas vitae purus lacinia, tristique elit vitae,
+      interdum est. Ut feugiat nulla et vestibulum efficitur. Suspendisse
+      potenti. Duis ex dolor, vestibulum a leo eu, dapibus elementum ipsum.
+      Curabitur euismod rhoncus nulla ac interdum. Mauris vulputate viverra
+      scelerisque. Mauris ullamcorper tempus eros.
+    </p>
+    <br />
 
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22385.345367822818!2d9.183978311645502!3d45.46641612838561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sit!4v1652736022694!5m2!1sen!2sit"
@@ -20,27 +35,22 @@
       referrerpolicy="no-referrer-when-downgrade"
     ></iframe>
 
-    <div class="column_wrapper">
-    </div>
+    <div class="column_wrapper"></div>
 
-    <div >
-      <div
-         v-for="n in poises.edges"
-        :key="n.node.id"
-        class="column_wrapper"
-      >
+    <div>
+      <div v-for="n in poises.edges" :key="n.node.id" class="column_wrapper">
         <Card
-            :key="n.node.id"
-            :to="`/pois/${n.node.id}`"
-            :image="'cover.png'"
-            :caption="n.node.title"
+          :key="n.node.id"
+          :to="`/pois/${n.node.id}`"
+          :image="'cover.png'"
+          :caption="n.node.title"
         />
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import gql from 'graphql-tag'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import Card from '~/components/Card.vue'
@@ -68,8 +78,8 @@ export default {
   },
   components: {
     Breadcrumb,
-    Card
-},
+    Card,
+  },
   data() {
     return {
       poises: {},
@@ -120,7 +130,7 @@ iframe {
 }
 .title {
   text-align: center;
-  color: #26466F;
+  color: #26466f;
   font-weight: 750;
   font-size: 4rem;
 }

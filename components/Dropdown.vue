@@ -17,7 +17,7 @@ The way it opens/closes is similar to header and footer components in portrait m
         @click="toggleDropdown()"
       >
         <!-- The label of the dropdown: an arrow that rotates on toggle, plus a name (e.g. "Winter events") -->
-        <div class="panel-heading collapsed" id="headingOne" ref="panelHeading">
+        <div id="headingOne" ref="panelHeading" class="panel-heading collapsed">
             <i class="material-icons">
                 keyboard_arrow_right
             </i>
@@ -29,61 +29,48 @@ The way it opens/closes is similar to header and footer components in portrait m
 
     <!-- The items wrapped by the components, that are viewed only when the accordion is open. -->
     <!-- (See also "template" below) -->
-    <div class="collapse navbar-collapse" :id="'dropdownToggler' + index">
+    <div :id="'dropdownToggler' + index" class="collapse navbar-collapse">
         <slot></slot>
     </div>
   </div>
 </template>
 
-<style scoped>
-.dropdown-wrapper {
-    margin-bottom: 30px;
+<script>
+export default {
+  name: 'Dropdown',
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+    index: {
+      type: String,
+      default: '',
+    },
+  },
+  mounted() {
+    // Step 3/3: Close this dropdown if opened
+    this.$parent.$on('closeDropdown', () => {
+      if (this.$refs.panelHeading.classList.contains('active')) {
+        this.$refs.toggler.click()
+        this.$refs.panelHeading.classList.remove('active')
+      }
+    })
+  },
+  methods: {
+    toggleDropdown() {
+      if (this.$refs.panelHeading.classList.contains('active'))
+        this.$refs.panelHeading.classList.remove('active')
+      else {
+        // Step 1: emit to parent the opening of this dropdown
+        this.$parent.$emit('closeAllDropdowns', this.index)
+        this.$refs.panelHeading.classList.add('active')
+      }
+    },
+  },
+  template: `<div><slot/><div>`,
 }
-.navbar {
-    display: block;
-}
-.navbar-toggler {
-    /* border-color: white; */
-    display: flex;
-    width: 100%;
-    border-color: rgba(0,0,0,0);
-}
-.navbar-toggler:focus {
-  outline: none;
-  box-shadow: none;
-}
-.navbar span {
-    font-variant: small-caps;
-    font-family: Arial;
-    font-weight: bold;
-    font-size: 22px;
-    line-height: 2;
-    color: white;
-    align-items: flex-start;
-    padding-left: 15px;
-}
-.header {
-  background: #26466F;
-  border-radius: 10px;
-}
-
-.panel-heading {
-    justify-content: center;
-    display: flex;
-}
-.panel-heading i {
-    transition: all 0.5s;
-    color: white;
-    font-size: 36px;
-    align-self: center;
-}
-/* Rotate dropdown arrow when opened/closed (to point downwards or to the right accordingly) */
-.panel-heading.active i {
-	-webkit-transform: rotate(90deg);
-	-moz-transform: rotate(90deg);
-	transform: rotate(90deg);
-} 
-</style>
+</script>
 
 <script>
 export default {
@@ -132,4 +119,55 @@ export default {
         })
     }
 }
-</script>
+</style>
+
+
+<style scoped>
+.dropdown-wrapper {
+  margin-bottom: 30px;
+}
+.navbar {
+  display: block;
+}
+.navbar-toggler {
+  /* border-color: white; */
+  display: flex;
+  width: 100%;
+  border-color: rgba(0, 0, 0, 0);
+}
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+.navbar span {
+  font-variant: small-caps;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 2;
+  color: white;
+  align-items: flex-start;
+  padding-left: 15px;
+}
+.header {
+  background: #26466f;
+  border-radius: 10px;
+}
+
+.panel-heading {
+  justify-content: center;
+  display: flex;
+}
+.panel-heading i {
+  transition: all 0.5s;
+  color: white;
+  font-size: 36px;
+  align-self: center;
+}
+/* Rotate dropdown arrow when opened/closed (to point downwards or to the right accordingly) */
+.panel-heading.active i {
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	transform: rotate(90deg);
+} 
+</style>

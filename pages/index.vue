@@ -1,34 +1,40 @@
 <template>
   <div class="jumbotron">
     <div class="image-container">
-        <img :src="require('@/assets/newcover.png')" alt="" class="cover"/>
-        <img :src="require('@/assets/logo.png')" alt="" class="logo"/>
-        <p class="cover-text">EXPLORE ONE OF THE MOST BEAUTIFUL CITIES IN THE WORLD: <br>
-          YOUR TOUR STARTS FROM HERE!</p>
+      <img :src="require('@/assets/newcover.png')" alt="" class="cover" />
+      <img :src="require('@/assets/logo.png')" alt="" class="logo" />
+      <p class="cover-text">
+        EXPLORE ONE OF THE MOST BEAUTIFUL CITIES IN THE WORLD: <br />
+        YOUR TOUR STARTS FROM HERE!
+      </p>
     </div>
     <div class="container mt-5">
       <div class="d-flex justify-content-center flex-wrap card-container">
-          <CardComponent 
-            :to="`/events`" 
-            class="card-component"
-            :image="'restaurant-card.png'"
-            :caption="'EVENTS'" />
-          <CardComponent 
-            :to="`/pois`" 
-            class="card-component"
-            :image="'poi-card.png'"
-            :caption="'POINTS OF INTEREST'" />
-          <CardComponent 
-            :to="`/itineraries`" 
-            class="card-component"
-            :image="'itineraries.png'"
-            :caption="'ITINERARIES'" />
-          <CardComponent 
-            :to="`/services`" 
-            class="card-component"
-            :image="'supermarket-card.png'"
-            :caption="'SERVICES'" />
-        </div>
+        <CardComponent
+          :to="`/events`"
+          class="card-component"
+          :image="'restaurant-card.png'"
+          :caption="'EVENTS'"
+        />
+        <CardComponent
+          :to="`/pois`"
+          class="card-component"
+          :image="'poi-card.png'"
+          :caption="'POINTS OF INTEREST'"
+        />
+        <CardComponent
+          :to="`/itineraries`"
+          class="card-component"
+          :image="'itineraries.png'"
+          :caption="'ITINERARIES'"
+        />
+        <CardComponent
+          :to="`/services`"
+          class="card-component"
+          :image="'supermarket-card.png'"
+          :caption="'SERVICES'"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -39,11 +45,11 @@ import CardComponent from '~/components/Card.vue'
 export default {
   name: 'IndexPage',
   components: {
-    CardComponent
+    CardComponent,
   },
-  head(){
+  head() {
     return {
-      title: "Towny"
+      title: 'Towny',
     }
   },
 }
@@ -56,13 +62,13 @@ export default {
   left: 0;
 }
 .image-container::after {
-  background-image:  linear-gradient(to bottom, transparent, #352d2d);
-    content:'';
-    display:block;
-    height:60%;
-    bottom:0px;
-    position:absolute;
-    width:100%;
+  background-image: linear-gradient(to bottom, transparent, #352d2d);
+  content: '';
+  display: block;
+  height: 60%;
+  bottom: 0px;
+  position: absolute;
+  width: 100%;
 }
 .cover {
   position: relative;
@@ -76,7 +82,7 @@ export default {
   height: 25%;
   left: 50%;
   top: 7.5%;
-  transform: translate(-50%, 0%)
+  transform: translate(-50%, 0%);
 }
 .cover-text {
   position: absolute;
@@ -211,16 +217,13 @@ p {
   }
   .card-component >>> figure {
     box-shadow: 0 0 20px black, 10px 15px 100px rgba(200, 200, 200, 0.2),
-                                  -10px 15px 100px rgba(200, 200, 200, 0.2),
-                                  -10px -5px 100px rgba(200, 200, 200, 0.2),
-                                  10px -5px 100px rgba(200, 200, 200, 0.2)
+      -10px 15px 100px rgba(200, 200, 200, 0.2),
+      -10px -5px 100px rgba(200, 200, 200, 0.2),
+      10px -5px 100px rgba(200, 200, 200, 0.2);
   }
   .card-component >>> figcaption {
     padding-top: 2.5%;
     font-size: 2.8vmin;
   }
 }
-
-
 </style>
-

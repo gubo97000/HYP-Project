@@ -1,7 +1,7 @@
 <!-- Component for footer, used by default layout, and always inserted at the bottom of a page. -->
 <template>
   <nav class="navbar navbar-expand-lg navbar-light px-3 header">
-    <div class="collapse navbar-collapse" id="footerNavbarToggler">
+    <div id="footerNavbarToggler" class="collapse navbar-collapse">
 
       <!-- List of links (landmarks) accessible by the footer -->
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0 footer-links">
@@ -32,6 +32,26 @@
   </nav>
 </template>
 
+<script>
+export default {
+  name: 'TheFooter',
+  data() {
+    return {
+      footerList: [
+        {
+          name: 'ABOUT US',
+          path: '/about',
+        },
+        {
+          name: 'CONTACT US',
+          path: '/contact',
+        },
+      ],
+    }
+  },
+}
+</script>
+
 <style scoped>
 .header {
   position:relative;
@@ -55,22 +75,24 @@
 }
 </style>
 
-<script>
-export default {
-  name: 'TheFooter',
-  data() {
-    return {
-      footerList: [
-        {
-          name: 'ABOUT US',
-          path: '/about',
-        },
-        {
-          name: 'CONTACT US',
-          path: '/contact',
-        },
-      ],
-    }
-  },
+<style scoped>
+.header {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background: #26466f;
 }
-</script>
+.logo {
+  color: white;
+  font-size: 32px;
+}
+.nav-link {
+  color: white !important;
+  font-size: 20px;
+  font-weight: 500;
+}
+.footer-links {
+  margin-left: auto;
+  margin-right: 0;
+}
+</style>

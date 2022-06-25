@@ -1,13 +1,17 @@
 <template>
   <div class="jumbotron">
     <div class="image-container">
-      <img :src="require('@/assets/' + image)" alt="" class="cover"/>
+      <img :src="require('@/assets/' + image)" alt="" class="cover" />
       <h1 class="title">
         {{ name.toUpperCase() }}
       </h1>
     </div>
     <div class="container my-5">
-      <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected"/>
+      <Breadcrumb
+        class="row justify-items-center mt-4"
+        :crumbs="crumbs"
+        @selected="selected"
+      />
       <div
         class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg"
       >
@@ -16,26 +20,22 @@
           <p class="lead">
             {{ overview }}
           </p>
-          <br>
+          <br />
           <div class="image-container">
-            <img :src="require('@/assets/' + map)" alt="" class="cover"/>
+            <img :src="require('@/assets/' + map)" alt="" class="cover" />
           </div>
-          <br>
+          <br />
           <div v-for="item in singleServices">
             <div
               class="p-4 pe-lg-5 align-items-center rounded-3 border shadow-lg service-item"
             >
-              <img :src="require('@/assets/' + item.image)" alt=""/>
+              <img :src="require('@/assets/' + item.image)" alt="" />
               <div class="service-info">
                 <p class="item-title">
                   {{ item.name.toUpperCase() }}
                 </p>
-                <p>
-                  Address: {{ item.address }}
-                </p>
-                <p>
-                  Opening hours: {{ item.openhours }}
-                </p>
+                <p>Address: {{ item.address }}</p>
+                <p>Opening hours: {{ item.openhours }}</p>
               </div>
             </div>
           </div>
@@ -47,7 +47,7 @@
               class="btn btn-outline-secondary btn-lg px-4"
               @click="backToList"
             >
-              ←  ALL SERVICES
+              ← ALL SERVICES
             </button>
           </div>
         </div>
@@ -55,6 +55,58 @@
     </div>
   </div>
 </template>
+
+<script>
+import Breadcrumb from '~/components/Breadcrumb.vue'
+export default {
+  name: 'DetailsPage',
+  components: {
+    Breadcrumb,
+  },
+
+  async asyncData({ route, $axios }) {
+    const { id } = route.params
+    const { data } = await $axios.get('/api/services/' + id)
+    return {
+      name: data.name,
+      image: data.image,
+      overview: data.overview,
+      map: data.map,
+      singleServices: data.services,
+
+      crumbs: [
+        {
+          name: 'Home',
+          path: '/',
+        },
+        {
+          name: 'Services',
+          path: '/services',
+        },
+        {
+          name: data.name,
+          path: '/services/' + id,
+        },
+      ],
+    }
+  },
+  head() {
+    return {
+      title: this.name,
+    }
+  },
+  // mounted(){
+  //   const date = new Date()
+  //   // Example on hwo to use mixinx
+  //   console.log(this.formatMyDate(date.toLocaleDateString()))
+  // },
+  methods: {
+    backToList() {
+      this.$router.push('/services')
+    },
+  },
+}
+</script>
 
 <style scoped>
 @media screen and (min-width: 600px) {
@@ -98,13 +150,13 @@
   -webkit-text-stroke-color: black;
 }
 .item-title {
-  color: #26466F;
+  color: #26466f;
   font-weight: 500;
   font-size: 20px;
   margin-bottom: 10px;
 }
 .section-title {
-  color: #26466F;
+  color: #26466f;
   font-weight: 800;
   font-size: 24px;
 }
@@ -115,53 +167,3 @@
   text-align: justify;
 }
 </style>
-
-<script>
-import Breadcrumb from '~/components/Breadcrumb.vue'
-export default {
-  name: 'DetailsPage',
-  components: {
-    Breadcrumb
-  },
-
-  async asyncData({ route, $axios }) {
-    const { id } = route.params
-    const { data } = await $axios.get('/api/services/' + id)
-    return {
-      name: data.name,
-      image: data.image,
-      overview: data.overview,
-      map: data.map,
-      singleServices: data.services,
-
-      crumbs: [{
-        name: 'Home',
-        path: '/',
-      },
-      {
-        name: 'Services',
-        path: '/services',
-      },
-      {
-        name: data.name,
-        path: '/services/' + id,
-      }]
-    }
-  },
-  head(){
-    return {
-      title: this.name
-    }
-  },
-  // mounted(){
-  //   const date = new Date()
-  //   // Example on hwo to use mixinx
-  //   console.log(this.formatMyDate(date.toLocaleDateString()))
-  // },
-  methods: {
-    backToList() {
-      this.$router.push('/services')
-    },
-  },
-}
-</script>

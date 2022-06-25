@@ -18,7 +18,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarToggler">
+    <div id="navbarToggler" class="collapse navbar-collapse">
       <!-- List of links (landmarks) accessible by the header (other than Home) -->
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li
@@ -34,22 +34,6 @@
     </div>
   </nav>
 </template>
-
-<style scoped>
-/* Header is fixed to the top of the screen, regardless of the scroll position (unlike footer, which is found after scrolling to bottom) */
-.header {
-  background: #8bdeff;
-  position: fixed;
-  z-index: 2;
-  width: 100%;
-  top: 0%;
-}
-.nav-link {
-    color: white !important;
-    font-size: 22px;
-    font-weight: 600;
-}
-</style>
 
 <script>
 export default {
@@ -79,3 +63,34 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+/* Header is fixed to the top of the screen, regardless of the scroll position (unlike footer, which is found after scrolling to bottom) */
+.header {
+  background: #8bdeff;
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  top: 0%;
+}
+.nav-link {
+    color: white !important;
+    font-size: 22px;
+    font-weight: 600;
+}
+</style>
+
+<style scoped>
+.header {
+  background: #8bdeff;
+}
+.logo {
+  color: white;
+  font-size: 32px;
+}
+.nav-link {
+  color: white !important;
+  font-size: 22px;
+  font-weight: 600;
+}
+</style>

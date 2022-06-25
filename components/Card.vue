@@ -4,12 +4,55 @@ A card contains an image and a caption, and is animated when hovered on. -->
   <nuxt-link :to="`${to}`" class="nuxt-clickable">
     <div class="image-container card">
       <figure>
-        <img :src="require('@/assets/' + image)" alt="" width="100%"/>
+        <img :src="require('@/assets/' + image)" alt="" width="100%" />
         <figcaption>{{ caption }}</figcaption>
       </figure>
     </div>
   </nuxt-link>
 </template>
+
+<script>
+export default {
+  name: 'CardComponent',
+  props: {
+    to: {
+      type: String,
+      required: true,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
+    caption: {
+      type: String,
+      required: true,
+    },
+  },
+}
+</script>
+
+<script>
+export default {
+  name: 'CardComponent',
+  props: {
+    // Destination href on click.
+    to: {
+      type: String,
+      required: true,
+    },
+    // Card representative image.
+    image: {
+      type: String,
+      required: true,
+    },
+    // A caption that is representative of where the hyperlink brings to (e.g. "Events").
+    caption: {
+      type: String,
+      required: true,
+    },
+  },
+}
+</script>
 
 <style scoped>
 .image-container {
@@ -73,26 +116,3 @@ img {
   }
 }
 </style>
-
-<script>
-export default {
-  name: 'CardComponent',
-  props: {
-    // Destination href on click.
-    to: {
-      type: String,
-      required: true,
-    },
-    // Card representative image.
-    image: {
-      type: String,
-      required: true,
-    },
-    // A caption that is representative of where the hyperlink brings to (e.g. "Events").
-    caption: {
-      type: String,
-      required: true,
-    },
-  },
-}
-</script>

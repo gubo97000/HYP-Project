@@ -19,9 +19,35 @@
                     </div>
                 </li>
             </div>
-        </ol>
-    </nav>
+          </nuxt-link>
+        </li>
+        <li>
+          <div v-if="!isLast(ci)" disabled="isLast(ci)" class="separator">
+            {{ '&#187;' }}
+          </div>
+        </li>
+      </div>
+    </ol>
+  </nav>
 </template>
+
+<script>
+export default {
+  name: 'Breadcrumb',
+  props: {
+    crumbs: {
+        type: Array,
+        required: true
+    }
+  },
+  methods: {
+    // True if lowest item in the hierarchy of crumbs (i.e. the currently visited page)
+    isLast(index) {
+        return index === this.crumbs.length - 1;
+    },
+  }
+}
+</script>
 
 <style scoped>
 /* Desktop/Landscape mode */
@@ -51,20 +77,28 @@
  }
  </style>
 
-<script>
-export default {
-  name: 'Breadcrumb',
-  props: {
-    crumbs: {
-        type: Array,
-        required: true
-    }
-  },
-  methods: {
-    // True if lowest item in the hierarchy of crumbs (i.e. the currently visited page)
-    isLast(index) {
-        return index === this.crumbs.length - 1;
-    },
+<style scoped>
+@media screen and (min-width: 600px) {
+  .breadcrumb {
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.37rem;
+    width: auto;
   }
 }
-</script>
+@media screen and (max-width: 600px) {
+  .breadcrumb {
+    justify-content: center;
+  }
+}
+.separator {
+  font-size: 22px;
+  color: #6c757d;
+}
+.crumb-item {
+  display: flex;
+}
+.disabled-link {
+  pointer-events: none;
+}
+</style>
