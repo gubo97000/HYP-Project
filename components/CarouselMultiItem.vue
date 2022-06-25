@@ -82,7 +82,7 @@ export default {
       }
 
       // Dynamically toggles the Next arrow based on new position in the carousel after resizing
-      if (slideIndex * cardWidth >= maxWidth - 15) {
+      if (slideIndex * cardWidth >= maxWidth - 10) {
         this.$refs.next.classList.add('hide')
       } else {
         this.$refs.next.classList.remove('hide')
@@ -101,20 +101,20 @@ export default {
     },
 
     handleNext() {
-      slideIndex++
+      slideIndex = Math.min(slideIndex + visibleCount, this.$refs.track.children.length - 1)
       this.$refs.prev.classList.add('show')
 
       this.$refs.track.style.transform = `translateX(-${Math.min(
-        maxWidth - 15,
+        maxWidth,
         slideIndex * cardWidth
       )}px)`
 
-      if (slideIndex * cardWidth >= maxWidth - 15) {
+      if (slideIndex * cardWidth >= maxWidth - 10) {
         this.$refs.next.classList.add('hide')
       }
     },
     handlePrev() {
-      slideIndex--
+      slideIndex = Math.max(slideIndex - visibleCount, 0)
       this.$refs.next.classList.remove('hide')
       if (slideIndex === 0) {
         this.$refs.prev.classList.remove('show')
@@ -136,20 +136,27 @@ export default {
   position: relative;
 }
 .carousel-container {
-  width: 93%;
+  width: 93.5%;
 }
 .carousel-container .carousel-inner {
+  height: 400px;
+  align-items: center;
+  display: flex;
   overflow: hidden;
 }
 .carousel-container .track {
   display: inline-flex;
   transition: transform 0.5s;
+
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .carousel-container .card-container {
-  width: 320px;
+  width: 315px;
   flex-shrink: 0;
   height: 350px;
-  padding-right: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
   box-sizing: border-box;
 }
 .card-component >>> .card {
