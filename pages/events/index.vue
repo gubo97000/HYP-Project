@@ -1,11 +1,7 @@
 <template>
   <div class="page container mt-5">
     <h1 class="title">EVENTS</h1>
-    <Breadcrumb
-      class="row justify-items-center mt-4"
-      :crumbs="crumbs"
-      @selected="selected"
-    />
+    <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
@@ -29,45 +25,27 @@
         <br />
 
         <div ref="dropdowns">
-          <Dropdown
-            :ref="'dropdownToggler' + i"
-            :title="'ALL YEAR EVENTS'"
-            :index="1"
-          >
-            <div class="column_wrapper">
-              <CardComponent
-                v-for="item in events.nodes"
-                :key="`${item.id}`"
-                :to="`/events/${item.id}`"
-                :image="`events/${item.id}-1.webp`"
-                :caption="item.title"
-              />
+          <Dropdown :ref="'dropdownToggler' + i" :title="'ALL YEAR EVENTS'" :index="1">
+            <div class="d-flex justify-content-center flex-wrap">
+              <CardComponent v-for="item in events.nodes" :key="`${item.id}`" :to="`/events/${item.id}`"
+                :image="`events/${item.id}-1.webp`" :caption="item.title"
+                :class="{ 'long-title': item.title.length > 27 }" />
             </div>
           </Dropdown>
 
           <Dropdown :title="'WINTER EVENTS'" :index="2">
-            <div class="column_wrapper">
-              <CardComponent
-                v-for="item in events.nodes"
-                v-if="!isSummer(item.info) && isWinter(item.info)"
-                :key="`S${item.id}`"
-                :to="`/events/${item.id}`"
-                :image="`events/${item.id}-1.webp`"
-                :caption="item.title"
-              />
+            <div class="d-flex justify-content-center flex-wrap">
+              <CardComponent v-for="item in events.nodes" v-if="!isSummer(item.info) && isWinter(item.info)"
+                :key="`S${item.id}`" :to="`/events/${item.id}`" :image="`events/${item.id}-1.webp`"
+                :caption="item.title" :class="{ 'long-title': item.title.length > 27 }" />
             </div>
           </Dropdown>
 
           <Dropdown :title="'SUMMER EVENTS'" :index="3">
-            <div class="column_wrapper">
-              <CardComponent
-                v-for="item in events.nodes"
-                v-if="isSummer(item.info) && !isWinter(item.info)"
-                :key="`W${item.id}`"
-                :to="`/events/${item.id}`"
-                :image="`events/${item.id}-1.webp`"
-                :caption="item.title"
-              />
+            <div class="d-flex justify-content-center flex-wrap">
+              <CardComponent v-for="item in events.nodes" v-if="isSummer(item.info) && !isWinter(item.info)"
+                :key="`W${item.id}`" :to="`/events/${item.id}`" :image="`events/${item.id}-1.webp`"
+                :caption="item.title" :class="{ 'long-title': item.title.length > 27 }" />
             </div>
           </Dropdown>
         </div>
@@ -187,19 +165,36 @@ h2 {
 .lead {
   text-align: justify;
 }
+
 .title {
   text-align: center;
   color: #26466f;
   font-weight: 750;
   font-size: 4rem;
 }
+
 .row {
   margin-bottom: -30px;
 }
 
-@media screen and (min-width: 600px) {
-  .column_wrapper {
-    column-count: 3;
-  }
+.nuxt-clickable>>>img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.long-title>>>img {
+  height: 185px;
+}
+
+.nuxt-clickable>>>figure {
+  height: 250px;
+}
+
+.long-title>>>figcaption {
+  line-height: 30px;
+}
+
+.nuxt-clickable {
+  width: 25%;
 }
 </style>
