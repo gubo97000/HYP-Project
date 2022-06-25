@@ -17,7 +17,7 @@
       <br />
 
       <!-- Representative images -->
-      <Carousel :slides="[`events/${event.id}-1.webp`, `events/${event.id}-2.webp`]" />
+      <Carousel :slides="[`events/${event.id}-1.webp`, `events/${event.id}-2.webp`]" class="carousel" />
       <br /><br />
 
       <!-- Transition link to the related point of interest  -->
@@ -160,9 +160,34 @@ h2 {
   margin-bottom: 0;
 }
 
-/* @media screen and (max-width: 600px) {
-  .lead {
-    font-size: 18px;
+.nuxt-clickable {
+  height: 250px;
+  /* width: 60%; */
+}
+
+.nuxt-clickable>>>img {
+  height: 200px;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 600px) {
+  .nuxt-clickable>>>img {
+    height: 300px;
+    object-fit: cover;
   }
-} */
+
+  .nuxt-clickable {
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .carousel>>>img {
+    height: 300px;
+  }
+
+  .carousel {
+    height: 300px;
+  }
+}
 </style>
