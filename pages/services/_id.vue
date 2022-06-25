@@ -150,7 +150,7 @@ export default {
 .cover {
   position: relative;
   min-width: 100%;
-  min-height: 300px;
+  height: 300px;
   object-fit: cover;
 }
 
