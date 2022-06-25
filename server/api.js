@@ -332,6 +332,11 @@ const itineraries = [
         name: 'POI 3',
         image: 'event.png',
       },
+      {
+        id: '10',
+        name: 'POI 4',
+        image: 'about.png',
+      },
     ],
   },
 ]

@@ -1,35 +1,22 @@
+<!-- Component for carousel that displays multiple cards at a time.
+It includes previous/next buttons to skip to other N cards (where N is the count of visible cards at a time).
+It also includes logic to handle resizing of the window -->
 <template>
   <div ref="carouselContainer" class="carousel-container">
-    <div class="carousel-inner">
+    <div class="carousel-inner" ref="carouselInner">
       <div ref="track" class="track">
-        <div
-          v-for="(item, si) in slides"
-          :key="si"
-          ref="cardContainer"
-          class="card-container"
-        >
-          <CardComponent
-            :to="`/pois/${item.id}`"
-            :image="item.image"
-            :caption="item.name"
-            class="card-component"
-          />
-
-          <!-- <nuxt-link :to="`/pois/${item.id}`" class="nuxt-clickable">
-            <div class="image-container card">
-              <figure>
-                <img :src="require('@/assets/' + item.image)" alt="" class="img"/>
-                <figcaption class="info">{{ item.name }}</figcaption>
-              </figure>
-            </div>
-          </nuxt-link> -->
+        <!-- Every card is displayed here -->
+        <div v-for="(item, si) in slides" :key="si" ref="cardContainer" class="card-container">
+          <CardComponent :to="`/pois/${item.id}`" :image="item.image" :caption="item.name" class="card-component" />
         </div>
       </div>
     </div>
     <div class="nav">
+      <!-- Control to go to previous cards -->
       <button ref="prev" class="prev" @click="handlePrev()">
         <i class="material-icons"> keyboard_arrow_left </i>
       </button>
+      <!-- Control to go to next cards -->
       <button ref="next" class="next" @click="handleNext()">
         <i class="material-icons"> keyboard_arrow_right </i>
       </button>
@@ -53,6 +40,7 @@ export default {
   },
   props: {
     slides: {
+      // Every slide has an id (for navigation to POI's details), the POI title for the caption, and an image
       type: Array,
       required: true,
     },
@@ -65,23 +53,48 @@ export default {
     maxWidth =
       this.$refs.track.offsetWidth - this.$refs.carouselContainer.offsetWidth
 
+    // If cards don't overflow (i.e. there are no more than 4 cards when there is space for 4), remove the prev/next arrows
+    if (this.$refs.track.children.length <= visibleCount) {
+      this.$refs.next.classList.add('hide')
+      // Class 'no-overflow' centers the cards to the screen (makes sense if there are max 3 cards for a space of 4)
+      this.$refs.carouselInner.classList.add('no-overflow')
+    }
+
+    // Handles resizing of window to recompute some parameters (X axis, show/hide controls)
     window.addEventListener('resize', () => {
-      // Recomputes width and visible count after resize, needed for next part
+      // Recomputes width and visible count after resize, needed for following instructions
       visibleCount =
         this.$refs.carouselContainer.offsetWidth /
         this.$refs.cardContainer[0].offsetWidth
       maxWidth =
         this.$refs.track.offsetWidth - this.$refs.carouselContainer.offsetWidth
 
+      // If cards don't overflow with the new size, remove the prev/next arrows
+      if (this.$refs.track.children.length <= visibleCount) {
+        // Jump back to first card
+        slideIndex = 0;
+        this.$refs.track.style.transform = `translateX(0px)`
+
+        // Center remaining cards
+        this.$refs.carouselInner.classList.add('no-overflow')
+
+        // Remove prev/next controls
+        this.$refs.next.classList.add('hide')
+        this.$refs.prev.classList.remove('show')
+        return;
+      } else {
+        // Do not center cards anymore (needed for proper prev/next movements)
+        this.$refs.carouselInner.classList.remove('no-overflow')
+      }
+
       // When enlarging window: this branch prevents to go too far to the right (i.e. blank space on the right, after the last item), by fixing slideIndex
       if (slideIndex + 1 >= this.$refs.track.children.length - visibleCount) {
         slideIndex = Math.floor(this.$refs.track.children.length - visibleCount)
-        this.$refs.track.style.transform = `translateX(-${
-          slideIndex * cardWidth
-        }px)`
+        this.$refs.track.style.transform = `translateX(-${slideIndex * cardWidth
+          }px)`
       }
 
-      // Dynamically toggles the Next arrow based on new position in the carousel after resizing
+      // Dynamically toggles the Next arrow based on new position in the carousel after resizing (disappears if at the last card)
       if (slideIndex * cardWidth >= maxWidth - 10) {
         this.$refs.next.classList.add('hide')
       } else {
@@ -90,60 +103,66 @@ export default {
     })
   },
   methods: {
-    isActive(index) {
-      return index === slideIndex
-    },
-    isActiveRange(index, range) {
-      for (let i = 0; i < range; i++) {
-        if (index === slideIndex + i) return true
-      }
-      return false
-    },
-
     handleNext() {
+      // slideIndex increased by visibleCount, and capped at length-1
       slideIndex = Math.min(slideIndex + visibleCount, this.$refs.track.children.length - 1)
+
+      // Enable button Prev to skip back
       this.$refs.prev.classList.add('show')
 
+      // Move to the new visible card index
       this.$refs.track.style.transform = `translateX(-${Math.min(
         maxWidth,
         slideIndex * cardWidth
       )}px)`
 
+      // Disable button Next if last card
       if (slideIndex * cardWidth >= maxWidth - 10) {
         this.$refs.next.classList.add('hide')
       }
     },
     handlePrev() {
+      // slideIndex decreased by visibleCount, and capped at 0
       slideIndex = Math.max(slideIndex - visibleCount, 0)
+
+      // Re-enable button Next to skip forward
       this.$refs.next.classList.remove('hide')
+
+      // Disable button Prev if back to first card
       if (slideIndex === 0) {
         this.$refs.prev.classList.remove('show')
       }
-      this.$refs.track.style.transform = `translateX(-${
-        slideIndex * cardWidth
-      }px)`
+
+      // Move to the new visible card index
+      this.$refs.track.style.transform = `translateX(-${slideIndex * cardWidth
+        }px)`
     },
   },
 }
 </script>
 
 <style scoped>
+/* Import font used for previous/next arrows */
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 .carousel-container {
   width: 1280px;
   margin: 50px auto;
   min-height: 200px;
   position: relative;
 }
+
 .carousel-container {
   width: 93.5%;
 }
+
 .carousel-container .carousel-inner {
   height: 400px;
   align-items: center;
   display: flex;
   overflow: hidden;
 }
+
 .carousel-container .track {
   display: inline-flex;
   transition: transform 0.5s;
@@ -151,6 +170,7 @@ export default {
   padding-left: 10px;
   padding-right: 10px;
 }
+
 .carousel-container .card-container {
   width: 315px;
   flex-shrink: 0;
@@ -159,7 +179,8 @@ export default {
   padding-left: 10px;
   box-sizing: border-box;
 }
-.card-component >>> .card {
+
+.card-component>>>.card {
   width: 100%;
   height: 100%;
   border: 1px solid #ccc;
@@ -168,6 +189,7 @@ export default {
   display: flex;
   flex-direction: column;
 }
+
 .nav button {
   width: 60px;
   height: 60px;
@@ -179,24 +201,29 @@ export default {
   transform: translateY(-50%);
   cursor: pointer;
 }
+
 .nav .prev {
   left: -30px;
   display: none;
 }
+
 .nav .prev.show {
   display: block;
 }
+
 .nav .next {
   right: -30px;
 }
+
 .nav .next.hide {
   display: none;
 }
 
-.card-component >>> .card > * {
+.card-component>>>.card>* {
   flex: 1;
 }
-.card-component >>> img {
+
+.card-component>>>img {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -204,10 +231,16 @@ export default {
   height: 80%;
   object-fit: cover;
 }
-.card-component >>> figcaption {
+
+.card-component>>>figcaption {
   padding-top: 2.5%;
 }
+
 .card-component {
   height: 100%;
+}
+
+.no-overflow {
+  justify-content: center;
 }
 </style>
