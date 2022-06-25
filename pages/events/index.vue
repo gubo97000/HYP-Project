@@ -178,23 +178,37 @@ h2 {
 }
 
 .nuxt-clickable>>>img {
-  height: 200px;
-  object-fit: cover;
-}
-
-.long-title>>>img {
   height: 185px;
+  object-fit: cover;
 }
 
 .nuxt-clickable>>>figure {
   height: 250px;
 }
 
-.long-title>>>figcaption {
+.nuxt-clickable>>>figcaption {
   line-height: 30px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.nuxt-clickable {
-  width: 25%;
+@media screen and (min-width: 1550px) {
+  .nuxt-clickable {
+    width: 25%;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1550px) {
+  .nuxt-clickable {
+    width: 33%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .nuxt-clickable {
+    width: 50%;
+  }
 }
 </style>
