@@ -80,18 +80,3 @@ export default {
   font-weight: 600;
 }
 </style>
-
-<style scoped>
-.header {
-  background: #8bdeff;
-}
-.logo {
-  color: white;
-  font-size: 32px;
-}
-.nav-link {
-  color: white !important;
-  font-size: 22px;
-  font-weight: 600;
-}
-</style>

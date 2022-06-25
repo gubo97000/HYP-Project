@@ -15,26 +15,6 @@ A card contains an image and a caption, and is animated when hovered on. -->
 export default {
   name: 'CardComponent',
   props: {
-    to: {
-      type: String,
-      required: true,
-    },
-    image: {
-      type: String,
-      required: true,
-    },
-    caption: {
-      type: String,
-      required: true,
-    },
-  },
-}
-</script>
-
-<script>
-export default {
-  name: 'CardComponent',
-  props: {
     // Destination href on click.
     to: {
       type: String,

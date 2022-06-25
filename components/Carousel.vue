@@ -42,30 +42,6 @@
           <p>Some representative placeholder content for the first slide.</p>
         </div>
       </div>
-      <button
-        class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="prev"
-      >
-        <span
-          class="carousel-control-prev-icon inline-block bg-no-repeat"
-          aria-hidden="true"
-        ></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next"
-      >
-        <span
-          class="carousel-control-next-icon inline-block bg-no-repeat"
-          aria-hidden="true"
-        ></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
 
     <!-- Button "previous slide" -->
@@ -140,23 +116,11 @@ export default {
 .img-container {
   /* min-width: 100%; */
   overflow: hidden;
-  height: 450px;
+  height: 450px; 
 }
 .carousel-img {
   height: 100%;
   width: 100%;
-  object-fit: cover;
-}
-</style>
-
-<style scoped>
-.img-container {
-  /* min-width: 100%; */
-  overflow: hidden;
-  height: 450px;
-}
-.carousel-img {
-  height: 100%;
   object-fit: cover;
 }
 </style>

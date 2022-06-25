@@ -53,8 +53,8 @@ export default {
 
 <style scoped>
 .header {
-  position: relative;
-  bottom: 0;
+  position:relative;
+  bottom:0;
   width: 100%;
   background: #26466f;
 }
@@ -64,34 +64,12 @@ export default {
   font-weight: 500;
 }
 .footer-links {
-  margin-left: auto;
+  margin-left: auto; 
   margin-right: 0;
 }
 @media screen and (max-width: 600px) {
   #footerNavbarToggler {
     margin-bottom: 20px;
   }
-}
-</style>
-
-<style scoped>
-.header {
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  background: #26466f;
-}
-.logo {
-  color: white;
-  font-size: 32px;
-}
-.nav-link {
-  color: white !important;
-  font-size: 20px;
-  font-weight: 500;
-}
-.footer-links {
-  margin-left: auto;
-  margin-right: 0;
 }
 </style>

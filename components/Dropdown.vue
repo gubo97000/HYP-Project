@@ -72,56 +72,6 @@ export default {
 }
 </script>
 
-<script>
-export default {
-    name: "Dropdown",
-
-    //The template contains the elements wrapped, that are shown when the accordion is opened.
-    template: `<div><slot/><div>`,
-
-    props: {
-        // textual label (e.g. Winter events)
-        title: {
-            type: String,
-            required: true,
-        },
-        // index used for element's id, if there are more Dropdowns in a page
-        index: {
-            type: String,
-            default: '',
-        },
-    },
-
-    methods: {
-        // Open/close on click
-        toggleDropdown() {
-            if(this.$refs.panelHeading.classList.contains('active'))
-                // Close accordion
-                this.$refs.panelHeading.classList.remove('active');
-            else {
-                // Open accordion
-
-                // Step 1: emit to parent the opening of this dropdown (to close the other dropdowns)
-                this.$parent.$emit('closeAllDropdowns', this.index);
-                this.$refs.panelHeading.classList.add('active');
-                // Step 2 in parent page (e.g. Events/index)
-            }
-        },
-    },
-
-    mounted() {
-        // Step 3/3: Close this dropdown if opened (triggered when another dropdown has been opened)
-        this.$parent.$on('closeDropdown', () => {
-            if(this.$refs.panelHeading.classList.contains('active')) {
-                this.$refs.toggler.click();
-                this.$refs.panelHeading.classList.remove('active');
-            }
-        })
-    }
-}
-</style>
-
-
 <style scoped>
 .dropdown-wrapper {
   margin-bottom: 30px;

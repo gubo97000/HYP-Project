@@ -19,16 +19,8 @@
                     </div>
                 </li>
             </div>
-          </nuxt-link>
-        </li>
-        <li>
-          <div v-if="!isLast(ci)" disabled="isLast(ci)" class="separator">
-            {{ '&#187;' }}
-          </div>
-        </li>
-      </div>
-    </ol>
-  </nav>
+        </ol>
+    </nav>
 </template>
 
 <script>
