@@ -170,6 +170,7 @@ h2 {
   object-fit: cover;
 }
 
+/* Desktop/Landscape */
 @media screen and (min-width: 600px) {
   .nuxt-clickable>>>img {
     height: 300px;
@@ -181,6 +182,7 @@ h2 {
   }
 }
 
+/* Portrait */
 @media screen and (max-width: 600px) {
   .carousel>>>img {
     height: 300px;

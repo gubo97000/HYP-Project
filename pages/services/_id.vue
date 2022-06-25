@@ -121,6 +121,7 @@ export default {
 </script>
 
 <style scoped>
+/* Desktop/Landscape */
 @media screen and (min-width: 600px) {
   .service-item {
     display: inline-flex;
@@ -133,6 +134,7 @@ export default {
   }
 }
 
+/* Portrait */
 @media screen and (max-width: 600px) {
   .title {
     font-size: 3rem;

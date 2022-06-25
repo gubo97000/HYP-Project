@@ -130,6 +130,46 @@ export default {
 </script>
 
 <style scoped>
+/*Desktop*/
+@media screen and (min-width: 600px) and (min-height: 600px) and (min-aspect-ratio: 3/2) {
+  .howtoreach-container {
+    display: flex;
+  }
+
+  .howtoreach-text {
+    width: 60%;
+    margin-left: 5%;
+  }
+
+  iframe {
+    width: 35%;
+  }
+}
+
+/*Phone portrait*/
+@media screen and (max-width: 800px) {
+  iframe {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/*Tablet*/
+@media screen and ((max-aspect-ratio: 3/2) and (min-width: 800px)) {
+  iframe {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+  }
+}
+
+/*Phone landscape*/
+@media screen and (max-height: 600px) {
+  iframe {
+    width: 100%;
+    aspect-ratio: 2 / 1;
+  }
+}
+
 .image-container {
   text-align: center;
   position: relative;
@@ -171,45 +211,6 @@ p {
   margin-bottom: 10px;
 }
 
-/*Desktop*/
-@media screen and (min-width: 600px) and (min-height: 600px) and (min-aspect-ratio: 3/2) {
-  .howtoreach-container {
-    display: flex;
-  }
-
-  .howtoreach-text {
-    width: 60%;
-    margin-left: 5%;
-  }
-
-  iframe {
-    width: 35%;
-  }
-}
-
-/*Phone portrait*/
-@media screen and (max-width: 800px) {
-  iframe {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-  }
-}
-
-/*Tablet*/
-@media screen and ((max-aspect-ratio: 3/2) and (min-width: 800px)) {
-  iframe {
-    width: 100%;
-    aspect-ratio: 3 / 2;
-  }
-}
-
-/*Phone landscape*/
-@media screen and (max-height: 600px) {
-  iframe {
-    width: 100%;
-    aspect-ratio: 2 / 1;
-  }
-}
 
 .howtoreach-container {
   margin-top: 20px;

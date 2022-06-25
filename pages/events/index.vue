@@ -36,6 +36,7 @@
             </div>
           </Dropdown>
 
+          <!-- Events only in Winter (event period is not even partially outside of winter) -->
           <Dropdown :title="'WINTER EVENTS'" :index="2">
             <div class="d-flex justify-content-center flex-wrap">
               <CardComponent v-for="item in events.nodes" v-if="!isSummer(item.info) && isWinter(item.info)"
@@ -44,6 +45,7 @@
             </div>
           </Dropdown>
 
+          <!-- Events only in Summer (event period is not even partially outside of summer) -->
           <Dropdown :title="'SUMMER EVENTS'" :index="3">
             <div class="d-flex justify-content-center flex-wrap">
               <CardComponent v-for="item in events.nodes" v-if="isSummer(item.info) && !isWinter(item.info)"
@@ -197,18 +199,21 @@ h2 {
   justify-content: center;
 }
 
+/* 4 cards per row */
 @media screen and (min-width: 1550px) {
   .nuxt-clickable {
     width: 25%;
   }
 }
 
+/* 3 cards per row */
 @media screen and (min-width: 800px) and (max-width: 1550px) {
   .nuxt-clickable {
     width: 33%;
   }
 }
 
+/* 2 cards per row */
 @media screen and (max-width: 800px) and (min-width: 600px) {
   .nuxt-clickable {
     width: 50%;

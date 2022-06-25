@@ -194,6 +194,7 @@ export default {
 </script>
 
 <style scoped>
+/* Landscape/Desktop */
 @media screen and (min-width: 600px) {
   .howtoreach-container {
     display: flex;
@@ -212,13 +213,74 @@ export default {
     width: 25%;
     aspect-ratio: 1.5 / 1;
   }
+
+  .transition-links-container {
+    margin-top: 30px;
+    display: flex;
+  }
+
+  .event-cards {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .event-cards>* {
+    width: 100%;
+    flex: 1;
+    flex-grow: 1;
+  }
+
+  .transition-links-container>*:nth-child(1) {
+    width: 45%;
+    border-right: 1px dashed #333;
+  }
+
+  .transition-links-container>*:nth-child(3) {
+    width: 45%;
+  }
+
+  .transition-links-container>* {
+    margin-left: 5%;
+  }
+
+  .transition-links {
+    height: 300px;
+    display: flex;
+    align-items: center;
+  }
 }
 
+/* Portrait */
 @media screen and (max-width: 600px) {
   iframe {
     width: 100%;
     aspect-ratio: 1 / 1;
     margin-top: 20px;
+  }
+
+  li {
+    margin-left: 20px;
+  }
+
+  .subsection-title {
+    text-align: center;
+  }
+
+  .itinerary-list {
+    margin-top: 30px;
+  }
+
+  .event-cards {
+    width: 100%;
+  }
+
+  .carousel>>>img {
+    height: 300px;
+  }
+
+  .carousel {
+    height: 300px;
   }
 }
 
@@ -255,70 +317,6 @@ li {
 
 .transition-links-container {
   margin-bottom: 50px;
-}
-
-@media screen and (max-width: 600px) {
-  li {
-    margin-left: 20px;
-  }
-
-  .subsection-title {
-    text-align: center;
-  }
-
-  .itinerary-list {
-    margin-top: 30px;
-  }
-
-  .event-cards {
-    width: 100%;
-  }
-
-  .carousel>>>img {
-    height: 300px;
-  }
-
-  .carousel {
-    height: 300px;
-  }
-}
-
-@media screen and (min-width: 600px) {
-  .transition-links-container {
-    margin-top: 30px;
-    display: flex;
-  }
-
-  .event-cards {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .event-cards>* {
-    width: 100%;
-    flex: 1;
-    flex-grow: 1;
-  }
-
-  .transition-links-container>*:nth-child(1) {
-    width: 45%;
-    border-right: 1px dashed #333;
-  }
-
-  .transition-links-container>*:nth-child(3) {
-    width: 45%;
-  }
-
-  .transition-links-container>* {
-    margin-left: 5%;
-  }
-
-  .transition-links {
-    height: 300px;
-    display: flex;
-    align-items: center;
-  }
 }
 
 .card-component>>>img {

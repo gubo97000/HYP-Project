@@ -132,6 +132,7 @@ export default {
   left: 0;
 }
 
+/* Landscape/Desktop */
 @media screen and (min-width: 600px) {
   .service-item {
     display: inline-flex;
@@ -144,6 +145,7 @@ export default {
   }
 }
 
+/* Portrait */
 @media screen and (max-width: 600px) {
   .service-item {
     margin-bottom: 30px;
