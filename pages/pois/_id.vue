@@ -5,13 +5,14 @@
 
     <h1 class="display-4 fw-bold lh-1">{{ pois.title }}</h1>
     <br />
-    <p class="lead">
-      {{ pois.description }}
-      <!-- {{ pois }} -->
-    </p>
+
 
     <div class="howtoreach-container">
       <div class="howtoreach-text">
+        <p class="lead">
+          {{ pois.description }}
+          <!-- {{ pois }} -->
+        </p>
         <h4 class="subsection-title">VISIT INFO</h4>
         <p class="lead">{{ pois.info }}</p>
       </div>
