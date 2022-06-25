@@ -36,14 +36,14 @@
             <div
               class="p-4 pe-lg-5 align-items-center rounded-3 border shadow-lg service-item"
             >
-              <img
+              <!-- <img
                 :src="require('@/assets/' + item.map)"
                 alt=""
                 width="500"
-              />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
               <div class="itinerary-info">
                 <p class="item-title">
-                  {{ item.name.toUpperCase() }}
+                  {{ item.title.toUpperCase() }}
                 </p>
                 <p>Difficulty: {{ item.difficulty }}</p>
                 <p>Duration: {{ item.duration }}</p>
@@ -51,11 +51,11 @@
                 <p>Points of interest:</p>
                 <p class="item-title">
                   <nuxt-link
-                    v-for="poi in item.pois"
-                    :to="`/pois/${poi.id}`"
+                    v-for="poi in item.poiItineraries.nodes"
+                    :to="`/pois/${poi.poi.id}`"
                     class="nuxt-clickable"
                   >
-                    {{ poi.name.toUpperCase() }} &nbsp; &nbsp;
+                    {{ poi.poi.title.toUpperCase() }} &nbsp; &nbsp;
                   </nuxt-link>
                 </p>
               </div>
@@ -69,16 +69,41 @@
 </template>
 
 <script>
+import { gql } from 'graphql-tag'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 export default {
-  name: 'Events',
+  name: 'Itineraries',
   components: {
     Breadcrumb,
   },
-  async asyncData({ $axios }) {
-    const { data } = await $axios.get('/api/itineraries')
+  async asyncData({ app }) {
+     const client = app.apolloProvider.defaultClient
+    const itineraries = await client
+    .query({
+      query: gql`
+      query MyQuery {
+  itineraries {
+    nodes {
+      id
+      duration
+      description
+      title
+      poiItineraries {
+        nodes {
+          poi {
+            id
+            title
+          }
+        }
+      }
+    }
+  }
+}
+
+      `,
+    }).then(({ data }) => { console.log(data); return data.itineraries.nodes})
     return {
-      itineraryList: data,
+      itineraryList: itineraries,
     }
   },
   data() {
