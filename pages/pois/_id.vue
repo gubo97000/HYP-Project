@@ -9,7 +9,7 @@
     <br />
     <p class="lead">
       {{ pois.description }}
-      {{ pois }}
+      <!-- {{ pois }} -->
     </p>
     <div class="howtoreach-container">
       <div class="howtoreach-text">
@@ -26,7 +26,7 @@
       ></iframe>
     </div>
     <br />
-    <Carousel :slides="['cover.png', 'cover.png']" />
+    <Carousel :slides="[`pois/${pois.id}-1.webp`, `pois/${pois.id}-2.webp`]" />
     <br />
     <div v-if="pois.eventsByPoiId">
       <h2>This place is in the following itineraries</h2>
@@ -53,14 +53,14 @@
           :key="event"
           class="card card-compact w-96 bg-base-100 shadow-xl basis-1/4"
         >
-          <nuxt-link :to="`/event/${event.id}`" class="nuxt-clickable">
+          <nuxt-link :to="`/events/${event.id}`" class="nuxt-clickable">
             <div class="image-container">
               <figure>
-                <!-- <img
-                :src="require('@/assets/' + item.image)"
-                alt=""
-                width="100%"
-              /> -->
+                <img
+                  :src="require(`@/assets/events/${event.id}-1.webp`)"
+                  alt=""
+                  width="100%"
+                />
                 <figcaption>{{ event.title }}</figcaption>
               </figure>
             </div>

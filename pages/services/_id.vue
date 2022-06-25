@@ -1,9 +1,13 @@
 <template>
   <div class="jumbotron">
     <div class="image-container">
-      <img :src="require('@/assets/' + image)" alt="" class="cover" />
+      <img
+        :src="require(`@/assets/services/${serviceType.id}-c.webp`)"
+        alt=""
+        class="cover"
+      />
       <h1 class="title">
-        {{ name.toUpperCase() }}
+        {{ serviceType.name.toUpperCase() }}
       </h1>
     </div>
     <div class="container my-5">
@@ -18,18 +22,23 @@
         <div class="p-3 p-lg-5 pt-lg-3">
           <b class="section-title">OVERVIEW</b>
           <p class="lead">
-            {{ overview }}
+            {{ serviceType.descrition }}
           </p>
           <br />
           <div class="image-container">
-            <img :src="require('@/assets/' + map)" alt="" class="cover" />
+            <!-- <img :src="require('@/assets/' + map)" alt="" class="cover" /> -->
           </div>
           <br />
-          <div v-for="item in singleServices">
+          <div v-for="(item, i) in serviceType.services.nodes">
             <div
               class="p-4 pe-lg-5 align-items-center rounded-3 border shadow-lg service-item"
             >
-              <img :src="require('@/assets/' + item.image)" alt="" />
+              <img
+                :src="
+                  require(`@/assets/services/${serviceType.id}-${i + 1}.webp`)
+                "
+                alt=""
+              />
               <div class="service-info">
                 <p class="item-title">
                   {{ item.name.toUpperCase() }}
@@ -57,6 +66,7 @@
 </template>
 
 <script>
+import { gql } from 'graphql-tag'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 export default {
   name: 'DetailsPage',
@@ -64,16 +74,36 @@ export default {
     Breadcrumb,
   },
 
-  async asyncData({ route, $axios }) {
+  async asyncData({ route, app }) {
     const { id } = route.params
-    const { data } = await $axios.get('/api/services/' + id)
+    const client = app.apolloProvider.defaultClient
+    const serviceType = await client
+      .query({
+        query: gql`
+        query MyQuery {
+  servicetype(id: ${id}) {
+    services {
+      nodes {
+        id
+        name
+        openhours
+        address
+      }
+    }
+    name
+    image
+    id
+    description
+  }
+}
+      `,
+      })
+      .then(({ data }) => {
+        console.log(data.servicetype)
+        return data.servicetype
+      })
     return {
-      name: data.name,
-      image: data.image,
-      overview: data.overview,
-      map: data.map,
-      singleServices: data.services,
-
+      serviceType,
       crumbs: [
         {
           name: 'Home',
@@ -84,7 +114,7 @@ export default {
           path: '/services',
         },
         {
-          name: data.name,
+          name: serviceType.name,
           path: '/services/' + id,
         },
       ],
@@ -92,7 +122,7 @@ export default {
   },
   head() {
     return {
-      title: this.name,
+      title: this.serviceType.name,
     }
   },
   // mounted(){

@@ -42,7 +42,7 @@
         <Card
           :key="n.node.id"
           :to="`/pois/${n.node.id}`"
-          :image="'cover.png'"
+          :image="`pois/${n.node.id}-1.webp`"
           :caption="n.node.title"
         />
       </div>

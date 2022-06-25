@@ -10,7 +10,6 @@
       <h1 class="display-4 fw-bold lh-1">{{ event.title }}</h1>
       <p class="lead">
         {{ event.info }}
-        {{ event }}
       </p>
       <br />
       <h4 class="subsection-title">OVERVIEW</h4>
@@ -29,6 +28,7 @@
         <CardComponent
           v-if="event.poi"
           :to="`/pois/${event.poi.id}`"
+          :image="`pois/${event.poi.id}-1.webp`"
           :caption="event.poi.title.toUpperCase()"
         />
       </div>
@@ -52,7 +52,7 @@
 <script>
 import { gql } from 'graphql-tag'
 import Breadcrumb from '~/components/Breadcrumb.vue'
-import { CardComponent } from '~/components/Card.vue'
+import CardComponent from '~/components/Card.vue'
 
 export default {
   name: 'DetailsPage',

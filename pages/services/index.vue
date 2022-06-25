@@ -30,9 +30,10 @@
         <div class="d-flex justify-content-center flex-wrap">
           <CardComponent
             v-for="item in serviceList"
+            :key="`${item.id}`"
             :to="`/services/${item.id}`"
+            :image="`services/${item.id}-c.webp`"
             class="card-component"
-            :image="item.image"
             :caption="item.name.toUpperCase()"
           />
         </div>
@@ -44,6 +45,7 @@
 </template>
 
 <script>
+import { gql } from 'graphql-tag'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import CardComponent from '~/components/Card.vue'
 
@@ -53,10 +55,29 @@ export default {
     Breadcrumb,
     CardComponent,
   },
-  async asyncData({ $axios }) {
-    const { data } = await $axios.get('/api/services')
+  async asyncData({ app }) {
+    const client = app.apolloProvider.defaultClient
+    const serviceTypes = await client
+      .query({
+        query: gql`
+          query MyQuery {
+            servicetypes {
+              nodes {
+                id
+                image
+                name
+                description
+              }
+            }
+          }
+        `,
+      })
+      .then(({ data }) => {
+        console.log(data.servicetypes.nodes)
+        return data.servicetypes.nodes
+      })
     return {
-      serviceList: data,
+      serviceList: serviceTypes,
     }
   },
   data() {
