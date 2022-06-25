@@ -1,24 +1,14 @@
 <template>
   <div class="jumbotron">
     <div class="image-container">
-      <img
-        :src="require(`@/assets/services/${serviceType.id}-c.webp`)"
-        alt=""
-        class="cover"
-      />
+      <img :src="require(`@/assets/services/${serviceType.id}-c.webp`)" alt="" class="cover" />
       <h1 class="title">
         {{ serviceType.name.toUpperCase() }}
       </h1>
     </div>
     <div class="container my-5">
-      <Breadcrumb
-        class="row justify-items-center mt-4"
-        :crumbs="crumbs"
-        @selected="selected"
-      />
-      <div
-        class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg"
-      >
+      <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
+      <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg">
         <div class="p-3 p-lg-5 pt-lg-3">
           <b class="section-title">OVERVIEW</b>
           <p class="lead">
@@ -30,15 +20,10 @@
           </div>
           <br />
           <div v-for="(item, i) in serviceType.services.nodes">
-            <div
-              class="p-4 pe-lg-5 align-items-center rounded-3 border shadow-lg service-item"
-            >
-              <img
-                :src="
-                  require(`@/assets/services/${serviceType.id}-${i + 1}.webp`)
-                "
-                alt=""
-              />
+            <div class="p-4 pe-lg-5 align-items-center rounded-3 border shadow-lg service-item">
+              <img :src="
+                require(`@/assets/services/${serviceType.id}-${i + 1}.webp`)
+              " alt="" />
               <div class="service-info">
                 <p class="item-title">
                   {{ item.name.toUpperCase() }}
@@ -48,14 +33,8 @@
               </div>
             </div>
           </div>
-          <div
-            class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
-          >
-            <button
-              type="button"
-              class="btn btn-outline-secondary btn-lg px-4"
-              @click="backToList"
-            >
+          <div class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back">
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="backToList">
               ← ALL SERVICES
             </button>
           </div>
@@ -145,30 +124,36 @@ export default {
     width: 100%;
     margin-bottom: 1.5%;
   }
+
   .title {
     font-size: 4rem;
   }
 }
+
 @media screen and (max-width: 600px) {
   .title {
     font-size: 3rem;
   }
 }
+
 .image-container {
   text-align: center;
   position: relative;
   top: 0;
   left: 0;
 }
+
 .service-info {
   margin-left: 5%;
 }
+
 .cover {
   position: relative;
   min-width: 100%;
   min-height: 300px;
   object-fit: cover;
 }
+
 .title {
   position: absolute;
   top: 50%;
@@ -179,21 +164,32 @@ export default {
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
 }
+
 .item-title {
   color: #26466f;
   font-weight: 500;
   font-size: 20px;
   margin-bottom: 10px;
 }
+
 .section-title {
   color: #26466f;
   font-weight: 800;
   font-size: 24px;
 }
+
 .go-back {
   margin-top: 5%;
 }
+
 .lead {
   text-align: justify;
+}
+
+.service-item>>>img {
+  width: 300px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 </style>

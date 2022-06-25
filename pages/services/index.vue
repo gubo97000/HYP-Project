@@ -1,11 +1,7 @@
 <template>
   <div class="page container mt-5">
     <h1 class="title">SERVICES</h1>
-    <Breadcrumb
-      class="row justify-items-center mt-4"
-      :crumbs="crumbs"
-      @selected="selected"
-    />
+    <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
@@ -28,14 +24,8 @@
         </p>
         <br />
         <div class="d-flex justify-content-center flex-wrap">
-          <CardComponent
-            v-for="item in serviceList"
-            :key="`${item.id}`"
-            :to="`/services/${item.id}`"
-            :image="`services/${item.id}-c.webp`"
-            class="card-component"
-            :caption="item.name.toUpperCase()"
-          />
+          <CardComponent v-for="item in serviceList" :key="`${item.id}`" :to="`/services/${item.id}`"
+            :image="`services/${item.id}-c.webp`" class="card-component" :caption="item.name.toUpperCase()" />
         </div>
         <br />
       </div>
@@ -111,17 +101,25 @@ export default {
   .column_wrapper {
     column-count: 2;
   }
+
   .card-component {
     width: 50%;
   }
 }
+
 .title {
   text-align: center;
   color: #26466f;
   font-weight: 750;
   font-size: 4rem;
 }
+
 .row {
   margin-bottom: -30px;
+}
+
+.card-component>>>img {
+  height: 150px;
+  object-fit: cover;
 }
 </style>
