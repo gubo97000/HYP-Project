@@ -19,14 +19,16 @@
       </p>
 
       <br />
-      <!-- <Carousel :slides="[pictures[0].url, pictures[1].url]"/> -->
+      <Carousel
+        :slides="[`events/${event.id}-1.webp`, `events/${event.id}-2.webp`]"
+      />
       <br /><br />
 
       <h4 class="subsection-title">ABOUT THE PLACE</h4>
       <div class="about-the-place">
         <CardComponent
           v-if="event.poi"
-          :to="`/event/${event.poi.id}`"
+          :to="`/pois/${event.poi.id}`"
           :caption="event.poi.title.toUpperCase()"
         />
       </div>

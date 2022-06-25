@@ -77,31 +77,34 @@ export default {
     Breadcrumb,
   },
   async asyncData({ app }) {
-     const client = app.apolloProvider.defaultClient
+    const client = app.apolloProvider.defaultClient
     const itineraries = await client
-    .query({
-      query: gql`
-      query MyQuery {
-  itineraries {
-    nodes {
-      id
-      duration
-      description
-      title
-      poiItineraries {
-        nodes {
-          poi {
-            id
-            title
+      .query({
+        query: gql`
+          query MyQuery {
+            itineraries {
+              nodes {
+                id
+                duration
+                description
+                title
+                poiItineraries {
+                  nodes {
+                    poi {
+                      id
+                      title
+                    }
+                  }
+                }
+              }
+            }
           }
-        }
-      }
-    }
-  }
-}
-
-      `,
-    }).then(({ data }) => { console.log(data); return data.itineraries.nodes})
+        `,
+      })
+      .then(({ data }) => {
+        console.log(data)
+        return data.itineraries.nodes
+      })
     return {
       itineraryList: itineraries,
     }

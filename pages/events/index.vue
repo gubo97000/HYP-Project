@@ -39,7 +39,7 @@
                 v-for="item in events.nodes"
                 :key="`${item.id}`"
                 :to="`/events/${item.id}`"
-                :image="'cover.png'"
+                :image="`events/${item.id}-1.webp`"
                 :caption="item.title"
               />
             </div>
@@ -52,7 +52,7 @@
                 v-if="!isSummer(item.info) && isWinter(item.info)"
                 :key="`S${item.id}`"
                 :to="`/events/${item.id}`"
-                :image="'cover.png'"
+                :image="`events/${item.id}-1.webp`"
                 :caption="item.title"
               />
             </div>
@@ -65,7 +65,7 @@
                 v-if="isSummer(item.info) && !isWinter(item.info)"
                 :key="`W${item.id}`"
                 :to="`/events/${item.id}`"
-                :image="'cover.png'"
+                :image="`events/${item.id}-1.webp`"
                 :caption="item.title"
               />
             </div>
