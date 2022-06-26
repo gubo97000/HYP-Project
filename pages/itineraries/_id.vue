@@ -4,30 +4,54 @@
     <div class="container my-5">
       <div class="title-container">
         <h1 class="title">
-          {{ name.toUpperCase() }}
+          {{ itinerary.title.toUpperCase() }}
         </h1>
       </div>
-      <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
-      <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg">
+      <Breadcrumb
+        class="row justify-items-center mt-4"
+        :crumbs="crumbs"
+        @selected="selected"
+      />
+      <div
+        class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg"
+      >
         <div class="p-3 p-lg-5 pt-lg-3">
-          <b class="section-title">DURATION: {{ duration }}</b>
+          <b class="section-title">DURATION: {{ itinerary.duration }}</b>
           <p class="lead">
-            {{ description }}
+            {{ itinerary.description }}
           </p>
           <br />
 
           <div>
-            <img :src="require('@/assets/' + map)" alt="" class="cover" />
+            <!-- <img :src="require('@/assets/' + map)" alt="" class="cover" /> -->
           </div>
           <br />
 
           <!-- Transition links to the related points of interest  -->
-          <b class="section-title">Points of interest touched by this itinerary:</b>
-          <CarouselMultiItem :slides="pois" />
+          <b class="section-title"
+            >Points of interest touched by this itinerary:</b
+          >
+          <CarouselMultiItem
+            :slides="
+              itinerary.poiItineraries.nodes.map((e) => {
+                return {
+                  ...e.poi,
+                  image: `pois/${e.poi.id}-1.webp`,
+                  name: e.poi.title,
+                }
+              })
+            "
+          ></CarouselMultiItem>
 
           <!-- Group link to All itineraries (Index pattern) -->
-          <div class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back">
-            <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="backToList">
+          <div
+            class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
+          >
+            <button
+              type="button"
+              class="btn btn-outline-secondary btn-lg px-4"
+              @click="backToList"
+            >
               ← ALL ITINERARIES
             </button>
           </div>
@@ -38,6 +62,7 @@
 </template>
 
 <script>
+import { gql } from 'graphql-tag'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import CarouselMultiItem from '~/components/CarouselMultiItem.vue'
 export default {
@@ -47,16 +72,40 @@ export default {
     CarouselMultiItem,
   },
 
-  async asyncData({ route, $axios }) {
+  async asyncData({ route, app }) {
     const { id } = route.params
-    const { data } = await $axios.get('/api/itineraries/' + id)
-    return {
-      name: data.name,
-      duration: data.duration,
-      description: data.description,
-      map: data.map,
-      pois: data.pois,
+    const client = app.apolloProvider.defaultClient
+    const itinerary = await client
+      .query({
+        query: gql`
+        query MyQuery {
+  itinerary(id: ${id}) {
+    id
+    title
+        duration
+    description
+    poiItineraries {
+      nodes {
+        order
+        nodeId
+        poi {
+          id
+          title
+          coordinates
+        }
+      }
+    }
+  }
+}
 
+      `,
+      })
+      .then(({ data }) => {
+        console.log(data)
+        return data.itinerary
+      })
+    return {
+      itinerary,
       crumbs: [
         {
           name: 'Home',
@@ -67,7 +116,7 @@ export default {
           path: '/itineraries',
         },
         {
-          name: data.name,
+          name: itinerary.title,
           path: '/itineraries/' + id,
         },
       ],
