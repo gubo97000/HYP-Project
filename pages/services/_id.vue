@@ -132,12 +132,29 @@ export default {
   .title {
     font-size: 4rem;
   }
+
+  .service-item>>>img {
+    width: 300px;
+    max-width: 40%;
+  }
 }
 
 /* Portrait */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 599px) {
   .title {
     font-size: 3rem;
+  }
+
+  .service-item {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 3.5%;
+  }
+
+  .service-item>* {
+    width: 100%;
   }
 }
 
@@ -192,7 +209,6 @@ export default {
 }
 
 .service-item>>>img {
-  width: 300px;
   height: 150px;
   object-fit: cover;
   border-radius: 5px;

@@ -138,7 +138,8 @@ p {
     }
 
     .card-container {
-      margin-top: -90vmin;
+      margin-top: -75vh;
+      height: 0;
     }
 
     .logo {
@@ -173,7 +174,8 @@ p {
   }
 
   /* Desktop/Landscape or Tablet landscape */
-  @media (min-aspect-ratio: 3/2) or (min-width: 900px) {
+  @media screen and (min-aspect-ratio: 3/2),
+  screen and (min-width: 900px) {
     .card-component {
       /* width: 22.5%;
       margin-left: 1.25%;
