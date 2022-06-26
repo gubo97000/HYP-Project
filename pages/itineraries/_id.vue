@@ -152,6 +152,7 @@ export default {
   min-width: 100%;
 }
 
+/* Landscape/Desktop */
 @media screen and (min-width: 600px) {
   .title {
     position: absolute;
@@ -164,6 +165,7 @@ export default {
   }
 }
 
+/* Portrait */
 @media screen and (max-width: 600px) {
   .title {
     color: #26466f;

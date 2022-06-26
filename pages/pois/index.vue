@@ -102,6 +102,13 @@ export default {
 </script>
 
 <style scoped>
+/* Desktop/Landscape */
+@media screen and (min-width: 600px) {
+  .column_wrapper {
+    column-count: 4;
+  }
+}
+
 iframe {
   width: 100%;
   height: 400px;
@@ -109,12 +116,6 @@ iframe {
 
 .lead {
   text-align: justify;
-}
-
-@media screen and (min-width: 600px) {
-  .column_wrapper {
-    column-count: 4;
-  }
 }
 
 .title {
@@ -141,26 +142,29 @@ iframe {
   justify-content: center;
 }
 
+.card-container {
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+
+/* 4 cards per row */
 @media screen and (min-width: 1550px) {
   .nuxt-clickable {
     width: 25%;
   }
 }
 
+/* 3 cards per row */
 @media screen and (min-width: 800px) and (max-width: 1550px) {
   .nuxt-clickable {
     width: 33%;
   }
 }
 
-@media screen and (max-width: 800px) {
+/* 2 cards per row */
+@media screen and (max-width: 800px) and (min-width: 600px) {
   .nuxt-clickable {
     width: 50%;
   }
-}
-
-.card-container {
-  margin-top: 30px;
-  margin-bottom: 60px;
 }
 </style>

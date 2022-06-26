@@ -93,6 +93,7 @@ p {
   text-align: left;
 }
 
+/* Mobile portrait */
 @media screen and (max-width: 600px) {
   .cover-text {
     top: 60%;
@@ -122,9 +123,10 @@ p {
   }
 }
 
+/* Not mobile portrait */
 @media screen and (min-width: 600px) {
 
-  /* Maximum aspect ratio */
+  /* Tablet portrait */
   @media (max-aspect-ratio: 3/2) and (max-width: 900px) {
     .card-component {
       width: 50%;
@@ -149,6 +151,7 @@ p {
     }
   }
 
+  /* Tablet landscape */
   @media (max-aspect-ratio: 3/2) and (min-width: 900px) {
     .card-component>>>img {
       height: 75%;
@@ -162,12 +165,14 @@ p {
     }
   }
 
+  /* Not tablet */
   @media (min-aspect-ratio: 3/2) {
     .card-component>>>img {
       height: 85%;
     }
   }
 
+  /* Desktop/Landscape or Tablet landscape */
   @media (min-aspect-ratio: 3/2) or (min-width: 900px) {
     .card-component {
       /* width: 22.5%;

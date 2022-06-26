@@ -96,10 +96,7 @@ export default {
 </script>
 
 <style scoped>
-.lead {
-  text-align: justify;
-}
-
+/* Desktop/Landscape */
 @media screen and (min-width: 600px) {
   .column_wrapper {
     column-count: 2;
@@ -109,6 +106,11 @@ export default {
     width: 50%;
   }
 }
+
+.lead {
+  text-align: justify;
+}
+
 
 .title {
   text-align: center;
