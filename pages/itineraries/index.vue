@@ -2,7 +2,11 @@
 <template>
   <div class="page container mt-5">
     <h1 class="title">ITINERARIES</h1>
-    <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
+    <Breadcrumb
+      class="row justify-items-center mt-4"
+      :crumbs="crumbs"
+      @selected="selected"
+    />
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
@@ -27,8 +31,15 @@
 
         <!-- Group links to itineraries details -->
         <div class="column_wrapper">
-          <nuxt-link v-for="item in itineraryList" :to="`/itineraries/${item.id}`" class="nuxt-clickable">
-            <div class="p-4 pe-lg-5 align-items-center rounded-3 border shadow-lg service-item">
+          <nuxt-link
+            v-for="item in itineraryList"
+            :key="item.id"
+            :to="`/itineraries/${item.id}`"
+            class="nuxt-clickable"
+          >
+            <div
+              class="p-4 pe-lg-5 align-items-center rounded-3 border shadow-lg service-item"
+            >
               <!-- Small map with overview of the route -->
               <!-- <img
                 :src="require('@/assets/' + item.map)"
@@ -46,8 +57,12 @@
                 <br />
                 <p>Points of interest:</p>
                 <p class="item-title">
-                  <nuxt-link v-for="poi in item.poiItineraries.nodes" :to="`/pois/${poi.poi.id}`"
-                    class="nuxt-clickable">
+                  <nuxt-link
+                    v-for="poi in item.poiItineraries.nodes"
+                    :key="poi.poi.id"
+                    :to="`/pois/${poi.poi.id}`"
+                    class="nuxt-clickable"
+                  >
                     {{ poi.poi.title.toUpperCase() }} &nbsp; &nbsp;
                   </nuxt-link>
                 </p>
@@ -81,7 +96,7 @@ export default {
                 duration
                 description
                 title
-                poiItineraries {
+                poiItineraries(orderBy: ORDER_ASC) {
                   nodes {
                     poi {
                       id
@@ -151,7 +166,7 @@ export default {
     margin-bottom: 30px;
   }
 
-  .service-item>img {
+  .service-item > img {
     height: 150px;
     object-fit: cover;
   }
