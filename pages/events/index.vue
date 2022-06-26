@@ -169,6 +169,7 @@ h2 {
 
 .lead {
   text-align: justify;
+  margin-bottom: 22.5px;
 }
 
 .title {
@@ -217,6 +218,13 @@ h2 {
 @media screen and (max-width: 800px) and (min-width: 600px) {
   .nuxt-clickable {
     width: 50%;
+  }
+}
+
+/* Do not overflow caption (For titles 3 rows long) */
+@media screen and (max-width: 768px) and (min-width: 600px) {
+  .nuxt-clickable>>>figcaption {
+    line-height: 20px;
   }
 }
 </style>

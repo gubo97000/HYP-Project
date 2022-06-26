@@ -3,7 +3,7 @@
     <nav>
         <!-- Breadcrumb as a list of items (links) in hierarchical order  -->
         <ol class="breadcrumb">
-            <div v-for="(crumb, ci) in crumbs" :key="ci" class="crumb-item">
+            <ul v-for="(crumb, ci) in crumbs" :key="ci" class="crumb-item">
                 <!-- Crumb item (actual link) -->
                 <li>
                     <nuxt-link :class="{ 'disabled-link': isLast(ci) }" :to="crumb.path">
@@ -18,7 +18,7 @@
                         {{ "&#187;" }}
                     </div>
                 </li>
-            </div>
+            </ul>
         </ol>
     </nav>
 </template>

@@ -73,7 +73,8 @@ export default {
       if (this.$refs.track.children.length <= visibleCount) {
         // Jump back to first card
         slideIndex = 0;
-        this.$refs.track.style.transform = `translateX(0px)`
+        // this.$refs.track.style.transform = `translateX(0px)`
+        this.$refs.carouselInner.scrollLeft = 0
 
         // Center remaining cards
         this.$refs.carouselInner.classList.add('no-overflow')
@@ -90,8 +91,9 @@ export default {
       // When enlarging window: this branch prevents to go too far to the right (i.e. blank space on the right, after the last item), by fixing slideIndex
       if (slideIndex + 1 >= this.$refs.track.children.length - visibleCount) {
         slideIndex = Math.floor(this.$refs.track.children.length - visibleCount)
-        this.$refs.track.style.transform = `translateX(-${slideIndex * cardWidth
-          }px)`
+        // this.$refs.track.style.transform = `translateX(-${slideIndex * cardWidth
+        //   }px)`
+        this.$refs.carouselInner.scrollLeft = slideIndex * cardWidth
       }
 
       // Dynamically toggles the Next arrow based on new position in the carousel after resizing (disappears if at the last card)
@@ -101,30 +103,67 @@ export default {
         this.$refs.next.classList.remove('hide')
       }
     })
+
+    // Handles scroll with gesture as alternative to prev/next
+    this.$refs.carouselInner.addEventListener('scroll', () => {
+      const newSlideIndex = /*Math.floor(this.$refs.carouselInner.scrollLeft / cardWidth);*/ this.$refs.carouselInner.scrollLeft / cardWidth
+      console.log(newSlideIndex, slideIndex)
+
+      // Unchanged
+      if (newSlideIndex === slideIndex) return;
+
+      // Next
+      if (newSlideIndex > slideIndex) {
+        slideIndex = newSlideIndex;
+        this.controlNext();
+      }
+      // Prev
+      else {
+        slideIndex = newSlideIndex;
+        this.controlPrev();
+      }
+    })
   },
   methods: {
     handleNext() {
+      console.log(slideIndex)
       // slideIndex increased by visibleCount, and capped at length-1
       slideIndex = Math.min(slideIndex + visibleCount, this.$refs.track.children.length - 1)
-
-      // Enable button Prev to skip back
-      this.$refs.prev.classList.add('show')
+      console.log(slideIndex)
 
       // Move to the new visible card index
-      this.$refs.track.style.transform = `translateX(-${Math.min(
+      this.$refs.carouselInner.scrollLeft = Math.min(
         maxWidth,
         slideIndex * cardWidth
-      )}px)`
+      )
+
+      // Handle show/hide of prev/next
+      this.controlNext();
+
+    },
+    handlePrev() {
+      console.log(slideIndex)// slideIndex decreased by visibleCount, and capped at 0
+      slideIndex = Math.max(slideIndex - visibleCount, 0)
+      console.log(slideIndex)
+
+      // Move to the new visible card index
+      this.$refs.carouselInner.scrollLeft = slideIndex * cardWidth
+
+      // Handle show/hide of prev/next
+      this.controlPrev();
+    },
+
+    controlNext() {
+      // Enable button Prev to skip back
+      this.$refs.prev.classList.add('show')
 
       // Disable button Next if last card
       if (slideIndex * cardWidth >= maxWidth - 10) {
         this.$refs.next.classList.add('hide')
       }
     },
-    handlePrev() {
-      // slideIndex decreased by visibleCount, and capped at 0
-      slideIndex = Math.max(slideIndex - visibleCount, 0)
 
+    controlPrev() {
       // Re-enable button Next to skip forward
       this.$refs.next.classList.remove('hide')
 
@@ -133,10 +172,7 @@ export default {
         this.$refs.prev.classList.remove('show')
       }
 
-      // Move to the new visible card index
-      this.$refs.track.style.transform = `translateX(-${slideIndex * cardWidth
-        }px)`
-    },
+    }
   },
 }
 </script>
@@ -160,15 +196,33 @@ export default {
   height: 400px;
   align-items: center;
   display: flex;
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+
+.carousel-inner {
+  overflow-x: scroll;
+  scroll-snap-type: x;
+  scrollbar-width: none;
+}
+
+/* .card-container {
+  scroll-snap-align: start;
+} */
+
+.carousel-inner::-webkit-scrollbar {
+  display: none;
 }
 
 .carousel-container .track {
   display: inline-flex;
-  transition: transform 0.5s;
+  /* transition: transform 0.5s; */
 
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.carousel-inner {
+  scroll-behavior: smooth;
 }
 
 .carousel-container .card-container {
