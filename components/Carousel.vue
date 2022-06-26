@@ -83,7 +83,7 @@ export default {
 .img-container {
   /* min-width: 100%; */
   overflow: hidden;
-  height: 450px;
+  height: 650px;
 }
 
 .carousel-img {
