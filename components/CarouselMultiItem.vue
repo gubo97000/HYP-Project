@@ -155,7 +155,8 @@ export default {
 
     controlNext() {
       // Enable button Prev to skip back
-      this.$refs.prev.classList.add('show')
+      if (slideIndex > 0.1)
+        this.$refs.prev.classList.add('show')
 
       // Disable button Next if last card
       if (slideIndex * cardWidth >= maxWidth - 10) {
@@ -165,7 +166,8 @@ export default {
 
     controlPrev() {
       // Re-enable button Next to skip forward
-      this.$refs.next.classList.remove('hide')
+      if (slideIndex * cardWidth < maxWidth - 10)
+        this.$refs.next.classList.remove('hide')
 
       // Disable button Prev if back to first card
       if (slideIndex === 0) {
@@ -287,7 +289,11 @@ export default {
 }
 
 .card-component>>>figcaption {
-  padding-top: 2.5%;
+  height: 20%;
+  justify-content: center;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
 }
 
 .card-component {
