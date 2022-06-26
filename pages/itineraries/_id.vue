@@ -7,14 +7,8 @@
           {{ itinerary.title.toUpperCase() }}
         </h1>
       </div>
-      <Breadcrumb
-        class="row justify-items-center mt-4"
-        :crumbs="crumbs"
-        @selected="selected"
-      />
-      <div
-        class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg"
-      >
+      <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
+      <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg">
         <div class="p-3 p-lg-5 pt-lg-3">
           <b class="section-title">DURATION: {{ itinerary.duration }}</b>
           <p class="lead">
@@ -28,30 +22,26 @@
           <br />
 
           <!-- Transition links to the related points of interest  -->
-          <b class="section-title"
-            >Points of interest touched by this itinerary:</b
-          >
-          <CarouselMultiItem
-            :slides="
-              itinerary.poiItineraries.nodes.map((e) => {
-                return {
-                  ...e.poi,
-                  image: `pois/${e.poi.id}-1.webp`,
-                  name: e.poi.title,
-                }
-              })
-            "
-          ></CarouselMultiItem>
+          <b class="section-title">Points of interest touched by this itinerary:</b>
+
+          <CarouselMultiItem v-if="this.windowWidth >= 768" :slides="
+            itinerary.poiItineraries.nodes.map((e) => {
+              return {
+                ...e.poi,
+                image: `pois/${e.poi.id}-1.webp`,
+                name: e.poi.title,
+              }
+            })
+          "></CarouselMultiItem>
+
+          <div v-else class="d-flex justify-content-center flex-wrap card-container">
+            <CardComponent v-for="n in itinerary.poiItineraries.nodes" :key="n.poi.id" :to="`/pois/${n.poi.id}`"
+              :image="`pois/${n.poi.id}-1.webp`" :caption="n.poi.title" />
+          </div>
 
           <!-- Group link to All itineraries (Index pattern) -->
-          <div
-            class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
-          >
-            <button
-              type="button"
-              class="btn btn-outline-secondary btn-lg px-4"
-              @click="backToList"
-            >
+          <div class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back">
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="backToList">
               ← ALL ITINERARIES
             </button>
           </div>
@@ -65,10 +55,13 @@
 import { gql } from 'graphql-tag'
 import Breadcrumb from '~/components/Breadcrumb.vue'
 import CarouselMultiItem from '~/components/CarouselMultiItem.vue'
+import CardComponent from '~/components/Card.vue'
+
 export default {
   name: 'DetailsPage',
   components: {
     Breadcrumb,
+    CardComponent,
     CarouselMultiItem,
   },
 
@@ -127,6 +120,18 @@ export default {
       title: this.name,
     }
   },
+  data() {
+    return {
+      windowWidth: this.windowWidth
+    }
+  },
+  mounted() {
+    this.windowWidth = window.innerWidth
+
+    window.addEventListener('resize', () => {
+      this.windowWidth = window.innerWidth
+    })
+  },
   methods: {
     backToList() {
       this.$router.push('/itineraries')
@@ -155,10 +160,10 @@ export default {
 /* Landscape/Desktop */
 @media screen and (min-width: 600px) {
   .title {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
     color: #26466f;
     font-weight: 750;
     font-size: 4rem;
@@ -182,5 +187,30 @@ export default {
 
 .go-back {
   margin-top: 5%;
+}
+
+
+.nuxt-clickable>>>img {
+  height: 185px;
+  object-fit: cover;
+}
+
+.nuxt-clickable>>>figure {
+  height: 250px;
+}
+
+.nuxt-clickable>>>figcaption {
+  line-height: 30px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2 cards per row */
+@media screen and (max-width: 768px) and (min-width: 600px) {
+  .nuxt-clickable {
+    width: 50%;
+  }
 }
 </style>
