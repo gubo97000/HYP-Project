@@ -1,10 +1,14 @@
 <!-- Detail page of Points of Interest -->
 <template>
   <div class="container my-5">
-    <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
 
-    <h1 class="display-4 fw-bold lh-1">{{ pois.title }}</h1>
-    <br />
+    <div class="title-container">
+      <h1 class="title">
+        {{ pois.title.toUpperCase() }}
+      </h1>
+    </div>
+
+    <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
 
     <div class="howtoreach-container">
       <div class="howtoreach-text">
@@ -195,8 +199,22 @@ export default {
 </script>
 
 <style scoped>
+.title-container {
+  text-align: center;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+
 /* Landscape/Desktop */
 @media screen and (min-width: 600px) {
+  .title {
+    color: #26466f;
+    font-weight: 750;
+    font-size: 4rem;
+  }
+
   .howtoreach-container {
     display: flex;
     margin-top: 20px;
@@ -254,6 +272,12 @@ export default {
 
 /* Portrait */
 @media screen and (max-width: 600px) {
+  .title {
+    color: #26466f;
+    font-weight: 750;
+    font-size: 3.6rem;
+  }
+
   iframe {
     width: 100%;
     aspect-ratio: 1 / 1;
