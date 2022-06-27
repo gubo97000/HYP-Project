@@ -84,7 +84,7 @@ export default {
   },
   head() {
     return {
-      title: 'Points of Interest',
+      title: 'All Points of Interest - Towny',
     }
   },
   // async asyncData({ $axios }) {

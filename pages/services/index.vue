@@ -89,7 +89,7 @@ export default {
   },
   head() {
     return {
-      title: 'Services',
+      title: 'All Services - Towny',
     }
   },
 }

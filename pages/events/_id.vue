@@ -96,7 +96,7 @@ export default {
   // },
   head() {
     return {
-      title: `Towny - ${this.event.title}`,
+      title: `${this.event.title} - Events - Towny`,
     }
   },
   // apollo: {

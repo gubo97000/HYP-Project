@@ -94,7 +94,7 @@ export default {
   },
   head() {
     return {
-      title: 'Events',
+      title: 'All Events - Towny',
     }
   },
   apollo: {

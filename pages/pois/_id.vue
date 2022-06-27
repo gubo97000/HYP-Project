@@ -1,11 +1,7 @@
 <!-- Detail page of Points of Interest -->
 <template>
   <div class="container my-5">
-    <Breadcrumb
-      class="row justify-items-center mt-4"
-      :crumbs="crumbs"
-      @selected="selected"
-    />
+    <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
 
     <h1 class="display-4 fw-bold lh-1">{{ pois.title }}</h1>
     <br />
@@ -21,22 +17,13 @@
       </div>
 
       <!-- Location of point of interest -->
-      <iframe
-        src="https://maps.google.com/?cid=13450412327761477255"
-        width="35%"
-        style="border: 0"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
+      <iframe src="https://maps.google.com/?cid=13450412327761477255" width="35%" style="border: 0" allowfullscreen=""
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <br />
 
     <!-- Representative images -->
-    <Carousel
-      :slides="[`pois/${pois.id}-1.webp`, `pois/${pois.id}-2.webp`]"
-      class="carousel"
-    />
+    <Carousel :slides="[`pois/${pois.id}-1.webp`, `pois/${pois.id}-2.webp`]" class="carousel" />
     <br />
 
     <div class="transition-links-container">
@@ -46,11 +33,7 @@
           <h4 class="subsection-title">RELATED ITINERARIES</h4>
           <div class="transition-links itinerary-list">
             <ul style="display: list-item">
-              <li
-                v-for="i in pois.poiItinerariesByPoiId.nodes"
-                :key="i.id"
-                style="display: list-item"
-              >
+              <li v-for="i in pois.poiItinerariesByPoiId.nodes" :key="i.id" style="display: list-item">
                 <div>
                   <nuxt-link :to="'/itineraries/' + i.itinerary.id">
                     <p class="lead itinerary-name">
@@ -70,18 +53,11 @@
       <div v-if="pois.eventsByPoiId">
         <div>
           <h4 class="subsection-title">EVENTS HAPPENING HERE</h4>
-          <div
-            class="flex flex-wrap space-x-4 space-y-4 justify-around transition-links"
-          >
+          <div class="flex flex-wrap space-x-4 space-y-4 justify-around transition-links">
             <div class="d-flex justify-content-center flex-wrap event-cards">
-              <CardComponent
-                v-for="event in pois.eventsByPoiId.nodes"
-                :key="`${event.id}`"
-                :to="`/events/${event.id}`"
-                :image="`events/${event.id}-1.webp`"
-                class="card-component"
-                :caption="event.title.toUpperCase()"
-              />
+              <CardComponent v-for="event in pois.eventsByPoiId.nodes" :key="`${event.id}`" :to="`/events/${event.id}`"
+                :image="`events/${event.id}-1.webp`" class="card-component" :caption="event.title.toUpperCase()"
+                :class="{ 'long-title': event.title.length > 27 }" />
             </div>
           </div>
         </div>
@@ -89,14 +65,8 @@
     </div>
 
     <!-- Group link to All Points of Interest (Index pattern) -->
-    <div
-      class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
-    >
-      <button
-        type="button"
-        class="btn btn-outline-secondary btn-lg px-4"
-        @click="backToList"
-      >
+    <div class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back">
+      <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="backToList">
         ← ALL POINTS OF INTEREST
       </button>
     </div>
@@ -173,7 +143,7 @@ export default {
   },
   head() {
     return {
-      title: `Towny - ${this.pois.title}`,
+      title: `${this.pois.title} - Points of Interest - Towny`,
     }
   },
   // apollo: {
@@ -256,22 +226,22 @@ export default {
     flex-wrap: wrap;
   }
 
-  .event-cards > * {
+  .event-cards>* {
     width: 100%;
     flex: 1;
     flex-grow: 1;
   }
 
-  .transition-links-container > *:nth-child(1) {
+  .transition-links-container>*:nth-child(1) {
     width: 45%;
     border-right: 1px dashed #333;
   }
 
-  .transition-links-container > *:nth-child(3) {
+  .transition-links-container>*:nth-child(3) {
     width: 45%;
   }
 
-  .transition-links-container > * {
+  .transition-links-container>* {
     margin-left: 5%;
   }
 
@@ -306,7 +276,7 @@ export default {
     width: 100%;
   }
 
-  .carousel >>> img {
+  .carousel>>>img {
     height: 300px;
   }
 
@@ -337,7 +307,7 @@ li {
   list-style-type: circle;
 }
 
-.lead {
+.lead:not(.itinerary-name) {
   text-align: justify;
 }
 
@@ -350,20 +320,28 @@ li {
   margin-bottom: 50px;
 }
 
-.card-component >>> img {
+.card-component>>>img {
   height: 165px;
   object-fit: cover;
 }
 
-.card-component >>> figure {
+.card-component>>>figure {
   height: 230px;
 }
 
-.card-component >>> figcaption {
+.card-component>>>figcaption {
   line-height: 30px;
   height: 65px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Handles overflowing captions for some screen widths, in case of long event titles */
+@media screen and (max-width: 1024px) and (min-width: 600px) {
+  .long-title>>>figcaption {
+    line-height: 20px;
+    font-size: 2.4vw;
+  }
 }
 </style>

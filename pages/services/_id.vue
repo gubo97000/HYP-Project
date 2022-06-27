@@ -109,7 +109,7 @@ export default {
   },
   head() {
     return {
-      title: this.serviceType.name,
+      title: `${this.serviceType.name} - Services - Towny`,
     }
   },
   methods: {
