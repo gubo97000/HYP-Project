@@ -8,7 +8,8 @@
         </h1>
       </div>
       <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
-      <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg">
+      <div
+        :class="windowWidth >= 768 ? 'row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg' : ''">
         <div class="p-3 p-lg-5 pt-lg-3">
           <b class="section-title">DURATION: {{ itinerary.duration }}</b>
           <p class="lead">
