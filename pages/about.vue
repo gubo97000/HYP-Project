@@ -123,7 +123,7 @@ export default {
   },
   head() {
     return {
-      title: 'About us',
+      title: 'About us - Towny',
     }
   },
 }

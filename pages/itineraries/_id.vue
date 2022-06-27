@@ -7,14 +7,9 @@
           {{ itinerary.title.toUpperCase() }}
         </h1>
       </div>
-      <Breadcrumb
-        class="row justify-items-center mt-4"
-        :crumbs="crumbs"
-        @selected="selected"
-      />
+      <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
       <div
-        class="row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg"
-      >
+        :class="windowWidth >= 768 ? 'row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg' : ''">
         <div class="p-3 p-lg-5 pt-lg-3">
           <b class="section-title">DURATION: {{ itinerary.duration }}</b>
           <p class="lead">
@@ -28,45 +23,26 @@
           <br />
 
           <!-- Transition links to the related points of interest  -->
-          <b class="section-title"
-            >Points of interest touched by this itinerary:</b
-          >
+          <b class="section-title">Points of interest touched by this itinerary:</b>
 
-          <CarouselMultiItem
-            v-if="windowWidth >= 768"
-            :slides="
-              itinerary.poiItineraries.nodes.map((e) => {
-                return {
-                  ...e.poi,
-                  image: `pois/${e.poi.id}-1.webp`,
-                  name: e.poi.title,
-                }
-              })
-            "
-          ></CarouselMultiItem>
+          <CarouselMultiItem v-if="windowWidth >= 768" :slides="
+            itinerary.poiItineraries.nodes.map((e) => {
+              return {
+                ...e.poi,
+                image: `pois/${e.poi.id}-1.webp`,
+                name: e.poi.title,
+              }
+            })
+          "></CarouselMultiItem>
 
-          <div
-            v-else
-            class="d-flex justify-content-center flex-wrap card-container"
-          >
-            <CardComponent
-              v-for="n in itinerary.poiItineraries.nodes"
-              :key="n.poi.id"
-              :to="`/pois/${n.poi.id}`"
-              :image="`pois/${n.poi.id}-1.webp`"
-              :caption="n.poi.title"
-            />
+          <div v-else class="d-flex justify-content-center flex-wrap card-container">
+            <CardComponent v-for="n in itinerary.poiItineraries.nodes" :key="n.poi.id" :to="`/pois/${n.poi.id}`"
+              :image="`pois/${n.poi.id}-1.webp`" :caption="n.poi.title" />
           </div>
 
           <!-- Group link to All itineraries (Index pattern) -->
-          <div
-            class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
-          >
-            <button
-              type="button"
-              class="btn btn-outline-secondary btn-lg px-4"
-              @click="backToList"
-            >
+          <div class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back">
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="backToList">
               ← ALL ITINERARIES
             </button>
           </div>
@@ -147,7 +123,7 @@ export default {
   },
   head() {
     return {
-      title: this.name,
+      title: `${this.itinerary.title} - Itineraries - Towny`,
     }
   },
   mounted() {
@@ -214,16 +190,16 @@ export default {
   margin-top: 5%;
 }
 
-.nuxt-clickable >>> img {
+.nuxt-clickable>>>img {
   height: 185px;
   object-fit: cover;
 }
 
-.nuxt-clickable >>> figure {
+.nuxt-clickable>>>figure {
   height: 250px;
 }
 
-.nuxt-clickable >>> figcaption {
+.nuxt-clickable>>>figcaption {
   line-height: 30px;
   height: 65px;
   display: flex;

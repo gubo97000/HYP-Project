@@ -2,13 +2,19 @@
 <template>
   <div class="container mt-5">
     <div class="container mt-5">
-      <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
+      <div class="title-container">
+        <h1 class="title">
+          {{ event.title.toUpperCase() }}
+        </h1>
+      </div>
 
-      <h1 class="display-4 fw-bold lh-1">{{ event.title }}</h1>
+      <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
       <!-- Info concerns the time in which the event occurs -->
-      <p class="lead">
-        {{ event.info }}
-      </p>
+      <h4 class="subsection-title">PERIOD: <span class="lead">
+          {{ event.info }}
+        </span>
+      </h4>
+
       <br />
       <h4 class="subsection-title">OVERVIEW</h4>
       <p class="lead">
@@ -96,7 +102,7 @@ export default {
   // },
   head() {
     return {
-      title: `Towny - ${this.event.title}`,
+      title: `${this.event.title} - Events - Towny`,
     }
   },
   // apollo: {
@@ -132,8 +138,16 @@ export default {
 </script>
 
 <style scoped>
+.title-container {
+  text-align: center;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
 .lead {
   text-align: justify;
+  color: rgb(33, 37, 41);
 }
 
 h2 {
@@ -172,6 +186,12 @@ h2 {
 
 /* Desktop/Landscape */
 @media screen and (min-width: 600px) {
+  .title {
+    color: #26466f;
+    font-weight: 750;
+    font-size: 3.4rem;
+  }
+
   .nuxt-clickable>>>img {
     height: 300px;
     object-fit: cover;
@@ -184,6 +204,12 @@ h2 {
 
 /* Portrait */
 @media screen and (max-width: 600px) {
+  .title {
+    color: #26466f;
+    font-weight: 750;
+    font-size: 2.8rem;
+  }
+
   .carousel>>>img {
     height: 300px;
   }
