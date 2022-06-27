@@ -2,7 +2,11 @@
 <template>
   <div class="page container mt-5">
     <h1 class="title">EVENTS</h1>
-    <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
+    <Breadcrumb
+      class="row justify-items-center mt-4"
+      :crumbs="crumbs"
+      @selected="selected"
+    />
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
@@ -29,28 +33,47 @@
           Only one accordion at a time can be open, and each shows the Events related to its corresponding period of the year. -->
         <!-- Each card is a group link to the event details -->
         <div ref="dropdowns">
-          <Dropdown :ref="'dropdownToggler' + i" :title="'ALL YEAR EVENTS'" :index="1">
+          <Dropdown
+            :ref="'dropdownToggler' + i"
+            :title="'ALL YEAR EVENTS'"
+            :index="1"
+          >
             <div class="d-flex justify-content-center flex-wrap">
-              <CardComponent v-for="item in events.nodes" :key="`${item.id}`" :to="`/events/${item.id}`"
-                :image="`events/${item.id}-1.webp`" :caption="item.title" />
+              <CardComponent
+                v-for="item in events.nodes"
+                :key="`${item.id}`"
+                :to="`/events/${item.id}`"
+                :image="`events/${item.id}-1.webp`"
+                :caption="item.title"
+              />
             </div>
           </Dropdown>
 
           <!-- Events only in Winter (event period is not even partially outside of winter) -->
           <Dropdown :title="'WINTER EVENTS'" :index="2">
             <div class="d-flex justify-content-center flex-wrap">
-              <CardComponent v-for="item in events.nodes" v-if="!isSummer(item.info) && isWinter(item.info)"
-                :key="`S${item.id}`" :to="`/events/${item.id}`" :image="`events/${item.id}-1.webp`"
-                :caption="item.title" />
+              <CardComponent
+                v-for="item in events.nodes"
+                v-if="!isSummer(item.info) && isWinter(item.info)"
+                :key="`S${item.id}`"
+                :to="`/events/${item.id}`"
+                :image="`events/${item.id}-1.webp`"
+                :caption="item.title"
+              />
             </div>
           </Dropdown>
 
           <!-- Events only in Summer (event period is not even partially outside of summer) -->
           <Dropdown :title="'SUMMER EVENTS'" :index="3">
             <div class="d-flex justify-content-center flex-wrap">
-              <CardComponent v-for="item in events.nodes" v-if="isSummer(item.info) && !isWinter(item.info)"
-                :key="`W${item.id}`" :to="`/events/${item.id}`" :image="`events/${item.id}-1.webp`"
-                :caption="item.title" />
+              <CardComponent
+                v-for="item in events.nodes"
+                v-if="isSummer(item.info) && !isWinter(item.info)"
+                :key="`W${item.id}`"
+                :to="`/events/${item.id}`"
+                :image="`events/${item.id}-1.webp`"
+                :caption="item.title"
+              />
             </div>
           </Dropdown>
         </div>
@@ -128,6 +151,7 @@ export default {
   methods: {
     isSummer: (info) => {
       if (
+        info.includes('Summer') ||
         info.includes('April') ||
         info.includes('May') ||
         info.includes('June') ||
@@ -140,6 +164,7 @@ export default {
     },
     isWinter: (info) => {
       if (
+        info.includes('Winter') ||
         info.includes('October') ||
         info.includes('November') ||
         info.includes('December') ||
@@ -183,16 +208,16 @@ h2 {
   margin-bottom: -30px;
 }
 
-.nuxt-clickable>>>img {
+.nuxt-clickable >>> img {
   height: 185px;
   object-fit: cover;
 }
 
-.nuxt-clickable>>>figure {
+.nuxt-clickable >>> figure {
   height: 250px;
 }
 
-.nuxt-clickable>>>figcaption {
+.nuxt-clickable >>> figcaption {
   line-height: 30px;
   height: 65px;
   display: flex;
@@ -223,7 +248,7 @@ h2 {
 
 /* Do not overflow caption (For titles 3 rows long) */
 @media screen and (max-width: 768px) and (min-width: 600px) {
-  .nuxt-clickable>>>figcaption {
+  .nuxt-clickable >>> figcaption {
     line-height: 20px;
   }
 }
