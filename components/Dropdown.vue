@@ -18,9 +18,7 @@ The way it opens/closes is similar to header and footer components in portrait m
       >
         <!-- The label of the dropdown: an arrow that rotates on toggle, plus a name (e.g. "Winter events") -->
         <div id="headingOne" ref="panelHeading" class="panel-heading collapsed">
-            <i class="material-icons">
-                keyboard_arrow_right
-            </i>
+            <i class="arrow right"></i>
             <span>{{ title }}</span>
         </div>
 
@@ -59,6 +57,13 @@ export default {
   },
   methods: {
     toggleDropdown() {
+      this.$refs.toggler.disabled = true
+
+      const self = this;
+      setTimeout(function() {
+        self.$refs.toggler.disabled = false
+      }, 500);
+
       if (this.$refs.panelHeading.classList.contains('active'))
         this.$refs.panelHeading.classList.remove('active')
       else {
@@ -73,6 +78,21 @@ export default {
 </script>
 
 <style scoped>
+.arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+
+  height: 12px;
+  width: 12px;
+  margin-right: 5px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
 .dropdown-wrapper {
   margin-bottom: 30px;
 }
@@ -116,8 +136,10 @@ export default {
 }
 /* Rotate dropdown arrow when opened/closed (to point downwards or to the right accordingly) */
 .panel-heading.active i {
-	-webkit-transform: rotate(90deg);
-	-moz-transform: rotate(90deg);
-	transform: rotate(90deg);
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	transform: rotate(45deg);
+
+  margin-bottom: 5px;
 } 
 </style>
