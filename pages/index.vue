@@ -13,7 +13,8 @@
       <div class="d-flex justify-content-center flex-wrap card-container">
         <CardComponent :to="`/events`" class="card-component" :image="'restaurant-card.png'" :caption="'EVENTS'" />
         <CardComponent :to="`/pois`" class="card-component" :image="'poi-card.png'" :caption="'POINTS OF INTEREST'" />
-        <CardComponent :to="`/itineraries`" class="card-component" :image="'itineraries.png'"
+        <CardComponent
+:to="`/itineraries`" class="card-component" :image="'itineraries.png'"
           :caption="'ITINERARIES'" />
         <CardComponent :to="`/services`" class="card-component" :image="'supermarket-card.png'" :caption="'SERVICES'" />
       </div>
@@ -128,8 +129,8 @@ p {
 
   /* Tablet portrait */
   @media (max-aspect-ratio: 3/2) and (max-width: 900px) {
-    .card-component {
-      width: 50%;
+    .nuxt-clickable {
+      width: 50% !important;
     }
 
     .card-component>>>img {
@@ -176,11 +177,8 @@ p {
   /* Desktop/Landscape or Tablet landscape */
   @media screen and (min-aspect-ratio: 3/2),
   screen and (min-width: 900px) {
-    .card-component {
-      /* width: 22.5%;
-      margin-left: 1.25%;
-      margin-right: 1.25%; */
-      width: 25%;
+    .nuxt-clickable {
+      width: 25% !important;
     }
 
     .card-component>>>.card {

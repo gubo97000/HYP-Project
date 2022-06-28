@@ -57,13 +57,14 @@ export default {
   },
   methods: {
     toggleDropdown() {
+      // Set cooldown to button, to ensure correct rotation of the dropdown arrow.
       this.$refs.toggler.disabled = true
-
       const self = this;
       setTimeout(function() {
         self.$refs.toggler.disabled = false
       }, 500);
 
+      // Toggle active class
       if (this.$refs.panelHeading.classList.contains('active'))
         this.$refs.panelHeading.classList.remove('active')
       else {
