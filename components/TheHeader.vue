@@ -79,4 +79,7 @@ export default {
   font-size: 22px;
   font-weight: 600;
 }
+a.nuxt-link-exact-active {
+  color: #00c58e;
+}
 </style>
