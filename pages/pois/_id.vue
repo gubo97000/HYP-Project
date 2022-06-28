@@ -38,7 +38,7 @@
 
     <!-- Representative images -->
     <Carousel
-      :slides="[`pois/${pois.id}-1.webp`, `pois/${pois.id}-2.webp`]"
+      :slides="pois.picturesByPoiId.nodes.map((p) => `pois/${p.url}`)"
       class="carousel"
     />
     <br />
@@ -82,7 +82,7 @@
                 v-for="event in pois.eventsByPoiId.nodes"
                 :key="`${event.id}`"
                 :to="`/events/${event.id}`"
-                :image="`events/${event.id}-1.webp`"
+                :image="`events/${event.pictures.nodes[0].url}`"
                 class="card-component"
                 :caption="event.title.toUpperCase()"
                 :class="{ 'long-title': event.title.length > 27 }"
@@ -129,29 +129,39 @@ export default {
         query: gql`
         query MyQuery {
           pois(id: ${id}) {
-            coordinates
-             description
-             id
-             info
-             title
-             map
-             poiItinerariesByPoiId {
-               nodes {
-                 itinerary {
-                   id
-                   title
-                   duration
-                 }
-               }
-             }
-             eventsByPoiId {
-               nodes {
-                 id
-                 title
-               }
-             }
+    coordinates
+    description
+    id
+    info
+    title
+    map
+    poiItinerariesByPoiId {
+      nodes {
+        itinerary {
+          id
+          title
+          duration
+        }
+      }
+    }
+    eventsByPoiId {
+      nodes {
+        id
+        title
+        pictures {
+          nodes {
+            url
           }
         }
+      }
+    }
+    picturesByPoiId {
+      nodes {
+        url
+      }
+    }
+  }
+}
       `,
       })
       .then(({ data }) => data.pois)
@@ -183,45 +193,6 @@ export default {
       title: `${this.pois.title} - Points of Interest - Towny`,
     }
   },
-  // apollo: {
-  //   pois: {
-  //     // prefetch: true,
-  //     query: gql`
-  //       query MyQuery($id: Int!) {
-  //         pois(id: $id) {
-  //           coordinates
-  //           description
-  //           id
-  //           info
-  //           title
-  //           poiItinerariesByPoiId {
-  //             nodes {
-  //               itinerary {
-  //                 id
-  //                 title
-  //                 duration
-  //               }
-  //             }
-  //           }
-  //           eventsByPoiId {
-  //             nodes {
-  //               id
-  //               title
-  //             }
-  //           }
-  //         }
-  //       }
-  //     `,
-  //     variables() {
-  //       return {
-  //         id: parseInt(this.id),
-  //       }
-  //     },
-  //     result: (data) => {
-  //       console.log(data.pois)
-  //     },
-  //   },
-  // },
 
   methods: {
     backToList() {

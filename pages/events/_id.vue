@@ -8,9 +8,15 @@
         </h1>
       </div>
 
-      <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
+      <Breadcrumb
+        class="row justify-items-center mt-4"
+        :crumbs="crumbs"
+        @selected="selected"
+      />
       <!-- Info concerns the time in which the event occurs -->
-      <h4 class="subsection-title">PERIOD: <span class="lead">
+      <h4 class="subsection-title">
+        PERIOD:
+        <span class="lead">
           {{ event.info }}
         </span>
       </h4>
@@ -23,20 +29,33 @@
       <br />
 
       <!-- Representative images -->
-      <Carousel :slides="[`events/${event.id}-1.webp`, `events/${event.id}-2.webp`]" class="carousel" />
+      <Carousel
+        :slides="event.pictures.nodes.map((p) => `events/${p.url}`)"
+        class="carousel"
+      />
       <br /><br />
 
       <!-- Transition link to the related point of interest  -->
       <h4 class="subsection-title">ABOUT THE PLACE</h4>
       <div class="about-the-place">
-        <CardComponent v-if="event.poi" :to="`/pois/${event.poi.id}`" :image="`pois/${event.poi.id}-1.webp`"
-          :caption="event.poi.title.toUpperCase()" />
+        <CardComponent
+          v-if="event.poi"
+          :to="`/pois/${event.poi.id}`"
+          :image="`pois/${event.poi.picturesByPoiId.nodes[0].url}`"
+          :caption="event.poi.title.toUpperCase()"
+        />
       </div>
       <br /><br />
 
       <!-- Group link to All events (Index pattern) -->
-      <div class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back">
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="backToList">
+      <div
+        class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
+      >
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-lg px-4"
+          @click="backToList"
+        >
           ← ALL EVENTS
         </button>
       </div>
@@ -71,7 +90,17 @@ export default {
             poi {
               id
               title
+              picturesByPoiId {
+        nodes {
+          url
+        }
+      }
             }
+            pictures {
+      nodes {
+        url
+      }
+    }
           }
         }
       `,
@@ -169,7 +198,7 @@ h2 {
   margin-top: 15px;
 }
 
-.about-the-place>>>.image-container {
+.about-the-place >>> .image-container {
   padding: 0;
   margin-bottom: 0;
 }
@@ -179,7 +208,7 @@ h2 {
   /* width: 60%; */
 }
 
-.nuxt-clickable>>>img {
+.nuxt-clickable >>> img {
   height: 200px;
   object-fit: cover;
 }
@@ -192,7 +221,7 @@ h2 {
     font-size: 3.4rem;
   }
 
-  .nuxt-clickable>>>img {
+  .nuxt-clickable >>> img {
     height: 300px;
     object-fit: cover;
   }
@@ -210,7 +239,7 @@ h2 {
     font-size: 2.8rem;
   }
 
-  .carousel>>>img {
+  .carousel >>> img {
     height: 300px;
   }
 
