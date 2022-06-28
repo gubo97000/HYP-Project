@@ -3,7 +3,7 @@
   <div class="jumbotron">
     <!-- Cover with representative image + title -->
     <div class="image-container">
-      <img :src="require(`@/assets/services/${serviceType.id}-c.webp`)" alt="" class="cover" />
+      <img :src="require(`@/assets/services/${serviceType.id}-c.webp`)" :alt="'Representation of ' + serviceType.name.toLowerCase()" class="cover" />
       <h1 class="title">
         {{ serviceType.name.toUpperCase() }}
       </h1>
@@ -28,9 +28,9 @@
           <!-- List of instances of this service type: image, name of shop/instance, address, opening hours -->
           <div v-for="(item, i) in serviceType.services.nodes">
             <div class="p-4 pe-lg-5 align-items-center rounded-3 border shadow-lg service-item">
-              <img :src="
-                require(`@/assets/services/${serviceType.id}-${i + 1}.webp`)
-              " alt="" />
+              <img
+              :src="require(`@/assets/services/${serviceType.id}-${i + 1}.webp`)"
+              alt="View of the shop" />
               <div class="service-info">
                 <p class="item-title">
                   {{ item.name.toUpperCase() }}
@@ -113,17 +113,17 @@ export default {
       windowWidth: this.windowWidth,
     }
   },
+  head() {
+    return {
+      title: `${this.serviceType.name} - Services - Towny`,
+    }
+  },
   mounted() {
     this.windowWidth = window.innerWidth
 
     window.addEventListener('resize', () => {
       this.windowWidth = window.innerWidth
     })
-  },
-  head() {
-    return {
-      title: `${this.serviceType.name} - Services - Towny`,
-    }
   },
   methods: {
     backToList() {

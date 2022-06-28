@@ -17,7 +17,7 @@
         v-for="(slide, si) in slides" :key="si" class="carousel-item relative float-left img-container"
         :class="{ active: isActive(si) }">
         <!-- Image -->
-        <img :src="require('@/assets/' + slide)" class="block carousel-img" alt="..." />
+        <img :src="require('@/assets/' + slide)" class="block carousel-img" alt="Representative image" />
         <!-- Caption -->
         <!-- <div class="carousel-caption hidden md:block absolute text-center">
           <h5 class="text-xl">First slide label</h5>

@@ -2,8 +2,8 @@
 <template>
   <div class="jumbotron">
     <div class="image-container">
-      <img :src="require('@/assets/newcover.webp')" alt="" class="cover" />
-      <img :src="require('@/assets/logo.webp')" alt="" class="logo" />
+      <img :src="require('@/assets/newcover.webp')" alt="Aerial view of Towny" class="cover" />
+      <img :src="require('@/assets/logo.webp')" alt="Logo of Towny" class="logo" />
       <p class="cover-text">
         EXPLORE ONE OF THE MOST BEAUTIFUL CITIES IN THE WORLD: <br />
         YOUR TOUR STARTS FROM HERE!
