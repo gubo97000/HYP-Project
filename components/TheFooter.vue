@@ -62,6 +62,9 @@ export default {
   color: white !important;
   font-size: 20px;
   font-weight: 500;
+  display: inline-block;
+  position: relative;
+
 }
 .footer-links {
   margin-left: auto; 
@@ -71,5 +74,22 @@ export default {
   #footerNavbarToggler {
     margin-bottom: 20px;
   }
+}
+.nav-link::before {
+  content: "";
+  content: '';
+  position: absolute;
+  display: block;
+  width: calc(100% - 16px);
+  height: 2px;
+  bottom: 5px;
+  left: auto;
+  right: auto;
+  background-color: white;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.nav-link:hover::before {
+  transform: scaleX(1);
 }
 </style>
