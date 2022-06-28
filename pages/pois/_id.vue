@@ -5,13 +5,14 @@
       <h1 class="title">
         {{ pois.title.toUpperCase() }}
       </h1>
+      <Badge link="/pois/">Point of Interest</Badge>
     </div>
-    <Badge>Testi</Badge>
-    <Breadcrumb
+
+    <!-- <Breadcrumb
       class="row justify-items-center mt-4"
       :crumbs="crumbs"
       @selected="selected"
-    />
+    /> -->
 
     <div class="howtoreach-container">
       <div class="howtoreach-text">
@@ -236,6 +237,7 @@ export default {
   position: relative;
   top: 0;
   left: 0;
+  /* height: 200px; */
 }
 
 /* Landscape/Desktop */
