@@ -87,7 +87,7 @@ export default {
 }
 
 .nav-link::before {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   width: calc(100% - 16px);
@@ -102,5 +102,31 @@ export default {
 
 .nav-link:hover::before {
   transform: scaleX(1);
+}
+
+a.nuxt-link-exact-active {
+  color: white !important;
+  font-size: 22px;
+  line-height: 15px;
+  font-weight: 600;
+}
+
+a.nuxt-link-exact-active {
+  display: inline-block;
+  position: relative;
+}
+
+a.nuxt-link-exact-active::before {
+  transform: scaleX(1);
+  content: '';
+  position: absolute;
+  display: block;
+  width: calc(100% - 16px);
+  height: 2px;
+  bottom: 0;
+  left: auto;
+  right: auto;
+  background-color: white;
+  transition: transform 0.3s ease;
 }
 </style>
