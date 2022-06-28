@@ -77,9 +77,30 @@ export default {
 .nav-link {
   color: white !important;
   font-size: 22px;
+  line-height: 15px;
   font-weight: 600;
 }
-a.nuxt-link-exact-active {
-  color: #00c58e;
+
+.nav-link {
+  display: inline-block;
+  position: relative;
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: calc(100% - 16px);
+  height: 2px;
+  bottom: 0;
+  left: auto;
+  right: auto;
+  background-color: white;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::before {
+  transform: scaleX(1);
 }
 </style>
