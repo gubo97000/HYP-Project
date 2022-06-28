@@ -228,21 +228,21 @@ h2 {
 /* 4 cards per row */
 @media screen and (min-width: 1550px) {
   .nuxt-clickable {
-    width: 25%;
+    width: 25% !important;
   }
 }
 
 /* 3 cards per row */
 @media screen and (min-width: 800px) and (max-width: 1550px) {
   .nuxt-clickable {
-    width: 33%;
+    width: 33% !important;
   }
 }
 
 /* 2 cards per row */
 @media screen and (max-width: 800px) and (min-width: 600px) {
   .nuxt-clickable {
-    width: 50%;
+    width: 50% !important;
   }
 }
 
