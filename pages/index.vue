@@ -2,8 +2,8 @@
 <template>
   <div class="jumbotron">
     <div class="image-container">
-      <img :src="require('@/assets/newcover.png')" alt="" class="cover" />
-      <img :src="require('@/assets/logo.png')" alt="" class="logo" />
+      <img :src="require('@/assets/newcover.webp')" alt="" class="cover" />
+      <img :src="require('@/assets/logo.webp')" alt="" class="logo" />
       <p class="cover-text">
         EXPLORE ONE OF THE MOST BEAUTIFUL CITIES IN THE WORLD: <br />
         YOUR TOUR STARTS FROM HERE!
@@ -11,12 +11,12 @@
     </div>
     <div class="container mt-5">
       <div class="d-flex justify-content-center flex-wrap card-container">
-        <CardComponent :to="`/events`" class="card-component" :image="'restaurant-card.png'" :caption="'EVENTS'" />
-        <CardComponent :to="`/pois`" class="card-component" :image="'poi-card.png'" :caption="'POINTS OF INTEREST'" />
+        <CardComponent :to="`/events`" class="card-component" :image="'restaurant-card.webp'" :caption="'EVENTS'" />
+        <CardComponent :to="`/pois`" class="card-component" :image="'poi-card.webp'" :caption="'POINTS OF INTEREST'" />
         <CardComponent
-:to="`/itineraries`" class="card-component" :image="'itineraries.png'"
+:to="`/itineraries`" class="card-component" :image="'itineraries.webp'"
           :caption="'ITINERARIES'" />
-        <CardComponent :to="`/services`" class="card-component" :image="'supermarket-card.png'" :caption="'SERVICES'" />
+        <CardComponent :to="`/services`" class="card-component" :image="'supermarket-card.webp'" :caption="'SERVICES'" />
       </div>
     </div>
   </div>

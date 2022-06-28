@@ -3,10 +3,6 @@ export default {
   ssr: true,
   serverMiddleware: [
     '~/server-middleware/postgraphileServerMiddleware.ts',
-    {
-      path: '/api',
-      handler: '~/server/api.js',
-    },
   ],
   head: {
     title: 'HYP-Project',

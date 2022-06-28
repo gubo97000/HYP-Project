@@ -3,7 +3,7 @@
   <nav class="navbar navbar-expand-lg navbar-light px-3 header">
     <!-- Landmark that brings to Home page, represented by the website logo. -->
     <a class="navbar-brand" href="/"
-      ><img :src="require('@/assets/logo.png')" alt="Towny" width="50"
+      ><img :src="require('@/assets/logo.webp')" alt="Towny" width="50"
     /></a>
 
     <!-- Button used only in mobile version, to open the landmarks as an accordion. -->
