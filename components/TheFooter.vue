@@ -94,6 +94,6 @@ export default {
 }
 
 nav {
-  height: 62px;
+  min-height: 62px;
 }
 </style>

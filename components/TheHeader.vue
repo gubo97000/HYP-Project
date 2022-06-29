@@ -108,6 +108,6 @@ a.nuxt-link-exact-active::before,
 }
 
 nav {
-  height: 72px;
+  min-height: 72px;
 }
 </style>
