@@ -2,7 +2,11 @@
 <template>
   <div class="page container mt-5">
     <h1 class="title">POINTS OF INTEREST</h1>
-    <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
+    <Breadcrumb
+      class="row justify-items-center mt-4"
+      :crumbs="crumbs"
+      @selected="selected"
+    />
     <br />
     <!-- description of point of interest -->
     <p class="lead">
@@ -28,13 +32,21 @@
     <iframe
       title="Points of interest of Towny"
       src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22385.345367822818!2d9.183978311645502!3d45.46641612838561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sit!4v1652736022694!5m2!1sen!2sit"
-      style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
 
     <!-- Group links to POIs details -->
     <div class="d-flex justify-content-center flex-wrap card-container">
       <CardComponent
-v-for="n in poises.edges" :key="n.node.id" :to="`/pois/${n.node.id}`"
-        :image="`pois/${n.node.id}-1.webp`" :caption="n.node.title" />
+        v-for="n in poises.edges"
+        :key="n.node.id"
+        :to="`/pois/${n.node.id}`"
+        :image="`pois/${n.node.id}-thumb.webp`"
+        :caption="n.node.title"
+      />
     </div>
   </div>
 </template>
@@ -127,16 +139,16 @@ iframe {
   font-size: 4rem;
 }
 
-.nuxt-clickable>>>img {
+.nuxt-clickable >>> img {
   height: 185px;
   object-fit: cover;
 }
 
-.nuxt-clickable>>>figure {
+.nuxt-clickable >>> figure {
   height: 250px;
 }
 
-.nuxt-clickable>>>figcaption {
+.nuxt-clickable >>> figcaption {
   line-height: 30px;
   height: 65px;
   display: flex;
