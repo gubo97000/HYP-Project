@@ -107,4 +107,7 @@ a.nuxt-link-exact-active::before,
   transform: scaleX(1);
 }
 
+nav {
+  height: 72px;
+}
 </style>

@@ -225,6 +225,10 @@ h2 {
   }
 }
 
+.page {
+  min-height: calc(100vh - 182px);
+}
+
 /* 3 cards per row */
 @media screen and (min-width: 800px) and (max-width: 1550px) {
   .nuxt-clickable {

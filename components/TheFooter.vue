@@ -92,4 +92,8 @@ export default {
 .nav-link:hover::before {
   transform: scaleX(1);
 }
+
+nav {
+  height: 62px;
+}
 </style>
