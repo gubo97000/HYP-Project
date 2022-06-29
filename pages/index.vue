@@ -5,7 +5,10 @@
       <img :src="require('@/assets/newcover.webp')" alt="Aerial view of Towny" class="cover" />
       <img :src="require('@/assets/logo.webp')" alt="Logo of Towny" class="logo" />
       <p class="cover-text">
-        EXPLORE ONE OF THE MOST BEAUTIFUL<br />CITIES IN THE WORLD:<br />
+        EXPLORE ONE OF THE MOST BEAUTIFUL
+        <br />
+        CITIES IN THE WORLD:
+        <br />
         YOUR TOUR STARTS FROM HERE!
       </p>
     </div>
@@ -14,7 +17,7 @@
         <CardComponent :to="`/events`" class="card-component" :image="'restaurant-card.webp'" :caption="'EVENTS'" />
         <CardComponent :to="`/pois`" class="card-component" :image="'poi-card.webp'" :caption="'POINTS OF INTEREST'" />
         <CardComponent
-          :to="`/itineraries`" class="card-component" :image="'itineraries.webp'"
+          :to="`/itineraries`" class="card-component" :image="'itineraries-card.webp'"
           :caption="'ITINERARIES'" />
         <CardComponent :to="`/services`" class="card-component" :image="'supermarket-card.webp'" :caption="'SERVICES'" />
       </div>
@@ -43,6 +46,7 @@ export default {
   position: relative;
   top: 0;
   left: 0;
+  background: black;
 }
 
 .image-container::after {
@@ -61,6 +65,7 @@ export default {
   min-height: 400px;
   height: 160vh;
   object-fit: cover;
+  filter: opacity(0.99);
 }
 
 .logo {
