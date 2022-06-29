@@ -166,6 +166,7 @@ export default {
   position: relative;
   top: 0;
   left: 0;
+  background: black;
 }
 
 .service-info {
@@ -177,6 +178,7 @@ export default {
   min-width: 100%;
   height: 300px;
   object-fit: cover;
+  filter: opacity(0.85);
 }
 
 .title {
