@@ -68,7 +68,7 @@ export default {
 <style scoped>
 /* Header is fixed to the top of the screen, regardless of the scroll position (unlike footer, which is found after scrolling to bottom) */
 .header {
-  background: #8bdeff;
+  background: #8bdefffe;
   position: fixed;
   z-index: 2;
   width: 100%;
@@ -78,7 +78,7 @@ export default {
 a.nuxt-link-exact-active {
   color: white !important;
   font-size: 22px;
-  line-height: 15px;
+  /* line-height: 15px; */
   font-weight: 600;
 
   display: inline-block;
@@ -92,7 +92,7 @@ a.nuxt-link-exact-active::before {
   display: block;
   width: calc(100% - 16px);
   height: 2px;
-  bottom: 0;
+  bottom: 5px;
   left: auto;
   right: auto;
   background-color: white;

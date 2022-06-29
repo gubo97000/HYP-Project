@@ -129,7 +129,18 @@ p {
   font-weight: 750;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
-  font-size: 3.5rem;
   width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: 3.5rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .title {
+    font-size: 4rem;
+  }
 }
 </style>
