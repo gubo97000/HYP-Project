@@ -27,7 +27,8 @@
 
         <!-- Group links to services details -->
         <div class="d-flex justify-content-center flex-wrap">
-          <CardComponent v-for="item in serviceList" :key="`${item.id}`" :to="`/services/${item.id}`"
+          <CardComponent
+v-for="item in serviceList" :key="`${item.id}`" :to="`/services/${item.id}`"
             :image="`services/${item.id}-c.webp`" class="card-component" :caption="item.name.toUpperCase()" />
         </div>
         <br />
@@ -103,7 +104,7 @@ export default {
   }
 
   .card-component {
-    width: 50%;
+    width: 50% !important;
   }
 }
 

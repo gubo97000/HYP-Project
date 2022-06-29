@@ -22,6 +22,7 @@
         </p>
         <h4 class="subsection-title">VISIT INFO</h4>
         <p class="lead">{{ pois.info }}</p>
+        <p class="lead">Address: {{ pois.coordinates }}</p>
       </div>
 
       <!-- Location of point of interest -->
