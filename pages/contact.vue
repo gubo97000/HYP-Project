@@ -2,7 +2,7 @@
 <template>
   <div class="jumbotron">
     <div class="image-container">
-      <img :src="require('@/assets/cover.webp')" alt="" class="cover" />
+      <img :src="require('@/assets/cover.webp')" alt="Cover" class="cover" />
       <!-- <img :src="require('@/assets/logo.webp')" alt="" class="logo"/> -->
       <h1 class="title">CONTACT US</h1>
     </div>

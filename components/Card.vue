@@ -4,12 +4,7 @@ A card contains an image and a caption, and is animated when hovered on. -->
   <nuxt-link :to="`${to}`" class="nuxt-clickable">
     <div class="image-container card">
       <figure>
-        <img
-          :src="require('@/assets/' + image)"
-          alt=""
-          width="100%"
-          loading="lazy"
-        />
+        <img :src="require('@/assets/' + image)" alt="Thumbnail" width="100%" />
         <figcaption>{{ caption }}</figcaption>
       </figure>
     </div>
