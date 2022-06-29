@@ -5,16 +5,16 @@
       <img :src="require('@/assets/newcover.webp')" alt="Aerial view of Towny" class="cover" />
       <img :src="require('@/assets/logo.webp')" alt="Logo of Towny" class="logo" />
       <p class="cover-text">
-        EXPLORE ONE OF THE MOST BEAUTIFUL CITIES IN THE WORLD: <br />
+        EXPLORE ONE OF THE MOST BEAUTIFUL<br />CITIES IN THE WORLD:<br />
         YOUR TOUR STARTS FROM HERE!
       </p>
     </div>
-    <div class="container mt-5">
+    <div class="container">
       <div class="d-flex justify-content-center flex-wrap card-container">
         <CardComponent :to="`/events`" class="card-component" :image="'restaurant-card.webp'" :caption="'EVENTS'" />
         <CardComponent :to="`/pois`" class="card-component" :image="'poi-card.webp'" :caption="'POINTS OF INTEREST'" />
         <CardComponent
-:to="`/itineraries`" class="card-component" :image="'itineraries.webp'"
+          :to="`/itineraries`" class="card-component" :image="'itineraries.webp'"
           :caption="'ITINERARIES'" />
         <CardComponent :to="`/services`" class="card-component" :image="'supermarket-card.webp'" :caption="'SERVICES'" />
       </div>
@@ -87,11 +87,14 @@ export default {
   text-shadow: 2px 2px #000000;
 
   width: 80vw;
-  max-width: 1000px;
 }
 
 p {
   text-align: left;
+}
+
+.container {
+  margin-top: 3rem;
 }
 
 /* Mobile portrait */
@@ -127,12 +130,19 @@ p {
 /* Not mobile portrait */
 @media screen and (min-width: 600px) {
 
-  /* Tablet portrait */
+
+/* Tablet portrait */
   @media (max-aspect-ratio: 3/2) and (max-width: 900px) {
     .nuxt-clickable {
       width: 50% !important;
     }
 
+    .card-component {
+      margin-bottom: 30px;
+    }
+    .card-component>>>figcaption {
+      height: 50px !important;
+    }
     .card-component>>>img {
       height: 200px;
       object-fit: cover;
@@ -156,14 +166,15 @@ p {
   /* Tablet landscape */
   @media (max-aspect-ratio: 3/2) and (min-width: 900px) {
     .card-component>>>img {
-      height: 75%;
+      height: 85%;
     }
 
     .card-component>>>figcaption {
-      height: 25%;
+      height: 15%;
       display: flex;
       align-items: center;
       justify-content: center;
+      line-height: 30px;
     }
   }
 
@@ -209,6 +220,8 @@ p {
     display: flex;
     justify-content: center;
     margin-bottom: -50px;
+
+    max-width: 80%;
   }
 
   .card-container {
@@ -231,8 +244,13 @@ p {
   }
 
   .card-component>>>figcaption {
-    padding-top: 2.5%;
+    /* padding-top: 2.5%; */
     font-size: 2.8vmin;
+    height: 15%;
+    line-height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>
