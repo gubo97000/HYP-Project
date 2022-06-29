@@ -9,7 +9,6 @@
 
     <div class="jumbotron">
       <div class="container mt-5">
-        <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
         <p class="lead">
           Towny is a city full of history, art, and culture. Founded as a Roman
           city, it developed its own peculiar style under the Islamic and Gothic
@@ -102,12 +101,8 @@
 </template>
 
 <script>
-import Breadcrumb from '~/components/Breadcrumb.vue'
 export default {
   name: 'About',
-  components: {
-    Breadcrumb,
-  },
   data() {
     return {
       crumbs: [

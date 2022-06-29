@@ -7,7 +7,6 @@
           {{ itinerary.title.toUpperCase() }}
         </h1>
       </div>
-      <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
 
         <b class="section-title">DURATION: {{ itinerary.duration }}</b>
         <p class="lead">
@@ -35,16 +34,16 @@
         "></CarouselMultiItem>
 
         <div v-else class="d-flex justify-content-center flex-wrap card-container">
-        <CardComponent
+          <CardComponent
             v-for="n in itinerary.poiItineraries.nodes" :key="n.poi.id" :to="`/pois/${n.poi.id}`"
             :image="`pois/${n.poi.id}-1.webp`" :caption="n.poi.title" />
         </div>
 
         <!-- Group link to All itineraries (Index pattern) -->
         <div class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back">
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="backToList">
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="backToList">
             ← ALL ITINERARIES
-        </button>
+          </button>
         </div>
     </div>
   </div>
@@ -52,13 +51,11 @@
 
 <script>
 import { gql } from 'graphql-tag'
-import Breadcrumb from '~/components/Breadcrumb.vue'
 import CarouselMultiItem from '~/components/CarouselMultiItem.vue'
 import CardComponent from '~/components/Card.vue'
 export default {
   name: 'DetailsPage',
   components: {
-    Breadcrumb,
     CardComponent,
     CarouselMultiItem,
   },

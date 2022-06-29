@@ -9,7 +9,6 @@
       </h1>
     </div>
     <div class="container my-5">
-      <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
 
       <h3 class="section-title">OVERVIEW</h3>
       <p class="lead">
@@ -50,12 +49,8 @@
 
 <script>
 import { gql } from 'graphql-tag'
-import Breadcrumb from '~/components/Breadcrumb.vue'
 export default {
   name: 'DetailsPage',
-  components: {
-    Breadcrumb,
-  },
 
   async asyncData({ route, app }) {
     const { id } = route.params

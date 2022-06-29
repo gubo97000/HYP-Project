@@ -8,11 +8,6 @@
         </h1>
       </div>
 
-      <Breadcrumb
-        class="row justify-items-center mt-4"
-        :crumbs="crumbs"
-        @selected="selected"
-      />
       <!-- Info concerns the time in which the event occurs -->
       <h4 class="subsection-title">
         PERIOD:
@@ -65,13 +60,11 @@
 
 <script>
 import { gql } from 'graphql-tag'
-import Breadcrumb from '~/components/Breadcrumb.vue'
 import CardComponent from '~/components/Card.vue'
 
 export default {
   name: 'DetailsPage',
   components: {
-    Breadcrumb,
     CardComponent,
   },
 

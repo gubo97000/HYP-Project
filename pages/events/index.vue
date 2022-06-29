@@ -2,11 +2,6 @@
 <template>
   <div class="page container mt-5">
     <h1 class="title">EVENTS</h1>
-    <Breadcrumb
-      class="row justify-items-center mt-4"
-      :crumbs="crumbs"
-      @selected="selected"
-    />
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
@@ -87,7 +82,6 @@
 
 <script>
 import { gql } from 'graphql-tag'
-import Breadcrumb from '~/components/Breadcrumb.vue'
 import Dropdown from '~/components/Dropdown.vue'
 import CardComponent from '~/components/Card.vue'
 
@@ -96,7 +90,6 @@ let dropdowns
 export default {
   name: 'Events',
   components: {
-    Breadcrumb,
     Dropdown,
     CardComponent,
   },

@@ -2,7 +2,6 @@
 <template>
   <div class="page container mt-5">
     <h1 class="title">SERVICES</h1>
-    <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
@@ -40,13 +39,11 @@ v-for="item in serviceList" :key="`${item.id}`" :to="`/services/${item.id}`"
 
 <script>
 import { gql } from 'graphql-tag'
-import Breadcrumb from '~/components/Breadcrumb.vue'
 import CardComponent from '~/components/Card.vue'
 
 export default {
   name: 'Events',
   components: {
-    Breadcrumb,
     CardComponent,
   },
   async asyncData({ app }) {

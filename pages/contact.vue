@@ -9,7 +9,6 @@
 
     <div class="jumbotron">
       <div class="container mt-5">
-        <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
         <p class="lead">
           Do you need any further information or have specific requests? Write
           to one of our contacts below and we'll get back to you as soon as
@@ -56,12 +55,8 @@
 </template>
 
 <script>
-import Breadcrumb from '~/components/Breadcrumb.vue'
 export default {
   name: 'Contact',
-  components: {
-    Breadcrumb,
-  },
   data() {
     return {
       crumbs: [

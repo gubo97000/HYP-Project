@@ -8,12 +8,6 @@
       <Badge link="/pois/">Point of Interest</Badge>
     </div>
 
-    <!-- <Breadcrumb
-      class="row justify-items-center mt-4"
-      :crumbs="crumbs"
-      @selected="selected"
-    /> -->
-
     <div class="howtoreach-container">
       <div class="howtoreach-text">
         <p class="lead">
@@ -112,7 +106,6 @@
 
 <script>
 import { gql } from 'graphql-tag'
-import Breadcrumb from '~/components/Breadcrumb.vue'
 import CardComponent from '~/components/Card.vue'
 import Badge from '~/components/Badge.vue'
 
@@ -120,7 +113,6 @@ export default {
   name: 'DetailsPage',
 
   components: {
-    Breadcrumb,
     CardComponent,
   },
   async asyncData({ route, app }) {
