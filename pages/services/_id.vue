@@ -11,43 +11,38 @@
     <div class="container my-5">
       <Breadcrumb class="row justify-items-center mt-4" :crumbs="crumbs" @selected="selected" />
 
-      <div
-        :class="windowWidth >= 600 ? 'row p-4 pb-0 pe-lg-0 pt-lg-5 pb-lg-5 pe-lg-5 align-items-center rounded-3 border shadow-lg' : ''">
-        <div class="p-3 p-lg-5 pt-lg-3">
-          <b class="section-title">OVERVIEW</b>
-          <p class="lead">
-            {{ serviceType.descrition }}
-          </p>
-          <br />
+      <h3 class="section-title">OVERVIEW</h3>
+      <p class="lead">
+        {{ serviceType.descrition }}
+      </p>
+      <br />
 
-          <div class="image-container">
-            <!-- <img :src="require('@/assets/' + map)" alt="" class="cover" /> -->
-          </div>
-          <br />
+      <div class="image-container">
+        <!-- <img :src="require('@/assets/' + map)" alt="" class="cover" /> -->
+      </div>
+      <br />
 
-          <!-- List of instances of this service type: image, name of shop/instance, address, opening hours -->
-          <div v-for="(item, i) in serviceType.services.nodes">
-            <div class="p-4 pe-lg-5 align-items-center rounded-3 border shadow-lg service-item">
-              <img
-              :src="require(`@/assets/services/${serviceType.id}-${i + 1}.webp`)"
-              alt="View of the shop" />
-              <div class="service-info">
-                <p class="item-title">
-                  {{ item.name.toUpperCase() }}
-                </p>
-                <p>Address: {{ item.address }}</p>
-                <p>Opening hours: {{ item.openhours }}</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Group link to All services (Index pattern) -->
-          <div class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back">
-            <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="backToList">
-              ← ALL SERVICES
-            </button>
+      <!-- List of instances of this service type: image, name of shop/instance, address, opening hours -->
+      <div v-for="(item, i) in serviceType.services.nodes">
+        <div class="p-4 pe-lg-5 align-items-center rounded-3 border shadow-lg service-item">
+          <img
+          :src="require(`@/assets/services/${serviceType.id}-${i + 1}.webp`)"
+          alt="View of the shop" />
+          <div class="service-info">
+            <p class="item-title">
+              {{ item.name.toUpperCase() }}
+            </p>
+            <p>Address: {{ item.address }}</p>
+            <p>Opening hours: {{ item.openhours }}</p>
           </div>
         </div>
+      </div>
+
+      <!-- Group link to All services (Index pattern) -->
+      <div class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back">
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="backToList">
+          ← ALL SERVICES
+        </button>
       </div>
     </div>
   </div>

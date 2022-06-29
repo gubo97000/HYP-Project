@@ -3,7 +3,7 @@ It includes previous/next buttons to skip to other N cards (where N is the count
 It also includes logic to handle resizing of the window -->
 <template>
   <div ref="carouselContainer" class="carousel-container">
-    <div class="carousel-inner" ref="carouselInner">
+    <div ref="carouselInner" class="carousel-inner">
       <div ref="track" class="track">
         <!-- Every card is displayed here -->
         <div v-for="(item, si) in slides" :key="si" ref="cardContainer" class="card-container">
@@ -106,7 +106,7 @@ export default {
 
     // Handles scroll with gesture as alternative to prev/next
     this.$refs.carouselInner.addEventListener('scroll', () => {
-      const newSlideIndex = /*Math.floor(this.$refs.carouselInner.scrollLeft / cardWidth);*/ this.$refs.carouselInner.scrollLeft / cardWidth
+      const newSlideIndex = /* Math.floor(this.$refs.carouselInner.scrollLeft / cardWidth); */ this.$refs.carouselInner.scrollLeft / cardWidth
       console.log(newSlideIndex, slideIndex)
 
       // Unchanged
@@ -184,18 +184,14 @@ export default {
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 .carousel-container {
-  width: 1280px;
+  /* width: 1280px; */
   margin: 50px auto;
   min-height: 200px;
   position: relative;
 }
 
-.carousel-container {
-  width: 93.5%;
-}
-
 .carousel-container .carousel-inner {
-  height: 400px;
+  height: 500px;
   align-items: center;
   display: flex;
   /* overflow: hidden; */
@@ -228,9 +224,9 @@ export default {
 }
 
 .carousel-container .card-container {
-  width: 315px;
+  width: 375px;
   flex-shrink: 0;
-  height: 350px;
+  height: 450px;
   padding-right: 10px;
   padding-left: 10px;
   box-sizing: border-box;
