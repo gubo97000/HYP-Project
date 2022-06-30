@@ -20,31 +20,33 @@
           assist you by giving you competent advice for your stay in the city:
           infotourist@comune.towny.it
         </p>
+        <p class="lead">
+          We also have an office, that is located in Avenida Alcalde Luis Uruñuela nº1 C.P. 42069 and it is open Monday to Friday, from 9AM to 6PM. 
+        </p>
+        
 
         <hr class="my-4" />
         <div class="container mt-5">
+          <p class="lead">
+            If you still have requests, questions or suggestions, please don’t hesitate to contact one of the following operators: 
+          </p>
+          <br />
+          
           <h3 class="section-title">CONTACT 1</h3>
           <p class="lead">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et
-            tincidunt elit, in finibus elit.
+            Alessandro (ENG, IT): +34 955471232
           </p>
-          <br />
           <h3 class="section-title">CONTACT 2</h3>
           <p class="lead">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et
-            tincidunt elit, in finibus elit.
+            Elena (ENG, IT): +34 955471232  
           </p>
-          <br />
           <h3 class="section-title">CONTACT 3</h3>
           <p class="lead">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et
-            tincidunt elit, in finibus elit.
+            Guido (ENG, IT): +34 955471232 
           </p>
-          <br />
           <h3 class="section-title">CONTACT 4</h3>
           <p class="lead">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et
-            tincidunt elit, in finibus elit.
+            Isabel (ENG, ES): +34 955471232
           </p>
           <br />
         </div>

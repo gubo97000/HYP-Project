@@ -5,22 +5,10 @@
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et
-          tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus
-          erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse
-          potenti. Sed quis efficitur erat. Pellentesque non velit ipsum.
-          Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh
-          sit amet ante consectetur, non cursus elit feugiat. Integer vitae elit
-          at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus
-          consectetur mauris eget neque posuere, vitae sagittis massa congue.
-          Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat,
-          id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula
-          blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus
-          lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et
-          vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a
-          leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac
-          interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper
-          tempus eros.
+          Whether its a party, celebration, festival or fiesta, Towny knows how to mark important dates with vim and vigour. The city has a calendar full of exciting events that will engage even the most cynical of visitor, covering religion, art, sports and whatever heading bullfighting falls under these days. 
+        </p>
+        <p class="lead">
+          You will be able to experience a lot of different events, Towny is a city that is alive all year long, so feel free to navigate through all the events that our proposed this year and see if there is something that catches your eye.
         </p>
         <br />
 
@@ -60,8 +48,10 @@
           <Dropdown :title="'WINTER EVENTS'" :index="2">
             <div class="d-flex justify-content-center flex-wrap">
               <CardComponent
-                v-for="(item, index) in events.nodes"
-                v-if="(index < 8 || showMore) && !isSummer(item.info) && isWinter(item.info)"
+                v-for="(item, index) in events.nodes.filter(
+                  (e) => !isSummer(e.info) && isWinter(e.info)
+                )"
+                v-if="index < 8 || showMore"
                 :key="`S${item.id}`"
                 :to="`/events/${item.id}`"
                 :image="`events/${item.id}-thumb.webp`"
@@ -85,8 +75,10 @@
           <Dropdown :title="'SUMMER EVENTS'" :index="3">
             <div class="d-flex justify-content-center flex-wrap">
               <CardComponent
-                v-for="(item, index) in events.nodes"
-                v-if="(index < 8 || showMore) && isSummer(item.info) && !isWinter(item.info)"
+                v-for="(item, index) in events.nodes.filter(
+                  (e) => isSummer(e.info) && !isWinter(e.info)
+                )"
+                v-if="index < 8 || showMore"
                 :key="`W${item.id}`"
                 :to="`/events/${item.id}`"
                 :image="`events/${item.id}-thumb.webp`"
@@ -232,8 +224,8 @@ h2 {
 }
 
 .lead {
+  margin-bottom: 15px;
   text-align: justify;
-  margin-bottom: 22.5px;
 }
 
 .title {

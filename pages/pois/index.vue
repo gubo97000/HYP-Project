@@ -7,22 +7,10 @@
       <div class="container mt-5">
         <!-- description of point of interest -->
         <p class="lead">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et
-          tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus
-          erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse
-          potenti. Sed quis efficitur erat. Pellentesque non velit ipsum.
-          Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh
-          sit amet ante consectetur, non cursus elit feugiat. Integer vitae elit
-          at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus
-          consectetur mauris eget neque posuere, vitae sagittis massa congue.
-          Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat,
-          id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula
-          blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus
-          lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et
-          vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a
-          leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac
-          interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper
-          tempus eros.
+          Towny is filled with beautiful monuments, museums, churches and fundamental pieces off the history of art. Here you can browse through all off the points of interest that you really need to see in the city. 
+        </p>
+        <p class="lead">
+          Make sure not to miss the most important ones, but we will guide you also to discover new places that most of the tourists have never heard of. We hope that you will enjoy the sights of Towny as much as we do. 
         </p>
         <br />
 
@@ -148,6 +136,7 @@ iframe {
 }
 
 .lead {
+  margin-bottom: 15px;
   text-align: justify;
 }
 

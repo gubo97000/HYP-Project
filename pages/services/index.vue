@@ -5,22 +5,10 @@
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et
-          tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus
-          erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse
-          potenti. Sed quis efficitur erat. Pellentesque non velit ipsum.
-          Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh
-          sit amet ante consectetur, non cursus elit feugiat. Integer vitae elit
-          at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus
-          consectetur mauris eget neque posuere, vitae sagittis massa congue.
-          Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat,
-          id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula
-          blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus
-          lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et
-          vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a
-          leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac
-          interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper
-          tempus eros.
+          Towny isn't a huge city, but there is nothing missing. The info about all the different kinds of services that you may need are in this page. Whether you are a visitor or you have been living here, and the following lists you will be able to find for sure something new, that you didn't know you needed. 
+        </p>
+        <p class="lead">
+          There are restaurants, museums, exhibitions, and every kind of shop whatever are your needs we are sure that you will find the right thing for you.
         </p>
         <br />
 
@@ -106,6 +94,7 @@ export default {
 }
 
 .lead {
+  margin-bottom: 15px;
   text-align: justify;
 }
 

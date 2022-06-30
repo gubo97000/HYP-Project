@@ -98,23 +98,12 @@ export default {
       ],
     }
   },
-  data() {
-    return {
-      windowWidth: this.windowWidth,
-    }
-  },
   head() {
     return {
       title: `${this.serviceType.name} - Services - Towny`,
     }
   },
-  mounted() {
-    this.windowWidth = window.innerWidth
 
-    window.addEventListener('resize', () => {
-      this.windowWidth = window.innerWidth
-    })
-  },
   methods: {
     backToList() {
       this.$router.push('/services')

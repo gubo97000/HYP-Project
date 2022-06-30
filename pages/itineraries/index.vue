@@ -5,22 +5,10 @@
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et
-          tincidunt elit, in finibus elit. Aliquam nec posuere sem, at faucibus
-          erat. Suspendisse iaculis lorem id odio placerat bibendum. Suspendisse
-          potenti. Sed quis efficitur erat. Pellentesque non velit ipsum.
-          Maecenas finibus felis a magna auctor finibus. Mauris tincidunt nibh
-          sit amet ante consectetur, non cursus elit feugiat. Integer vitae elit
-          at nunc lacinia egestas. Etiam nec sagittis lorem. Phasellus
-          consectetur mauris eget neque posuere, vitae sagittis massa congue.
-          Etiam vitae eleifend odio, sit amet tempus ex. Ut semper feugiat erat,
-          id consequat elit volutpat sed. Curabitur vel arcu at risus vehicula
-          blandit in ut nunc. In nec pellentesque tellus. Maecenas vitae purus
-          lacinia, tristique elit vitae, interdum est. Ut feugiat nulla et
-          vestibulum efficitur. Suspendisse potenti. Duis ex dolor, vestibulum a
-          leo eu, dapibus elementum ipsum. Curabitur euismod rhoncus nulla ac
-          interdum. Mauris vulputate viverra scelerisque. Mauris ullamcorper
-          tempus eros.
+          You know that sensation of being lost when you have to plan a visit to a city you don't know? We have got to covered. In this guide you will find some of the most beautiful itineraries that you can do to explore Towny and it's most beautiful sights. The itineraries are for everyone, you will be able to find more information about each one, such as the difficulty and the duration of the walk. 
+        </p>
+        <p class="lead">
+          They will touch some of the most important points of interest of our city and you will be able to explore and get to know more about each and every one of them. so, what are you waiting? Grab your comfy shoes and someone who loves to explore and start discovering Towny! 
         </p>
         <br />
 
@@ -192,6 +180,7 @@ export default {
 }
 
 .lead {
+  margin-bottom: 15px;
   text-align: justify;
 }
 
