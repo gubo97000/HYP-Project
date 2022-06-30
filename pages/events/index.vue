@@ -1,7 +1,7 @@
 <!-- Group page "All Events" -->
 <template>
   <div class="page container mt-5">
-    <h1 class="title">EVENTS</h1>
+    <h1 class="title">ALL EVENTS</h1>
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">

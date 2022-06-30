@@ -1,7 +1,7 @@
 <!-- Group page "All Service Types" -->
 <template>
   <div class="page container mt-5">
-    <h1 class="title">SERVICES</h1>
+    <h1 class="title">ALL SERVICES</h1>
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">

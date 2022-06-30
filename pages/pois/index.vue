@@ -1,7 +1,7 @@
 <!-- Group page "All Points of Interest" -->
 <template>
   <div class="page container mt-5">
-    <h1 class="title">POINTS OF INTEREST</h1>
+    <h1 class="title">ALL POINTS OF INTEREST</h1>
 
     <div class="jumbotron">
       <div class="container mt-5">
