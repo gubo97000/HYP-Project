@@ -12,7 +12,7 @@ The way it opens/closes is similar to header and footer components in portrait m
         data-bs-toggle="collapse"
         :data-bs-target="'#dropdownToggler' + index"
         :aria-controls="'dropdownToggler' + index"
-        aria-expanded="false"
+        :aria-expanded="toggled"
         aria-label="Toggle navigation"
         @click="toggleDropdown()"
       >
@@ -27,15 +27,14 @@ The way it opens/closes is similar to header and footer components in portrait m
 
     <!-- The items wrapped by the components, that are viewed only when the accordion is open. -->
     <!-- (See also "template" below) -->
-    <div :id="'dropdownToggler' + index" ref="wrappee" class="navbar-collapse" :class="!toggled ? 'collapse' : ''">
+    <!-- Class "in" allows default toggle to show content by default -->
+    <div :id="'dropdownToggler' + index" class="collapse navbar-collapse" :class="toggled ? 'show' : ''">
         <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
-let defaultDropdownCollapsed = false;
-
 export default {
   name: 'Dropdown',
   props: {
@@ -55,7 +54,6 @@ export default {
   mounted() {
     // Default toggle
     if(this.toggled === true) {
-      this.$refs.toggler.click()
       this.$refs.panelHeading.classList.add('active')
     }
 
@@ -79,13 +77,6 @@ export default {
       // Toggle active class
       if (this.$refs.panelHeading.classList.contains('active')) {
         this.$refs.panelHeading.classList.remove('active')
-        
-        // Only the first time closing a default toggled dropdown
-        // The class must be initially removed if the dropdown is default toggled
-        if(this.toggled && !defaultDropdownCollapsed) {
-          defaultDropdownCollapsed = true
-          this.$refs.wrappee.classList.add('collapse')
-        }
       } else {  
         // Close all other dropdowns - Step 1: emit to parent the opening of this dropdown
         this.$parent.$emit('closeAllDropdowns', this.index)

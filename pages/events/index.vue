@@ -33,6 +33,7 @@
               />
             </div>
 
+            <!-- Show more button -->
             <div class="d-flex justify-content-center flex-wrap">
               <button
                 v-if="!showMore"
@@ -60,6 +61,7 @@
               />
             </div>
 
+            <!-- Show more button -->
             <div class="d-flex justify-content-center flex-wrap">
               <button
                 v-if="!showMore && events.nodes.filter((item) => !isSummer(item.info) && isWinter(item.info)).length > 8"
@@ -87,6 +89,7 @@
               />              
             </div>
 
+            <!-- Show more button -->
             <div class="d-flex justify-content-center flex-wrap">
               <button
                 v-if="!showMore && events.nodes.filter((item) => isSummer(item.info) && !isWinter(item.info)).length > 8"
