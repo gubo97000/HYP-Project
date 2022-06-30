@@ -125,6 +125,13 @@ export default {
   head() {
     return {
       title: `${this.event.title} - Events - Towny`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `${this.event.description}`,
+        },
+      ],
     }
   },
   // apollo: {

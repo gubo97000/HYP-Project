@@ -185,6 +185,13 @@ export default {
   head() {
     return {
       title: `${this.pois.title} - Points of Interest - Towny`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `${this.pois.description}`,
+        },
+      ],
     }
   },
 

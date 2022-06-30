@@ -111,6 +111,13 @@ export default {
   head() {
     return {
       title: 'All Events - Towny',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `In Towny there is always something to do, discover all the possibilities here!`,
+        },
+      ],
     }
   },
   apollo: {

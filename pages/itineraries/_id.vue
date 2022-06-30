@@ -8,43 +8,58 @@
         </h1>
       </div>
 
-        <b class="section-title">DURATION: {{ itinerary.duration }}</b>
-        <p class="lead">
+      <b class="section-title">DURATION: {{ itinerary.duration }}</b>
+      <p class="lead">
         {{ itinerary.description }}
-        </p>
-        <br />
+      </p>
+      <br />
 
-        <div>
+      <div>
         <!-- <img :src="require('@/assets/' + map)" alt="" class="cover" /> -->
-        </div>
-        <br />
+      </div>
+      <br />
 
-        <!-- Transition links to the related points of interest  -->
-        <b class="section-title">Points of interest touched by this itinerary:</b>
-      
-        <CarouselMultiItem
-        v-if="windowWidth >= 768" :slides="
-        itinerary.poiItineraries.nodes.map((e) => {
+      <!-- Transition links to the related points of interest  -->
+      <b class="section-title">Points of interest touched by this itinerary:</b>
+
+      <CarouselMultiItem
+        v-if="windowWidth >= 768"
+        :slides="
+          itinerary.poiItineraries.nodes.map((e) => {
             return {
-            ...e.poi,
-            image: `pois/${e.poi.id}-1.webp`,
-            name: e.poi.title,
+              ...e.poi,
+              image: `pois/${e.poi.id}-1.webp`,
+              name: e.poi.title,
             }
-        })
-        "></CarouselMultiItem>
+          })
+        "
+      ></CarouselMultiItem>
 
-        <div v-else class="d-flex justify-content-center flex-wrap card-container">
-          <CardComponent
-            v-for="n in itinerary.poiItineraries.nodes" :key="n.poi.id" :to="`/pois/${n.poi.id}`"
-            :image="`pois/${n.poi.id}-1.webp`" :caption="n.poi.title" />
-        </div>
+      <div
+        v-else
+        class="d-flex justify-content-center flex-wrap card-container"
+      >
+        <CardComponent
+          v-for="n in itinerary.poiItineraries.nodes"
+          :key="n.poi.id"
+          :to="`/pois/${n.poi.id}`"
+          :image="`pois/${n.poi.id}-1.webp`"
+          :caption="n.poi.title"
+        />
+      </div>
 
-        <!-- Group link to All itineraries (Index pattern) -->
-        <div class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back">
-          <button type="button" class="btn btn-outline-secondary btn-lg px-4" @click="backToList">
-            ← ALL ITINERARIES
-          </button>
-        </div>
+      <!-- Group link to All itineraries (Index pattern) -->
+      <div
+        class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
+      >
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-lg px-4"
+          @click="backToList"
+        >
+          ← ALL ITINERARIES
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -116,6 +131,13 @@ export default {
   head() {
     return {
       title: `${this.itinerary.title} - Itineraries - Towny`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `${this.itinerary.description}`,
+        },
+      ],
     }
   },
   mounted() {
@@ -174,14 +196,14 @@ export default {
 .go-back {
   margin-top: 5%;
 }
-.nuxt-clickable>>>img {
+.nuxt-clickable >>> img {
   height: 185px;
   object-fit: cover;
 }
-.nuxt-clickable>>>figure {
+.nuxt-clickable >>> figure {
   height: 250px;
 }
-.nuxt-clickable>>>figcaption {
+.nuxt-clickable >>> figcaption {
   line-height: 30px;
   height: 65px;
   display: flex;
