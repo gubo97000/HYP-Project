@@ -96,20 +96,6 @@ export default {
       itineraryList: itineraries,
     }
   },
-  data() {
-    return {
-      crumbs: [
-        {
-          name: 'Home',
-          path: '/',
-        },
-        {
-          name: 'Itineraries',
-          path: '/itineraries',
-        },
-      ],
-    }
-  },
   head() {
     return {
       title: 'All Itineraries - Towny',

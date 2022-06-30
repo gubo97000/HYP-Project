@@ -82,20 +82,6 @@ export default {
       })
     return {
       serviceType,
-      crumbs: [
-        {
-          name: 'Home',
-          path: '/',
-        },
-        {
-          name: 'Services',
-          path: '/services',
-        },
-        {
-          name: serviceType.name,
-          path: '/services/' + id,
-        },
-      ],
     }
   },
   head() {

@@ -59,20 +59,6 @@ export default {
       serviceList: serviceTypes,
     }
   },
-  data() {
-    return {
-      crumbs: [
-        {
-          name: 'Home',
-          path: '/',
-        },
-        {
-          name: 'Services',
-          path: '/services',
-        },
-      ],
-    }
-  },
   head() {
     return {
       title: 'All Services - Towny',

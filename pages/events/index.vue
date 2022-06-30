@@ -122,16 +122,7 @@ export default {
   data() {
     return {
       events: {},
-      crumbs: [
-        {
-          name: 'Home',
-          path: '/',
-        },
-        {
-          name: 'Events',
-          path: '/events',
-        },
-      ],
+
       // Used to hide overflowing cards
       showMore: false,
     }

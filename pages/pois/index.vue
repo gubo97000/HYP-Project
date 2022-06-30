@@ -82,16 +82,7 @@ export default {
   data() {
     return {
       poises: {},
-      crumbs: [
-        {
-          name: 'Home',
-          path: '/',
-        },
-        {
-          name: 'Points of Interest',
-          path: '/pois',
-        },
-      ],
+
       // Used to hide overflowing cards
       showMore: false,
     }

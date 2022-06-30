@@ -59,20 +59,6 @@
 <script>
 export default {
   name: 'Contact',
-  data() {
-    return {
-      crumbs: [
-        {
-          name: 'Home',
-          path: '/',
-        },
-        {
-          name: 'Contact',
-          path: '/contact',
-        },
-      ],
-    }
-  },
   head() {
     return {
       title: 'Contact us - Towny',

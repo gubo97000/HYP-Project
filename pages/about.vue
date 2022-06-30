@@ -103,20 +103,6 @@
 <script>
 export default {
   name: 'About',
-  data() {
-    return {
-      crumbs: [
-        {
-          name: 'Home',
-          path: '/',
-        },
-        {
-          name: 'About',
-          path: '/about',
-        },
-      ],
-    }
-  },
   head() {
     return {
       title: 'About us - Towny',
