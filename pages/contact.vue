@@ -62,6 +62,13 @@ export default {
   head() {
     return {
       title: 'Contact us - Towny',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `Do you need any further information or have specific requests about Towny? Reach out to our staff to answer all your questions.`,
+        },
+      ],
     }
   },
 }

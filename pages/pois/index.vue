@@ -94,7 +94,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: `Towny is a city full of incredible places here you can see all the points of interest of the city.`,
+          content: `Towny is filled with beautiful monuments, museums, churches and fundamental pieces off the history of art. Here you can browse through all off the points of interest that you really need to see in the city.`,
         },
       ],
     }

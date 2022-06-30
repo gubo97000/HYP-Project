@@ -103,7 +103,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: `Visit easily the most important places of towny with this curated itineraries`,
+          content: `In this guide you will find some of the most beautiful itineraries that you can do to explore Towny and it's most beautiful sights. The itineraries are for everyone, you will be able to find more information about each one, such as the difficulty and the duration of the walk.`,
         },
       ],
     }

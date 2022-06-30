@@ -36,6 +36,13 @@ export default {
   head() {
     return {
       title: 'Towny',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `Explore Towny, one of the most beautiful cities in the world. Your tour starts from here!`,
+        },
+      ],
     }
   },
 }

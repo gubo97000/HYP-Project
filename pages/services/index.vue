@@ -62,6 +62,13 @@ export default {
   head() {
     return {
       title: 'All Services - Towny',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `Towny isn't a huge city, but there is nothing missing. There are restaurants, museums, exhibitions, and every kind of services! Whatever are your needs we are sure that you will find the right thing for you.`,
+        },
+      ],
     }
   },
 }

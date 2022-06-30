@@ -87,6 +87,13 @@ export default {
   head() {
     return {
       title: `${this.serviceType.name} - Services - Towny`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `Towny isn't a huge city, but there is nothing missing. This page is dedicated to everything related to the ${this.serviceType.name.toLowerCase()} service.`,
+        },
+      ],
     }
   },
 

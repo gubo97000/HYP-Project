@@ -135,7 +135,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: `In Towny there is always something to do, discover all the possibilities here!`,
+          content: `Towny is a city that is alive all year long, so feel free to navigate through all the events that our proposed this year and see if there is something that catches your eye!`,
         },
       ],
     }

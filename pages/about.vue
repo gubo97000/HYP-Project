@@ -106,6 +106,13 @@ export default {
   head() {
     return {
       title: 'About us - Towny',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `Find out more curiosities about Towny, and get to know how to reach the place by plane, by train or by car.`,
+        },
+      ],
     }
   },
 }
