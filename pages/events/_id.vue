@@ -68,7 +68,7 @@ export default {
     CardComponent,
   },
 
-  async asyncData({ route, app }) {
+  async asyncData({ route, app, redirect, error }) {
     const { id } = route.params
     const client = app.apolloProvider.defaultClient
     const event = await client
@@ -98,23 +98,15 @@ export default {
         }
       `,
       })
-      .then(({ data }) => data.event)
+      .then(({ data }) => {
+        if (data.event === null) {
+          error({ statusCode: 404, message: '404 This page does not exist' })
+          return data
+        }
+        return data.event
+      })
     return {
       event,
-      crumbs: [
-        {
-          name: 'Home',
-          path: '/',
-        },
-        {
-          name: 'Events',
-          path: '/events',
-        },
-        {
-          name: event.title,
-          path: '/events/' + id,
-        },
-      ],
     }
   },
   // data() {
@@ -134,30 +126,6 @@ export default {
       ],
     }
   },
-  // apollo: {
-  //   event: {
-  //     // prefetch: true,
-  //     query: gql`
-  //       query MyQuery($id: Int!) {
-  //         event(id: $id) {
-  //           id
-  //           info
-  //           title
-  //           poi {
-  //             title
-  //             info
-  //             id
-  //           }
-  //         }
-  //       }
-  //     `,
-  //     variables() {
-  //       return {
-  //         id: parseInt(this.id),
-  //       }
-  //     },
-  //   },
-  // },
   methods: {
     backToList() {
       this.$router.push('/events')

@@ -102,25 +102,14 @@ export default {
       `,
       })
       .then(({ data }) => {
-        console.log(data)
+        if (data.itinerary === null) {
+          error({ statusCode: 404, message: '404 This page does not exist' })
+          return data
+        }
         return data.itinerary
       })
     return {
       itinerary,
-      crumbs: [
-        {
-          name: 'Home',
-          path: '/',
-        },
-        {
-          name: 'Itineraries',
-          path: '/itineraries',
-        },
-        {
-          name: itinerary.title,
-          path: '/itineraries/' + id,
-        },
-      ],
     }
   },
   data() {

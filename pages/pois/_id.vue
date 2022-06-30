@@ -158,23 +158,15 @@ export default {
 }
       `,
       })
-      .then(({ data }) => data.pois)
+      .then(({ data }) => {
+        if (data.pois === null) {
+          error({ statusCode: 404, message: '404 This page does not exist' })
+          return data
+        }
+        return data.pois
+      })
     return {
       pois,
-      crumbs: [
-        {
-          name: 'Home',
-          path: '/',
-        },
-        {
-          name: 'Points of Interest',
-          path: '/pois',
-        },
-        {
-          name: pois.title,
-          path: '/pois/' + id,
-        },
-      ],
     }
   },
   data() {
