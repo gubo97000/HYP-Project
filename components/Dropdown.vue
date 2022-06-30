@@ -27,13 +27,15 @@ The way it opens/closes is similar to header and footer components in portrait m
 
     <!-- The items wrapped by the components, that are viewed only when the accordion is open. -->
     <!-- (See also "template" below) -->
-    <div :id="'dropdownToggler' + index" class="collapse navbar-collapse">
+    <div :id="'dropdownToggler' + index" ref="wrappee" class="navbar-collapse" :class="!toggled ? 'collapse' : ''">
         <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
+let defaultDropdownCollapsed = false;
+
 export default {
   name: 'Dropdown',
   props: {
@@ -75,10 +77,17 @@ export default {
       }, 500);
 
       // Toggle active class
-      if (this.$refs.panelHeading.classList.contains('active'))
+      if (this.$refs.panelHeading.classList.contains('active')) {
         this.$refs.panelHeading.classList.remove('active')
-      else {
-        // Step 1: emit to parent the opening of this dropdown
+        
+        // Only the first time closing a default toggled dropdown
+        // The class must be initially removed if the dropdown is default toggled
+        if(this.toggled && !defaultDropdownCollapsed) {
+          defaultDropdownCollapsed = true
+          this.$refs.wrappee.classList.add('collapse')
+        }
+      } else {  
+        // Close all other dropdowns - Step 1: emit to parent the opening of this dropdown
         this.$parent.$emit('closeAllDropdowns', this.index)
         this.$refs.panelHeading.classList.add('active')
       }
