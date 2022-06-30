@@ -45,8 +45,18 @@ export default {
       type: String,
       default: '',
     },
+    toggled: {
+      type: Boolean,
+      default: false,
+    }
   },
   mounted() {
+    // Default toggle
+    if(this.toggled === true) {
+      this.$refs.toggler.click()
+      this.$refs.panelHeading.classList.add('active')
+    }
+
     // Step 3/3: Close this dropdown if opened
     this.$parent.$on('closeDropdown', () => {
       if (this.$refs.panelHeading.classList.contains('active')) {

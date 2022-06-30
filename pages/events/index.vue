@@ -20,6 +20,7 @@
             :ref="'dropdownToggler' + i"
             :title="'ALL YEAR EVENTS'"
             :index="1"
+            :toggled="true"
           >
             <div class="d-flex justify-content-center flex-wrap">
               <CardComponent
