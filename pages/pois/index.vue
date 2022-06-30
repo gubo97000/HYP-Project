@@ -1,7 +1,7 @@
 <!-- Group page "All Points of Interest" -->
 <template>
   <div class="page container mt-5">
-    <h1 class="title">POINTS OF INTEREST</h1>
+    <h1 class="title">ALL POINTS OF INTEREST</h1>
 
     <div class="jumbotron">
       <div class="container mt-5">
@@ -39,12 +39,24 @@
         <!-- Group links to POIs details -->
         <div class="d-flex justify-content-center flex-wrap card-container">
           <CardComponent
-            v-for="n in poises.edges"
+            v-for="(n, index) in poises.edges"
+            v-if="index < 8 || showMore"
             :key="n.node.id"
             :to="`/pois/${n.node.id}`"
             :image="`pois/${n.node.id}-thumb.webp`"
             :caption="n.node.title"
           />
+        </div>
+
+        <div class="d-flex justify-content-center flex-wrap">
+          <button
+            v-if="!showMore"
+            type="button"
+            class="btn btn-outline-light btn-lg rounded-pill"
+            @click="showMore = true"
+          >
+            SHOW MORE
+          </button>
         </div>
       </div>
     </div>
@@ -92,6 +104,8 @@ export default {
           path: '/pois',
         },
       ],
+      // Used to hide overflowing cards
+      showMore: false,
     }
   },
   head() {
@@ -165,6 +179,12 @@ iframe {
   margin-top: 30px;
   margin-bottom: 60px;
 }
+
+.btn {
+  background-color: #8bdefffe;
+  margin-bottom: 30px;
+}
+
 
 /* 4 cards per row */
 @media screen and (min-width: 1550px) {

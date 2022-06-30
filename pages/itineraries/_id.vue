@@ -114,6 +114,7 @@ export default {
   },
   data() {
     return {
+      // Used for responsive conditional rendering of multi-item carousel
       windowWidth: this.windowWidth,
     }
   },

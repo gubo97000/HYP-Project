@@ -1,7 +1,7 @@
 <!-- Group page "All Itineraries" -->
 <template>
   <div class="page container mt-5">
-    <h1 class="title">ITINERARIES</h1>
+    <h1 class="title">ALL ITINERARIES</h1>
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">

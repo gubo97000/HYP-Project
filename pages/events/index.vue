@@ -1,7 +1,7 @@
 <!-- Group page "All Events" -->
 <template>
   <div class="page container mt-5">
-    <h1 class="title">EVENTS</h1>
+    <h1 class="title">ALL EVENTS</h1>
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
@@ -35,12 +35,24 @@
           >
             <div class="d-flex justify-content-center flex-wrap">
               <CardComponent
-                v-for="item in events.nodes"
+                v-for="(item, index) in events.nodes"
+                v-if="index < 8 || showMore"
                 :key="`${item.id}`"
                 :to="`/events/${item.id}`"
                 :image="`events/${item.id}-thumb.webp`"
                 :caption="item.title"
               />
+            </div>
+
+            <div class="d-flex justify-content-center flex-wrap">
+              <button
+                v-if="!showMore"
+                type="button"
+                class="btn btn-outline-light btn-lg rounded-pill"
+                @click="showMore = true"
+              >
+                SHOW MORE
+              </button>
             </div>
           </Dropdown>
 
@@ -48,13 +60,24 @@
           <Dropdown :title="'WINTER EVENTS'" :index="2">
             <div class="d-flex justify-content-center flex-wrap">
               <CardComponent
-                v-for="item in events.nodes"
-                v-if="!isSummer(item.info) && isWinter(item.info)"
+                v-for="(item, index) in events.nodes"
+                v-if="(index < 8 || showMore) && !isSummer(item.info) && isWinter(item.info)"
                 :key="`S${item.id}`"
                 :to="`/events/${item.id}`"
                 :image="`events/${item.id}-thumb.webp`"
                 :caption="item.title"
               />
+            </div>
+
+            <div class="d-flex justify-content-center flex-wrap">
+              <button
+                v-if="!showMore && events.nodes.filter((item) => !isSummer(item.info) && isWinter(item.info)).length > 8"
+                type="button"
+                class="btn btn-outline-light btn-lg rounded-pill"
+                @click="showMore = true"
+              >
+                SHOW MORE
+              </button>
             </div>
           </Dropdown>
 
@@ -62,13 +85,24 @@
           <Dropdown :title="'SUMMER EVENTS'" :index="3">
             <div class="d-flex justify-content-center flex-wrap">
               <CardComponent
-                v-for="item in events.nodes"
-                v-if="isSummer(item.info) && !isWinter(item.info)"
+                v-for="(item, index) in events.nodes"
+                v-if="(index < 8 || showMore) && isSummer(item.info) && !isWinter(item.info)"
                 :key="`W${item.id}`"
                 :to="`/events/${item.id}`"
                 :image="`events/${item.id}-thumb.webp`"
                 :caption="item.title"
-              />
+              />              
+            </div>
+
+            <div class="d-flex justify-content-center flex-wrap">
+              <button
+                v-if="!showMore && events.nodes.filter((item) => isSummer(item.info) && !isWinter(item.info)).length > 8"
+                type="button"
+                class="btn btn-outline-light btn-lg rounded-pill"
+                @click="showMore = true"
+              >
+                SHOW MORE
+              </button>
             </div>
           </Dropdown>
         </div>
@@ -106,6 +140,8 @@ export default {
           path: '/events',
         },
       ],
+      // Used to hide overflowing cards
+      showMore: false,
     }
   },
   head() {
@@ -143,7 +179,10 @@ export default {
 
     // Steps 1 and 3 in Dropdown component
     // Step 2: When clicking a dropdown, close all the others (if opened)
+    // Also re-enable "show more" button
     this.$on('closeAllDropdowns', (index) => {
+      this.showMore = false
+
       for (let i = 1; i <= dropdowns.children.length; i++)
         if (index != i) this.$emit('closeDropdown')
     })
@@ -223,6 +262,11 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.btn {
+  background-color: #8bdefffe;
+  margin-top: 30px;
 }
 
 /* 4 cards per row */
