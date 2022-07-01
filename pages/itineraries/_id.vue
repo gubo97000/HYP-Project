@@ -29,7 +29,7 @@
           itinerary.poiItineraries.nodes.map((e) => {
             return {
               ...e.poi,
-              image: `pois/${e.poi.id}-1.webp`,
+              image: `pois/${e.poi.id}-thumb.webp`,
               name: e.poi.title,
             }
           })
@@ -44,7 +44,7 @@
           v-for="n in itinerary.poiItineraries.nodes"
           :key="n.poi.id"
           :to="`/pois/${n.poi.id}`"
-          :image="`pois/${n.poi.id}-1.webp`"
+          :image="`pois/${n.poi.id}-thumb.webp`"
           :caption="n.poi.title"
         />
       </div>

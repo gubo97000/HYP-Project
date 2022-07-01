@@ -21,7 +21,7 @@
         <br />
 
         <!-- Group links to itineraries details -->
-        <div class="column_wrapper">
+        <div class="flex flex-col">
           <nuxt-link
             v-for="item in itineraryList"
             :key="item.id"
@@ -35,7 +35,7 @@
               <img
                 :src="require('@/assets/maps/' + item.id + '-map.webp')"
                 alt=""
-                width="500"
+                style="width: 100px"
               />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <!-- <iframe :src="item.map" height="360px"></iframe> -->
               <!-- Info: title, duration, touched points of interest -->
@@ -141,7 +141,7 @@ export default {
   }
 
   .service-item > img {
-    min-width: 47.5%;
+    min-width: 20%;
     margin-right: 5%;
   }
 }
