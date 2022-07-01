@@ -28,7 +28,7 @@
         <div class="d-flex justify-content-center flex-wrap card-container">
           <CardComponent
             v-for="(n, index) in poises.edges"
-            v-if="index < 8 || showMore"
+            v-if="index < maxLength || showMore"
             :key="n.node.id"
             :to="`/pois/${n.node.id}`"
             :image="`pois/${n.node.id}-thumb.webp`"
@@ -38,12 +38,12 @@
 
         <div class="d-flex justify-content-center flex-wrap">
           <button
-            v-if="!showMore"
             type="button"
             class="btn btn-outline-light btn-lg rounded-pill"
-            @click="showMore = true"
+            @click="showMore = !showMore"
           >
-            SHOW MORE
+            <span v-if="!showMore">SHOW MORE</span>
+            <span v-if="showMore">SHOW LESS</span>
           </button>
         </div>
       </div>
@@ -85,6 +85,7 @@ export default {
 
       // Used to hide overflowing cards
       showMore: false,
+      maxLength: 8
     }
   },
   head() {
@@ -99,6 +100,12 @@ export default {
       ],
     }
   },
+  mounted() {
+    this.maxLength = window.innerWidth < 600 ? 4 : 8
+    window.addEventListener('resize', () => {
+      this.maxLength = window.innerWidth < 600 ? 4 : 8
+    })
+  }
   // async asyncData({ $axios }) {
   //   const { data } = await $axios.get('/api/page-info/about')
   //   const title = data.title
@@ -162,7 +169,8 @@ iframe {
 
 .btn {
   background-color: #8bdefffe;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  margin-top: -10px;
 }
 
 

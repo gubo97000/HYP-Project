@@ -133,7 +133,7 @@ export default {
 
       // Used to hide overflowing cards
       showMore: false,
-      maxLength: window.innerWidth < 600 ? 4 : 8
+      maxLength: 8
     }
   },
   head() {
@@ -167,6 +167,7 @@ export default {
     },
   },
   mounted() {
+    this.maxLength = window.innerWidth < 600 ? 4 : 8
     window.addEventListener('resize', () => {
       this.maxLength = window.innerWidth < 600 ? 4 : 8
     })
