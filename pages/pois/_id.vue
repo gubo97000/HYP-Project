@@ -54,10 +54,10 @@
                       <p class="lead item-title">
                         {{ i.itinerary.title.toUpperCase() }}
                       </p>
-                      <p class="lead">Stop number {{ i.order }} of the itinerary</p>
-                      <p class="lead">Duration: {{ i.itinerary.duration }}</p>
+                      <p class="lead item-text">Stop number {{ i.order }} of the itinerary</p>
+                      <p class="lead item-text">Duration: {{ i.itinerary.duration }}</p>
                     </div>
-                    <svg style="color: #8bdefffe" xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" fill="#8bdefffe"></path> </svg>
+                    <svg v-if="windowWidth >= 640" style="color: #8bdefffe" xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" fill="#8bdefffe"></path> </svg>
                   </div>
                 </nuxt-link>
               </div>
@@ -175,6 +175,7 @@ export default {
   data() {
     return {
       id: this.$route.params.id, // we get the route here so we are sure apollo gets it
+      windowWidth: this.windowWidth
     }
   },
   head() {
@@ -189,7 +190,12 @@ export default {
       ],
     }
   },
-
+  mounted() {
+    this.windowWidth = window.innerWidth
+    window.addEventListener('resize', () => {
+      this.windowWidth = window.innerWidth
+    })
+  },
   methods: {
     backToList() {
       this.$router.push('/pois')
@@ -200,7 +206,7 @@ export default {
 
 <style scoped>
 /* Landscape/Desktop */
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 640px) {
   .title {
     color: #26466f;
     font-weight: 750;
@@ -287,7 +293,7 @@ export default {
 }
 
 /* Portrait */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 639px) {
   .title {
     color: #26466f;
     font-weight: 750;
@@ -322,6 +328,9 @@ export default {
   .related-itinerary div {
     padding: 1.5rem;
   }
+  .related-itinerary > * {
+    width: 100%;
+  }
 }
 
 .related-itinerary > * {
@@ -330,6 +339,7 @@ export default {
 .related-itinerary {
   margin-top: 15px;
   width: 100%;
+  z-index: 1;
 }
 
 .related-itinerary div {
@@ -358,13 +368,8 @@ li {
   list-style-type: circle;
 }
 
-.lead:not(.itinerary-name) {
+.lead:not(.item-title):not(.item-text) {
   text-align: justify;
-}
-
-.itinerary-name {
-  text-decoration: underline;
-  font-weight: bold;
 }
 
 .transition-links-container {
@@ -389,7 +394,7 @@ li {
 }
 
 /* Handles overflowing captions for some screen widths, in case of long event titles */
-@media screen and (max-width: 1024px) and (min-width: 600px) {
+@media screen and (max-width: 1024px) and (min-width: 640px) {
   .long-title >>> figcaption {
     line-height: 20px;
     font-size: 2.4vw;
