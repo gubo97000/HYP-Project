@@ -5,10 +5,18 @@
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
-          You know that sensation of being lost when you have to plan a visit to a city you don't know? We have got to covered. In this guide you will find some of the most beautiful itineraries that you can do to explore Towny and it's most beautiful sights. The itineraries are for everyone, you will be able to find more information about each one, such as the difficulty and the duration of the walk. 
+          You know that sensation of being lost when you have to plan a visit to
+          a city you don't know? We have got to covered. In this guide you will
+          find some of the most beautiful itineraries that you can do to explore
+          Towny and it's most beautiful sights. The itineraries are for
+          everyone, you will be able to find more information about each one,
+          such as the difficulty and the duration of the walk.
         </p>
         <p class="lead">
-          They will touch some of the most important points of interest of our city and you will be able to explore and get to know more about each and every one of them. so, what are you waiting? Grab your comfy shoes and someone who loves to explore and start discovering Towny! 
+          They will touch some of the most important points of interest of our
+          city and you will be able to explore and get to know more about each
+          and every one of them. so, what are you waiting? Grab your comfy shoes
+          and someone who loves to explore and start discovering Towny!
         </p>
         <br />
 
@@ -29,7 +37,7 @@
                 alt=""
                 width="500"
               />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-
+              <iframe :src="item.map" width="640" height="480"></iframe>
               <!-- Info: title, duration, touched points of interest -->
               <div class="itinerary-info">
                 <p class="item-title">
@@ -75,6 +83,7 @@ export default {
                 duration
                 description
                 title
+                map
                 poiItineraries(orderBy: ORDER_ASC) {
                   nodes {
                     poi {

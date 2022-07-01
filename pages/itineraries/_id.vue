@@ -16,6 +16,7 @@
 
       <div>
         <!-- <img :src="require('@/assets/' + map)" alt="" class="cover" /> -->
+        <iframe :src="itinerary.map" width="640" height="480"></iframe>
       </div>
       <br />
 
@@ -86,6 +87,7 @@ export default {
     title
         duration
     description
+    map
     poiItineraries(orderBy: ORDER_ASC) {
       nodes {
         order
