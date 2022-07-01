@@ -25,7 +25,7 @@
             <div class="d-flex justify-content-center flex-wrap">
               <CardComponent
                 v-for="(item, index) in events.nodes"
-                v-if="index < 8 || showMore"
+                v-if="index < maxLength || showMore"
                 :key="`${item.id}`"
                 :to="`/events/${item.id}`"
                 :image="`events/${item.id}-thumb.webp`"
@@ -36,12 +36,13 @@
             <!-- Show more button -->
             <div class="d-flex justify-content-center flex-wrap">
               <button
-                v-if="!showMore"
+                v-if="events.nodes.length > maxLength"
                 type="button"
                 class="btn btn-outline-light btn-lg rounded-pill"
-                @click="showMore = true"
+                @click="showMore = !showMore"
               >
-                SHOW MORE
+                <span v-if="!showMore">SHOW MORE</span>
+                <span v-if="showMore">SHOW LESS</span>
               </button>
             </div>
           </Dropdown>
@@ -53,7 +54,7 @@
                 v-for="(item, index) in events.nodes.filter(
                   (e) => !isSummer(e.info) && isWinter(e.info)
                 )"
-                v-if="index < 8 || showMore"
+                v-if="index < maxLength || showMore"
                 :key="`S${item.id}`"
                 :to="`/events/${item.id}`"
                 :image="`events/${item.id}-thumb.webp`"
@@ -64,12 +65,14 @@
             <!-- Show more button -->
             <div class="d-flex justify-content-center flex-wrap">
               <button
-                v-if="!showMore && events.nodes.filter((item) => !isSummer(item.info) && isWinter(item.info)).length > 8"
+                v-if="events.nodes.filter((item) => !isSummer(item.info) && isWinter(item.info)).length > maxLength"
+
                 type="button"
                 class="btn btn-outline-light btn-lg rounded-pill"
-                @click="showMore = true"
+                @click="showMore = !showMore"
               >
-                SHOW MORE
+                <span v-if="!showMore">SHOW MORE</span>
+                <span v-if="showMore">SHOW LESS</span>
               </button>
             </div>
           </Dropdown>
@@ -81,7 +84,7 @@
                 v-for="(item, index) in events.nodes.filter(
                   (e) => isSummer(e.info) && !isWinter(e.info)
                 )"
-                v-if="index < 8 || showMore"
+                v-if="index < maxLength || showMore"
                 :key="`W${item.id}`"
                 :to="`/events/${item.id}`"
                 :image="`events/${item.id}-thumb.webp`"
@@ -92,12 +95,13 @@
             <!-- Show more button -->
             <div class="d-flex justify-content-center flex-wrap">
               <button
-                v-if="!showMore && events.nodes.filter((item) => isSummer(item.info) && !isWinter(item.info)).length > 8"
+                v-if="events.nodes.filter((item) => isSummer(item.info) && !isWinter(item.info)).length > maxLength"
                 type="button"
                 class="btn btn-outline-light btn-lg rounded-pill"
-                @click="showMore = true"
+                @click="showMore = !showMore"
               >
-                SHOW MORE
+                <span v-if="!showMore">SHOW MORE</span>
+                <span v-if="showMore">SHOW LESS</span>
               </button>
             </div>
           </Dropdown>
@@ -129,6 +133,7 @@ export default {
 
       // Used to hide overflowing cards
       showMore: false,
+      maxLength: window.innerWidth < 600 ? 4 : 8
     }
   },
   head() {
@@ -162,6 +167,10 @@ export default {
     },
   },
   mounted() {
+    window.addEventListener('resize', () => {
+      this.maxLength = window.innerWidth < 600 ? 4 : 8
+    })
+
     dropdowns = this.$refs.dropdowns
 
     // Steps 1 and 3 in Dropdown component
