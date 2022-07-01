@@ -75,7 +75,7 @@ export default {
     CardComponent,
     CarouselMultiItem,
   },
-  async asyncData({ route, app }) {
+  async asyncData({ route, app, error }) {
     const { id } = route.params
     const client = app.apolloProvider.defaultClient
     const itinerary = await client

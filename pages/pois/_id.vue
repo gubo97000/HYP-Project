@@ -115,7 +115,7 @@ export default {
   components: {
     CardComponent,
   },
-  async asyncData({ route, app }) {
+  async asyncData({ route, app, error }) {
     const { id } = route.params
     const client = app.apolloProvider.defaultClient
     const pois = await client
