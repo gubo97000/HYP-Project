@@ -35,7 +35,7 @@
               <img
                 :src="require('@/assets/maps/' + item.id + '-map.webp')"
                 alt=""
-                style="width: 100px"
+                style=""
               />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <!-- <iframe :src="item.map" height="360px"></iframe> -->
               <!-- Info: title, duration, touched points of interest -->
@@ -141,7 +141,7 @@ export default {
   }
 
   .service-item > img {
-    min-width: 20%;
+    width: 20%;
     margin-right: 5%;
   }
 }
