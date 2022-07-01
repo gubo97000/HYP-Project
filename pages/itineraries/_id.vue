@@ -30,7 +30,7 @@
             return {
               ...e.poi,
               image: `pois/${e.poi.id}-1.webp`,
-              name: e.poi.title,
+              name: `${e.order}. ${e.poi.title}`,
             }
           })
         "
