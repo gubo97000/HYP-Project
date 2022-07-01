@@ -32,12 +32,12 @@
               class="p-4 pe-lg-5 align-items-center rounded-3 border shadow-lg service-item"
             >
               <!-- Small map with overview of the route -->
-              <!-- <img
-                :src="require('@/assets/' + item.map)"
+              <img
+                :src="require('@/assets/maps/' + item.id + '-map.webp')"
                 alt=""
                 width="500"
-              />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-              <iframe :src="item.map" height="360px"></iframe>
+              />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <!-- <iframe :src="item.map" height="360px"></iframe> -->
               <!-- Info: title, duration, touched points of interest -->
               <div class="itinerary-info">
                 <p class="item-title">
@@ -140,7 +140,7 @@ export default {
     font-size: 4rem;
   }
 
-  .service-item > iframe {
+  .service-item > img {
     min-width: 47.5%;
     margin-right: 5%;
   }
@@ -152,7 +152,7 @@ export default {
     margin-bottom: 30px;
   }
 
-  .service-item > iframe {
+  .service-item > img {
     width: 100%;
     margin-bottom: 10px;
   }
