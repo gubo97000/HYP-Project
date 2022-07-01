@@ -21,7 +21,7 @@
         <iframe
           :title="'Location of: ' + pois.title"
           :src="pois.map"
-          width="35%"
+          width="45%"
           style="border: 0"
           allowfullscreen=""
           loading="lazy"
@@ -42,23 +42,25 @@
         <div v-if="pois.eventsByPoiId">
           <div>
             <h4 class="subsection-title">RELATED ITINERARIES</h4>
-            <div class="transition-links itinerary-list">
-              <ul style="display: list-item">
-                <li
-                  v-for="i in pois.poiItinerariesByPoiId.nodes"
-                  :key="i.id"
-                  style="display: list-item"
-                >
-                  <div>
-                    <nuxt-link :to="'/itineraries/' + i.itinerary.id">
-                      <p class="lead itinerary-name">
-                        Itinerary: {{ i.itinerary.title }}
+            <div
+              class="flex flex-wrap space-x-4 space-y-4 transition-links"
+            >
+              <div class="d-flex flex-wrap related-itinerary">
+                <nuxt-link v-for="i in pois.poiItinerariesByPoiId.nodes" :key="i.id" :to="'/itineraries/' + i.itinerary.id">
+                  <div
+                    class="pe-lg-5 align-items-center rounded-3 border shadow-lg"
+                  >   
+                    <div>
+                      <p class="lead item-title">
+                        {{ i.itinerary.title.toUpperCase() }}
                       </p>
-                    </nuxt-link>
-                    <p class="lead">Duration: {{ i.itinerary.duration }}</p>
+                      <p class="lead">Stop number {{ i.order }} of the itinerary</p>
+                      <p class="lead">Duration: {{ i.itinerary.duration }}</p>
+                    </div>
+                    <svg style="color: #8bdefffe" xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" fill="#8bdefffe"></path> </svg>
                   </div>
-                </li>
-              </ul>
+                </nuxt-link>
+              </div>
             </div>
           </div>
         </div>
@@ -131,6 +133,7 @@ export default {
     map
     poiItinerariesByPoiId {
       nodes {
+        order
         itinerary {
           id
           title
@@ -196,14 +199,6 @@ export default {
 </script>
 
 <style scoped>
-.title-container {
-  text-align: center;
-  position: relative;
-  top: 0;
-  left: 0;
-  /* height: 200px; */
-}
-
 /* Landscape/Desktop */
 @media screen and (min-width: 600px) {
   .title {
@@ -218,7 +213,7 @@ export default {
   }
 
   .howtoreach-text {
-    width: 70%;
+    width: 60%;
     margin-right: 5%;
     display: flex;
     flex-direction: column;
@@ -226,7 +221,7 @@ export default {
   }
 
   iframe {
-    width: 25%;
+    width: 35%;
     aspect-ratio: 1.5 / 1;
   }
 
@@ -248,15 +243,13 @@ export default {
   }
 
   .transition-links-container > *:nth-child(1) {
-    width: 45%;
+    width: 47.5%;
+    margin-left: 2.5%;
     border-right: 1px dashed #333;
   }
 
   .transition-links-container > *:nth-child(3) {
     width: 45%;
-  }
-
-  .transition-links-container > * {
     margin-left: 5%;
   }
 
@@ -265,6 +258,32 @@ export default {
     display: flex;
     align-items: center;
   }
+
+  .related-itinerary > * {
+    margin-top: 30px;
+    margin-right: 15%;
+    width: 100%;
+  }
+
+  .related-itinerary div {
+    padding: 0.7rem;
+  }
+
+  .related-itinerary > a > div {
+    display: flex;
+  }
+
+  .related-itinerary > a > div > *:nth-child(1) {
+    width: 80%;
+    height: 110%;
+  }
+}
+
+.item-title {
+  color: #26466f;
+  font-weight: 500;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 /* Portrait */
@@ -289,10 +308,6 @@ export default {
     text-align: center;
   }
 
-  .itinerary-list {
-    margin-top: 30px;
-  }
-
   .event-cards {
     width: 100%;
   }
@@ -304,13 +319,28 @@ export default {
   .carousel {
     height: 300px;
   }
+  .related-itinerary div {
+    padding: 1.5rem;
+  }
+}
+
+.related-itinerary > * {
+  margin-top: 15px;
+}
+.related-itinerary {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.related-itinerary div {
+  height: 90%;
 }
 
 .subsection-title {
   color: #26466f;
   font-weight: 700;
   font-size: 22px;
-  margin-top: 15px;
+  margin-top: 30px;
 }
 
 ul {

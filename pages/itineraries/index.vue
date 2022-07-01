@@ -34,7 +34,7 @@
               <!-- Small map with overview of the route -->
               <img
                 :src="require('@/assets/maps/' + item.id + '-map.webp')"
-                alt=""
+                :alt="`Map of itinerary: ${item.title}`"
                 style=""
               />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <!-- <iframe :src="item.map" height="360px"></iframe> -->
