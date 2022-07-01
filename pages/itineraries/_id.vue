@@ -16,7 +16,7 @@
 
       <div>
         <!-- <img :src="require('@/assets/' + map)" alt="" class="cover" /> -->
-        <iframe :src="itinerary.map" width="640" height="480"></iframe>
+        <iframe :src="itinerary.map" height="480"></iframe>
       </div>
       <br />
 
@@ -184,6 +184,9 @@ export default {
   color: #26466f;
   font-weight: 800;
   font-size: 24px;
+}
+iframe {
+  min-width: 100%;
 }
 .go-back {
   margin-top: 5%;

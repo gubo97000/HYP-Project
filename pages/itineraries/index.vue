@@ -37,7 +37,7 @@
                 alt=""
                 width="500"
               />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-              <iframe :src="item.map" width="640" height="480"></iframe>
+              <iframe :src="item.map" height="360px"></iframe>
               <!-- Info: title, duration, touched points of interest -->
               <div class="itinerary-info">
                 <p class="item-title">
@@ -139,6 +139,11 @@ export default {
   .title {
     font-size: 4rem;
   }
+
+  .service-item > iframe {
+    min-width: 47.5%;
+    margin-right: 5%;
+  }
 }
 
 /* Portrait */
@@ -147,9 +152,9 @@ export default {
     margin-bottom: 30px;
   }
 
-  .service-item > img {
-    height: 150px;
-    object-fit: cover;
+  .service-item > iframe {
+    width: 100%;
+    margin-bottom: 10px;
   }
 
   .title {
