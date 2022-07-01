@@ -19,7 +19,7 @@
 
         <!-- Location of point of interest -->
         <iframe
-          :title="'Location of ' + pois.title"
+          :title="'Location of: ' + pois.title"
           :src="pois.map"
           width="35%"
           style="border: 0"

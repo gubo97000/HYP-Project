@@ -11,8 +11,7 @@
       <br />
 
       <div>
-        <!-- <img :src="require('@/assets/' + map)" alt="" class="cover" /> -->
-        <iframe :src="itinerary.map" height="480"></iframe>
+        <iframe :title="`Map of itinerary: ${itinerary.title}`" :src="itinerary.map" height="480"></iframe>
       </div>
       <br />
 
@@ -26,7 +25,7 @@
             return {
               ...e.poi,
               image: `pois/${e.poi.id}-thumb.webp`, //Thumb size
-              name: e.poi.title,
+              name: `${e.order}. ${e.poi.title}`,
             }
           })
         "
@@ -41,7 +40,7 @@
           :key="n.poi.id"
           :to="`/pois/${n.poi.id}`"
           :image="`pois/${n.poi.id}-thumb.webp`"
-          :caption="n.poi.title"
+          :caption="`${n.order}. ${n.poi.title}`"
         />
       </div>
 

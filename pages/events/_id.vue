@@ -7,7 +7,7 @@
       
       <!-- Info concerns the time in which the event occurs -->
       <h4 class="subsection-title">
-        PERIOD:
+        DATE / PERIOD:
         <span class="lead">
           {{ event.info }}
         </span>
