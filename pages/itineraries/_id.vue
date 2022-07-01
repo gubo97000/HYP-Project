@@ -29,7 +29,7 @@
           itinerary.poiItineraries.nodes.map((e) => {
             return {
               ...e.poi,
-              image: `pois/${e.poi.id}-thumb.webp`,
+              image: `pois/${e.poi.id}-thumb.webp`, //Thumb size
               name: e.poi.title,
             }
           })
