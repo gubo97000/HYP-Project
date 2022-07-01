@@ -1,5 +1,5 @@
 <template>
-  <!-- A component that shows a rounded badge with text passed as child and a prop for the link -->
+  <!-- A component that shows a rounded badge with text passed as child and a prop for the link. This component is used to display orientation info. -->
   <div class="badge-container">
     <nuxt-link :to="link" class="badgeA">
       <slot></slot>
@@ -24,11 +24,12 @@ export default {
 }
 .badgeA {
   display: inline-block;
-  padding: 0.3rem 1rem;
-  border-radius: 0.25rem;
-  background-color: #8bdefffe;
-  color: white;
-  font-size: 1rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10rem;
+  border: 5px solid #81c3de;
+  background-color: #b2e9fe;
+  font-size: 24px;
+  color: #04658e;
   font-weight: 600;
   text-decoration: none;
 }

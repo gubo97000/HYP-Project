@@ -1,3 +1,4 @@
+<!-- Component used to create banners for all the details pages -->
 <template>
     <div class="image-container">
       <img :src="require(`@/assets/${bannerImage}.webp`)" :alt="altText" class="cover" />
@@ -87,8 +88,19 @@ export default {
 
 .badge {
   position: absolute;
-  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 600px) {
+  .badge {
+    top: 80%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .badge {
+    top: 70%;
+  }
 }
 </style>
