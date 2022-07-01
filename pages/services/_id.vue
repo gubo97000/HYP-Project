@@ -2,23 +2,9 @@
 <template>
   <div class="jumbotron">
     <!-- Cover with representative image + title -->
-    <div class="image-container">
-      <img :src="require(`@/assets/services/${serviceType.id}-c.webp`)" :alt="'Representation of ' + serviceType.name.toLowerCase()" class="cover" />
-      <h1 class="title">
-        {{ serviceType.name.toUpperCase() }}
-      </h1>
-    </div>
+    <Banner :banner-image="`services/${serviceType.id}-c`" :alt-text="'Representation of ' + serviceType.name.toLowerCase()" :title="serviceType.name" badge-link="/services/" badge-text="Service" class="banner"/>
+
     <div class="container my-5">
-
-      <h3 class="section-title">OVERVIEW</h3>
-      <p class="lead">
-        {{ serviceType.descrition }}
-      </p>
-      <br />
-
-      <div class="image-container">
-        <!-- <img :src="require('@/assets/' + map)" alt="" class="cover" /> -->
-      </div>
       <br />
 
       <!-- List of instances of this service type: image, name of shop/instance, address, opening hours -->
@@ -143,19 +129,11 @@ export default {
   }
 }
 
-.image-container {
-  text-align: center;
-  position: relative;
-  top: 0;
-  left: 0;
-  background: black;
-}
-
 .service-info {
   margin-left: 5%;
 }
 
-.cover {
+.banner >>> .cover {
   position: relative;
   min-width: 100%;
   height: 300px;
@@ -165,13 +143,20 @@ export default {
 
 .title {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #ffffff;
   font-weight: 750;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
+}
+
+.badge {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .item-title {

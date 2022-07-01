@@ -1,13 +1,10 @@
 <!-- Detail page of Events -->
 <template>
-  <div class="container mt-5">
-    <div class="container mt-5">
-      <div class="title-container">
-        <h1 class="title">
-          {{ event.title.toUpperCase() }}
-        </h1>
-      </div>
+  <div class="jumbotron">
+    <Banner banner-image="event-banner" alt-text="Banner for event page" :title="event.title" badge-link="/events/" badge-text="Event"/>
 
+    <div class="container mt-5">
+      
       <!-- Info concerns the time in which the event occurs -->
       <h4 class="subsection-title">
         PERIOD:
@@ -135,6 +132,10 @@ export default {
 </script>
 
 <style scoped>
+.btn {
+  margin-bottom: 20px;
+  margin-top: -10px;
+}
 .title-container {
   text-align: center;
   position: relative;

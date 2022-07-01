@@ -121,13 +121,6 @@ export default {
 </script>
 
 <style scoped>
-.image-container {
-  text-align: center;
-  position: relative;
-  top: 0;
-  left: 0;
-}
-
 /* Landscape/Desktop */
 @media screen and (min-width: 600px) {
   .service-item {
