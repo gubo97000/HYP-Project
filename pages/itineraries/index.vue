@@ -21,7 +21,7 @@
         <br />
 
         <!-- Group links to itineraries details -->
-        <div class="flex flex-col">
+        <div class="column-wrapper">
           <nuxt-link
             v-for="item in itineraryList"
             :key="item.id"
