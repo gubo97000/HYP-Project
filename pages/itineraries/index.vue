@@ -44,17 +44,18 @@
                   {{ item.title.toUpperCase() }}
                 </p>
                 <!-- <p>Difficulty: {{ item.difficulty }}</p> -->
-                <p>Duration: {{ item.duration }}</p>
+                <p class="lead">Duration: {{ item.duration }}</p>
                 <br />
-                <p>Points of interest:</p>
-                <p class="item-title">
+                <p class="lead">Points of interest:</p>
+                <p class="item-subtitle">
                   <nuxt-link
-                    v-for="poi in item.poiItineraries.nodes"
+                    v-for="(poi, index) in item.poiItineraries.nodes"
                     :key="poi.poi.id"
                     :to="`/pois/${poi.poi.id}`"
                     class="nuxt-clickable"
                   >
-                    {{ poi.poi.title.toUpperCase() }} &nbsp; &nbsp;
+                    {{ poi.poi.title.toUpperCase() }}
+                    <span v-if="index !== item.poiItineraries.nodes.length - 1">&nbsp;-&nbsp;</span>
                   </nuxt-link>
                 </p>
               </div>
@@ -134,7 +135,7 @@ export default {
   }
 
   .service-item > img {
-    width: 20%;
+    min-width: 400px;
     margin-right: 5%;
   }
 }
@@ -155,11 +156,20 @@ export default {
   }
 }
 
-.item-title {
+.item-title,
+.item-subtitle {
   color: #26466f;
   font-weight: 500;
-  font-size: 20px;
   margin-bottom: 10px;
+}
+
+.item-subtitle {
+  font-size: 20px;
+}
+
+.item-title {
+  font-weight: bold;
+  font-size: 24px;
 }
 
 .section-title {
