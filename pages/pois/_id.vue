@@ -1,105 +1,104 @@
 <!-- Detail page of Points of Interest -->
 <template>
-  <div class="container my-5">
-    <div class="title-container">
-      <h1 class="title">
-        {{ pois.title.toUpperCase() }}
-      </h1>
-      <Badge link="/pois/">Point of Interest</Badge>
-    </div>
+  <div class="jumbotron">
+    <Banner banner-image="poi-banner" alt-text="Banner for point of interest page" :title="pois.title" badge-link="/pois/" badge-text="Point of Interest"/>
 
-    <div class="howtoreach-container">
-      <div class="howtoreach-text">
-        <p class="lead">
-          {{ pois.description }}
-          <!-- {{ pois }} -->
-        </p>
-        <h4 class="subsection-title">VISIT INFO</h4>
-        <p class="lead">{{ pois.info }}</p>
-        <p class="lead">Address: {{ pois.coordinates }}</p>
-      </div>
+    <div class="container my-5">
+      
+      <div class="howtoreach-container">
+        <div class="howtoreach-text">          
+          <p class="lead">
+            {{ pois.description }}
+            <!-- {{ pois }} -->
+          </p>
 
-      <!-- Location of point of interest -->
-      <iframe
-        :title="'Location of ' + pois.title"
-        :src="pois.map"
-        width="35%"
-        style="border: 0"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
-    </div>
-    <br />
-
-    <!-- Representative images -->
-    <Carousel
-      :slides="pois.picturesByPoiId.nodes.map((p) => `pois/${p.url}`)"
-      class="carousel"
-    />
-    <br />
-
-    <div class="transition-links-container">
-      <!-- Transition links to the related Itineraries -->
-      <div v-if="pois.eventsByPoiId">
-        <div>
-          <h4 class="subsection-title">RELATED ITINERARIES</h4>
-          <div class="transition-links itinerary-list">
-            <ul style="display: list-item">
-              <li
-                v-for="i in pois.poiItinerariesByPoiId.nodes"
-                :key="i.id"
-                style="display: list-item"
-              >
-                <div>
-                  <nuxt-link :to="'/itineraries/' + i.itinerary.id">
-                    <p class="lead itinerary-name">
-                      Itinerary: {{ i.itinerary.title }}
-                    </p>
-                  </nuxt-link>
-                  <p class="lead">Duration: {{ i.itinerary.duration }}</p>
-                </div>
-              </li>
-            </ul>
-          </div>
+          <h4 class="subsection-title">VISIT INFO</h4>
+          <p class="lead">{{ pois.info }}</p>
+          <p class="lead">Address: {{ pois.coordinates }}</p>
         </div>
+
+        <!-- Location of point of interest -->
+        <iframe
+          :title="'Location of ' + pois.title"
+          :src="pois.map"
+          width="35%"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
       <br />
 
-      <!-- Transition links to the related Events -->
-      <div v-if="pois.eventsByPoiId">
-        <div>
-          <h4 class="subsection-title">EVENTS HAPPENING HERE</h4>
-          <div
-            class="flex flex-wrap space-x-4 space-y-4 justify-around transition-links"
-          >
-            <div class="d-flex justify-content-center flex-wrap event-cards">
-              <CardComponent
-                v-for="event in pois.eventsByPoiId.nodes"
-                :key="`${event.id}`"
-                :to="`/events/${event.id}`"
-                :image="`events/${event.pictures.nodes[0].url}`"
-                class="card-component"
-                :caption="event.title.toUpperCase()"
-                :class="{ 'long-title': event.title.length > 27 }"
-              />
+      <!-- Representative images -->
+      <Carousel
+        :slides="pois.picturesByPoiId.nodes.map((p) => `pois/${p.url}`)"
+        class="carousel"
+      />
+      <br />
+
+      <div class="transition-links-container">
+        <!-- Transition links to the related Itineraries -->
+        <div v-if="pois.eventsByPoiId">
+          <div>
+            <h4 class="subsection-title">RELATED ITINERARIES</h4>
+            <div class="transition-links itinerary-list">
+              <ul style="display: list-item">
+                <li
+                  v-for="i in pois.poiItinerariesByPoiId.nodes"
+                  :key="i.id"
+                  style="display: list-item"
+                >
+                  <div>
+                    <nuxt-link :to="'/itineraries/' + i.itinerary.id">
+                      <p class="lead itinerary-name">
+                        Itinerary: {{ i.itinerary.title }}
+                      </p>
+                    </nuxt-link>
+                    <p class="lead">Duration: {{ i.itinerary.duration }}</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <br />
+
+        <!-- Transition links to the related Events -->
+        <div v-if="pois.eventsByPoiId">
+          <div>
+            <h4 class="subsection-title">EVENTS HAPPENING HERE</h4>
+            <div
+              class="flex flex-wrap space-x-4 space-y-4 justify-around transition-links"
+            >
+              <div class="d-flex justify-content-center flex-wrap event-cards">
+                <CardComponent
+                  v-for="event in pois.eventsByPoiId.nodes"
+                  :key="`${event.id}`"
+                  :to="`/events/${event.id}`"
+                  :image="`events/${event.pictures.nodes[0].url}`"
+                  class="card-component"
+                  :caption="event.title.toUpperCase()"
+                  :class="{ 'long-title': event.title.length > 27 }"
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Group link to All Points of Interest (Index pattern) -->
-    <div
-      class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
-    >
-      <button
-        type="button"
-        class="btn btn-outline-secondary btn-lg px-4"
-        @click="backToList"
+      <!-- Group link to All Points of Interest (Index pattern) -->
+      <div
+        class="d-grid gap-2 d-md-flex justify-content-center mb-4 mb-lg-3 go-back"
       >
-        ← ALL POINTS OF INTEREST
-      </button>
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-lg px-4"
+          @click="backToList"
+        >
+          ← ALL POINTS OF INTEREST
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -114,6 +113,7 @@ export default {
 
   components: {
     CardComponent,
+    Badge
   },
   async asyncData({ route, app, error }) {
     const { id } = route.params

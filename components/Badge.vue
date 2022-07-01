@@ -20,7 +20,7 @@ export default {
 <style>
 .badge-container {
   display: inline-block;
-  margin: 0 0.5rem;
+  margin-bottom: 30px;
 }
 .badgeA {
   display: inline-block;
@@ -31,5 +31,13 @@ export default {
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
+}
+
+/* Center badge on mobile */
+@media screen and (max-width: 600px) {
+  .badge-container {
+    display: flex;
+    justify-content: center;
+  }
 }
 </style>

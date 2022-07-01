@@ -1,14 +1,10 @@
 <!-- Detail page of Itineraries -->
 <template>
   <div class="jumbotron">
+    <Banner banner-image="itinerary-banner" alt-text="Banner for itinerary page" :title="itinerary.title" badge-link="/itineraries/" badge-text="Itinerary"/>
     <div class="container my-5">
-      <div class="title-container">
-        <h1 class="title">
-          {{ itinerary.title.toUpperCase() }}
-        </h1>
-      </div>
 
-      <b class="section-title">DURATION: {{ itinerary.duration }}</b>
+      <h3 class="section-title">DURATION: {{ itinerary.duration }}</h3>
       <p class="lead">
         {{ itinerary.description }}
       </p>
@@ -69,11 +65,13 @@
 import { gql } from 'graphql-tag'
 import CarouselMultiItem from '~/components/CarouselMultiItem.vue'
 import CardComponent from '~/components/Card.vue'
+import Banner from '~/components/Banner.vue'
 export default {
   name: 'DetailsPage',
   components: {
     CardComponent,
     CarouselMultiItem,
+    Banner
   },
   async asyncData({ route, app, error }) {
     const { id } = route.params
@@ -149,36 +147,6 @@ export default {
 <style scoped>
 .lead {
   text-align: justify;
-}
-.title-container {
-  text-align: center;
-  position: relative;
-  top: 0;
-  left: 0;
-}
-.cover {
-  position: relative;
-  min-width: 100%;
-}
-/* Landscape/Desktop */
-@media screen and (min-width: 600px) {
-  .title {
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
-    color: #26466f;
-    font-weight: 750;
-    font-size: 4rem;
-  }
-}
-/* Portrait */
-@media screen and (max-width: 600px) {
-  .title {
-    color: #26466f;
-    font-weight: 750;
-    font-size: 3.6rem;
-  }
 }
 .section-title {
   color: #26466f;

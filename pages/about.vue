@@ -1,11 +1,7 @@
 <!-- Page corresponding to "About the town" -->
 <template>
   <div class="jumbotron">
-    <div class="image-container">
-      <img :src="require('@/assets/cover.webp')" alt="Cover" class="cover" />
-      <!-- <img :src="require('@/assets/logo.webp')" alt="" class="logo"/> -->
-      <h1 class="title">ABOUT US</h1>
-    </div>
+    <Banner banner-image="cover" alt-text="Cover" title="ABOUT US" class="banner"/>
 
     <div class="jumbotron">
       <div class="container mt-5">
@@ -159,30 +155,6 @@ export default {
   }
 }
 
-.image-container {
-  text-align: center;
-  position: relative;
-  top: 0;
-  left: 0;
-  background: black;
-}
-
-.cover {
-  position: relative;
-  min-width: 100%;
-  height: 300px;
-  object-fit: cover;
-  filter: opacity(0.85);
-}
-
-.logo {
-  position: absolute;
-  height: 55%;
-  left: 50%;
-  top: 35%;
-  transform: translate(-50%, -50%);
-}
-
 p {
   text-align: left;
 }
@@ -213,7 +185,7 @@ p {
   text-align: justify;
 }
 
-.title {
+.banner >>> .title {
   position: absolute;
   /* top: 80%; */
   top: 50%;
