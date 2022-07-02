@@ -63,21 +63,21 @@ The remaining images are static images in this directory in the non-dynamic part
 
 The components directory contains Vue.js components. Components make up the different parts of pages and can be reused and imported into pages, layouts and even other components.
 
-- **`Badge.vue`** - 
+- **`Badge.vue`** - Used for orientation information (and group link) in Details pages.
 
-- **`Banner.vue`** - 
+- **`Banner.vue`** - Used to display a cover image, title and Badge for all Details pages, and only cover and title in `About us`/`Contact us` pages.
 
-- **`Card.vue`** - 
+- **`Card.vue`** - Used on several links throughout the website. It features a thumbnail with caption, and provides a hover animation as interaction feedback.
 
-- **`Carousel.vue`** - 
+- **`Carousel.vue`** - Used to display a set of multiple images (slides), it is adopted in `Event Details` and `Itinerary Details`.<br />It provides controls to skip between slides, otherwise it can also automatically switch slides.
 
-- **`CarouselMultiItem.vue`** - 
+- **`CarouselMultiItem.vue`** - A carousel that displays multiple items at a time, used in our case to display the Points of Interest of an Itinerary in order.<br />It includes previous/next controls (skips to the previous/next N items), and is scrollable with gestures on mobile.
 
-- **`Dropdown.vue`** - 
+- **`Dropdown.vue`** - An accordion that displays/hides content, used to select between All-year events, Summer events and Winter Events (each having a separate dropdown).
 
-- **`TheFooter.vue`** - 
+- **`TheFooter.vue`** - A responsive navbar for navigation on the bottom of every page, it includes landmarks for `About us` and `Contact us`.
 
-- **`TheHeader.vue`** - 
+- **`TheHeader.vue`** - A responsive navbar for navigation on the top of every page, it includes landmarks for `Home`, `All Events`, `All Points of Interest`, `All Itineraries`, `All Services`.
 
 ### `layouts`
 
@@ -88,23 +88,23 @@ Layouts include the view templates that are used as a structure for more pages. 
 This directory contains application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
 
 - **`events`**
-  - **`_id.vue`** - 
-  - **`index.vue`** - 
+  - **`_id.vue`** - Event Details page.
+  - **`index.vue`** - All Events page.
   
 - **`itineraries`** 
-  - **`_id.vue`** - 
-  - **`index.vue`** - 
+  - **`_id.vue`** - Itinerary Details page.
+  - **`index.vue`** - All Itineraries page.
   
 - **`pois`**
-  - **`_id.vue`** - 
-  - **`index.vue`** - 
+  - **`_id.vue`** - Point of Interest Details page.
+  - **`index.vue`** - All Points of Interest page.
   
 - **`services`** 
-  - **`_id.vue`** - 
-  - **`index.vue`** - 
+  - **`_id.vue`** - Service Details page.
+  - **`index.vue`** - All Service Types page.
 
-- **`about.vue`** - 
+- **`about.vue`** - The "About us" page.
 
-- **`contact.vue`** - 
+- **`contact.vue`** - The "Contact us" page.
 
-- **`index.vue`** - 
+- **`index.vue`** - The Home page.
