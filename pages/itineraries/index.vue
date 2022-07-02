@@ -54,12 +54,8 @@
                     :to="`/pois/${poi.poi.id}`"
                     class="nuxt-clickable poi"
                   >
-                    <div
-                      class="btn btn-outline-light btn-lg rounded-pill"
-                    >
-                      {{ poi.order }}. {{ poi.poi.title.toUpperCase() }}
-                    </div>
-                    <span v-if="index !== item.poiItineraries.nodes.length - 1">&nbsp;</span>
+                    <span>{{ poi.poi.title.toUpperCase() }}</span>
+                    <span v-if="index !== item.poiItineraries.nodes.length - 1">&nbsp;-&nbsp;</span>
                   </nuxt-link>
                 </p>
               </div>
@@ -181,15 +177,6 @@ export default {
   -moz-transition: -moz-transform 0.2s;
   -o-transition: -o-transform 0.2s;
 }
-.btn {
-  background-color: #8bdefffe;
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  padding-left: 8px !important;
-  padding-right: 8px !important;
-}
-
 .item-subtitle {
   font-size: 20px;
 }
@@ -222,5 +209,9 @@ export default {
 
 .row {
   margin-bottom: -30px;
+}
+
+.poi {
+  pointer-events: none;
 }
 </style>
