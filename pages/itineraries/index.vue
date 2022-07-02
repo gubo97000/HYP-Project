@@ -39,7 +39,7 @@
               />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <!-- <iframe :src="item.map" height="360px"></iframe> -->
               <!-- Info: title, duration, touched points of interest -->
-              <div class="itinerary-info">
+              <div>
                 <p class="item-title">
                   {{ item.title.toUpperCase() }}
                 </p>
@@ -52,9 +52,9 @@
                     v-for="(poi, index) in item.poiItineraries.nodes"
                     :key="poi.poi.id"
                     :to="`/pois/${poi.poi.id}`"
-                    class="nuxt-clickable"
+                    class="nuxt-clickable poi"
                   >
-                    {{ poi.poi.title.toUpperCase() }}
+                    <span>{{ poi.poi.title.toUpperCase() }}</span>
                     <span v-if="index !== item.poiItineraries.nodes.length - 1"
                       >&nbsp;-&nbsp;</span
                     >
@@ -89,6 +89,7 @@ export default {
                 map
                 poiItineraries(orderBy: ORDER_ASC) {
                   nodes {
+                    order
                     poi {
                       id
                       title
@@ -125,7 +126,7 @@ export default {
 
 <style scoped>
 /* Landscape/Desktop */
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   .service-item {
     display: inline-flex;
     width: 100%;
@@ -138,12 +139,12 @@ export default {
 
   .service-item > img {
     min-width: 400px;
-    margin-right: 5%;
+    margin-right: 2.5%;
   }
 }
 
 /* Portrait */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 767px) {
   .service-item {
     margin-bottom: 30px;
   }
@@ -164,7 +165,20 @@ export default {
   font-weight: 500;
   margin-bottom: 10px;
 }
+.service-item:hover {
+  transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
 
+.service-item {
+  transition: transform 0.2s;
+  -webkit-transition: -webkit-transform 0.2s;
+  -moz-transition: -moz-transform 0.2s;
+  -o-transition: -o-transform 0.2s;
+}
 .item-subtitle {
   font-size: 20px;
 }
@@ -197,5 +211,9 @@ export default {
 
 .row {
   margin-bottom: -30px;
+}
+
+.poi {
+  pointer-events: none;
 }
 </style>

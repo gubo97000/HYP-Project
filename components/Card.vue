@@ -5,7 +5,8 @@ A card contains an image and a caption, and is animated when hovered on. -->
     <div class="image-container card">
       <figure>
         <img :src="require('@/assets/' + image)" alt="Thumbnail" width="100%" />
-        <figcaption>{{ caption }}</figcaption>
+        <figcaption><span>{{ caption }} <span v-if="subcaption !== ''" class="subcaption"><br v-if="caption.length < 27"/>({{ subcaption }})</span></span></figcaption>
+        <!-- <figcaption v-if="subcaption !== ''" class="subcaption">{{ subcaption }}</figcaption> -->
       </figure>
     </div>
   </nuxt-link>
@@ -30,6 +31,11 @@ export default {
       type: String,
       required: true,
     },
+    // A second caption for additional description (optional).
+    subcaption: {
+      type: String,
+      default: '',
+    }
   },
 }
 </script>
@@ -45,6 +51,9 @@ figcaption {
   font-size: 22px;
   line-height: 2;
   color: #26466f;
+}
+.subcaption {
+  font-size: 18px;
 }
 figure {
   background: #ffffff;

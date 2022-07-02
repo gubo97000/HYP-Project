@@ -30,6 +30,7 @@
                 :to="`/events/${item.id}`"
                 :image="`events/${item.id}-thumb.webp`"
                 :caption="item.title"
+                :subcaption="item.info"
               />
             </div>
 
@@ -59,6 +60,7 @@
                 :to="`/events/${item.id}`"
                 :image="`events/${item.id}-thumb.webp`"
                 :caption="item.title"
+                :subcaption="item.info"
               />
             </div>
 
@@ -89,6 +91,7 @@
                 :to="`/events/${item.id}`"
                 :image="`events/${item.id}-thumb.webp`"
                 :caption="item.title"
+                :subcaption="item.info"
               />              
             </div>
 
@@ -154,7 +157,7 @@ export default {
       // prefetch: true,
       query: gql`
         query MyQuery {
-          events {
+          events(orderBy: TITLE_ASC) {
             nodes {
               id
               title
@@ -254,7 +257,7 @@ h2 {
 }
 
 .nuxt-clickable >>> figcaption {
-  line-height: 30px;
+  line-height: normal;
   height: 65px;
   display: flex;
   align-items: center;
@@ -278,23 +281,16 @@ h2 {
 }
 
 /* 3 cards per row */
-@media screen and (min-width: 800px) and (max-width: 1550px) {
+@media screen and (min-width: 1024px) and (max-width: 1550px) {
   .nuxt-clickable {
     width: 33% !important;
   }
 }
 
 /* 2 cards per row */
-@media screen and (max-width: 800px) and (min-width: 600px) {
+@media screen and (max-width: 1024px) and (min-width: 600px) {
   .nuxt-clickable {
     width: 50% !important;
-  }
-}
-
-/* Do not overflow caption (For titles 3 rows long) */
-@media screen and (max-width: 768px) and (min-width: 600px) {
-  .nuxt-clickable >>> figcaption {
-    line-height: 20px;
   }
 }
 </style>
