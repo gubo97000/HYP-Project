@@ -21,26 +21,26 @@
         
         <hr class="my-4" />
         <div class="howtoreach-container">
-          <img :src="require('@/assets/contact.webp')"/>
+          <img :src="require('@/assets/contact.webp')" alt="Tourist office of Towny"/>
           <div>
             <p class="lead text-justify">
               If you still have requests, questions or suggestions, please don’t hesitate to contact one of the following operators: 
             </p>
             <br />
             
-            <h3 class="section-title">CONTACT 1</h3>
+            <b class="section-title">CONTACT 1</b>
             <p class="lead">
               Alessandro (ENG, IT): alessandro.atanassov@mail.polimi.it
             </p>
-            <h3 class="section-title">CONTACT 2</h3>
+            <b class="section-title">CONTACT 2</b>
             <p class="lead">
               Elena (ENG, IT): elena.naldoni@mail.polimi.it
             </p>
-            <h3 class="section-title">CONTACT 3</h3>
+            <b class="section-title">CONTACT 3</b>
             <p class="lead">
               Guido (ENG, IT): guido.bordonaro@mail.polimi.it
             </p>
-            <h3 class="section-title">CONTACT 4</h3>
+            <b class="section-title">CONTACT 4</b>
             <p class="lead">
               Isabel (ENG, ES): isabel.devergaradeorellana@mail.polimi.it
             </p>
@@ -106,6 +106,7 @@ p {
   color: #26466f;
   font-weight: 800;
   font-size: 24px;
+  line-height: 26px;
 }
 
 .lead {
