@@ -22,7 +22,7 @@ The project consists in implementing a website dedicated to a touristic place, t
 # install dependencies
 $ yarn install
 
-# serve with hot reload at localhost:3000
+# serve with hot reload at localhost:3005
 $ yarn dev
 
 # build for production and launch server
@@ -36,14 +36,17 @@ $ yarn generate
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
 ## Implementation
-The web application is based on Nuxt.js v2 and consequently Vue 2, we decided to not add any new feature of Vue 3 in the project to not cause any possible issue, since the scope of the project was very limited.
-We also preferred to not use TypeScript since in the older version of Vue/Nuxt is not natively supported.
 
-We didn't need to use any kind of State Management library like Vuex.
+The Web Application is based on the frameworks NuxtJS v2 and Vue 2. None of the new features of Vue 3 were added in the project.<br />
+We also did not use TypeScript, since in the older versions of Vue/Nuxt is not natively supported.
 
-As backend we used the integrated server of Nuxt.js, interfacing with the postGres database through postGraphile that provides GraphQL style REST API. This choice was made both for curiosity of spermimenting and for the advanges offered by graphQL of querying easily connectected data, while still retrieving only the information we need to keep the response as small as possible. The body of the query also mirrors the structure of the response so that is easier for all contributor to know how to address the response.
+We did not need to use any kind of State Management library, such as Vuex.
 
-To develop the style part we used bootstrap served by CDN, and some classic CSS code. 
+As Back-End, we used the integrated server of Nuxt.js, interfacing with the PostgreSQL database through PostGraphile that provides GraphQL style REST API. GraphQL offers the advantage of querying connected data easily, while still retrieving only the information we need, in order to keep the response as small as possible. The body of the query also mirrors the structure of the response so that it is easier for all contributors to know how to address the response.
+
+For the styling of pages and components, we used Bootstrap served by CDN, as well as hand-written CSS code.
+
+The the project was organized in the following directories:
 
 ### `assets`
 
@@ -68,19 +71,19 @@ The components directory contains Vue.js components. Components make up the diff
 
 - **`Badge.vue`** - Used for orientation information (and group link) in Details pages.
 
-- **`Banner.vue`** - Used to display a cover image, title and Badge for all Details pages, and only cover and title in `About us`/`Contact us` pages.
+- **`Banner.vue`** - Used to display a cover image, title and Badge for all Details pages, and only cover and title in *About us`/`Contact us* pages.
 
 - **`Card.vue`** - Used on several links throughout the website. It features a thumbnail with caption, and provides a hover animation as interaction feedback.
 
-- **`Carousel.vue`** - Used to display a set of multiple images (slides), it is adopted in `Event Details` and `Itinerary Details`.<br />It provides controls to skip between slides, otherwise it can also automatically switch slides.
+- **`Carousel.vue`** - Used to display a set of multiple images (slides), it is adopted in *Event Details* and *Itinerary Details*.<br />It provides controls to skip between slides, otherwise it can also automatically switch slides.
 
 - **`CarouselMultiItem.vue`** - A carousel that displays multiple items at a time, used in our case to display the Points of Interest of an Itinerary in order.<br />It includes previous/next controls (skips to the previous/next N items), and is scrollable with gestures on mobile.
 
 - **`Dropdown.vue`** - An accordion that displays/hides content, used to select between All-year events, Summer events and Winter Events (each having a separate dropdown).
 
-- **`TheFooter.vue`** - A responsive navbar for navigation on the bottom of every page, it includes landmarks for `About us` and `Contact us`.
+- **`TheFooter.vue`** - A responsive navbar for navigation on the bottom of every page, it includes landmarks for *About us* and *Contact us*.
 
-- **`TheHeader.vue`** - A responsive navbar for navigation on the top of every page, it includes landmarks for `Home`, `All Events`, `All Points of Interest`, `All Itineraries`, `All Services`.
+- **`TheHeader.vue`** - A responsive navbar for navigation on the top of every page, it includes landmarks for *Home*, *All Events*, *All Points of Interest*, *All Itineraries*, *All Services*.
 
 ### `layouts`
 
