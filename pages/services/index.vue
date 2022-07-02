@@ -5,18 +5,29 @@
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
-          Towny isn't a huge city, but there is nothing missing. The info about all the different kinds of services that you may need are in this page. Whether you are a visitor or you have been living here, and the following lists you will be able to find for sure something new, that you didn't know you needed. 
+          Towny isn't a huge city, but there is nothing missing. The info about
+          all the different kinds of services that you may need are in this
+          page. Whether you are a visitor or you have been living here, and the
+          following lists you will be able to find for sure something new, that
+          you didn't know you needed.
         </p>
         <p class="lead">
-          There are restaurants, museums, exhibitions, and every kind of shop whatever are your needs we are sure that you will find the right thing for you.
+          There are restaurants, museums, exhibitions, and every kind of shop
+          whatever are your needs we are sure that you will find the right thing
+          for you.
         </p>
         <br />
 
         <!-- Group links to services details -->
         <div class="d-flex justify-content-center flex-wrap">
           <CardComponent
-v-for="item in serviceList" :key="`${item.id}`" :to="`/services/${item.id}`"
-            :image="`services/${item.id}-c.webp`" class="card-component" :caption="item.name.toUpperCase()" />
+            v-for="item in serviceList"
+            :key="`${item.id}`"
+            :to="`/services/${item.id}`"
+            :image="`services/${item.id}-c.webp`"
+            class="card-component"
+            :caption="item.name.toUpperCase()"
+          />
         </div>
         <br />
       </div>
@@ -52,7 +63,7 @@ export default {
         `,
       })
       .then(({ data }) => {
-        console.log(data.servicetypes.nodes)
+        // console.log(data.servicetypes.nodes)
         return data.servicetypes.nodes
       })
     return {
@@ -91,7 +102,6 @@ export default {
   text-align: justify;
 }
 
-
 .title {
   text-align: center;
   color: #26466f;
@@ -103,7 +113,7 @@ export default {
   margin-bottom: -30px;
 }
 
-.card-component>>>img {
+.card-component >>> img {
   height: 150px;
   object-fit: cover;
 }

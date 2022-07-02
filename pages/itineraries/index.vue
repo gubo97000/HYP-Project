@@ -55,7 +55,9 @@
                     class="nuxt-clickable"
                   >
                     {{ poi.poi.title.toUpperCase() }}
-                    <span v-if="index !== item.poiItineraries.nodes.length - 1">&nbsp;-&nbsp;</span>
+                    <span v-if="index !== item.poiItineraries.nodes.length - 1"
+                      >&nbsp;-&nbsp;</span
+                    >
                   </nuxt-link>
                 </p>
               </div>
@@ -99,7 +101,7 @@ export default {
         `,
       })
       .then(({ data }) => {
-        console.log(data)
+        // console.log(data)
         return data.itineraries.nodes
       })
     return {
