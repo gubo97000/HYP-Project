@@ -1,8 +1,11 @@
-# HYP-Project
+# Hypermedia Applications - Team AEGI
 
-Implementation Project for the course "Hypermedia Applications (Web and Multimedia)", Polytechnic University of Milan, A.Y. 2020/2021. 
+Implementation Project for the course "Hypermedia Applications (Web and Multimedia)", Polytechnic University of Milan, A.Y. 2021/2022. 
 
-Faculty: Prof. Franca Garzotto.
+The project consists in implementing a website dedicated to a touristic place, that we have called **Towny**.
+
+**Professor**: Franca Garzotto<br />
+**Tutors**: Alberto Patti, Giulio Antonio Abbo, Mattia Gianotti
 
 ## Team Members
 
