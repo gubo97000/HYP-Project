@@ -42,3 +42,69 @@ As backend we used the integrated server of Nuxt.js, interfacing with the postGr
 
 To develop the style part we used bootstrap served by CDN, and some classic CSS code. 
 
+### `assets`
+
+The assets directory contains all the images in WebP format, used for the content of the website.
+In the subdirectories, each image starts with the id of the corresponding element.
+
+- **`events`** - Images displayed dynamically in the single events.
+  
+- **`maps`** - Images that represent the routes of each itinerary. These images are only used for thumbnails, since the respective details pages already use real maps.
+  
+- **`pois`** - Images displayed dynamically in the single points of interests.
+  
+- **`services`** - Images displayed dynamically for each service. For each service, there is one representative image, and images for the list of specific services of that type.
+
+Images in the subdirectories that contain `-thumb` in the name are thumbnail images, which are resized images, used in some components to improve performance.
+
+The remaining images are static images in this directory in the non-dynamic parts of the website.
+
+### `components`
+
+The components directory contains Vue.js components. Components make up the different parts of pages and can be reused and imported into pages, layouts and even other components.
+
+- **`Badge.vue`** - 
+
+- **`Banner.vue`** - 
+
+- **`Card.vue`** - 
+
+- **`Carousel.vue`** - 
+
+- **`CarouselMultiItem.vue`** - 
+
+- **`Dropdown.vue`** - 
+
+- **`TheFooter.vue`** - 
+
+- **`TheHeader.vue`** - 
+
+### `layouts`
+
+Layouts include the view templates that are used as a structure for more pages. In our case, only one layout **`default.vue`** was sufficient for all the pages implemented.<br />This layout provides a sticky header on the top, and a footer on the bottom of all pages.
+
+### `pages`
+
+This directory contains application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+
+- **`events`**
+  - **`_id.vue`** - 
+  - **`index.vue`** - 
+  
+- **`itineraries`** 
+  - **`_id.vue`** - 
+  - **`index.vue`** - 
+  
+- **`pois`**
+  - **`_id.vue`** - 
+  - **`index.vue`** - 
+  
+- **`services`** 
+  - **`_id.vue`** - 
+  - **`index.vue`** - 
+
+- **`about.vue`** - 
+
+- **`contact.vue`** - 
+
+- **`index.vue`** - 
