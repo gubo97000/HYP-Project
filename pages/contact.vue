@@ -5,46 +5,47 @@
     
     <div class="jumbotron">
       <div class="container mt-5">
-        <p class="lead">
+        <p class="lead text-justify">
           Do you need any further information or have specific requests? Write
           to one of our contacts below and we'll get back to you as soon as
           possible.
         </p>
-        <p class="lead">Tourist Information for individuals and families</p>
-        <p class="lead">
+        <p class="lead text-justify">Tourist Information for individuals and families</p>
+        <p class="lead text-justify">
           The operators of the two official Towny Info Points are happy to
           assist you by giving you competent advice for your stay in the city:
           infotourist@comune.towny.it
-        </p>
-        <p class="lead">
+        <br />
           We also have an office, that is located in Avenida Alcalde Luis Uruñuela nº1 C.P. 42069 and it is open Monday to Friday, from 9AM to 6PM. 
         </p>
         
-
         <hr class="my-4" />
-        <div class="container mt-5">
-          <p class="lead">
-            If you still have requests, questions or suggestions, please don’t hesitate to contact one of the following operators: 
-          </p>
-          <br />
-          
-          <h3 class="section-title">CONTACT 1</h3>
-          <p class="lead">
-            Alessandro (ENG, IT): +34 955471232
-          </p>
-          <h3 class="section-title">CONTACT 2</h3>
-          <p class="lead">
-            Elena (ENG, IT): +34 955471232  
-          </p>
-          <h3 class="section-title">CONTACT 3</h3>
-          <p class="lead">
-            Guido (ENG, IT): +34 955471232 
-          </p>
-          <h3 class="section-title">CONTACT 4</h3>
-          <p class="lead">
-            Isabel (ENG, ES): +34 955471232
-          </p>
-          <br />
+        <div class="howtoreach-container">
+          <img :src="require('@/assets/contact.webp')"/>
+          <div>
+            <p class="lead text-justify">
+              If you still have requests, questions or suggestions, please don’t hesitate to contact one of the following operators: 
+            </p>
+            <br />
+            
+            <h3 class="section-title">CONTACT 1</h3>
+            <p class="lead">
+              Alessandro (ENG, IT): alessandro.atanassov@mail.polimi.it
+            </p>
+            <h3 class="section-title">CONTACT 2</h3>
+            <p class="lead">
+              Elena (ENG, IT): elena.naldoni@mail.polimi.it
+            </p>
+            <h3 class="section-title">CONTACT 3</h3>
+            <p class="lead">
+              Guido (ENG, IT): guido.bordonaro@mail.polimi.it
+            </p>
+            <h3 class="section-title">CONTACT 4</h3>
+            <p class="lead">
+              Isabel (ENG, ES): isabel.devergaradeorellana@mail.polimi.it
+            </p>
+            <br />
+          </div>
         </div>
       </div>
       <br />
@@ -71,6 +72,32 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (min-width: 1024px) {
+  .howtoreach-container {
+    display: flex;
+    height: 400px;
+  }
+
+  .howtoreach-container > *:nth-child(2) {
+    width: 50%;
+    margin-left: 5%;
+  }
+
+  .howtoreach-container > *:nth-child(1) {
+    width: 45%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .howtoreach-container > *:nth-child(1) {
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+}
+
 p {
   text-align: left;
 }
@@ -83,6 +110,9 @@ p {
 
 .lead {
   margin-bottom: 15px;
+}
+
+.text-justify {
   text-align: justify;
 }
 
