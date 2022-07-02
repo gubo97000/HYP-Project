@@ -62,7 +62,7 @@ export default {
       // prefetch: true,
       query: gql`
         query MyQuery {
-          poises {
+          poises(orderBy: TITLE_ASC) {
             edges {
               node {
                 id
