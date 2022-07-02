@@ -38,7 +38,7 @@ For detailed explanation on how things work, check out the [documentation](https
 ## Implementation
 
 The Web Application is based on the frameworks NuxtJS v2 and Vue 2. None of the new features of Vue 3 were added in the project.<br />
-We also did not use TypeScript, since in the older versions of Vue/Nuxt is not natively supported.
+We also did not use TypeScript, since in the older versions of Vue/Nuxt it is not natively supported.
 
 We did not need to use any kind of State Management library, such as Vuex.
 
@@ -71,7 +71,7 @@ The components directory contains Vue.js components. Components make up the diff
 
 - **`Badge.vue`** - Used for orientation information (and group link) in Details pages.
 
-- **`Banner.vue`** - Used to display a cover image, title and Badge for all Details pages, and only cover and title in *About us`/`Contact us* pages.
+- **`Banner.vue`** - Used to display a cover image, title and Badge for all Details pages, and only cover and title in *About us*/*Contact us* pages.
 
 - **`Card.vue`** - Used on several links throughout the website. It features a thumbnail with caption, and provides a hover animation as interaction feedback.
 
