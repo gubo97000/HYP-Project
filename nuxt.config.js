@@ -1,8 +1,8 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  // ssr: true,
+  ssr: !!process.env.HEROKU_APP_NAME,
   // For STATIC
-  target: 'static',
+  target: process.env.HEROKU_APP_NAME ? '' : 'static',
   router: {
     base: process.env.GH_PAGE ? '/HYP-Project/' : ''
   },
