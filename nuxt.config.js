@@ -1,10 +1,12 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   // ssr: true,
+  // For STATIC
   target: 'static',
   router: {
-    base: '/HYP-Project/'
+    base: process.env.GH_PAGE ? '/HYP-Project/' : ''
   },
+
   serverMiddleware: [
     '~/server-middleware/postgraphileServerMiddleware.ts',
   ],
@@ -71,7 +73,8 @@ export default {
       default: {
         httpEndpoint: process.env.HEROKU_APP_NAME
           ? `https://${process.env.HEROKU_APP_NAME}.herokuapp.com/api/graphql`
-          : `http://localhost:3005/api/graphql`,
+          : process.env.GH_PAGE ? `http://localhost:3005/api/graphql`
+            : `http://localhost:3005/api/graphql`,
       },
     },
   },
