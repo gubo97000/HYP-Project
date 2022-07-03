@@ -49,7 +49,7 @@ For the styling of pages and components, we used Bootstrap served by CDN, as wel
 
 All the images are provided by the asset folder, we could have chosen to distribute them from a CDN, but chose not to considering the scope of the project.
 
-For hosting the node program we are using Heroku, although it is free performance are not always on top, if the site would have been commercially deployed w would have suggested a better hosting platform.
+For hosting the site we tested both Heroku with Server Side Rendering and GitHub Pages with static generation. The latter was the solution that was more performant. We continue to use Heroku for the hosting of the database for easing our development process.
 
 The project was organized in the following directories:
 
