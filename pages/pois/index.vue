@@ -21,11 +21,14 @@
 
         <!-- Location of the points of interest -->
         <iframe
+          v-show="loaded"
           title="Locations of all points of Interest of Towny"
           src="https://www.google.com/maps/d/u/0/embed?mid=1F-5rPEHeFpHj26d7Qas48I3hDRtLCwY&ehbc=2E312F"
           width="640"
           height="480"
+          @load="loaded = true"
         ></iframe>
+        <p v-show="!loaded" class="lead">Loading map...</p>
 
         <!-- Group links to POIs details -->
         <div class="d-flex justify-content-center flex-wrap card-container">
@@ -97,6 +100,7 @@ export default {
       showMore: false,
       // Length under which the show more button does not appear
       maxLength: 8,
+      loaded: false,
     }
   },
   head() {
