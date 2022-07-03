@@ -21,15 +21,16 @@
 
         <!-- Three accordions: All-year events, Winter events, Summer events.
           Only one accordion at a time can be open, and each shows the Events related to its corresponding period of the year. -->
+        <!-- The first dropdown (All-Year) is open by default at the beginning -->
         <!-- Each card is a group link to the event details -->
         <div v-if="events.nodes" ref="dropdowns">
           <Dropdown
-            :ref="'dropdownToggler' + 1"
             :title="'ALL YEAR EVENTS'"
             :index="1"
             :toggled="true"
           >
             <div class="d-flex justify-content-center flex-wrap">
+              <!-- All the cards here -->
               <CardComponent
                 v-for="(item, index) in events.nodes"
                 v-if="index < maxLength || showMore"
@@ -41,8 +42,9 @@
               />
             </div>
 
-            <!-- Show more button -->
+            <!-- "Show more" button -->
             <div class="d-flex justify-content-center flex-wrap">
+              <!-- Not shown if there are not enough events -->
               <button
                 v-if="events.nodes.length > maxLength"
                 type="button"
@@ -58,6 +60,7 @@
           <!-- Events only in Winter (event period is not even partially outside of winter) -->
           <Dropdown :title="'WINTER EVENTS'" :index="2">
             <div class="d-flex justify-content-center flex-wrap">
+              <!-- All the cards here -->
               <CardComponent
                 v-for="(item, index) in events.nodes.filter(
                   (e) => !isSummer(e.period) && isWinter(e.period)
@@ -71,8 +74,9 @@
               />
             </div>
 
-            <!-- Show more button -->
+            <!-- "Show more" button -->
             <div class="d-flex justify-content-center flex-wrap">
+              <!-- Not shown if there are not enough events -->
               <button
                 v-if="
                   events.nodes.filter(
@@ -92,6 +96,7 @@
           <!-- Events only in Summer (event period is not even partially outside of summer) -->
           <Dropdown :title="'SUMMER EVENTS'" :index="3">
             <div class="d-flex justify-content-center flex-wrap">
+              <!-- All the cards here -->
               <CardComponent
                 v-for="(item, index) in events.nodes.filter(
                   (e) => isSummer(e.period) && !isWinter(e.period)
@@ -105,8 +110,9 @@
               />
             </div>
 
-            <!-- Show more button -->
+            <!-- "Show more" button -->
             <div class="d-flex justify-content-center flex-wrap">
+              <!-- Not shown if there are not enough events -->
               <button
                 v-if="
                   events.nodes.filter(
@@ -148,8 +154,9 @@ export default {
     return {
       events: {},
 
-      // Used to hide overflowing cards
+      // Used to hide overflowing cards (if false)
       showMore: false,
+      // Length under which the show more button does not appear
       maxLength: 8,
     }
   },
@@ -184,6 +191,7 @@ export default {
     },
   },
   mounted() {
+    // Calculate maxLength based on portrait/landscape
     this.maxLength = window.innerWidth < 600 ? 4 : 8
     window.addEventListener('resize', () => {
       this.maxLength = window.innerWidth < 600 ? 4 : 8

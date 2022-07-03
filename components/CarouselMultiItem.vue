@@ -53,7 +53,7 @@ export default {
     maxWidth =
       this.$refs.track.offsetWidth - this.$refs.carouselContainer.offsetWidth
 
-    // If cards don't overflow (i.e. there are no more than 4 cards when there is space for 4), remove the prev/next arrows
+    // If cards don't overflow (i.e. there are no more than N cards when there is space for N at a time), remove the prev/next arrows
     if (this.$refs.track.children.length <= visibleCount) {
       this.$refs.next.classList.add('hide')
       // Class 'no-overflow' centers the cards to the screen (makes sense if there are max 3 cards for a space of 4)
@@ -73,7 +73,6 @@ export default {
       if (this.$refs.track.children.length <= visibleCount) {
         // Jump back to first card
         slideIndex = 0;
-        // this.$refs.track.style.transform = `translateX(0px)`
         this.$refs.carouselInner.scrollLeft = 0
 
         // Center remaining cards
@@ -91,8 +90,6 @@ export default {
       // When enlarging window: this branch prevents to go too far to the right (i.e. blank space on the right, after the last item), by fixing slideIndex
       if (slideIndex + 1 >= this.$refs.track.children.length - visibleCount) {
         slideIndex = Math.floor(this.$refs.track.children.length - visibleCount)
-        // this.$refs.track.style.transform = `translateX(-${slideIndex * cardWidth
-        //   }px)`
         this.$refs.carouselInner.scrollLeft = slideIndex * cardWidth
       }
 
@@ -107,7 +104,6 @@ export default {
     // Handles scroll with gesture as alternative to prev/next
     this.$refs.carouselInner.addEventListener('scroll', () => {
       const newSlideIndex = /* Math.floor(this.$refs.carouselInner.scrollLeft / cardWidth); */ this.$refs.carouselInner.scrollLeft / cardWidth
-      console.log(newSlideIndex, slideIndex)
 
       // Unchanged
       if (newSlideIndex === slideIndex) return;
@@ -126,10 +122,8 @@ export default {
   },
   methods: {
     handleNext() {
-      console.log(slideIndex)
       // slideIndex increased by visibleCount, and capped at length-1
       slideIndex = Math.min(slideIndex + visibleCount, this.$refs.track.children.length - 1)
-      console.log(slideIndex)
 
       // Move to the new visible card index
       this.$refs.carouselInner.scrollLeft = Math.min(
@@ -142,9 +136,8 @@ export default {
 
     },
     handlePrev() {
-      console.log(slideIndex)// slideIndex decreased by visibleCount, and capped at 0
+      // slideIndex decreased by visibleCount, and capped at 0
       slideIndex = Math.max(slideIndex - visibleCount, 0)
-      console.log(slideIndex)
 
       // Move to the new visible card index
       this.$refs.carouselInner.scrollLeft = slideIndex * cardWidth
@@ -153,6 +146,7 @@ export default {
       this.controlPrev();
     },
 
+    // Handles Prev/Next buttons after clicking Next
     controlNext() {
       // Enable button Prev to skip back
       if (slideIndex > 0.1)
@@ -164,6 +158,7 @@ export default {
       }
     },
 
+    // Handles Prev/Next buttons after clicking Prev
     controlPrev() {
       // Re-enable button Next to skip forward
       if (slideIndex * cardWidth < maxWidth - 10)
@@ -173,7 +168,6 @@ export default {
       if (slideIndex === 0) {
         this.$refs.prev.classList.remove('show')
       }
-
     }
   },
 }

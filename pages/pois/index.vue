@@ -28,6 +28,7 @@
 
         <!-- Group links to POIs details -->
         <div class="d-flex justify-content-center flex-wrap card-container">
+          <!-- All the cards here -->
           <CardComponent
             v-for="(n, index) in poises.edges"
             v-if="index < maxLength || showMore"
@@ -38,7 +39,9 @@
           />
         </div>
 
+        <!-- "Show more" button -->
         <div class="d-flex justify-content-center flex-wrap">
+          <!-- Not shown if there are not enough events -->
           <button
             type="button"
             class="btn btn-outline-light btn-lg rounded-pill"
@@ -87,6 +90,7 @@ export default {
 
       // Used to hide overflowing cards
       showMore: false,
+      // Length under which the show more button does not appear
       maxLength: 8,
     }
   },
@@ -103,6 +107,7 @@ export default {
     }
   },
   mounted() {
+    // Calculate maxLength based on portrait/landscape
     this.maxLength = window.innerWidth < 600 ? 4 : 8
     window.addEventListener('resize', () => {
       this.maxLength = window.innerWidth < 600 ? 4 : 8

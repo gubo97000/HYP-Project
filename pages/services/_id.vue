@@ -63,7 +63,7 @@ export default {
       `,
       })
       .then(({ data }) => {
-        console.log(data.servicetype)
+        // console.log(data.servicetype)
         return data.servicetype
       })
     return {

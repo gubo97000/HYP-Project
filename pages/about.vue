@@ -1,4 +1,4 @@
-<!-- Page corresponding to "About the town" -->
+<!-- Page corresponding to "About us" -->
 <template>
   <div class="jumbotron">
     <Banner
