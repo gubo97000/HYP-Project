@@ -11,13 +11,16 @@
     "lint:prettier": "prettier --check .",
     "lint": "yarn lint:js && yarn lint:prettier",
     "lintfix": "prettier --write --list-different . && yarn lint:js --fix",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
+    "clean-source": "rimraf README.md src webroot package.json"
   },
   "dependencies": {
     "@graphile-contrib/pg-simplify-inflector": "^6.1.0",
     "@nuxtjs/apollo": "^4.0.1-rc.5",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/pwa": "^3.3.5",
+    "@nuxtjs/sitemap": "^2.4.0",
     "core-js": "^3.19.3",
     "daisyui": "^2.15.0",
     "express": "^4.17.3",
@@ -45,10 +48,15 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^3.1.0",
     "eslint-plugin-vue": "^8.2.0",
+    "gh-pages-deploy": "^0.5.1",
     "jest": "^27.4.4",
     "nuxt-windicss": "^2",
     "prettier": "^2.5.1",
+    "push-dir": "^0.4.1",
     "ts-jest": "^27.1.1",
     "vue-jest": "^3.0.4"
+  },
+  "gh-pages-deploy": {
+    "staticpath": "dist"
   }
 }
