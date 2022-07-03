@@ -5,10 +5,17 @@
     <div class="jumbotron">
       <div class="container mt-5">
         <p class="lead">
-          Whether its a party, celebration, festival or fiesta, Towny knows how to mark important dates with vim and vigour. The city has a calendar full of exciting events that will engage even the most cynical of visitor, covering religion, art, sports and whatever heading bullfighting falls under these days. 
+          Whether its a party, celebration, festival or fiesta, Towny knows how
+          to mark important dates with vim and vigour. The city has a calendar
+          full of exciting events that will engage even the most cynical of
+          visitor, covering religion, art, sports and whatever heading
+          bullfighting falls under these days.
         </p>
         <p class="lead">
-          You will be able to experience a lot of different events, Towny is a city that is alive all year long, so feel free to navigate through all the events that our proposed this year and see if there is something that catches your eye.
+          You will be able to experience a lot of different events, Towny is a
+          city that is alive all year long, so feel free to navigate through all
+          the events that our proposed this year and see if there is something
+          that catches your eye.
         </p>
         <br />
 
@@ -67,8 +74,11 @@
             <!-- Show more button -->
             <div class="d-flex justify-content-center flex-wrap">
               <button
-                v-if="events.nodes.filter((item) => !isSummer(item.info) && isWinter(item.info)).length > maxLength"
-
+                v-if="
+                  events.nodes.filter(
+                    (item) => !isSummer(item.info) && isWinter(item.info)
+                  ).length > maxLength
+                "
                 type="button"
                 class="btn btn-outline-light btn-lg rounded-pill"
                 @click="showMore = !showMore"
@@ -92,13 +102,17 @@
                 :image="`events/${item.id}-thumb.webp`"
                 :caption="item.title"
                 :subcaption="item.info"
-              />              
+              />
             </div>
 
             <!-- Show more button -->
             <div class="d-flex justify-content-center flex-wrap">
               <button
-                v-if="events.nodes.filter((item) => isSummer(item.info) && !isWinter(item.info)).length > maxLength"
+                v-if="
+                  events.nodes.filter(
+                    (item) => isSummer(item.info) && !isWinter(item.info)
+                  ).length > maxLength
+                "
                 type="button"
                 class="btn btn-outline-light btn-lg rounded-pill"
                 @click="showMore = !showMore"
@@ -136,7 +150,7 @@ export default {
 
       // Used to hide overflowing cards
       showMore: false,
-      maxLength: 8
+      maxLength: 8,
     }
   },
   head() {
@@ -154,7 +168,7 @@ export default {
   apollo: {
     events: {
       // IMPORTANT: the name of the variable MUST be the same of the entity in the GraphQL query
-      // prefetch: true,
+      prefetch: true,
       query: gql`
         query MyQuery {
           events(orderBy: TITLE_ASC) {

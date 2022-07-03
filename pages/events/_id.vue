@@ -1,10 +1,15 @@
 <!-- Detail page of Events -->
 <template>
   <div class="jumbotron">
-    <Banner banner-image="event-banner" alt-text="Banner for event page" :title="event.title" badge-link="/events/" badge-text="Event"/>
+    <Banner
+      banner-image="event-banner"
+      alt-text="Banner for event page"
+      :title="event.title"
+      badge-link="/events/"
+      badge-text="Event"
+    />
 
     <div class="container mt-5">
-      
       <!-- Info concerns the time in which the event occurs -->
       <h4 class="subsection-title">
         DATE / PERIOD:
@@ -65,7 +70,7 @@ export default {
     CardComponent,
   },
 
-  async asyncData({ route, app, redirect, error }) {
+  async asyncData({ route, app, error }) {
     const { id } = route.params
     const client = app.apolloProvider.defaultClient
     const event = await client
@@ -106,11 +111,6 @@ export default {
       event,
     }
   },
-  // data() {
-  //   return {
-  //     id: this.$route.params.id, // we get the route here so we are sure apollo gets it
-  //   }
-  // },
   head() {
     return {
       title: `${this.event.title} - Events - Towny`,

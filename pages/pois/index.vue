@@ -7,21 +7,23 @@
       <div class="container mt-5">
         <!-- description of point of interest -->
         <p class="lead">
-          Towny is filled with beautiful monuments, museums, churches and fundamental pieces off the history of art. Here you can browse through all off the points of interest that you really need to see in the city. 
+          Towny is filled with beautiful monuments, museums, churches and
+          fundamental pieces off the history of art. Here you can browse through
+          all off the points of interest that you really need to see in the
+          city.
         </p>
         <p class="lead">
-          Make sure not to miss the most important ones, but we will guide you also to discover new places that most of the tourists have never heard of. We hope that you will enjoy the sights of Towny as much as we do. 
+          Make sure not to miss the most important ones, but we will guide you
+          also to discover new places that most of the tourists have never heard
+          of. We hope that you will enjoy the sights of Towny as much as we do.
         </p>
         <br />
 
         <!-- Location of the points of interest -->
         <iframe
-          title="Points of interest of Towny"
-          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d22385.345367822818!2d9.183978311645502!3d45.46641612838561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sit!4v1652736022694!5m2!1sen!2sit"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/d/u/0/embed?mid=1F-5rPEHeFpHj26d7Qas48I3hDRtLCwY&ehbc=2E312F"
+          width="640"
+          height="480"
         ></iframe>
 
         <!-- Group links to POIs details -->
@@ -85,7 +87,7 @@ export default {
 
       // Used to hide overflowing cards
       showMore: false,
-      maxLength: 8
+      maxLength: 8,
     }
   },
   head() {
@@ -105,7 +107,7 @@ export default {
     window.addEventListener('resize', () => {
       this.maxLength = window.innerWidth < 600 ? 4 : 8
     })
-  }
+  },
   // async asyncData({ $axios }) {
   //   const { data } = await $axios.get('/api/page-info/about')
   //   const title = data.title
@@ -172,7 +174,6 @@ iframe {
   margin-bottom: 40px;
   margin-top: -10px;
 }
-
 
 /* 4 cards per row */
 @media screen and (min-width: 1550px) {
