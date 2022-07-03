@@ -1,6 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  ssr: true,
+  // ssr: true,
+  target: 'static',
   serverMiddleware: [
     '~/server-middleware/postgraphileServerMiddleware.ts',
   ],

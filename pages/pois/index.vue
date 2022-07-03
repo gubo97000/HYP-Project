@@ -117,17 +117,6 @@ export default {
       this.maxLength = window.innerWidth < 600 ? 4 : 8
     })
   },
-  // async asyncData({ $axios }) {
-  //   const { data } = await $axios.get('/api/page-info/about')
-  //   const title = data.title
-  //   const image = data.image
-  //   const description = data.description
-  //   return {
-  //     title,
-  //     description,
-  //     image,
-  //   }
-  // },
 }
 </script>
 
