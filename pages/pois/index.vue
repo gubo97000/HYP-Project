@@ -21,6 +21,7 @@
 
         <!-- Location of the points of interest -->
         <iframe
+          title="Locations of all points of Interest of Towny"
           src="https://www.google.com/maps/d/u/0/embed?mid=1F-5rPEHeFpHj26d7Qas48I3hDRtLCwY&ehbc=2E312F"
           width="640"
           height="480"
