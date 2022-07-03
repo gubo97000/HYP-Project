@@ -100,10 +100,6 @@ export default {
     margin-bottom: 1.5%;
   }
 
-  .title {
-    font-size: 4rem;
-  }
-
   .service-item>>>img {
     width: 300px;
     max-width: 40%;
@@ -112,10 +108,6 @@ export default {
 
 /* Portrait */
 @media screen and (max-width: 599px) {
-  .title {
-    font-size: 3rem;
-  }
-
   .service-item {
     justify-content: center;
     display: flex;
@@ -141,24 +133,6 @@ export default {
   filter: opacity(0.85);
 }
 
-.title {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #ffffff;
-  font-weight: 750;
-  -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: black;
-}
-
-.badge {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .item-title {
   color: #26466f;
   font-weight: 500;
@@ -166,18 +140,8 @@ export default {
   margin-bottom: 10px;
 }
 
-.section-title {
-  color: #26466f;
-  font-weight: 800;
-  font-size: 24px;
-}
-
 .go-back {
   margin-top: 5%;
-}
-
-.lead {
-  text-align: justify;
 }
 
 .service-item>>>img {

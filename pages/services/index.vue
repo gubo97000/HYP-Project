@@ -88,10 +88,6 @@ export default {
 <style scoped>
 /* Desktop/Landscape */
 @media screen and (min-width: 600px) {
-  .column_wrapper {
-    column-count: 2;
-  }
-
   .card-component {
     width: 50% !important;
   }
@@ -107,10 +103,6 @@ export default {
   color: #26466f;
   font-weight: 750;
   font-size: 4rem;
-}
-
-.row {
-  margin-bottom: -30px;
 }
 
 .card-component >>> img {

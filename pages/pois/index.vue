@@ -123,13 +123,6 @@ export default {
 </script>
 
 <style scoped>
-/* Desktop/Landscape */
-@media screen and (min-width: 600px) {
-  .column_wrapper {
-    column-count: 4;
-  }
-}
-
 iframe {
   width: 100%;
   height: 400px;

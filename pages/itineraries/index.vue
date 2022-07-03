@@ -188,16 +188,6 @@ export default {
   font-size: 24px;
 }
 
-.section-title {
-  color: #26466f;
-  font-weight: 800;
-  font-size: 24px;
-}
-
-.go-back {
-  margin-top: 5%;
-}
-
 .lead {
   margin-bottom: 15px;
   text-align: justify;
@@ -207,10 +197,6 @@ export default {
   text-align: center;
   color: #26466f;
   font-weight: 750;
-}
-
-.row {
-  margin-bottom: -30px;
 }
 
 .poi {

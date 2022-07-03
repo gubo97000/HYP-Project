@@ -108,14 +108,12 @@
 <script>
 import { gql } from 'graphql-tag'
 import CardComponent from '~/components/Card.vue'
-import Badge from '~/components/Badge.vue'
 
 export default {
   name: 'DetailsPage',
 
   components: {
     CardComponent,
-    Badge
   },
   async asyncData({ route, app, error }) {
     const { id } = route.params
@@ -207,12 +205,6 @@ export default {
 <style scoped>
 /* Landscape/Desktop */
 @media screen and (min-width: 640px) {
-  .title {
-    color: #26466f;
-    font-weight: 750;
-    font-size: 4rem;
-  }
-
   .howtoreach-container {
     display: flex;
     margin-top: 20px;
@@ -294,20 +286,10 @@ export default {
 
 /* Portrait */
 @media screen and (max-width: 639px) {
-  .title {
-    color: #26466f;
-    font-weight: 750;
-    font-size: 3.6rem;
-  }
-
   iframe {
     width: 100%;
     aspect-ratio: 1 / 1;
     margin-top: 20px;
-  }
-
-  li {
-    margin-left: 20px;
   }
 
   .subsection-title {
@@ -351,21 +333,6 @@ export default {
   font-weight: 700;
   font-size: 22px;
   margin-top: 30px;
-}
-
-ul {
-  width: 100%;
-}
-
-ul,
-li {
-  display: inline;
-}
-
-li {
-  margin-left: 10px;
-  margin-bottom: 5%;
-  list-style-type: circle;
 }
 
 .lead:not(.item-title):not(.item-text) {
