@@ -13,7 +13,8 @@
     "lintfix": "prettier --write --list-different . && yarn lint:js --fix",
     "test": "jest",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
-    "clean-source": "rimraf README.md src webroot package.json"
+    "clean-source": "rimraf README.md src webroot package.json",
+    "gen-dep": "yarn dev && yarn generate && yarn deploy"
   },
   "dependencies": {
     "@graphile-contrib/pg-simplify-inflector": "^6.1.0",
