@@ -37,7 +37,7 @@
                 :to="`/events/${item.id}`"
                 :image="`events/${item.id}-thumb.webp`"
                 :caption="item.title"
-                :subcaption="item.info"
+                :subcaption="item.period"
               />
             </div>
 
@@ -60,14 +60,14 @@
             <div class="d-flex justify-content-center flex-wrap">
               <CardComponent
                 v-for="(item, index) in events.nodes.filter(
-                  (e) => !isSummer(e.info) && isWinter(e.info)
+                  (e) => !isSummer(e.period) && isWinter(e.period)
                 )"
                 v-if="index < maxLength || showMore"
                 :key="`S${item.id}`"
                 :to="`/events/${item.id}`"
                 :image="`events/${item.id}-thumb.webp`"
                 :caption="item.title"
-                :subcaption="item.info"
+                :subcaption="item.period"
               />
             </div>
 
@@ -76,7 +76,7 @@
               <button
                 v-if="
                   events.nodes.filter(
-                    (item) => !isSummer(item.info) && isWinter(item.info)
+                    (item) => !isSummer(item.period) && isWinter(item.period)
                   ).length > maxLength
                 "
                 type="button"
@@ -94,14 +94,14 @@
             <div class="d-flex justify-content-center flex-wrap">
               <CardComponent
                 v-for="(item, index) in events.nodes.filter(
-                  (e) => isSummer(e.info) && !isWinter(e.info)
+                  (e) => isSummer(e.period) && !isWinter(e.period)
                 )"
                 v-if="index < maxLength || showMore"
                 :key="`W${item.id}`"
                 :to="`/events/${item.id}`"
                 :image="`events/${item.id}-thumb.webp`"
                 :caption="item.title"
-                :subcaption="item.info"
+                :subcaption="item.period"
               />
             </div>
 
@@ -110,7 +110,7 @@
               <button
                 v-if="
                   events.nodes.filter(
-                    (item) => isSummer(item.info) && !isWinter(item.info)
+                    (item) => isSummer(item.period) && !isWinter(item.period)
                   ).length > maxLength
                 "
                 type="button"
@@ -175,7 +175,7 @@ export default {
             nodes {
               id
               title
-              info
+              period
             }
           }
         }
@@ -202,28 +202,28 @@ export default {
     })
   },
   methods: {
-    isSummer: (info) => {
+    isSummer: (period) => {
       if (
-        info.includes('Summer') ||
-        info.includes('April') ||
-        info.includes('May') ||
-        info.includes('June') ||
-        info.includes('July') ||
-        info.includes('August') ||
-        info.includes('September')
+        period.includes('Summer') ||
+        period.includes('April') ||
+        period.includes('May') ||
+        period.includes('June') ||
+        period.includes('July') ||
+        period.includes('August') ||
+        period.includes('September')
       )
         return true
       else return false
     },
-    isWinter: (info) => {
+    isWinter: (period) => {
       if (
-        info.includes('Winter') ||
-        info.includes('October') ||
-        info.includes('November') ||
-        info.includes('December') ||
-        info.includes('January') ||
-        info.includes('February') ||
-        info.includes('March')
+        period.includes('Winter') ||
+        period.includes('October') ||
+        period.includes('November') ||
+        period.includes('December') ||
+        period.includes('January') ||
+        period.includes('February') ||
+        period.includes('March')
       )
         return true
       else return false

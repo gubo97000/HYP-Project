@@ -14,7 +14,7 @@
       <h4 class="subsection-title">
         DATE / PERIOD:
         <span class="lead">
-          {{ event.info }}
+          {{ event.period }}
         </span>
       </h4>
 
@@ -80,7 +80,7 @@ export default {
           event(id: ${id}) {
             id
             title
-            info
+            period
             description
             poi {
               id
