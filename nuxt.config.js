@@ -2,6 +2,9 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   // ssr: true,
   target: 'static',
+  router: {
+    base: '/HYP-Project/'
+  },
   serverMiddleware: [
     '~/server-middleware/postgraphileServerMiddleware.ts',
   ],
