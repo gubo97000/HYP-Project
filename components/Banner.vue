@@ -49,12 +49,24 @@ export default {
   .title {
     font-size: 4rem;
   }
+  .badge {
+    top: 75%;
+  }
 }
 
 /* Portrait */
 @media screen and (max-width: 599px) {
   .title {
     font-size: 3rem;
+  }
+  .badge {
+    top: 80%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .title {
+    font-size: 12vw;
   }
 }
 
@@ -90,17 +102,5 @@ export default {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-@media screen and (max-width: 600px) {
-  .badge {
-    top: 80%;
-  }
-}
-
-@media screen and (min-width: 600px) {
-  .badge {
-    top: 70%;
-  }
 }
 </style>
