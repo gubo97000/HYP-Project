@@ -144,6 +144,30 @@ export default {
     Dropdown,
     CardComponent,
   },
+  async asyncData({ app }) {
+    const client = app.apolloProvider.defaultClient
+    const events = await client
+      .query({
+        query: gql`
+          query MyQuery {
+            events(orderBy: TITLE_ASC) {
+              nodes {
+                id
+                title
+                period
+              }
+            }
+          }
+        `,
+      })
+      .then(({ data }) => {
+        // console.log(data.servicetypes.nodes)
+        return data.events
+      })
+    return {
+      events,
+    }
+  },
   data() {
     return {
       events: {},
@@ -164,24 +188,6 @@ export default {
         },
       ],
     }
-  },
-  apollo: {
-    events: {
-      // IMPORTANT: the name of the variable MUST be the same of the entity in the GraphQL query
-      // prefetch: true,
-      query: gql`
-        query MyQuery {
-          events(orderBy: TITLE_ASC) {
-            nodes {
-              id
-              title
-              period
-            }
-          }
-        }
-      `,
-      // fetchPolicy: 'network-only',
-    },
   },
   mounted() {
     this.maxLength = window.innerWidth < 600 ? 4 : 8

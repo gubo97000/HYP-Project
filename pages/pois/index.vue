@@ -58,33 +58,37 @@ import gql from 'graphql-tag'
 import CardComponent from '~/components/Card.vue'
 export default {
   name: 'PointsOfInterest',
-  apollo: {
-    poises: {
-      // IMPORTANT: the name of the variable MUST be the same of the entity in the GraphQL query
-      // prefetch: true,
-      query: gql`
-        query MyQuery {
-          poises(orderBy: TITLE_ASC) {
-            edges {
-              node {
-                id
-                title
-                info
-              }
-            }
-          }
-        }
-      `,
-      // fetchPolicy: 'network-only',
-    },
-  },
   components: {
     CardComponent,
   },
+  async asyncData({ app }) {
+    const client = app.apolloProvider.defaultClient
+    const poises = await client
+      .query({
+        query: gql`
+          query MyQuery {
+            poises(orderBy: TITLE_ASC) {
+              edges {
+                node {
+                  id
+                  title
+                  info
+                }
+              }
+            }
+          }
+        `,
+      })
+      .then(({ data }) => {
+        // console.log(data.servicetypes.nodes)
+        return data.poises
+      })
+    return {
+      poises,
+    }
+  },
   data() {
     return {
-      poises: {},
-
       // Used to hide overflowing cards
       showMore: false,
       maxLength: 8,
