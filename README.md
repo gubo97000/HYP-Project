@@ -16,7 +16,7 @@ The project consists in implementing a website dedicated to a touristic place, t
 | Isabel De Vergara De Orellana (10844712)<br />isabel.devergaradeorellana@mail.polimi.it | <ul><li>Front-End: initial implementation of Events, Event Details and Itineraries pages</li><li>Major contributions to final Usability report</li><li>Refinements to Design Report</li></ul> |
 | Elena Naldoni (10856889)<br />elena.naldoni@mail.polimi.it                              | <ul><li>Design: Low-fidelity and High-fidelity wireframes (UI Design), and scenarios</li><li>Search of realistic content for the website (text, maps and images)</li><li>Active contributions to Usability and Design reports</li></ul> |
 
-## Build Setup
+## Installation Instruction
 
 ```bash
 # install dependencies
@@ -32,21 +32,26 @@ $ yarn start
 # generate static project
 $ yarn generate
 ```
+To have a functioning site is necessary to set the environment variable `DATABASE_URL` with the database url.
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
 ## Implementation
 
-The Web Application is based on the frameworks NuxtJS v2 and Vue 2. None of the new features of Vue 3 were added in the project.<br />
-We also did not use TypeScript, since in the older versions of Vue/Nuxt it is not natively supported.
+The Web Application is based on the frameworks NuxtJS v2 and Vue 2. None of the new features of Vue 3 were added in the project.\
+We also did not use TypeScript, since in the older versions of Vue/Nuxt does not have native support.
 
-We did not need to use any kind of State Management library, such as Vuex.
+We did not need to use any kind of Global State Management library, such as Vuex.
 
-As Back-End, we used the integrated server of Nuxt.js, interfacing with the PostgreSQL database through PostGraphile that provides GraphQL style REST API. GraphQL offers the advantage of querying connected data easily, while still retrieving only the information we need, in order to keep the response as small as possible. The body of the query also mirrors the structure of the response so that it is easier for all contributors to know how to address the response.
+As Back-End, we used the integrated server of Nuxt.js, interfacing with the PostgreSQL database through PostGraphile that provides GraphQL style REST API. GraphQL offers the advantage of querying connected data easily, while still retrieving only the information we need, in order to keep the response as small as possible. More the query sintax mirrors the structure of the response so that it is easier for all contributors to know how to address the returning data.
 
 For the styling of pages and components, we used Bootstrap served by CDN, as well as hand-written CSS code.
 
-The the project was organized in the following directories:
+All the images are provided by the asset folder, we could have chosen to distribute them from a CDN, but chose not to considering the scope of the project.
+
+For hosting the node program we are using Heroku, although it is free performance are not always on top, if the site would have been commercially deployed w would have suggested a better hosting platform.
+
+The project was organized in the following directories:
 
 ### `assets`
 
