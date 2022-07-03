@@ -136,22 +136,10 @@ export default {
   margin-bottom: 20px;
   margin-top: -10px;
 }
-.title-container {
-  text-align: center;
-  position: relative;
-  top: 0;
-  left: 0;
-}
 
 .lead {
   text-align: justify;
   color: rgb(33, 37, 41);
-}
-
-h2 {
-  font-weight: bolder;
-  font-size: 26px;
-  font-family: Arial;
 }
 
 .about-the-place {
@@ -184,12 +172,6 @@ h2 {
 
 /* Desktop/Landscape */
 @media screen and (min-width: 600px) {
-  .title {
-    color: #26466f;
-    font-weight: 750;
-    font-size: 3.4rem;
-  }
-
   .nuxt-clickable >>> img {
     height: 300px;
     object-fit: cover;
@@ -202,12 +184,6 @@ h2 {
 
 /* Portrait */
 @media screen and (max-width: 600px) {
-  .title {
-    color: #26466f;
-    font-weight: 750;
-    font-size: 2.8rem;
-  }
-
   .carousel >>> img {
     height: 300px;
   }

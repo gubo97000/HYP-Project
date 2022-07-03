@@ -239,12 +239,6 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  font-weight: bolder;
-  font-size: 26px;
-  font-family: Arial;
-}
-
 .lead {
   margin-bottom: 15px;
   text-align: justify;
@@ -255,10 +249,6 @@ h2 {
   color: #26466f;
   font-weight: 750;
   font-size: 4rem;
-}
-
-.row {
-  margin-bottom: -30px;
 }
 
 .nuxt-clickable >>> img {
