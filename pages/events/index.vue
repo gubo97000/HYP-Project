@@ -22,9 +22,9 @@
         <!-- Three accordions: All-year events, Winter events, Summer events.
           Only one accordion at a time can be open, and each shows the Events related to its corresponding period of the year. -->
         <!-- Each card is a group link to the event details -->
-        <div ref="dropdowns">
+        <div v-if="events.nodes" ref="dropdowns">
           <Dropdown
-            :ref="'dropdownToggler' + i"
+            :ref="'dropdownToggler' + 1"
             :title="'ALL YEAR EVENTS'"
             :index="1"
             :toggled="true"
@@ -168,7 +168,7 @@ export default {
   apollo: {
     events: {
       // IMPORTANT: the name of the variable MUST be the same of the entity in the GraphQL query
-      prefetch: true,
+      // prefetch: true,
       query: gql`
         query MyQuery {
           events(orderBy: TITLE_ASC) {
@@ -196,7 +196,7 @@ export default {
     // Also re-enable "show more" button
     this.$on('closeAllDropdowns', (index) => {
       this.showMore = false
-
+      if (!dropdowns?.children?.length === 0) return
       for (let i = 1; i <= dropdowns.children.length; i++)
         if (index != i) this.$emit('closeDropdown')
     })
