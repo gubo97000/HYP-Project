@@ -1,4 +1,4 @@
-<!-- Component used to create banners for all the details pages -->
+<!-- Component used to create banners for all the details pages; also used in About us and Contact us -->
 <template>
     <div class="image-container">
       <img :src="require(`@/assets/${bannerImage}.webp`)" :alt="altText" class="cover" />

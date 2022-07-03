@@ -37,13 +37,11 @@
                 :alt="`Map of itinerary: ${item.title}`"
                 style=""
               />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <!-- <iframe :src="item.map" height="360px"></iframe> -->
               <!-- Info: title, duration, touched points of interest -->
               <div>
                 <p class="item-title">
                   {{ item.title.toUpperCase() }}
                 </p>
-                <!-- <p>Difficulty: {{ item.difficulty }}</p> -->
                 <p class="lead">Duration: {{ item.duration }}</p>
                 <br />
                 <p class="lead">Points of interest:</p>

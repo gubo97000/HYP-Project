@@ -18,6 +18,7 @@
       <!-- Transition links to the related points of interest  -->
       <b class="section-title">Points of interest touched by this itinerary:</b>
 
+      <!-- Shows as multi-carousel on wide screen (non-portrait) -->
       <CarouselMultiItem
         v-if="windowWidth >= 768"
         :slides="
@@ -31,6 +32,7 @@
         "
       ></CarouselMultiItem>
 
+      <!-- Otherwise shows as list of cards -->
       <div
         v-else
         class="d-flex justify-content-center flex-wrap card-container"

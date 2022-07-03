@@ -4,9 +4,14 @@ A card contains an image and a caption, and is animated when hovered on. -->
   <nuxt-link :to="`${to}`" class="nuxt-clickable">
     <div class="image-container card">
       <figure>
+        <!-- Image -->
         <img :src="require('@/assets/' + image)" alt="Thumbnail" width="100%" />
-        <figcaption><span>{{ caption }} <span v-if="subcaption !== ''" class="subcaption"><br v-if="caption.length < 27"/>({{ subcaption }})</span></span></figcaption>
-        <!-- <figcaption v-if="subcaption !== ''" class="subcaption">{{ subcaption }}</figcaption> -->
+        <!-- Caption + Subcaption (subcaption goes to new line, unless the caption is already long enough, in order to better fit the space under the image) -->
+        <figcaption>
+          <span>
+            {{ caption }} <span v-if="subcaption !== ''" class="subcaption"><br v-if="caption.length < 27"/>({{ subcaption }})</span>
+          </span>
+        </figcaption>
       </figure>
     </div>
   </nuxt-link>

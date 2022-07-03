@@ -25,7 +25,7 @@
       </p>
       <br />
 
-      <!-- Representative images -->
+      <!-- Representative images (carousel) -->
       <Carousel
         :slides="event.pictures.nodes.map((p) => `events/${p.url}`)"
         class="carousel"

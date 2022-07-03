@@ -6,6 +6,7 @@
     </nuxt-link>
   </div>
 </template>
+
 <script>
 export default {
   name: 'Badge',
@@ -17,6 +18,7 @@ export default {
   },
 }
 </script>
+
 <style>
 .badge-container {
   display: inline-block;

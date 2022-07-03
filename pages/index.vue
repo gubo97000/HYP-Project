@@ -1,4 +1,4 @@
-<!-- Home (Splash) page -->
+<!-- Home page -->
 <template>
   <div class="jumbotron">
     <div class="image-container">
@@ -13,6 +13,7 @@
       </p>
     </div>
     <div class="container">
+      <!-- 4 additional links to other pages  -->
       <div class="d-flex justify-content-center flex-wrap card-container">
         <CardComponent :to="`/events`" class="card-component" :image="'restaurant-card.webp'" :caption="'EVENTS'" />
         <CardComponent :to="`/pois`" class="card-component" :image="'poi-card.webp'" :caption="'POINTS OF INTEREST'" />

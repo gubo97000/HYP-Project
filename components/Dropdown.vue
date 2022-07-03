@@ -42,10 +42,12 @@ export default {
       type: String,
       required: true,
     },
+    // For when there are more dropdowns in a page (e.g. All Events)
     index: {
       type: String,
       default: '',
     },
+    // If true, dropdown is open by default
     toggled: {
       type: Boolean,
       default: false,
