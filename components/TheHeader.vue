@@ -70,12 +70,12 @@ export default {
 .header {
   background: #8bdefffe;
   position: fixed;
-  z-index: 2;
+  z-index: 5;
   width: 100%;
   top: 0%;
 }
 .nav-link,
-a.nuxt-link-exact-active {
+a:not(.navbar-brand).nuxt-link-exact-active {
   color: white !important;
   font-size: 22px;
   /* line-height: 15px; */
@@ -86,7 +86,7 @@ a.nuxt-link-exact-active {
 }
 
 .nav-link::before,
-a.nuxt-link-exact-active::before {
+a:not(.navbar-brand).nuxt-link-exact-active::before {
   content: '';
   position: absolute;
   display: block;

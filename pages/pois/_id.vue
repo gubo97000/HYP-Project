@@ -54,8 +54,8 @@
                       <p class="lead item-title">
                         {{ i.itinerary.title.toUpperCase() }}
                       </p>
-                      <p class="lead item-text">Stop number {{ i.order }} of the itinerary</p>
-                      <p class="lead item-text">Duration: {{ i.itinerary.duration }}</p>
+                      <p class="lead item-text" :class="pois.poiItinerariesByPoiId.nodes.length > 1 ? 'more-instances' : ''">Stop number {{ i.order }} of the itinerary</p>
+                      <p class="lead item-text" :class="pois.poiItinerariesByPoiId.nodes.length > 1 ? 'more-instances' : ''">Duration: {{ i.itinerary.duration }}</p>
                     </div>
                     <svg v-if="windowWidth >= 640" style="color: #8bdefffe" xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" fill="#8bdefffe"></path> </svg>
                   </div>
@@ -204,7 +204,7 @@ export default {
 
 <style scoped>
 /* Landscape/Desktop */
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 1024px) {
   .howtoreach-container {
     display: flex;
     margin-top: 20px;
@@ -252,7 +252,7 @@ export default {
   }
 
   .transition-links {
-    height: 300px;
+    min-height: 300px;
     display: flex;
     align-items: center;
   }
@@ -275,6 +275,11 @@ export default {
     width: 80%;
     height: 110%;
   }
+  @media screen and (max-width: 1280px) {
+    .more-instances {
+      font-size: 1.1rem;
+    }
+  }
 }
 
 .item-title {
@@ -285,11 +290,22 @@ export default {
 }
 
 /* Portrait */
-@media screen and (max-width: 639px) {
-  iframe {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    margin-top: 20px;
+@media screen and (max-width: 1023px) {
+
+  @media screen and (min-width: 768px) {
+    iframe {
+      width: 100%;
+      aspect-ratio: 1.5 / 1;
+      margin-top: 20px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    iframe {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      margin-top: 20px;
+    }
   }
 
   .subsection-title {
@@ -312,6 +328,16 @@ export default {
   }
   .related-itinerary > * {
     width: 100%;
+  }
+
+  @media screen and (min-width: 640px) {
+    .related-itinerary > a > div {
+      display: flex;
+    }
+    .related-itinerary > a > div > *:nth-child(1) {
+      width: 80%;
+      height: 110%;
+    }
   }
 }
 
