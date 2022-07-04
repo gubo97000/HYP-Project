@@ -11,15 +11,15 @@
 
     <div class="container mt-5">
       <!-- Info concerns the time in which the event occurs -->
-      <h4 class="subsection-title">
+      <b class="subsection-title">
         DATE / PERIOD:
         <span class="lead">
           {{ event.period }}
         </span>
-      </h4>
+      </b>
 
       <br />
-      <h4 class="subsection-title">OVERVIEW</h4>
+      <b class="subsection-title">OVERVIEW</b>
       <p class="lead">
         {{ event.description }}
       </p>
@@ -33,7 +33,7 @@
       <br /><br />
 
       <!-- Transition link to the related point of interest  -->
-      <h4 class="subsection-title">ABOUT THE PLACE</h4>
+      <b class="subsection-title">ABOUT THE PLACE</b>
       <div class="about-the-place">
         <CardComponent
           v-if="event.poi"
