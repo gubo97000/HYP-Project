@@ -11,7 +11,7 @@ The project consists in implementing a website dedicated to a touristic place, t
 
 | Member                                                                                  | Contributions |
 | --------------------------------------------------------------------------------------- | ------------- |
-| Alessandro Atanassov (10623652)<br />alessandro.atanassov@mail.polimi.it                | <ul><li>Design: Final models of C-IDM, Content Tables, Abstract Pages and ER Model (including respective sections of the report)</li><li>Major contribution to Front-End implementation: creation of all components (except `Badge`), general development of most pages (including hand-written CSS)</li><li>Database design and schema instantiation</li><li>Contributions to Usability report</li></ul> |
+| Alessandro Atanassov (10623652)<br />alessandro.atanassov@mail.polimi.it                | <ul><li>Design: Final models of C-IDM, Content Tables, Abstract Pages and ER Model (including respective sections of the Design report)</li><li>Major contribution to Front-End implementation: creation of all components (except `Badge`), general development of most pages (including hand-written CSS)</li><li>Database design and schema instantiation</li><li>Contributions to Usability report</li></ul> |
 | Guido Bordonaro (10546201)<br />guido.bordonaro@mail.polimi.it                          | <ul><li>Design: Active contribution to C-IDM and Content Tables<br /></li><li>Front-End: Implementation of dynamic content (including insertion in database), and active contributions to pages and components</li><li>Implementation of Back-End</li><li>Contributions to Usability report</li></ul> |
 | Isabel De Vergara De Orellana (10844712)<br />isabel.devergaradeorellana@mail.polimi.it | <ul><li>Design: Active contribution to Low-fidelity wireframes</li><li>Front-End: initial implementation of Events, Event Details and Itineraries pages</li><li>Major contributions to final Usability report</li><li>Contributions to Design Report</li></ul> |
 | Elena Naldoni (10856889)<br />elena.naldoni@mail.polimi.it                              | <ul><li>Design: Low-fidelity and High-fidelity wireframes (UI Design), and scenarios</li><li>Search of realistic content for the website (hand-written text, custom maps and images)</li><li>Active contributions to Usability and Design reports</li></ul> |
@@ -36,7 +36,7 @@ To have a functioning site is necessary to set the environment variable `DATABAS
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
-## Implementation
+## Implementation and Best Practices
 
 The Web Application is based on the frameworks NuxtJS v2 and Vue 2. None of the new features of Vue 3 were added in the project.\
 We also did not use TypeScript, since in the older versions of Vue/Nuxt does not have native support.
@@ -47,11 +47,20 @@ As Back-End, we used the integrated server of Nuxt.js, interfacing with the Post
 
 For the styling of pages and components, we used Bootstrap served by CDN, as well as hand-written CSS code.
 
-All the images are provided by the asset folder, we could have chosen to distribute them from a CDN, but chose not to considering the scope of the project.
+All the images are provided by the asset folder; we have chosen not to distribute them from a CDN, considering the scope of the project.
 
-For hosting the site we tested both Heroku with Server Side Rendering and GitHub Pages with static generation. The latter was the solution that was more performant. We continue to use Heroku for the hosting of the database for easing our development process.
+For hosting the website, we tested both Heroku with Server Side Rendering and GitHub Pages with static generation. The latter was the solution that was more performant. We continue to use Heroku for the hosting of the database for easing our development process.
 
-We followed the best parctices of Nuxt by calling all the APIs from the asyncData method to respect the framework behavior and being able to generate the static version  of the website. All the inbound links are managed by the component NuxtLink. In case of an empty fetch the error interface provided by Nuxt is used.
+### Best Practices
+
+We followed the best practices of Nuxt by calling all the APIs from the `asyncData` method, to respect the framework behavior and to be able to generate the static version of the website.
+All the inbound links are managed by the component `NuxtLink`. 
+
+In case of an empty fetch the `error` interface provided by Nuxt is used.
+
+We used the routing by file system provided by the framework.
+
+## Project folder structure
 
 The project was organized in the following directories:
 
@@ -129,5 +138,3 @@ The following schema represents the ER Model of the database used for the websit
 ![HYP ER drawio](https://user-images.githubusercontent.com/79805163/177123607-002e0382-28ab-40ab-9ecc-979841b0db21.png)
 
 In the actual implementation, some tables may have additional auto-generated columns (such as createdAt, updateAt), which were not used.<br />In any case, the ER only shows the useful columns that we actually needed for the final content of the website.
-
-## Best Practices
