@@ -275,8 +275,10 @@ export default {
     width: 80%;
     height: 110%;
   }
-  .more-instances {
-    font-size: 1.1rem;
+  @media screen and (max-width: 1280px) {
+    .more-instances {
+      font-size: 1.1rem;
+    }
   }
 }
 
