@@ -4,7 +4,7 @@
     <Banner banner-image="itinerary-banner" alt-text="Banner for itinerary page" :title="itinerary.title" badge-link="/itineraries/" badge-text="Itinerary"/>
     <div class="container my-5">
 
-      <h3 class="section-title">DURATION: {{ itinerary.duration }}</h3>
+      <b class="section-title">DURATION: {{ itinerary.duration }}</b>
       <p class="lead">
         {{ itinerary.description }}
       </p>

@@ -3,7 +3,7 @@
   <nav class="navbar navbar-expand-lg navbar-light px-3 header">
     <!-- Landmark that brings to Home page, represented by the website logo. -->
     <nuxt-link class="navbar-brand" to="/"
-      ><img :src="require('@/assets/logo.webp')" alt="Towny" width="50"
+      ><img :src="require('@/assets/logo.webp')" alt="Towny" width="50" height="50"
     /></nuxt-link>
 
     <!-- Button used only in mobile version, to open the landmarks as an accordion. -->

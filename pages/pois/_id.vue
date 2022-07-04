@@ -17,7 +17,7 @@
             <!-- {{ pois }} -->
           </p>
 
-          <h4 class="subsection-title">VISIT INFO</h4>
+          <b class="subsection-title">VISIT INFO</b>
           <p class="lead">{{ pois.info }}</p>
           <p class="lead">Address: {{ pois.coordinates }}</p>
         </div>
@@ -46,7 +46,7 @@
         <!-- Transition links to the related Itineraries -->
         <div v-if="pois.eventsByPoiId">
           <div>
-            <h4 class="subsection-title">RELATED ITINERARIES</h4>
+            <b class="subsection-title">RELATED ITINERARIES</b>
             <div class="flex flex-wrap space-x-4 space-y-4 transition-links">
               <div class="d-flex flex-wrap related-itinerary">
                 <nuxt-link
@@ -109,7 +109,7 @@
         <!-- Transition links to the related Events -->
         <div v-if="pois.eventsByPoiId">
           <div>
-            <h4 class="subsection-title">EVENTS HAPPENING HERE</h4>
+            <b class="subsection-title">EVENTS HAPPENING HERE</b>
             <div
               class="flex flex-wrap space-x-4 space-y-4 justify-around transition-links"
             >

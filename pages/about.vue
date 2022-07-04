@@ -30,7 +30,7 @@
         </p>
 
         <hr class="my-4" />
-        <h3 class="section-title">HOW TO REACH US</h3>
+        <b class="section-title">HOW TO REACH US</b>
         <div class="howtoreach-container">
           <iframe
             title="How to reach Towny"
@@ -42,7 +42,7 @@
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
           <div class="howtoreach-text">
-            <h4 class="subsection-title">BY PLANE</h4>
+            <b class="subsection-title">BY PLANE</b>
             <p class="lead">
               If you decide to fly to Towny, you’ll land at the Towny airport,
               also called the San Pablo airport. It’s a first-class airport in a
@@ -66,7 +66,7 @@
               will take just 35 minutes if you choose the bus.
             </p>
 
-            <h4 class="subsection-title">BY TRAIN</h4>
+            <b class="subsection-title">BY TRAIN</b>
             <p class="lead">
               Towny is a pioneer in the development of high-speed rail. In fact,
               in 1992, it was the inaugural destination for the first high-speed
@@ -84,7 +84,7 @@
               15-minute walk from the city centre.
             </p>
 
-            <h4 class="subsection-title">BY CAR</h4>
+            <b class="subsection-title">BY CAR</b>
             <p class="lead">
               Towny is perfectly connected by road. A network of highways
               connect it with all areas: the A-49 links it with Huelva and
