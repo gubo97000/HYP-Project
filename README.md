@@ -51,8 +51,6 @@ All the images are provided by the asset folder, we could have chosen to distrib
 
 For hosting the site we tested both Heroku with Server Side Rendering and GitHub Pages with static generation. The latter was the solution that was more performant. We continue to use Heroku for the hosting of the database for easing our development process.
 
-We followed the best parctices of Nuxt by calling all the APIs from the asyncData method to respect the framework behavior and being able to generate the static version  of the website. All the inbound links are managed by the component NuxtLink. In case of an empty fetch the error interface provided by Nuxt is used.
-
 The project was organized in the following directories:
 
 ### `assets`
@@ -131,3 +129,8 @@ The following schema represents the ER Model of the database used for the websit
 In the actual implementation, some tables may have additional auto-generated columns (such as createdAt, updateAt), which were not used.<br />In any case, the ER only shows the useful columns that we actually needed for the final content of the website.
 
 ## Best Practices
+We followed the best practices of Nuxt by calling all the APIs from the asyncData method to respect the framework behavior and being able to generate the static version of the website.
+All the inbound links are managed by the component NuxtLink. 
+In case of an empty fetch the error interface provided by Nuxt is used.
+We used the routing by file system provided by the framework.
+
