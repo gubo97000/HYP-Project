@@ -51,6 +51,8 @@ All the images are provided by the asset folder; we have chosen not to distribut
 
 For hosting the website, we tested both Heroku with Server Side Rendering and GitHub Pages with static generation. The latter was the solution that was more performant. We continue to use Heroku for the hosting of the database for easing our development process.
 
+### Best Practices
+
 We followed the best practices of Nuxt by calling all the APIs from the `asyncData` method, to respect the framework behavior and to be able to generate the static version of the website.
 All the inbound links are managed by the component `NuxtLink`. 
 
