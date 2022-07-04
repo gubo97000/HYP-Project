@@ -1,12 +1,17 @@
 <!-- Detail page of Points of Interest -->
 <template>
   <div class="jumbotron">
-    <Banner banner-image="poi-banner" alt-text="Banner for point of interest page" :title="pois.title" badge-link="/pois/" badge-text="Point of Interest"/>
+    <Banner
+      banner-image="poi-banner"
+      alt-text="Banner for point of interest page"
+      :title="pois.title"
+      badge-link="/pois/"
+      badge-text="Point of Interest"
+    />
 
     <div class="container my-5">
-      
       <div class="howtoreach-container">
-        <div class="howtoreach-text">          
+        <div class="howtoreach-text">
           <p class="lead">
             {{ pois.description }}
             <!-- {{ pois }} -->
@@ -42,22 +47,57 @@
         <div v-if="pois.eventsByPoiId">
           <div>
             <h4 class="subsection-title">RELATED ITINERARIES</h4>
-            <div
-              class="flex flex-wrap space-x-4 space-y-4 transition-links"
-            >
+            <div class="flex flex-wrap space-x-4 space-y-4 transition-links">
               <div class="d-flex flex-wrap related-itinerary">
-                <nuxt-link v-for="i in pois.poiItinerariesByPoiId.nodes" :key="i.id" :to="'/itineraries/' + i.itinerary.id">
+                <nuxt-link
+                  v-for="i in pois.poiItinerariesByPoiId.nodes"
+                  :key="i.id"
+                  :to="'/itineraries/' + i.itinerary.id"
+                >
                   <div
                     class="pe-lg-5 align-items-center rounded-3 border shadow-lg"
-                  >   
+                  >
                     <div>
                       <p class="lead item-title">
                         {{ i.itinerary.title.toUpperCase() }}
                       </p>
-                      <p class="lead item-text" :class="pois.poiItinerariesByPoiId.nodes.length > 1 ? 'more-instances' : ''">Stop number {{ i.order }} of the itinerary</p>
-                      <p class="lead item-text" :class="pois.poiItinerariesByPoiId.nodes.length > 1 ? 'more-instances' : ''">Duration: {{ i.itinerary.duration }}</p>
+                      <p
+                        class="lead item-text"
+                        :class="
+                          pois.poiItinerariesByPoiId.nodes.length > 1
+                            ? 'more-instances'
+                            : ''
+                        "
+                      >
+                        Stop number {{ i.order }} of the itinerary
+                      </p>
+                      <p
+                        class="lead item-text"
+                        :class="
+                          pois.poiItinerariesByPoiId.nodes.length > 1
+                            ? 'more-instances'
+                            : ''
+                        "
+                      >
+                        Duration: {{ i.itinerary.duration }}
+                      </p>
                     </div>
-                    <svg v-if="windowWidth >= 640" style="color: #8bdefffe" xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" fill="#8bdefffe"></path> </svg>
+                    <svg
+                      v-if="windowWidth >= 640"
+                      style="color: #8bdefffe"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="90"
+                      height="90"
+                      fill="currentColor"
+                      class="bi bi-arrow-right"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                        fill="#8bdefffe"
+                      ></path>
+                    </svg>
                   </div>
                 </nuxt-link>
               </div>
@@ -168,12 +208,15 @@ export default {
       })
     return {
       pois,
+      structuredData: {
+        '@context': 'http://schema.org',
+      },
     }
   },
   data() {
     return {
       id: this.$route.params.id, // we get the route here so we are sure apollo gets it
-      windowWidth: this.windowWidth
+      windowWidth: this.windowWidth,
     }
   },
   head() {
@@ -186,6 +229,7 @@ export default {
           content: `${this.pois.description}`,
         },
       ],
+      script: [{ type: 'application/ld+json', json: this.structuredData }],
     }
   },
   mounted() {
@@ -291,7 +335,6 @@ export default {
 
 /* Portrait */
 @media screen and (max-width: 1023px) {
-
   @media screen and (min-width: 768px) {
     iframe {
       width: 100%;

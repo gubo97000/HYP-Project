@@ -58,6 +58,15 @@ In case of an empty fetch the `error` interface provided by Nuxt is used.
 
 We used the routing by file system provided by the framework.
 
+### SEO
+
+For improving the SEO we followed all the best practices of suggested by the chrome DevTools. Moreover we registered the site to the google search console to keep track of the indexing, the status of the website in the search results and what is the code read by the crawler.
+
+We are not providing a robots.txt file, since we are ok with all the site being crawled.
+
+We know that providing a sitemap of the website would help to improve the quality of the crawling but we did not consider it in the scope of the project.
+
+
 ## Project folder structure
 ### `assets`
 
@@ -133,7 +142,3 @@ The following schema represents the ER Model of the database used for the websit
 ![HYP ER drawio](https://user-images.githubusercontent.com/79805163/177123607-002e0382-28ab-40ab-9ecc-979841b0db21.png)
 
 In the actual implementation, some tables may have additional auto-generated columns (such as createdAt, updateAt), which were not used.<br />In any case, the ER only shows the useful columns that we actually needed for the final content of the website.
-
-## Best Practices
-
-

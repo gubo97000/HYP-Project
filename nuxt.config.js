@@ -17,6 +17,7 @@ export default {
     },
     meta: [
       { name: "google-site-verification", content: "LGCkxuEhypB74b--3yJkwTFH0eGTp1BKu2RvSz7LkyE" },
+      { name: "google-site-verification", content: "Xwy2kYzYtwFQkQssXdes3wXag0WWw3Z1NgVXgIBVVA8" },
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
@@ -60,6 +61,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/apollo',
+    // '@nuxtjs/sitemap'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -121,6 +123,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+
     // analyze: {
     //   analyzerMode: 'static'
     // },
