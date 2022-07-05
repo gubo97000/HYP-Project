@@ -109,6 +109,17 @@ export default {
       })
     return {
       event,
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: event.title,
+        description: event.description,
+        location: {
+          '@type': 'Place',
+          name: event.poi.title,
+        },
+        startDate: event.period,
+      },
     }
   },
   head() {
@@ -121,6 +132,7 @@ export default {
           content: `${this.event.description}`,
         },
       ],
+      script: [{ type: 'application/ld+json', json: this.structuredData }],
     }
   },
   methods: {

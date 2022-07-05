@@ -209,7 +209,10 @@ export default {
     return {
       pois,
       structuredData: {
-        '@context': 'http://schema.org',
+        '@context': 'https://schema.org',
+        '@type': 'TouristAttraction',
+        name: pois.title,
+        description: pois.description,
       },
     }
   },
