@@ -49,7 +49,9 @@ For the styling of pages and components, we used Bootstrap served by CDN, as wel
 
 All the images are provided by the asset folder in WEBP format and accurately resized; we have chosen not to distribute them from a CDN, considering the scope of the project.
 
-For hosting the website, we tested both Heroku with Server Side Rendering and GitHub Pages with static generation. The latter was the solution that was more performant. We continue to use Heroku for the hosting of the database for easing our development process.
+For hosting the website, we tested both Heroku with Server Side Rendering and GitHub Pages with Static Generation. The latter was the solution that was more performant. 
+
+We also used Heroku to host a shared PostgreSQL database with the purpose of having the same updated datasource for every contributor.
 
 ### Best Practices
 
