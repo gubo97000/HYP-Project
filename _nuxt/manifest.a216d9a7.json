@@ -1,0 +1,10 @@
+{
+  "name": "HYP-Project",
+  "short_name": "HYP-Project",
+  "description": "Implementation Project for the course \"Hypermedia Applications (Web and Multimedia)\", Polytechnic University of Milan, A.Y. 2021/2022.",
+  "icons": [],
+  "start_url": "/HYP-Project/?standalone=true",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "lang": "en"
+}
