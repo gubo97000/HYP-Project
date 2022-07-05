@@ -85,6 +85,7 @@ export default {
             poi {
               id
               title
+              coordinates
               picturesByPoiId {
         nodes {
           url
@@ -117,8 +118,9 @@ export default {
         location: {
           '@type': 'Place',
           name: event.poi.title,
+          address: event.poi.coordinates,
         },
-        startDate: event.period,
+        startDate: '2022-07-05', // In a real cases events have a start date, we didn't consider it for the scope of the project
       },
     }
   },

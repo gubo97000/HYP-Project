@@ -213,6 +213,7 @@ export default {
         '@type': 'TouristAttraction',
         name: pois.title,
         description: pois.description,
+        address: pois.coordinates,
       },
     }
   },
