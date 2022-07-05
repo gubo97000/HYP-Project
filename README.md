@@ -49,11 +49,15 @@ For the styling of pages and components, we used Bootstrap served by CDN, as wel
 
 All the images are provided by the asset folder in WEBP format and accurately resized; we have chosen not to distribute them from a CDN, considering the scope of the project.
 
-For hosting the website, we tested both Heroku with Server Side Rendering and GitHub Pages with Static Generation. The latter was the solution that was more performant. 
+As regards the hosting of the website, we tested both Server Side Rendering on Heroku and Static Site Generation on GitHub Pages.<br />
+Out of the two, we decided to publish the implementation with SSG for the evaluation. But even the SSR version on Heroku was perfectly running.<br />
+In any case, we figured SSG is applicabile due to the nature of this website, in which we assume the state of the database is not subject to continuous changes.
 
 We also used Heroku to host a shared PostgreSQL database with the purpose of having the same updated datasource for every contributor.
 
 ### Best Practices
+
+The choice of SSG for rendering is beneficial for two purposes: firstly, it allows better SEO compared to CSR; on the other hand, the website is rendered only once at build time, unlike SSR, in which it is rendered at each client request.
 
 We followed the best practices of Nuxt by calling all the APIs from the `asyncData` method, to respect the framework behavior and to be able to generate the static version of the website.
 All the inbound links are managed by the component `NuxtLink`. 
@@ -64,7 +68,7 @@ We used the routing by file system provided by the framework.
 
 ### SEO
 
-For improving the SEO we followed all the best practices of suggested by the chrome DevTools. Moreover we registered the site to the google search console to keep track of the indexing, the status of the website in the search results and what is the code read by the crawler.
+For improving the SEO we followed all the best practices suggested by the chrome DevTools. Moreover we registered the site to the google search console to keep track of the indexing, the status of the website in the search results and what is the code read by the crawler.
 
 We are not providing a robots.txt file, since we are ok with all the site being crawled.
 
