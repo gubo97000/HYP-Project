@@ -47,7 +47,7 @@ As Back-End, we used the integrated server of Nuxt.js, interfacing with the Post
 
 For the styling of pages and components, we used Bootstrap served by CDN, as well as hand-written CSS code.
 
-All the images are provided by the asset folder; we have chosen not to distribute them from a CDN, considering the scope of the project.
+All the images are provided by the asset folder in WEBP format and accurately resized; we have chosen not to distribute them from a CDN, considering the scope of the project.
 
 For hosting the website, we tested both Heroku with Server Side Rendering and GitHub Pages with static generation. The latter was the solution that was more performant. We continue to use Heroku for the hosting of the database for easing our development process.
 
@@ -68,6 +68,7 @@ We are not providing a robots.txt file, since we are ok with all the site being 
 
 We know that providing a sitemap of the website would help to improve the quality of the crawling but we did not consider it in the scope of the project.
 
+For each Event and Point Of Interest we provided the relative schema.org structured data to help Google create rich search results for the website.
 
 ## Project folder structure
 
