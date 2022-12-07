@@ -7,6 +7,8 @@ The project consists in implementing a website dedicated to a touristic place, t
 **Professor**: Franca Garzotto<br />
 **Tutors**: Alberto Patti, Giulio Antonio Abbo, Mattia Gianotti
 
+**Deployed website**: https://gubo97000.github.io/HYP-Project/
+
 ## Team Members
 
 | Member                                                                                  | Contributions |
